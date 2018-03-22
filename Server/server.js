@@ -10,9 +10,6 @@ const methodOverride = require('method-override');
 
 // configuration ===========================================
 
-// config files
-//const db = require('./config/db');
-
 // set our port
 const port = process.env.PORT || 8890;
 
