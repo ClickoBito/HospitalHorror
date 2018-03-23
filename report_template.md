@@ -1,28 +1,39 @@
 % Agile Development Processes Project Report  
-  Team X
-% Team Member A; Team Member B
+  Team 3
+% Kirsten Bassuday; Teklie Belay Bzuneh; Jamel Debbiche; Patrick Franz; Carl Jansson; Amar Kulaglic; Sebastian Nilsson
 %
 
+<!---
 This is the project report template.
 Fill it out over the course of the project.
+--->
 
 # Project Description
+<!---
 Include the project description from the assignment,
 your chosen target platform,
 programming language,
 and a name for the software.
+--->
+This project is about creating a system for doctors to keep track of patients in a hospital environment. In order to do this, the system lets the doctors to know important details about the patients, such as their treatments, allergies, diagnosis and corresponding doctor and so on, which can easily be put into the system for later access. This patient tracking system is implemented as a web application using Node.js and is called XXX.
 
-Link to your:
+Important links:
 
-- git repository
-- issue tracker
-- continuous integration builds
+- git repository: https://github.com/HeyHoProBro/HospitalHorror
+- issue tracker: https://github.com/HeyHoProBro/HospitalHorror/projects/1
+- continuous integration builds: https://travis-ci.org/HeyHoProBro/HospitalHorror
 
 # Sprint 1 Log
+<!---
 Per sprint, fill out one sprint log section and its subsections.
+--->
+This is the first spint of the project and contains the setup of the project.
 
 ## Commitment
+<!---
 List the features/stories that the team committed to finish during the sprint.
+--->
+
 
 ## Work Done
 Log what was accomplished, and how.
