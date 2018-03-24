@@ -15,7 +15,8 @@ your chosen target platform,
 programming language,
 and a name for the software.
 --->
-This project is about creating a system for doctors to keep track of patients in a hospital environment. In order to do this, the system lets the doctors to know important details about the patients, such as their treatments, allergies, diagnosis and corresponding doctor and so on, which can easily be put into the system for later access. This patient tracking system is implemented as a web application using Node.js with Javascript and is called XXX.
+This project is about creating a system for doctors to keep track of patients in a hospital environment. In order to do this, the system lets the doctors know important details about the patients, such as their treatments, allergies, diagnosis and corresponding doctor, which is accessible through the system. This system is implemented as a web application using Node.js with Javascript and is called Horror Hospital.
+The following tools have been decided on: Slack is used as the main communication tool. As suggested we are also using Travis as a build and testing tool and GitHub as project repository and issue tracker. MariaDB is the database management system, and  Node.js as an open source server framework and Angular as front-end web application platform. 
 
 Important links:
 
@@ -33,7 +34,13 @@ This is the first spint of the project and contains the setup of the project.
 <!---
 List the features/stories that the team committed to finish during the sprint.
 --->
-During the first sprint, we introduced and let us know each other by talking about our background and skills. Later on, we set up Slack as a communication tool, Travis as a build and testing tool and GitHub as project repository and issue tracker, but also concluded that we will use MariaDB as the database management system, Node.js as an open source server framework and Angular as front-end web application platform. Other than that, we also got started with the project by creating a "Hello World" application as a first step, with the help of a necessary backend and frontend setup. Before we did this, we went through the different possible features together that we thought are necessary in our system and filled them in our backlog on the GitHub's issue tracker, which can be seen in more detail in the link above.
+The following features were commited to for the first sprint:
+Set up Slack.
+Set up Github.
+Create a "Hello World" application.
+Set up a working back end.
+Configure Travis-CI.
+Create a Maria-DB instance.
 
 ## Work Done
 <!---
