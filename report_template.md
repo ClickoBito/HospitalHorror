@@ -59,7 +59,9 @@ Keep within 1000-1500 words. Discuss any deviations from the sprint commitment. 
   Did they complement or counteract each other?
 - How efficient were the practices, given the time they took to use?
 ---->
+The work went very well on the first meeting and all team members participated equally in the important discussions that we had. Since we decided to use Angular, Node.js and Travis, which were new for many of us, we decided that we could watch tutorials about these tools and frameworks so that we could be prepared for the actual starting of the programming. Also, we discussed and explained briefly about these tools and frameworks during the meeting since some of us had used them before. Except the different dicsussions we had, we also  helped each other when a teammate had some problem with his or her work, for example when setting up Travis and so on. 
 
+Since we have had only one meeting where we got started with the project by setting up the environment and getting to know each other, we have not practiced any proper agile pracices yet. Despite this, the first meeting has been important anyways since we also recieved information from the supervisors about how the project will work. 
 
 # Sprint X Log
 *As for the previous sprints.*
