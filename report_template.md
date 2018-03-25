@@ -28,7 +28,7 @@ Important links:
 <!---
 Per sprint, fill out one sprint log section and its subsections.
 --->
-This is the first spint of the project and contains the setup of the project.
+This is the first sprint of the project and contains the setup of the project.
 
 ## Commitment
 <!---
@@ -40,7 +40,7 @@ The following features were commited to for the first sprint:
 - Set up Github.
 - Create a "Hello World" application.
 - Set up a working back end.
-- Configure Travis-CI.
+- Configure Travis CI.
 
 ## Work Done
 <!---
@@ -51,6 +51,11 @@ Please report on all activities; for example, in addition to coding, planning an
 Feature | Time estimated | Time spent per team member
 --------|----------------|--------
 *Name and ID of each feature* | *X hours* | *Member A: Y hours, Member B: Z hours*
+Set up Slack | 15 minutes | 
+Set up GitHub | 15 minutes |
+Create a Hello World application | 30 minutes | Patrick: 30 minutes
+Set up working back end | 30 minutes | Patrick: 30 minutes
+Configure Travis CI | 
 
 ## Reflections
 <!---
@@ -66,7 +71,7 @@ Keep within 1000-1500 words. Discuss any deviations from the sprint commitment. 
   Did they complement or counteract each other?
 - How efficient were the practices, given the time they took to use?
 ---->
-The first meeting was successful and all team members participated equally the discussions. Since we decided to use Angular, Node.js and Travis, which were new for many of us, we decided that we could watch tutorials about these tools and frameworks so that we could be prepared for the actual programming of the project. Also, we discussed and briefly explained the tools and frameworks, since some of us had prior experiance. We also helped each other when a teammate had a problem with his or her work, for example when setting up Travis and so on. 
+The first meeting was successful and all team members participated equally in the discussions. Since we decided to use Angular, Node.js and Travis CI, which were new for many of us, we decided that we could watch tutorials about these tools and frameworks so that we could be prepared for the actual programming of the project. Also, we discussed and briefly explained the tools and frameworks, since some of us had prior experience. We also helped each other when a teammate had a problem with his or her work, for example when setting up the project on their own computer. 
 
 Since we have had only one meeting where we got started with the project by setting up the environment and getting to know each other, we have not practiced any proper agile pracices yet. Despite this, the first meeting has been important anyways since we also recieved information from the supervisors about how the project will work. 
 
