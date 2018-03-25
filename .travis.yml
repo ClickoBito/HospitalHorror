@@ -21,12 +21,12 @@ script:
   PANDOC=./pandoc make all
 
 # for tagged versions, deploy the built files to github
-deploy:
-  provider: releases
-  api_key:
-    secure: $GH_TOKEN
-  file_glob: true
-  file: out/*
-  skip_cleanup: true
-  on:
-    tags: true
+#deploy:
+#  provider: releases
+#  api_key:
+#    secure: $GH_TOKEN
+#  file_glob: true
+#  file: out/*
+#  skip_cleanup: true
+#  on:
+#    tags: true
