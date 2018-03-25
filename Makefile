@@ -1,23 +1,30 @@
 PANDOC ?= pandoc
 
-all: textemplate pdftemplate wordtemplate requirements
+REPORTFILE := report_template.md
+REQFILE := project.md
+BUILDDIR := out
 
+all: clean mkdir_out textemplate pdftemplate requirements
+
+# create directory "out". pandoc might complain , if it doesn't exist
+mkdir_out:
+	mkdir ${BUILDDIR}
 
 # convert the markdown template to latex
-textemplate: report_template.md
-	$(PANDOC) -s -N -o out/report_template.tex $<
+textemplate: ${REPORTFILE}
+	$(PANDOC) -s -N -o ${BUILDDIR}/report.tex $<
 
 # convert the markdown template to pdf
-pdftemplate: report_template.md
-	$(PANDOC) -N -o out/report_template.pdf $<
+pdftemplate: ${REPORTFILE}
+	$(PANDOC) -N -o ${BUILDDIR}/report.pdf $<
 
 # convert the markdown template to word
-wordtemplate: report_template.md
-	$(PANDOC) -o out/report_template.docx $<
+#wordtemplate: report_template.md
+#	$(PANDOC) -o out/report_template.docx $<
 
 # convert the markdown requirements to pdf
-requirements: project.md
-	$(PANDOC) -V colorlinks -o out/project_meta_requirements.pdf $<
+requirements: ${REQFILE}
+	$(PANDOC) -V colorlinks -o ${BUILDDIR}/project_meta_requirements.pdf $<
 
 clean:
-	rm out/*
+	rm -rf out
