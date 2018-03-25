@@ -47,15 +47,16 @@ The following features were commited to for the first sprint:
 Log what was accomplished, and how.
 Please report on all activities; for example, in addition to coding, planning and design discussion.
 --->
-
+<!--
+*Name and ID of each feature* | *X hours* | *Member A: Y hours, Member B: Z hours*
+-->
 Feature | Time estimated | Time spent per team member
 --------|----------------|--------
-*Name and ID of each feature* | *X hours* | *Member A: Y hours, Member B: Z hours*
 Set up Slack | 15 minutes | 
 Set up GitHub | 15 minutes |
 Create a Hello World application | 30 minutes | Patrick: 30 minutes
 Set up working back end | 30 minutes | Patrick: 30 minutes
-Configure Travis CI | 
+Configure Travis CI | 1 hour | Patrick: 1 hour
 
 ## Reflections
 <!---
