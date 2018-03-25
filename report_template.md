@@ -16,7 +16,7 @@ programming language,
 and a name for the software.
 --->
 This project is about creating a system for doctors to keep track of patients in a hospital environment. In order to do this, the system lets the doctors know important details about the patients, such as their treatments, allergies, diagnosis and corresponding doctor, which is accessible through the system. This system is implemented as a web application using Node.js with Javascript and is called Horror Hospital.
-The following tools have been decided on: Slack is used as the main communication tool. As suggested we are also using Travis as a build and testing tool and GitHub as project repository and issue tracker. MariaDB is the database management system, and  Node.js as an open source server framework and Angular as front-end web application platform. 
+The following tools have been decided on: Slack is used as the main communication tool. As suggested we are also using Travis as a continuous integration service, GitHub as project repository and issue tracker, MariaDB as the database management system, Express.js as the web-application framework for our backend and Angular as the front-end web application platform. 
 
 Important links:
 
@@ -72,7 +72,7 @@ Keep within 1000-1500 words. Discuss any deviations from the sprint commitment. 
   Did they complement or counteract each other?
 - How efficient were the practices, given the time they took to use?
 ---->
-The first meeting was successful and all team members participated equally in the discussions. Since we decided to use Angular, Node.js and Travis CI, which were new for many of us, we decided that we could watch tutorials about these tools and frameworks so that we could be prepared for the actual programming of the project. Also, we discussed and briefly explained the tools and frameworks, since some of us had prior experience. We also helped each other when a teammate had a problem with his or her work, for example when setting up the project on their own computer. 
+The first meeting was successful and all team members participated equally in the discussions. Since we decided to use Angular, Node.js and Travis CI, which were new for many of us. We decided that we could watch tutorials about these tools and frameworks so that we could be prepared for the actual programming of the project. Also, we discussed and briefly explained the tools and frameworks, since some of us had prior experience. We also helped each other when a teammate had a problem with his or her work, for example when setting up the project on their own computer. 
 
 Since we have had only one meeting where we got started with the project by setting up the environment and getting to know each other, we have not practiced any proper agile pracices yet. Despite this, the first meeting has been important anyways since we also recieved information from the supervisors about how the project will work. 
 
