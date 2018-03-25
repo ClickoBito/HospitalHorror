@@ -1,7 +1,7 @@
-% Agile Development Processes Project Report  
-  Team 3
-% Kirsten Bassuday; Teklie Belay Bzuneh; Jamel Debbiche; Patrick Franz; Carl Jansson; Amar Kulaglic; Sebastian Nilsson
-%
+%Agile Development Processes Project Report - Hospital Horror
+%Team 3
+%Kirsten Bassuday; Teklie Belay Bzuneh; Jamel Debbiche; Patrick Franz; Carl Jansson; Amar Kulaglic; Sebastian Nilsson
+
 
 <!---
 This is the project report template.
