@@ -35,6 +35,7 @@ This is the first spint of the project and contains the setup of the project.
 List the features/stories that the team committed to finish during the sprint.
 --->
 The following features were commited to for the first sprint:
+
 - Set up Slack.
 - Set up Github.
 - Create a "Hello World" application.
