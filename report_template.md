@@ -41,6 +41,7 @@ The following features were commited to for the first sprint:
 - Create a "Hello World" application.
 - Set up a working back end.
 - Configure Travis CI.
+- Preliminary Database Design (Entity Relationship Diagram)
 
 ## Work Done
 <!---
@@ -57,6 +58,8 @@ Set up GitHub | 15 minutes |
 Create a Hello World application | 30 minutes | Patrick: 30 minutes
 Set up working back end | 30 minutes | Patrick: 30 minutes
 Configure Travis CI | 1 hour | Patrick: 1 hour
+Entity Relationship Diagram | 90 minutes | Jamel: 90 minutes
+
 
 ## Reflections
 <!---
