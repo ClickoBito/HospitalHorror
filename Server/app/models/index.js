@@ -10,7 +10,7 @@ const path      = require('path');
 const Sequelize = require('sequelize');
 const basename  = path.basename(module.filename);
 const db        = {};
-const dbconfig	 = require('../../config/local.js');
+const dbconfig  = require('../../config/local.js');
 
 
 const sequelize = new Sequelize(dbconfig.databasename, dbconfig.user, dbconfig.password, {

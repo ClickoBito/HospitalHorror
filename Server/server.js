@@ -47,7 +47,7 @@ const index = require('./app/routes/index');
 app.use('/', index);
 
 // start app ===============================================
-// startup our app at http://localhost:4242
+// startup our app at http://localhost:8890
 app.listen(port);
 
 // shoutout to the user
