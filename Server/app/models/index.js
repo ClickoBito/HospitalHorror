@@ -11,8 +11,15 @@ const Sequelize = require('sequelize');
 const basename  = path.basename(module.filename);
 const db        = {};
 const dbconfig  = require('../../config/local.js');
+const Op        = Sequelize.Op;
 
 
+// Define operator aliases here
+const operatorsAliases = {
+
+};
+
+// Define database-configuration
 const sequelize = new Sequelize(dbconfig.databasename, dbconfig.user, dbconfig.password, {
 	host: dbconfig.host,
 	dialect: 'mysql',
@@ -21,10 +28,11 @@ const sequelize = new Sequelize(dbconfig.databasename, dbconfig.user, dbconfig.p
 		min: 0,
 		idle: 10000
 	},
-	timezone: 'Europe/Amsterdam'
+	timezone: 'Europe/Amsterdam',
+	operatorsAliases: operatorsAliases
 });
 
-//Load all the models
+// Load all the models
 fs
 	.readdirSync(__dirname)
 	.filter(function(file) {
@@ -43,7 +51,7 @@ Object.keys(db).forEach(function(modelName) {
 
 sequelize.sync();
 
-//Export the db Object
+// Export the db Object
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
