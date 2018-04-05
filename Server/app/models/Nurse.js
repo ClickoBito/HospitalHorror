@@ -1,8 +1,10 @@
 /*jslint node: true */
 'use strict';
 
+const Sequelize = require('sequelize');
+
 module.exports = function(sequelize, DataTypes) {
-	let Doctor = sequelize.define('Doctor', {
+	let Nurse = sequelize.define('Nurse', {
 		id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
@@ -14,14 +16,13 @@ module.exports = function(sequelize, DataTypes) {
 		phone: DataTypes.STRING,
 		email: DataTypes.STRING
 	}, {
-		tableName: 'Doctor',
+		tableName: 'Nurse',
 		timestamps: true
 	});
 
 
-	Doctor.associate = function(models) {
-		models.Doctor.hasMany(models.Patient);
+	Nurse.associate = function(models) {
 	};
 	
-	return Doctor;
+	return Nurse;
 };
