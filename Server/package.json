@@ -3,7 +3,9 @@
   "main": "server.js",
   "scripts": {
     "start": "NODE_ENV=development node ./server.js",
-    "test": "jshint server.js"
+    "test": "jshint server.js",
+    "resync": "node ./database/resync.js",
+    "load_testdata": "node ./database/loadTestData.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
