@@ -1,6 +1,6 @@
 PANDOC ?= pandoc
 
-REPORTFILE := report_template.md
+REPORTFILE := report.md
 REQFILE := project.md
 BUILDDIR := out
 
