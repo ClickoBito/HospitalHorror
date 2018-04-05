@@ -1,27 +1,31 @@
 const model = require('../models/');
 
 
-
-
 module.exports.login = function(req, res, next) {
-	//res.status(200).send();
-	console.log("test");
+	// debug
+	console.log(req.body);
 	model.User.findOne({
 		where: {
-			username: req.body.userid,
-			password: req.body.pwd
+			username: req.body.username,
+			password: req.body.password
 		}
 	}).then(user => {
-		const userinfo = user.get({plain: true});
-		console.log(userinfo);
-		if (!user) {
-			console.log("error");
-		} else {
-			
-			res.redirect('/home/'+ userinfo.id);
 
+		if (user) {
+			let userinfo = user.get({plain: true});
+			console.log('User ' + userinfo.username + ' logged in at ' + Date());
+			res.redirect('/home/'+ userinfo.id);
+		} else {
+			console.log("Wrong login-credentials");
+			// TODO: display error message in frontend
+			res.redirect('/');
 		}
-		
+
+	}).catch(err => {
+		console.log("Error logging in");
+		console.log(err);
+		// TODO: display error message in frontend
+		res.redirect('/');
 	});
 };
 

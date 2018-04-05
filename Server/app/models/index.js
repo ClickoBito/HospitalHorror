@@ -43,12 +43,13 @@ fs
 		db[model.name] = model;
 	});
 
+// Create the foreign keys
 Object.keys(db).forEach(function(modelName) {
-	if (db[modelName].associate) {
+	if (db[modelName].associate)
 		db[modelName].associate(db);
-	}
 });
 
+// Create tables, if neccesary
 sequelize.sync();
 
 // Export the db Object
