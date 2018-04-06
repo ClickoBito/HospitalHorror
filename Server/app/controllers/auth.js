@@ -13,8 +13,12 @@ module.exports.login = function(req, res, next) {
 
 		if (user) {
 			let userinfo = user.get({plain: true});
+			if (userinfo.userType == 'Admin') 
+				res.redirect('/admin/');
+			else
+				res.redirect('/home/'+ userinfo.id);
+
 			console.log('User ' + userinfo.username + ' logged in at ' + Date());
-			res.redirect('/home/'+ userinfo.id);
 		} else {
 			console.log("Wrong login-credentials");
 			// TODO: display error message in frontend
@@ -27,6 +31,26 @@ module.exports.login = function(req, res, next) {
 		// TODO: display error message in frontend
 		res.redirect('/');
 	});
+};
+
+
+module.exports.register = function (req, res, next) {
+	console.log(req.body);
+
+	model.User.findOrCreate({
+		where: {username: req.body.username},
+		defaults: {password: req.body.password, userType: req.body.usertype}
+	}).spread((user, created) => {
+		if (created) {
+			console.log('User successfully created');
+			res.redirect('/');
+		}
+		else {
+			console.log('User with this username already found');
+			res.redirect('/');	
+		}
+	});
+	
 };
 
 module.exports.logout = function(req, res, next) {
