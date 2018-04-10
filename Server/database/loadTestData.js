@@ -14,7 +14,9 @@ setTimeout(() => {
 			console.log('\nInserting testdata completed.');
 			process.exit(0);
 		}).catch(err => {
+			console.log(err);
 			console.log('\nError inserting testdata.');
+			process.exit(0);
 		});
 
 	});
