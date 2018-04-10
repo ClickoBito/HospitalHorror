@@ -12,7 +12,15 @@ module.exports = function(sequelize, DataTypes) {
 		lastname: DataTypes.STRING,
 		dateofbirth: DataTypes.DATE,
 		phone: DataTypes.STRING,
-		email: DataTypes.STRING
+		email: DataTypes.STRING,
+		createdAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		}
 	}, {
 		tableName: 'Doctor',
 		timestamps: true
@@ -22,6 +30,6 @@ module.exports = function(sequelize, DataTypes) {
 	Doctor.associate = function(models) {
 		models.Doctor.hasMany(models.Patient);
 	};
-	
+
 	return Doctor;
 };

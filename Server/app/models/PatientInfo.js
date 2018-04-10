@@ -10,9 +10,17 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
-        bloodPressure: DataTypes.STRING,
-        patientNotes: DataTypes.STRING
-    }, {
+		bloodPressure: DataTypes.STRING,
+		patientNotes: DataTypes.STRING,
+		createdAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		}
+	}, {
 		tableName: 'PatientInfo',
 		timestamps: true
 	});

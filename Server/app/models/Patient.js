@@ -14,13 +14,21 @@ module.exports = function(sequelize, DataTypes) {
 		lastname: DataTypes.STRING,
 		dateofbirth: DataTypes.DATE,
 		phone: DataTypes.STRING,
-		email: DataTypes.STRING
+		email: DataTypes.STRING,
+		createdAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		}
 	}, {
 		tableName: 'Patient',
 		timestamps: true,
 
 
-	
+
 	});
 
 
@@ -30,6 +38,6 @@ module.exports = function(sequelize, DataTypes) {
 		models.Patient.hasMany(models.Treatment);
 		models.Patient.hasMany(models.Diagnosis);
 	};
- 
+
 	return Patient;
 };
