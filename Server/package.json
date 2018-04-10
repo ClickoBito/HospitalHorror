@@ -2,7 +2,7 @@
   "name": "HospitalHorror",
   "main": "server.js",
   "scripts": {
-    "start": "NODE_ENV=development node ./server.js",
+    "start": "set NODE_ENV=development&&node ./server.js",
     "test": "jshint server.js",
     "resync": "node ./database/resync.js",
     "load_testdata": "node ./database/loadTestData.js"
