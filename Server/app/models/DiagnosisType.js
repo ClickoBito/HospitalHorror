@@ -4,20 +4,22 @@
 const Sequelize = require('sequelize');
 
 module.exports = function(sequelize, DataTypes) {
-	let Allergy = sequelize.define('Allergy', {
+	let DiagnosisType = sequelize.define('DiagnosisType', {
 		id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
 			primaryKey: true
-		}
-	}, {
-		tableName: 'Allergy',
+		},
+		DiagnosisTypeName: DataTypes.STRING,
+
+    }, {
+		tableName: 'DiagnosisType',
 		timestamps: true
 	});
 
-
-	Allergy.associate = function(models) {
+	DiagnosisType.associate = function(models) {
 	};
-	
-	return Allergy;
+
+
+	return DiagnosisType;
 };

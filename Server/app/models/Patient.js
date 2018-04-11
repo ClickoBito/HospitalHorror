@@ -10,19 +10,16 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
+		gender: {
+			type: Sequelize.ENUM,
+			values: ['Male', 'Female']
+		},
+		ssNbr: DataTypes.INTEGER,
 		firstname: DataTypes.STRING,
 		lastname: DataTypes.STRING,
+		address: DataTypes.STRING,
 		dateofbirth: DataTypes.DATE,
 		phone: DataTypes.STRING,
-		email: DataTypes.STRING,
-		createdAt: {
-			type: DataTypes.DATE,
-			defaultValue: sequelize.fn('NOW')
-		},
-		updatedAt: {
-			type: DataTypes.DATE,
-			defaultValue: sequelize.fn('NOW')
-		}
 	}, {
 		tableName: 'Patient',
 		timestamps: true,

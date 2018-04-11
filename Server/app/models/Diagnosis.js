@@ -10,11 +10,6 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
-		diagnosisType: {
-			type: Sequelize.ENUM,
-			//not sure what types there are, just a placeholder
-			values: ['1', '2', '3', '4']
-		}
 
     }, {
 		tableName: 'Diagnosis',
