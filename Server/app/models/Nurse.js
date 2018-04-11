@@ -15,14 +15,6 @@ module.exports = function(sequelize, DataTypes) {
 		dateofbirth: DataTypes.DATE,
 		phone: DataTypes.STRING,
 		email: DataTypes.STRING,
-		createdAt: {
-			type: DataTypes.DATE,
-			defaultValue: sequelize.fn('NOW')
-		},
-		updatedAt: {
-			type: DataTypes.DATE,
-			defaultValue: sequelize.fn('NOW')
-		}
 	}, {
 		tableName: 'Nurse',
 		timestamps: true
