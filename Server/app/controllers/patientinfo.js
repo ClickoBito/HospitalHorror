@@ -15,6 +15,7 @@ module.exports.create = function(req, res, next) { // create is a function in a 
 		res.redirect('/');
 	});
 };
+
 module.exports.edit = function(req, res, next) {
 	console.log('Trying to update a PatientInfo');
 	console.log(req.body);
@@ -36,7 +37,6 @@ module.exports.delete = function(req, res, next) {
 	model.PatientInfo.destroy({where: {id: req.params.id}})
 	.then(response => {
 		console.log('Deleted PatientInfo');
-		console.log(response);
 		// TODO: redirect to some page
 		res.redirect('/');
 	}, err => {

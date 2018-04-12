@@ -16,8 +16,8 @@ router.post('/logout', AuthCtrl.logout);
 
 // PatientInfo
 router.post('/patientinfo', PatientInfoCtrl.create);
-router.put('/patientinfo', PatientInfoCtrl.edit);
-router.delete('/patientinfo', PatientInfoCtrl.delete);
+router.put('/patientinfo/:id', PatientInfoCtrl.edit);
+router.delete('/patientinfo/:id', PatientInfoCtrl.delete);
 
 
 // TODO: put function in a controller
