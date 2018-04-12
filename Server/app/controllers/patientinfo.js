@@ -22,7 +22,6 @@ module.exports.edit = function(req, res, next) {
 	model.PatientInfo.update(req.body,{where: {id: req.params.id}})
 	.then(info => {
 		console.log('Updated PatientInfo');
-		console.log(info.get({plain:true}));// redirecting info
 		// TODO: redirect to some page
 		res.redirect('/');
 	}, err => {
