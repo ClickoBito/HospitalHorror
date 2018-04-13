@@ -23,6 +23,7 @@ module.exports = function(sequelize, DataTypes) {
 
 
 	Secretary.associate = function(models) {
+		models.Secretary.belongsTo(models.User);
 	};
 
 	return Secretary;

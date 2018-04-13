@@ -10,6 +10,10 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
+		userType: {
+			type: Sequelize.ENUM,
+			values: ['Admin', 'Doctor', 'Nurse', 'Secretary']
+		},
 		username: DataTypes.STRING,
 		password: DataTypes.STRING,
 		//the below attribute can be useful to determine
@@ -33,6 +37,7 @@ module.exports = function(sequelize, DataTypes) {
 		models.User.hasMany(models.Doctor);
 		models.User.hasMany(models.Nurse);
 		models.User.hasMany(models.Secretary);
+		models.User.hasMany(models.Admin);
 	};
 
 	return User;

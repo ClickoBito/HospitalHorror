@@ -11,11 +11,7 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
-		treatmentType: {
-			type: Sequelize.ENUM,
-			//not sure what types there are, just a placeholder
-			values: ['1', '2', '3', '4']
-		}
+		description: DataTypes.STRING,
     }, {
 		tableName: 'Treatment',
 		timestamps: true

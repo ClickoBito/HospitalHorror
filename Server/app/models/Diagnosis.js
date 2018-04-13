@@ -10,7 +10,10 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
-
+		createdAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		}
     }, {
 		tableName: 'Diagnosis',
 		timestamps: true

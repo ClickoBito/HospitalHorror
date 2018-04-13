@@ -10,10 +10,8 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
-		gender: {
-			type: Sequelize.ENUM,
-			values: ['Male', 'Female']
-		},
+		// Female correspond to 0 and Male correspond to 1
+		gender: DataTypes.INTEGER,
 		ssNbr: DataTypes.INTEGER,
 		firstname: DataTypes.STRING,
 		lastname: DataTypes.STRING,

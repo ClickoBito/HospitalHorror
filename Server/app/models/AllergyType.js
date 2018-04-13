@@ -10,7 +10,8 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
         },
-        AllergyTypeName: DataTypes.STRING,
+		allergyTypeName: DataTypes.STRING,
+		
 	}, {
 		tableName: 'AllergyType',
 		timestamps: true
