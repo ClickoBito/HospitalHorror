@@ -15,6 +15,14 @@ module.exports = function(sequelize, DataTypes) {
 		dateofbirth: DataTypes.DATE,
 		phone: DataTypes.STRING,
 		email: DataTypes.STRING,
+		createdAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		}
 	}, {
 		tableName: 'Nurse',
 		timestamps: true
@@ -22,6 +30,7 @@ module.exports = function(sequelize, DataTypes) {
 
 
 	Nurse.associate = function(models) {
+		models.Nurse.belongsTo(models.User);
 	};
 
 	return Nurse;

@@ -11,13 +11,22 @@ module.exports = function(sequelize, DataTypes) {
 			primaryKey: true
 		},
 		treatmentTypeName: DataTypes.STRING,
-		
+		createdAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		}
+
     }, {
 		tableName: 'TreatmentType',
 		timestamps: true
 	});
 
 	TreatmentType.associate = function(models) {
+		models.TreatmentType.hasOne(models.Treatment);
 	};
 
 

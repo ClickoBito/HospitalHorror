@@ -11,6 +11,14 @@ module.exports = function(sequelize, DataTypes) {
 			primaryKey: true
         },
 		allergyTypeName: DataTypes.STRING,
+		createdAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		}
 		
 	}, {
 		tableName: 'AllergyType',
@@ -19,6 +27,7 @@ module.exports = function(sequelize, DataTypes) {
 
 
 	AllergyType.associate = function(models) {
+		models.AllergyType.hasMany(models.Allergy);
 	};
 	
 	return AllergyType;

@@ -12,14 +12,23 @@ module.exports = function(sequelize, DataTypes) {
 			primaryKey: true
 		},
 		description: DataTypes.STRING,
+		createdAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		}
     }, {
 		tableName: 'Treatment',
 		timestamps: true
 	});
 
-/* 	Treatment.associate = function(models) {
-		models.Treatment.belongsTo(models.Patient);
-	}; */
+ 	Treatment.associate = function(models) {
+		models.Treatment.belongsTo(models.TreatmentType)
+		models.Treatment.hasOne(models.Diagnosis);
+	};
 
 	return Treatment;
 };

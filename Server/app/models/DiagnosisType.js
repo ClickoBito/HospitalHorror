@@ -11,13 +11,21 @@ module.exports = function(sequelize, DataTypes) {
 			primaryKey: true
 		},
 		diagnosisTypeName: DataTypes.STRING,
-
+		createdAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		}
     }, {
 		tableName: 'DiagnosisType',
 		timestamps: true
 	});
 
 	DiagnosisType.associate = function(models) {
+		models.DiagnosisType.hasMany(models.Diagnosis);
 	};
 
 

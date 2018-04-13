@@ -13,6 +13,10 @@ module.exports = function(sequelize, DataTypes) {
 		createdAt: {
 			type: DataTypes.DATE,
 			defaultValue: sequelize.fn('NOW')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
 		}
     }, {
 		tableName: 'Diagnosis',
@@ -22,6 +26,8 @@ module.exports = function(sequelize, DataTypes) {
 	Diagnosis.associate = function(models) {
 		models.Diagnosis.belongsTo(models.Patient);
 		models.Diagnosis.belongsTo(models.Doctor);
+		models.Diagnosis.belongsTo(models.DiagnosisType);
+		models.Diagnosis.belongsTo(models.Treatment);
 	};
 
 
