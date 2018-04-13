@@ -23,6 +23,7 @@ const operatorsAliases = {
 const sequelize = new Sequelize(dbconfig.databasename, dbconfig.user, dbconfig.password, {
 	host: dbconfig.host,
 	dialect: 'mysql',
+	logging: false,
 	dialectOptions: {
 		multipleStatements: true
 	},
