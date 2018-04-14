@@ -57,9 +57,7 @@ INSERT INTO Secretary (firstname, lastname, dateofbirth, phone, email, UserId)
 VALUES ('Miley', 'Haley', '1972-01-09', '+46700000011', 'MileyH@gmail.com', 12);
 
 # Patients
-INSERT INTO Patient (firstname, lastname, DoctorId) VALUES ('Hanna','Ingridsson',1);
-INSERT INTO Patient (firstname, lastname, DoctorId) VALUES ('Josefin','Mann',2);
-INSERT INTO Patient (firstname, lastname, DoctorId) VALUES ('Filip','Nilsson',2);
+
 
 
 
