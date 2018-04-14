@@ -107,3 +107,13 @@ INSERT INTO Allergy (AllergyTypeId, PatientId) VALUES (1, 4);
 INSERT INTO Allergy (AllergyTypeId, PatientId) VALUES (1, 1);
 INSERT INTO Allergy (AllergyTypeId, PatientId) VALUES (2, 1);
 INSERT INTO Allergy (AllergyTypeId, PatientId) VALUES (3, 2);
+
+# Treatment
+INSERT INTO Treatment (description, TreatmentTypeId) 
+VALUES ('2 tablets (5+5 = 10 mg) should be taken in the morning', 1);
+INSERT INTO Treatment (description, TreatmentTypeId) 
+VALUES ('3 tablets (5+5+5 = 15 mg) should be taken in the evening', 1);
+INSERT INTO Treatment (description, TreatmentTypeId) 
+VALUES ('1 tablet (2 mg) should be taken in the evening', 2);
+INSERT INTO Treatment (description, TreatmentTypeId) 
+VALUES ('A speech therapist should be visited 3 times a week', 3);
