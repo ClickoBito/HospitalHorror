@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		// Female correspond to 0 and Male correspond to 1
 		gender: DataTypes.INTEGER,
-		ssNbr: DataTypes.INTEGER,
+		ssNbr: DataTypes.STRING,
 		firstname: DataTypes.STRING,
 		lastname: DataTypes.STRING,
 		address: DataTypes.STRING,
