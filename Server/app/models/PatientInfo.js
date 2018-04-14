@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
-		bloodpressure: DataTypes.INTEGER,
+		bloodpressure: DataTypes.STRING,
 		weight: DataTypes.INTEGER,
 		description: DataTypes.STRING,
 		createdAt: {
