@@ -13,22 +13,28 @@ module.exports.login = function(req, res, next) {
 
 		if (user) {
 			let userinfo = user.get({plain: true});
-			if (userinfo.userType == 'Admin') 
+			console.log(userinfo.userType);
+			
+			if (userinfo.userType === 'Admin') 
 				res.redirect('/admin/');
-			else if (userinfo.userType == 'Doctor')
-				controller.getAllPatients;
+			else if (userinfo.userType === 'Doctor') {
+				// controller.getAllPatients;
 				res.redirect('/doctor/');
+			}
 		} else {
 			console.log("Wrong login-credentials");
 			// TODO: display error message in frontend
-			res.redirect('/');
+			res.render('index', {
+				status: 'Username or password is wrong.'
+			});
 		}
 
 	}).catch(err => {
 		console.log("Error logging in");
 		console.log(err);
-		// TODO: display error message in frontend
-		res.redirect('/');
+		res.render('index', {
+			status: 'There was an error logging in, please try again later.'
+		});
 	});
 };
 
@@ -76,12 +82,14 @@ module.exports.register = function (req, res, next) {
 				})
 			}
 			console.log('User successfully created');
-			res.redirect('/');
+			res.render('index', {status: 'User successfully created.'});
 
 		}
 		else {
 			console.log('User with this username already found');
-			res.redirect('/');	
+			res.render('admin', {
+				status: 'Username taken.'
+			});	
 		}
 	});
 	

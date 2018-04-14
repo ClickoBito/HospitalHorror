@@ -38,17 +38,18 @@ router.get('/admin', function (req, res) {
 	res.sendFile('./views/admin.html', { root: __dirname + "./../.." });
 });
 
-router.get('/doctor', function (req, res) {
-	console.log('Doctor logged in');
-	//res.sendFile('./views/doctor.pug', { root: __dirname + "./../.." });
+// router.get('/doctor', function (req, res) {
+// 	console.log('Doctor logged in');
+// 	//res.sendFile('./views/doctor.pug', { root: __dirname + "./../.." });
 
-});
+// });
 
 // frontend routes =========================================================
 // route to handle all other requests
 router.get('*', function(req, res) {
-	res.sendFile('./views/index.html', { root: __dirname + "./../.." });
+	res.render('index');
 });
+
 
 
 module.exports = router;
