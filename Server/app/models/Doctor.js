@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		firstname: DataTypes.STRING,
 		lastname: DataTypes.STRING,
-		dateofbirth: DataTypes.DATE,
+		dateofbirth: DataTypes.DATEONLY,
 		phone: DataTypes.STRING,
 		email: DataTypes.STRING,
 		createdAt: {
