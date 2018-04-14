@@ -1,3 +1,4 @@
+
 # Users
 INSERT INTO User (username, password, userType) VALUES ('JustineD','admin123','Admin');
 INSERT INTO User (username, password, userType) VALUES ('AndyF','hello123','Admin');
@@ -117,3 +118,9 @@ INSERT INTO Treatment (description, TreatmentTypeId)
 VALUES ('1 tablet (2 mg) should be taken in the evening', 2);
 INSERT INTO Treatment (description, TreatmentTypeId) 
 VALUES ('A speech therapist should be visited 3 times a week', 3);
+
+# Diagnosis
+INSERT INTO Diagnosis (PatientId, DoctorId, DiagnosisTypeId, TreatmentId) VALUES (1, 1, 1, 1);
+INSERT INTO Diagnosis (PatientId, DoctorId, DiagnosisTypeId, TreatmentId) VALUES (2, 3, 2, 2);
+INSERT INTO Diagnosis (PatientId, DoctorId, DiagnosisTypeId, TreatmentId) VALUES (3, 2, 3, 3);
+INSERT INTO Diagnosis (PatientId, DoctorId, DiagnosisTypeId, TreatmentId) VALUES (4, 1, 4, 4);
