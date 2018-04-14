@@ -15,7 +15,6 @@ INSERT INTO User (username, password, userType) VALUES ('JannaJ','secretary123',
 INSERT INTO User (username, password, userType) VALUES ('BreannaS','superman','Secretary');
 INSERT INTO User (username, password, userType) VALUES ('MileyH','sunshine','Secretary');
 
-
 # Admins
 INSERT INTO Admin (firstname, lastname, dateofbirth, phone, email, UserId) 
 VALUES ('Justine', 'Dalton', '1972-05-20', '+46700000000', 'JustineD@gmail.com', 1);
@@ -70,7 +69,18 @@ INSERT INTO Patient (gender, firstname, lastname, dateofbirth, phone, ssNbr, Use
 VALUES (0,'Melina', 'Ekberg', '1991-08-27', '+46700000015', '9108270000', 12);
 
 # PatientInfo
-INSERT INTO PatientInfo (bloodPressure, patientNotes, PatientId) VALUES ('120/80','Patient seems fine.', 1);
-INSERT INTO PatientInfo (bloodPressure, patientNotes, PatientId) VALUES ('140/95','Patient seems sick.', 1);
-INSERT INTO PatientInfo (bloodPressure, patientNotes, PatientId) VALUES ('125/85','Patient seems in good health.', 2);
-INSERT INTO PatientInfo (bloodPressure, patientNotes, PatientId) VALUES ('80/60','Patient doesn\'t seem fine.', 2);
+INSERT INTO PatientInfo (bloodPressure, weight, description, PatientId)
+VALUES ('135/85', 78, 'Patient is having a panic attack, but other than that he seems fine.', 1);
+
+INSERT INTO PatientInfo (bloodPressure, weight, description, PatientId)
+VALUES ('140/95', 78,
+ 'Patient says that he getd often panic attacks, but now he seems sick now since he does not have a panic attack', 1);
+
+INSERT INTO PatientInfo (bloodPressure, weight, description, PatientId)
+VALUES ('80/60', 74, 'Patient does not seem fine.', 2);
+
+INSERT INTO PatientInfo (bloodPressure, weight, description, PatientId)
+VALUES ('125/85', 73, 'Patient has had problems with bloodpressure before, but seems in good health now', 2);
+
+INSERT INTO PatientInfo (bloodPressure, weight, description, PatientId)
+VALUES ('140/95', 65, 'Patient seems sick.', 4);
