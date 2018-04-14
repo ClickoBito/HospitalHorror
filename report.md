@@ -79,6 +79,57 @@ The first meeting was successful and all team members participated equally in th
 
 Since we have had only one meeting where we got started with the project by setting up the environment and getting to know each other, we have not practiced any proper agile pracices yet. Despite this, the first meeting has been important anyways since we also recieved information from the supervisors about how the project will work. 
 
+
+# Sprint 2 Log
+<!---
+Per sprint, fill out one sprint log section and its subsections.
+--->
+This is the second sprint of the project and contains the setup of the project.
+
+## Commitment
+<!---
+List the features/stories that the team committed to finish during the sprint.
+--->
+The following features were commited to for the first sprint:
+
+- Database implementation.
+- Create login screen.
+- Authentication for login.
+- Create admin register screen. 
+- Create register functionality
+- 
+
+## Work Done
+<!---
+Log what was accomplished, and how.
+Please report on all activities; for example, in addition to coding, planning and design discussion.
+--->
+<!--
+*Name and ID of each feature* | *X hours* | *Member A: Y hours, Member B: Z hours*
+-->
+Feature | Time estimated | Time spent per team member
+--------|----------------|--------
+Create login screen | 1 hour | Sebastian and Arnaud 30 minutes
+Authentication for login | 6 hours | Sebastian and Arnaud 3 hours
+Create admin register screen | 
+Create register functionality | 3 hours | Sebastian 3 hours
+
+## Reflections
+<!---
+Reflect on how the work worked.
+This data will form the basis for your final reflection.
+As the postmortem will be a writeup, it's fine to use shorthand notes, bullet list, and similar.
+Keep within 1000-1500 words. Discuss any deviations from the sprint commitment. Reflect on the agile practice practiced:
+- Did your experience correspond to or contradict with what literature claims?
+    - Analysis of why. Mostly interesting if something unexpected happens, but even
+      if everything runs according to plan, reflecting on the underlying mechanisms
+      can be interesting.
+- How did the practices interact?
+  Did they complement or counteract each other?
+- How efficient were the practices, given the time they took to use?
+---->
+Reflections go here.
+
 # Sprint X Log
 *As for the previous sprints.*
 
