@@ -1,0 +1,67 @@
+extends layout
+block content
+	// Start of Navbar
+	#{'nav'}(class='navbar navbar-expand-lg navbar-light bg-light')
+		a(class='navbar-brand') MediSys
+		button(class='navbar-toggler' 
+			type='button' 
+			data-toggle='collapse' 
+			data-target='#navbarSupportedContent' 
+			aria-controls='navbarSupportedContent' 
+			aria-expanded='false' 
+			aria-label='Toggle navigation'
+		)
+			span(class='navbar-toggler-icon')
+		div(class='navbarSupportedContent collapse navbar-collapse')
+			ul(class='navbar-nav mr-auto')
+				li(class='nav-item')
+					button(class='btn btn-danger', type='button') Logout
+				li
+					button(class='btn btn-outline-secondary disabled') Signed in as: Dr Derek Shepherd
+			form(class='form-inline my-2 my-lg-0')
+				input(class='form-control mr-sm-2'
+					type='search' 
+					placeholder='Search' 
+					aria-label='Search'
+				)
+				button(class='btn btn-outline-success my-2 my-sm-0'
+					type='submit'
+				) Search
+
+	div.wrapper.col-m-4.sticky-top
+		nav(id='sidebar sticky-top')
+			// Sidebar Links
+			.container-fluid
+				.row
+					#sticky-sidebar.col-2.sidebar-sticky
+						.sticky-top
+							.nav.flex-column
+								ul#patientsList.list-group-flush
+									h2 Patients
+									each patient in patients
+										li.list-group-item #{patient.firstname + ' ' + patient.lastname}
+								ul#patientsList.list-group-flush
+									h2 Nurses
+									li.list-group-item.active Elon Musk
+									li.list-group-item Julian Assange
+									li.list-group-item Snoop Dogg
+					#main.col
+						table.table.table-striped
+							thead
+								tr
+									th(scope='col') Patient Name
+									th(scope='col') Last Visit
+									th(scope='col') Allergies
+									th(scope='col') Status
+									th(scope='col') Blood Pressure
+							tbody
+								tr
+									th(scope='row') Mark Zuckerberg
+									td 11/04/2018
+									td Privacy
+									td Nervous
+									td 120
+						.form-group
+							label(for='doctorNotes')
+								strong Doctor's Notes
+							textarea#exampleTextarea.form-control(rows='10' placeholder='Enter patient notes here...')

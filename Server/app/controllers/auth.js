@@ -1,5 +1,5 @@
 const model = require('../models/');
-
+const controller = require('../controllers/patient.js');
 
 module.exports.login = function(req, res, next) {
 	// debug
@@ -15,10 +15,9 @@ module.exports.login = function(req, res, next) {
 			let userinfo = user.get({plain: true});
 			if (userinfo.userType == 'Admin') 
 				res.redirect('/admin/');
-			else
-				res.redirect('/home/'+ userinfo.id);
-
-			console.log('User ' + userinfo.username + ' logged in at ' + Date());
+			else if (userinfo.userType == 'Doctor')
+				controller.getAllPatients;
+				res.redirect('/doctor/');
 		} else {
 			console.log("Wrong login-credentials");
 			// TODO: display error message in frontend
