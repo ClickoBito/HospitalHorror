@@ -128,7 +128,13 @@ Keep within 1000-1500 words. Discuss any deviations from the sprint commitment. 
   Did they complement or counteract each other?
 - How efficient were the practices, given the time they took to use?
 ---->
-Reflections go here.
+Starting sprint 2 began with a consultation with our customer. From this meeting, we were able to gather the main project requirements and verify existing requirements that we had collected. Each requirement was broken down to manageable sized tasks for one person and individually created as a story card on Trello. When meeting with the client we negotiated a reasonable amount of functionality that can be derived by the next acceptance test. To determine the work load, we looked at the number of recourses available, hours available and experience needed. We were able to factor these aspects in when planning for our sprint 2 delivery. One of the ways we did this is by creating research and design story cards. This would ensure that the necessary ground work can be done and is a part of our sprint cycle.
+
+
+What went well in this sprint, is that we built a good foundation of understanding within our team. We achieved this by meeting and working together to design an Entity Relationship Diagram which would form the starting point of our project. We also were able to identify which functionality requirements we would be able to meet for our customer and which requirements we could put on a back log for sprint 3. 
+
+In this sprint we decided it was important to meet. This allowed us the opportunity to help each other out and tackle any issues we had. We also were able finalize a few pending decisions that considered the technologies we were using, such as the template engine.
+
 
 # Sprint X Log
 *As for the previous sprints.*
