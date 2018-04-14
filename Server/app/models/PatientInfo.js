@@ -12,6 +12,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		bloodpressure: DataTypes.INTEGER,
 		weight: DataTypes.INTEGER,
+		description: DataTypes.STRING,
 		createdAt: {
 			type: DataTypes.DATE,
 			defaultValue: sequelize.fn('NOW')
