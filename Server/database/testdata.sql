@@ -84,3 +84,20 @@ VALUES ('125/85', 73, 'Patient has had problems with bloodpressure before, but s
 
 INSERT INTO PatientInfo (bloodPressure, weight, description, PatientId)
 VALUES ('140/95', 65, 'Patient seems sick.', 4);
+
+# DiagnosisType
+INSERT INTO DiagnosisType (diagnosisTypeName) VALUES ('pneumonia');
+INSERT INTO DiagnosisType (diagnosisTypeName) VALUES ('endocarditis');
+INSERT INTO DiagnosisType (diagnosisTypeName) VALUES ('myositis');
+INSERT INTO DiagnosisType (diagnosisTypeName) VALUES ('chorditis');
+
+# AllergyType
+INSERT INTO AllergyType (AllergyTypeName) VALUES ('milk');
+INSERT INTO AllergyType (AllergyTypeName) VALUES ('cadmium');
+INSERT INTO AllergyType (AllergyTypeName) VALUES ('latex');
+INSERT INTO AllergyType (AllergyTypeName) VALUES ('egg');
+
+# TreatmentType
+INSERT INTO TreatmentType (TreatmentTypeName) VALUES ('antibiotic');
+INSERT INTO TreatmentType (TreatmentTypeName) VALUES ('corticosteroid');
+INSERT INTO TreatmentType (TreatmentTypeName) VALUES ('speech therapy');
