@@ -57,9 +57,17 @@ INSERT INTO Secretary (firstname, lastname, dateofbirth, phone, email, UserId)
 VALUES ('Miley', 'Haley', '1972-01-09', '+46700000011', 'MileyH@gmail.com', 12);
 
 # Patients
+INSERT INTO Patient (gender, firstname, lastname, dateofbirth, phone, ssNbr, UserId) 
+VALUES (1,'Alex', 'Bengtsson', '1986-04-09', '+46700000012', '8604090000', 12);
 
+INSERT INTO Patient (gender, firstname, lastname, dateofbirth, phone, ssNbr, UserId) 
+VALUES (1,'Robert', 'Gustavsson', '1976-12-14', '+46700000013', '7612140000', 12);
 
+INSERT INTO Patient (gender, firstname, lastname, dateofbirth, phone, ssNbr, UserId) 
+VALUES (0,'Ingrid', 'Ingvarsson', '1958-12-14', '+46700000014', '5812140000', 12);
 
+INSERT INTO Patient (gender, firstname, lastname, dateofbirth, phone, ssNbr, UserId) 
+VALUES (0,'Melina', 'Ekberg', '1991-08-27', '+46700000015', '9108270000', 12);
 
 # PatientInfo
 INSERT INTO PatientInfo (bloodPressure, patientNotes, PatientId) VALUES ('120/80','Patient seems fine.', 1);
