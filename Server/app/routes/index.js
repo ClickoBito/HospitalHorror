@@ -37,7 +37,7 @@ router.get('/admin', function (req, res) {
 // frontend routes =========================================================
 // route to handle all other requests
 router.get('*', function(req, res) {
-	res.sendFile('./views/home.html', { root: __dirname + "./../.." });
+	res.sendFile('./views/index.html', { root: __dirname + "./../.." });
 });
 
 
