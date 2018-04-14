@@ -1,38 +1,66 @@
 # Users
-INSERT INTO User (username, password, userType) VALUES ('admin','admin','Admin');
-INSERT INTO User (username, password, userType) VALUES ('admin2','admin2','Admin');
+INSERT INTO User (username, password, userType) VALUES ('JustineD','admin123','Admin');
+INSERT INTO User (username, password, userType) VALUES ('AndyF','hello123','Admin');
+INSERT INTO User (username, password, userType) VALUES ('JasonW','helloworld','Admin');
 
-INSERT INTO User (username, password, userType) VALUES ('d1','d1','Doctor');
-INSERT INTO User (username, password, userType) VALUES ('d2','d2','Doctor');
+INSERT INTO User (username, password, userType) VALUES ('JohanL','doctor123','Doctor');
+INSERT INTO User (username, password, userType) VALUES ('EddieC','letmein123','Doctor');
+INSERT INTO User (username, password, userType) VALUES ('ColeB','qwerty123','Doctor');
 
-INSERT INTO User (username, password, userType) VALUES ('n1','n1','Nurse');
-INSERT INTO User (username, password, userType) VALUES ('n2','n2','Nurse');
+INSERT INTO User (username, password, userType) VALUES ('HarleyS','nurse123','Nurse');
+INSERT INTO User (username, password, userType) VALUES ('AngelinaD','iloveyou','Nurse');
+INSERT INTO User (username, password, userType) VALUES ('BradH','welcome1','Nurse');
 
-INSERT INTO User (username, password, userType) VALUES ('s1','s1','Secretary');
-INSERT INTO User (username, password, userType) VALUES ('s2','s2','Secretary');
+INSERT INTO User (username, password, userType) VALUES ('JannaJ','secretary123','Secretary');
+INSERT INTO User (username, password, userType) VALUES ('BreannaS','superman','Secretary');
+INSERT INTO User (username, password, userType) VALUES ('MileyH','sunshine','Secretary');
 
 
 # Admins
+INSERT INTO Admin (firstname, lastname, dateofbirth, phone, email, UserId) 
+VALUES ('Justine', 'Dalton', '1972-05-20', '+46700000000', 'JustineD@gmail.com', 1);
 
+INSERT INTO Admin (firstname, lastname, dateofbirth, phone, email, UserId) 
+VALUES ('Andy', 'Fredriksen', '1976-04-05', '+46700000001', 'AndyF@gmail.com', 2);
+
+INSERT INTO Admin (firstname, lastname, dateofbirth, phone, email, UserId) 
+VALUES ('Jason', 'Walker', '1982-05-01', '+46700000002', 'JasonW@gmail.com', 3);
 
 # Doctors
-INSERT INTO Doctor (firstname, lastname, UserId) VALUES ('Anders', 'Andersson',3);
-INSERT INTO Doctor (firstname, lastname, UserId) VALUES ('Sven', 'Svensson',4);
+INSERT INTO Doctor (firstname, lastname, dateofbirth, phone, email, UserId) 
+VALUES ('Johan', 'Larsson', '1965-12-15', '+46700000003', 'JohanL@gmail.com', 4);
 
+INSERT INTO Doctor (firstname, lastname, dateofbirth, phone, email, UserId) 
+VALUES ('Eddie', 'Cruz', '1969-02-26', '+46700000004', 'EddieC@gmail.com', 5);
+
+INSERT INTO Doctor (firstname, lastname, dateofbirth, phone, email, UserId) 
+VALUES ('Cole', 'Berg', '1968-07-20', '+46700000005', 'ColeB@gmail.com', 6);
 
 # Nurses
-INSERT INTO Nurse (firstname, lastname, UserId) VALUES ('Karla','Karlsson',5);
-INSERT INTO Nurse (firstname, lastname, UserId) VALUES ('Berta','Bengtsson',6);
+INSERT INTO Nurse (firstname, lastname, dateofbirth, phone, email, UserId) 
+VALUES ('Harley', 'Stephenson', '1985-04-27', '+46700000006', 'HarleyS@gmail.com', 7);
 
+INSERT INTO Nurse (firstname, lastname, dateofbirth, phone, email, UserId) 
+VALUES ('Angelina', 'Davidsson', '1982-09-08', '+46700000007', 'AngelinaD@gmail.com', 8);
+
+INSERT INTO Nurse (firstname, lastname, dateofbirth, phone, email, UserId) 
+VALUES ('Brad', 'Hunter', '1977-08-10', '+46700000008', 'BradH@gmail.com', 9);
 
 # Secretaries
-INSERT INTO Secretary (firstname, lastname, UserId) VALUES ('My','Magnusson',7);
-INSERT INTO Secretary (firstname, lastname, UserId) VALUES ('Thea','Thorsson',8);
+INSERT INTO Secretary (firstname, lastname, dateofbirth, phone, email, UserId) 
+VALUES ('Janna', 'Jonsson', '1977-08-22', '+46700000009', 'JannaJ@gmail.com', 10);
 
+INSERT INTO Secretary (firstname, lastname, dateofbirth, phone, email, UserId) 
+VALUES ('Breanna', 'Shea', '1974-02-25', '+46700000010', 'BreannaS@gmail.com', 11);
+
+INSERT INTO Secretary (firstname, lastname, dateofbirth, phone, email, UserId) 
+VALUES ('Miley', 'Haley', '1972-01-09', '+46700000011', 'MileyH@gmail.com', 12);
 
 # Patients
-INSERT INTO Patient (firstname, lastname, DoctorId) VALUES ('Roman','Ronsson',1);
-INSERT INTO Patient (firstname, lastname, DoctorId) VALUES ('Nina','Nilsson',2);
+INSERT INTO Patient (firstname, lastname, DoctorId) VALUES ('Hanna','Ingridsson',1);
+INSERT INTO Patient (firstname, lastname, DoctorId) VALUES ('Josefin','Mann',2);
+INSERT INTO Patient (firstname, lastname, DoctorId) VALUES ('Filip','Nilsson',2);
+
 
 
 # PatientInfo
