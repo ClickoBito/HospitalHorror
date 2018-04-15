@@ -16,7 +16,7 @@ programming language,
 and a name for the software.
 --->
 This project is about creating a system for doctors to keep track of patients in a hospital environment. In order to do this, the system lets the doctors know important details about the patients, such as their treatments, allergies, diagnosis and corresponding doctor, which is accessible through the system. This system is implemented as a web application using Node.js with Javascript and is called Horror Hospital.
-The following tools have been decided on: Slack is used as the main communication tool. As suggested we are also using Travis as a continuous integration service, GitHub as project repository and issue tracker, MariaDB as the database management system, Express.js as the web-application framework for our backend and Angular as the front-end web application platform. 
+The following tools have been decided on: Slack is used as the main communication tool. As suggested we are also using Travis as a continuous integration service, GitHub as project repository and issue tracker, MariaDB as the database management system, Express.js as the web-application framework for our backend and Angular as the front-end web application platform.
 
 Important links:
 
@@ -53,7 +53,7 @@ Please report on all activities; for example, in addition to coding, planning an
 -->
 Feature | Time estimated | Time spent per team member
 --------|----------------|--------
-Set up Slack | 15 minutes | 
+Set up Slack | 15 minutes |
 Set up GitHub | 15 minutes |
 Create a Hello World application | 30 minutes | Patrick: 30 minutes
 Set up working back end | 30 minutes | Patrick: 30 minutes
@@ -76,9 +76,9 @@ Keep within 1000-1500 words. Discuss any deviations from the sprint commitment. 
   Did they complement or counteract each other?
 - How efficient were the practices, given the time they took to use?
 ---->
-The first meeting was successful and all team members participated equally in the discussions. Since we decided to use Angular, Node.js and Travis CI, which were new for many of us. We decided that we could watch tutorials about these tools and frameworks so that we could be prepared for the actual programming of the project. Also, we discussed and briefly explained the tools and frameworks, since some of us had prior experience. We also helped each other when a teammate had a problem with his or her work, for example when setting up the project on their own computer. 
+The first meeting was successful and all team members participated equally in the discussions. Since we decided to use Angular, Node.js and Travis CI, which were new for many of us. We decided that we could watch tutorials about these tools and frameworks so that we could be prepared for the actual programming of the project. Also, we discussed and briefly explained the tools and frameworks, since some of us had prior experience. We also helped each other when a teammate had a problem with his or her work, for example when setting up the project on their own computer.
 
-Since we have had only one meeting where we got started with the project by setting up the environment and getting to know each other, we have not practiced any proper agile pracices yet. Despite this, the first meeting has been important anyways since we also recieved information from the supervisors about how the project will work. 
+Since we have had only one meeting where we got started with the project by setting up the environment and getting to know each other, we have not practiced any proper agile pracices yet. Despite this, the first meeting has been important anyways since we also recieved information from the supervisors about how the project will work.
 
 
 # Sprint 2 Log
@@ -98,7 +98,7 @@ The following features were commited to for the second sprint:
 - Authentication for login
 - Create admin register screen
 - Create register functionality
-- Display status messages to frontend 
+- Display status messages to frontend
 
 ## Work Done
 <!---
@@ -121,6 +121,7 @@ Write in the report | 1.5 hours | Amar: 1.5 hours
 Display status messages to frontend (Pug) | 2 hours | Sebastian: 2 hours
 Travis CI | 1 hour | Patrick: 1 hour
 Functions to handle PatientInfo | 2 hours | Patrick: 2 hours
+Functions to handle PatientAllergy | 2 hours | Teklie: 2 hours
 
 ## Reflections
 <!---
@@ -140,9 +141,11 @@ Sprint 2 began with a consultation with our customer. From this meeting, we were
 
 What went well in this sprint, is that we built a good foundation of understanding within our team. We achieved this by meeting and working together to design an Entity Relationship Diagram which would form the starting point of our project. We also were able to identify which functionality requirements we would be able to meet for our customer and which requirements we could put on a back log for sprint 3. This allowed us to work at a sustainable pace. Other than that, we started getting more and more into code reviewing in GitHub which let us verify the code as a part of the work process before merging it with bigger branches. Continuous integration was an integral part in this, since it helps combat merge conflicts and other issues. It let many of us to follow the changes that were made in the code so that we could be updated with the code implementation, but also if the changes needed some improvements, it could be added by the code reviewer.
 
-In this sprint we decided it was important to meet. This allowed us the opportunity to help each other out and tackle any issues we had. We also were able finalize a few pending decisions that considered the technologies we were using, such as the template engine. Short retrospectives were held during these meetings, so that everyone was brought up to speed. There were some small issues with keeping track of what other people in the project was working on, which can be improved by meeting more frequently the coming sprints. Easter was obviously preventing us from working optimally. 
+In this sprint we decided it was important to meet. This allowed us the opportunity to help each other out and tackle any issues we had. We also were able finalize a few pending decisions that considered the technologies we were using, such as the template engine. Short retrospectives were held during these meetings, so that everyone was brought up to speed. There were some small issues with keeping track of what other people in the project was working on, which can be improved by meeting more frequently the coming sprints. Easter was obviously preventing us from working optimally.
 
-Pair programming was tried by a few members in the group, which proved helpful in making sure that all cases were considered, such as error handling. It was also an excellent way to brainstorm different ideas and discuss solutions to problems. 
+Pair programming was tried by a few members in the group, which proved helpful in making sure that all cases were considered, such as error handling. It was also an excellent way to brainstorm different ideas and discuss solutions to problems.
+
+While working in the backend, a postman has been used to fire requests such as post,put and delete to API. This tool helped us to check the functions we implemented to handle requests coming from the front-end before the views were set up.
 
 # Sprint X Log
 *As for the previous sprints.*
@@ -164,5 +167,3 @@ Considering the following:
 
 # Project outcome
 Document the project, for example using screenshots.
-
-
