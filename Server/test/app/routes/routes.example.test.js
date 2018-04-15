@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import supertest from 'supertest';
-import app from '../../../../server';
+import app from '../../../../Server';
 
 const should = require('chai').should();
 
@@ -14,7 +14,7 @@ describe('This is an example test to see if stuff works', () => {
             should.not.exist(err);
             done();
         });
-    })
+    });
 });
 
 // example test demonstrating how logic can be tested
