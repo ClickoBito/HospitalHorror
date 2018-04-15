@@ -39,6 +39,15 @@ module.exports = function(sequelize, DataTypes) {
 		models.User.hasMany(models.Secretary);
 		models.User.hasMany(models.Admin);
 	};
+	sequelize.sync().then(function() {
+		sequelize.query('CREATE TRIGGER create_userType AFTER INSERT ON user' +
+		' FOR EACH ROW BEGIN IF (new.userType = \'Admin\') THEN INSERT INTO' +
+		' Admin (UserId) VALUES (new.id);END IF;IF (new.userType = \'Doctor\')' +
+		' THEN INSERT INTO Doctor (UserId) VALUES (new.id);END IF;IF' +
+		' (new.userType = \'Nurse\') THEN INSERT INTO Nurse (UserId)' +
+		' VALUES (new.id);END IF;IF(new.userType = \'Secretary\')' +
+		' THEN INSERT INTO Secretary (UserId) VALUES (new.id);END IF;END;')
+	});
 
 	return User;
 };
