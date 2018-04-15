@@ -85,7 +85,7 @@ Since we have had only one meeting where we got started with the project by sett
 <!---
 Per sprint, fill out one sprint log section and its subsections.
 --->
-This is the second sprint of the project and contains the setup of the project.
+This is the second sprint of the project with focus on setup of the project as well as basic functionality, which was decided on together with the customer.
 
 ## Commitment
 <!---
@@ -98,6 +98,7 @@ The following features were commited to for the first sprint:
 - Authentication for login.
 - Create admin register screen. 
 - Create register functionality
+- Display status messages to frontend 
 
 ## Work Done
 <!---
@@ -109,14 +110,15 @@ Please report on all activities; for example, in addition to coding, planning an
 -->
 Feature | Time estimated | Time spent per team member
 --------|----------------|--------
-Create login screen | 1 hour | Sebastian and Arnaud 30 minutes
-Authentication for login | 6 hours | Sebastian and Arnaud 3 hours
-Create admin register screen | 
-Create register functionality | 3 hours | Sebastian 3 hours
+Create login screen | 1 hour | Sebastian and Arnaud: 30 minutes
+Authentication for login | 6 hours | Sebastian and Arnaud: 3 hours
+Create admin register screen | 4 hours | Arnaud: 4 hours
+Create register functionality | 4 hours | Sebastian: 4 hours
 Entity Relationship Diagram | 12 hours | Amar: 12 hours
 Implementation of database | 13 hours | Amar: 13 hours
 Created testdata for the database | 6 hours | Amar: 6 hours
 Write in the report | 1.5 hours | Amar: 1.5 hours
+Display status messages to frontend (Pug) | 2 hours | Sebastian: 2 hours
 
 ## Reflections
 <!---
@@ -134,9 +136,11 @@ Keep within 1000-1500 words. Discuss any deviations from the sprint commitment. 
 ---->
 Starting sprint 2 began with a consultation with our customer. From this meeting, we were able to gather the main project requirements and verify existing requirements that we had collected. Each requirement was broken down to manageable sized tasks for one person and individually created as a story card on Trello. When meeting with the client we negotiated a reasonable amount of functionality that can be derived by the next acceptance test. To determine the work load, we looked at the number of recourses available, hours available and experience needed. We were able to factor these aspects in when planning for our sprint 2 delivery. One of the ways we did this is by creating research and design story cards. This would ensure that the necessary ground work can be done and is a part of our sprint cycle.
 
-What went well in this sprint, is that we built a good foundation of understanding within our team. We achieved this by meeting and working together to design an Entity Relationship Diagram which would form the starting point of our project. We also were able to identify which functionality requirements we would be able to meet for our customer and which requirements we could put on a back log for sprint 3. This allowed us to work at a sustainable pace. Other than that, we started getting more and more into code reviewing in GitHub which let us verify the code as a part of the work process before merging it with bigger branches. It let many of us to follow the changes that were made in the code so that we could be updated with the code implementation, but also if the changes needed some improvements, it could be added by the code reviewer.
+What went well in this sprint, is that we built a good foundation of understanding within our team. We achieved this by meeting and working together to design an Entity Relationship Diagram which would form the starting point of our project. We also were able to identify which functionality requirements we would be able to meet for our customer and which requirements we could put on a back log for sprint 3. This allowed us to work at a sustainable pace. Other than that, we started getting more and more into code reviewing in GitHub which let us verify the code as a part of the work process before merging it with bigger branches. Continuous integration was an integral part in this, since it helps combat merge conflicts and other issues. It let many of us to follow the changes that were made in the code so that we could be updated with the code implementation, but also if the changes needed some improvements, it could be added by the code reviewer.
 
-In this sprint we decided it was important to meet. This allowed us the opportunity to help each other out and tackle any issues we had. We also were able finalize a few pending decisions that considered the technologies we were using, such as the template engine.
+In this sprint we decided it was important to meet. This allowed us the opportunity to help each other out and tackle any issues we had. We also were able finalize a few pending decisions that considered the technologies we were using, such as the template engine. Short retrospectives were held during these meetings, so that everyone was brought up to speed. 
+
+Pair programming was tried by a few members in the group, which proved helpful in making sure that all cases were considered, such as error handling. It was also an excellent way to brainstorm different ideas and discuss solutions to problems. 
 
 # Sprint X Log
 *As for the previous sprints.*
