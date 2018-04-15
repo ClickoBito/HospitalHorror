@@ -10,9 +10,8 @@ const path      = require('path');
 const Sequelize = require('sequelize');
 const basename  = path.basename(module.filename);
 const db        = {};
-const dbconfig  = require('../../config/local.js');
+const dbconfig  = process.env.NODE_ENV != 'test' ? require('../../config/local.js') : require('../../config/travis.js');
 const Op        = Sequelize.Op;
-
 
 // Define operator aliases here
 const operatorsAliases = {
