@@ -11,19 +11,24 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
-		treatmentType: {
-			type: Sequelize.ENUM,
-			//not sure what types there are, just a placeholder
-			values: ['1', '2', '3', '4']
+		description: DataTypes.STRING,
+		createdAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
 		}
     }, {
 		tableName: 'Treatment',
 		timestamps: true
 	});
 
-/* 	Treatment.associate = function(models) {
-		models.Treatment.belongsTo(models.Patient);
-	}; */
+ 	Treatment.associate = function(models) {
+		models.Treatment.belongsTo(models.TreatmentType)
+		models.Treatment.hasOne(models.Diagnosis);
+	};
 
 	return Treatment;
 };

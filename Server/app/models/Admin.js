@@ -1,8 +1,10 @@
 /*jslint node: true */
 'use strict';
 
+const Sequelize = require('sequelize');
+
 module.exports = function(sequelize, DataTypes) {
-	let Doctor = sequelize.define('Doctor', {
+	let Admin = sequelize.define('Admin', {
 		id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
@@ -22,15 +24,14 @@ module.exports = function(sequelize, DataTypes) {
 			defaultValue: sequelize.fn('NOW')
 		}
 	}, {
-		tableName: 'Doctor',
+		tableName: 'Admin',
 		timestamps: true
 	});
 
 
-	Doctor.associate = function(models) {
-		models.Doctor.belongsTo(models.User);
-		models.Doctor.hasMany(models.Diagnosis);
+	Admin.associate = function(models) {
+		models.Admin.belongsTo(models.User);
 	};
 
-	return Doctor;
+	return Admin;
 };

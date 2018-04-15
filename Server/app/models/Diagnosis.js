@@ -10,12 +10,14 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
-		diagnosisType: {
-			type: Sequelize.ENUM,
-			//not sure what types there are, just a placeholder
-			values: ['1', '2', '3', '4']
+		createdAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			defaultValue: sequelize.fn('NOW')
 		}
-
     }, {
 		tableName: 'Diagnosis',
 		timestamps: true
@@ -24,6 +26,8 @@ module.exports = function(sequelize, DataTypes) {
 	Diagnosis.associate = function(models) {
 		models.Diagnosis.belongsTo(models.Patient);
 		models.Diagnosis.belongsTo(models.Doctor);
+		models.Diagnosis.belongsTo(models.DiagnosisType);
+		models.Diagnosis.belongsTo(models.Treatment);
 	};
 
 

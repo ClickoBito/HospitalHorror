@@ -10,11 +10,14 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
+		// Female correspond to 0 and Male correspond to 1
+		gender: DataTypes.INTEGER,
+		ssNbr: DataTypes.STRING,
 		firstname: DataTypes.STRING,
 		lastname: DataTypes.STRING,
-		dateofbirth: DataTypes.DATE,
+		address: DataTypes.STRING,
+		dateofbirth: DataTypes.DATEONLY,
 		phone: DataTypes.STRING,
-		email: DataTypes.STRING,
 		createdAt: {
 			type: DataTypes.DATE,
 			defaultValue: sequelize.fn('NOW')
@@ -33,9 +36,8 @@ module.exports = function(sequelize, DataTypes) {
 
 
 	Patient.associate = function(models) {
-		models.Patient.belongsTo(models.Doctor);
 		models.Patient.hasMany(models.PatientInfo);
-		models.Patient.hasMany(models.Treatment);
+		models.Patient.hasMany(models.Allergy);
 		models.Patient.hasMany(models.Diagnosis);
 	};
 

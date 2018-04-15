@@ -10,8 +10,9 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
-		bloodPressure: DataTypes.STRING,
-		patientNotes: DataTypes.STRING,
+		bloodpressure: DataTypes.STRING,
+		weight: DataTypes.INTEGER,
+		description: DataTypes.STRING,
 		createdAt: {
 			type: DataTypes.DATE,
 			defaultValue: sequelize.fn('NOW')

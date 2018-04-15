@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/HeyHoProBro/HospitalHorror.svg?branch=development)](https://travis-ci.org/HeyHoProBro/HospitalHorror)
 
-Contains the report, the source code for the app and the meta level requirements for the project. The report can be built by running `make` ([Pandoc](https://pandoc.org/) is required).
+Contains the [report](report.md), the [source code for the app](Server) and the [meta level requirements for the project](project.md). The report can be built by running `make` ([Pandoc](https://pandoc.org/) is required).
 
 
 ### How to get the app started:

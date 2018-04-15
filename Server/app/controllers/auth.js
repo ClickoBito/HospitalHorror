@@ -13,7 +13,7 @@ module.exports.login = function(req, res, next) {
 
 		if (user) {
 			let userinfo = user.get({plain: true});
-			if (userinfo.userType == 'Admin') 
+			if (userinfo.userType === 'Admin')
 				res.redirect('/admin/');
 			else
 				res.redirect('/home/'+ userinfo.id);
@@ -25,7 +25,7 @@ module.exports.login = function(req, res, next) {
 			res.redirect('/');
 		}
 
-	}).catch(err => {
+	}, err => {
 		console.log("Error logging in");
 		console.log(err);
 		// TODO: display error message in frontend
@@ -41,16 +41,69 @@ module.exports.register = function (req, res, next) {
 		where: {username: req.body.username},
 		defaults: {password: req.body.password, userType: req.body.usertype}
 	}).spread((user, created) => {
+		//Check if user was created or if it already exists
 		if (created) {
 			console.log('User successfully created');
-			res.redirect('/');
+
+			//Check user type and create corresponding model
+			if (req.body.usertype === 'Doctor') {
+				model.Doctor.create({
+					firstname: req.body.firstname, lastname: req.body.lastname,
+					dateofbirth: req.body.dateofbirth, phone: req.body.phone,
+					email: req.body.email, UserId: user.id
+				}).then(doctor => {
+					// let info = doctor.get({plain:true})
+					console.log('Doctor created');
+					// TODO: redirect to appropriate page
+					res.redirect('/');
+				}, err => {
+					console.log(err);
+					// TODO: display error message in frontend
+					res.redirect('/');
+				});
+			}
+
+			else if (req.body.usertype === 'Nurse') {
+				model.Nurse.create({
+						firstname: req.body.firstname, lastname: req.body.lastname,
+						dateofbirth: req.body.dateofbirth, phone: req.body.phone,
+						email: req.body.email, UserId: user.id
+					}).then(nurse => {
+						// let info = nurse.get({plain:true})
+						console.log('Nurse created');
+						// TODO: redirect to appropriate page
+						res.redirect('/');
+					}, err => {
+						console.log(err);
+						// TODO: display error message in frontend
+						res.redirect('/');
+					});
+				}
+
+			else {
+				model.Secretary.create({
+					firstname: req.body.firstname, lastname: req.body.lastname,
+					dateofbirth: req.body.dateofbirth, phone: req.body.phone,
+					email: req.body.email, UserId: user.id
+				}).then(secretary => {
+					// let info = secretary.get({plain:true})
+					console.log('Secretary created');
+					// TODO: redirect to appropriate page
+					res.redirect('/');
+				}, err => {
+					console.log(err);
+					// TODO: display error message in frontend
+					res.redirect('/');
+				});
+			}
+
 		}
 		else {
 			console.log('User with this username already found');
-			res.redirect('/');	
+			res.redirect('/');
 		}
 	});
-	
+
 };
 
 module.exports.logout = function(req, res, next) {

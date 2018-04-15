@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		firstname: DataTypes.STRING,
 		lastname: DataTypes.STRING,
-		dateofbirth: DataTypes.DATE,
+		dateofbirth: DataTypes.DATEONLY,
 		phone: DataTypes.STRING,
 		email: DataTypes.STRING,
 		createdAt: {
@@ -30,6 +30,7 @@ module.exports = function(sequelize, DataTypes) {
 
 
 	Nurse.associate = function(models) {
+		models.Nurse.belongsTo(models.User);
 	};
 
 	return Nurse;

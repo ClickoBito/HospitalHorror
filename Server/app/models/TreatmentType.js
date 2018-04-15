@@ -1,18 +1,16 @@
 /*jslint node: true */
 'use strict';
 
+const Sequelize = require('sequelize');
+
 module.exports = function(sequelize, DataTypes) {
-	let Doctor = sequelize.define('Doctor', {
+	let TreatmentType = sequelize.define('TreatmentType', {
 		id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
 			primaryKey: true
 		},
-		firstname: DataTypes.STRING,
-		lastname: DataTypes.STRING,
-		dateofbirth: DataTypes.DATEONLY,
-		phone: DataTypes.STRING,
-		email: DataTypes.STRING,
+		treatmentTypeName: DataTypes.STRING,
 		createdAt: {
 			type: DataTypes.DATE,
 			defaultValue: sequelize.fn('NOW')
@@ -21,16 +19,16 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.DATE,
 			defaultValue: sequelize.fn('NOW')
 		}
-	}, {
-		tableName: 'Doctor',
+
+    }, {
+		tableName: 'TreatmentType',
 		timestamps: true
 	});
 
-
-	Doctor.associate = function(models) {
-		models.Doctor.belongsTo(models.User);
-		models.Doctor.hasMany(models.Diagnosis);
+	TreatmentType.associate = function(models) {
+		models.TreatmentType.hasOne(models.Treatment);
 	};
 
-	return Doctor;
+
+	return TreatmentType;
 };

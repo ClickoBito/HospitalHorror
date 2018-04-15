@@ -4,19 +4,19 @@ const fs = require('fs');
 // set the delay in milliseconds
 let delay = 2000;
 
+console.log('Inserting testdata...');
 setTimeout(() => {
 	fs.readFile(__dirname + '/testdata.sql', function (err, data) {
 		if (err) {
 				throw err;
 		}
-		console.log('\nInserting testdata...\n');
 		db.sequelize.query(data.toString()).then(() => {
-			console.log('\nInserting testdata completed.');
+			console.log('Inserting testdata completed.');
 			process.exit(0);
 		}).catch(err => {
 			console.log(err);
-			console.log('\nError inserting testdata.');
-			process.exit(0);
+			console.log('Error inserting testdata.');
+			process.exit(1);
 		});
 
 	});

@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		firstname: DataTypes.STRING,
 		lastname: DataTypes.STRING,
-		dateofbirth: DataTypes.DATE,
+		dateofbirth: DataTypes.DATEONLY,
 		phone: DataTypes.STRING,
 		email: DataTypes.STRING,
 		createdAt: {
@@ -31,6 +31,7 @@ module.exports = function(sequelize, DataTypes) {
 
 
 	Secretary.associate = function(models) {
+		models.Secretary.belongsTo(models.User);
 	};
 
 	return Secretary;

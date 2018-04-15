@@ -10,16 +10,16 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
+		userType: {
+			type: Sequelize.ENUM,
+			values: ['Admin', 'Doctor', 'Nurse', 'Secretary']
+		},
 		username: DataTypes.STRING,
 		password: DataTypes.STRING,
 		//the below attribute can be useful to determine
 		//the type of user that logged in, also might
 		//be useful in given the admin conrete options
 		//when registring new users
-		userType: {
-			type: Sequelize.ENUM,
-			values: ['Admin', 'Secretary', 'Nurse', 'Doctor']
-		},
 		createdAt: {
 			type: DataTypes.DATE,
 			defaultValue: sequelize.fn('NOW')
@@ -37,6 +37,7 @@ module.exports = function(sequelize, DataTypes) {
 		models.User.hasMany(models.Doctor);
 		models.User.hasMany(models.Nurse);
 		models.User.hasMany(models.Secretary);
+		models.User.hasMany(models.Admin);
 	};
 
 	return User;
