@@ -7,7 +7,6 @@ before_install:
 - cd Server
 install:
 - npm install
-- npm uninstall -D mocha && npm i -D mocha
 script:
 - npm test
 - npm run test2
