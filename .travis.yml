@@ -5,9 +5,6 @@ before_install:
 - cd Server
 install:
 - npm install
-cache:
-  directories:
-    - "Server/node_modules"
 script:
 - npm test
 - npm run test2
