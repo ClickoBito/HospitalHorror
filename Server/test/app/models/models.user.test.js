@@ -17,7 +17,10 @@ describe('This is an example test checking that the database works', () => {
     it('Should find array with users', (done) => {
         model.User.findAll().then(users => {
             users.should.be.an('array');
-            users[0].dataValues.userType.should.equal('Admin');
+            users.forEach(user => {
+                user.should.be.an('object');
+                user.dataValues.should.include.all.keys(['id', 'userType']);
+            });
             done();
         }, err => {
             should.not.exist(err);

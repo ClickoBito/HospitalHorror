@@ -8,8 +8,7 @@ before_install:
 install:
 - npm install
 # Load tables and test data
-- npm run resync
-- npm run load_testdata
+- npm run create_test_db
 script:
 - npm test
 - npm run test2
