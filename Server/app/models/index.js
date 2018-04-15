@@ -52,8 +52,11 @@ Object.keys(db).forEach(function(modelName) {
 		db[modelName].associate(db);
 });
 
-// Create tables, if neccesary
-sequelize.sync();
+// Create tables, if necessary
+if (process.env.NODE_ENV != 'test') {
+	//TODO Initialize for testing?
+	sequelize.sync();
+}
 
 // Export the db Object
 db.sequelize = sequelize;
