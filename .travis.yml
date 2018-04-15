@@ -7,6 +7,9 @@ before_install:
 - cd Server
 install:
 - npm install
+# Load tables and test data
+- npm run resync
+- npm run load_testdata
 script:
 - npm test
 - npm run test2

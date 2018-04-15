@@ -5,7 +5,7 @@ import app from '../../../server';
 const should = require('chai').should();
 
 // Example test fetching /test endpoint
-describe('This is an example test to see if stuff works', () => {
+describe('This is an example test fetching the default page', () => {
     it('This is the first test getting the homepage', (done) => {
         supertest(app)
         .get('/test')
