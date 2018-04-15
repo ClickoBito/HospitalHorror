@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import supertest from 'supertest';
-import app from '../../../../Server';
+import app from '../../../server';
 
 const should = require('chai').should();
 
