@@ -124,6 +124,11 @@ Travis CI | 1 hour | Patrick: 1 hour
 Functions to handle PatientInfo | 2 hours | Patrick: 2 hours
 Functions to handle PatientAllergy | 2 hours | Teklie: 2 hours
 Functions to handle PatientDiagnosis | 3 hours | Kirsten and Arnaud: 3 hours
+Designed Doctor's Dashboard | 2 hours | Jamel Debbiche: 2 hours
+Functions to display Patients List | 8 hours | Jamel Debbiche: 8 hours
+Functions to display Doctor List (on going) | 1 hours | Jamel Debbiche: 8 hours
+Functions to display Nurse List (on going) | 1 hours | Jamel Debbiche: 8 hours
+Convertion of html to pug | 6 hours | Jamel Debbiche: 6 hours
 
 ## Reflections
 <!---
