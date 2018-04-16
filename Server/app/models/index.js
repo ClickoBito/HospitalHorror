@@ -10,8 +10,15 @@ const path      = require('path');
 const Sequelize = require('sequelize');
 const basename  = path.basename(module.filename);
 const db        = {};
-const dbconfig  = process.env.NODE_ENV != 'test' ? require('../../config/local.js') : require('../../config/travis.js');
 const Op        = Sequelize.Op;
+
+let dbconfig;
+if (fs.existsSync('../../config/local.js')) {
+	console.log('yay');
+	dbconfig = require('../../config/local.js');
+} else {
+	dbconfig = require('../../config/travis.js')
+}
 
 // Define operator aliases here
 const operatorsAliases = {
@@ -53,10 +60,7 @@ Object.keys(db).forEach(function(modelName) {
 });
 
 // Create tables, if necessary
-if (process.env.NODE_ENV != 'test') {
-	//TODO Initialize for testing?
-	sequelize.sync();
-}
+sequelize.sync();
 
 // Export the db Object
 db.sequelize = sequelize;
