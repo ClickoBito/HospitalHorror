@@ -1,0 +1,37 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title Hospital Horror
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous")
+    style.
+      .card {
+      margin-top: 20%;
+      }
+      .input-group {
+      margin-top: 5%;
+      }
+  body#clrblk
+    .container
+      #loginbox.mainbox.col-md-6.mx-auto
+        .card.maincard
+          .card-header
+            .card-title Login
+            p= status
+          .card-body
+            form#loginform.form-horizontal(role="form" method="post" action="/login")
+              .input-group
+                span.input-group-addon
+                  i.glyphicon.glyphicon-user
+                input#login-username.form-control(type="text" name="username" value="" placeholder="username")
+              .input-group
+                span.input-group-addon
+                  i.glyphicon.glyphicon-lock
+                input#login-password.form-control(type="password" name="password" placeholder="password")
+              .input-group
+               
+              .form-group
+                // Button
+                .col-sm-12.controls
+                  button#btn-login.btn.btn-success(type="submit") Login 
+              

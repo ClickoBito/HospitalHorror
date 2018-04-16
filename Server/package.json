@@ -21,6 +21,7 @@
     "method-override": "^2.3.10",
     "moment": "^2.21.0",
     "mysql2": "^1.5.2",
+    "pug": "^2.0.3",
     "sequelize": "^4.37.5",
     "session-file-store": "^1.2.0",
     "stylelint-config-standard": "^17.0.0",
