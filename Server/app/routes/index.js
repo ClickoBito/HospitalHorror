@@ -35,7 +35,7 @@ router.get('/home/:id', function(req, res) {
 
 router.get('/admin', function (req, res) {
 	console.log('Admin logged in');
-	res.sendFile('./views/admin.html', { root: __dirname + "./../.." });
+	res.render('admin');
 });
 
 // router.get('/doctor', function (req, res) {
@@ -47,7 +47,7 @@ router.get('/admin', function (req, res) {
 // frontend routes =========================================================
 // route to handle all other requests
 router.get('*', function(req, res) {
-	res.sendFile('./views/index.html', { root: __dirname + "./../.." });
+	res.render('index');
 });
 
 
