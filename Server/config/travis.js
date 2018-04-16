@@ -4,7 +4,7 @@
 const db = {
 	host: 'localhost',
 	databasename: 'hospitalHorror',
-	user: 'root',
+	user: 'admin',
 	password: ''
 };
 
