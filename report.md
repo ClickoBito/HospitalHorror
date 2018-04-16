@@ -115,7 +115,7 @@ Node/Express tutorials | 2 hours | Sebastian: 2 hours
 Authentication for login | 6 hours | Sebastian and Arnaud: 3 hours
 Create admin register screen | 4 hours | Arnaud: 4 hours
 Create register functionality | 4 hours | Sebastian: 4 hours
-Entity Relationship Diagram | 12 hours | Amar: 12 hours
+Entity Relationship Diagram | 15 hours | Amar: 12 hours, Kirsten 3 hours
 Implementation of database | 13 hours | Amar: 13 hours, Patrick: 4 hours
 Created testdata for the database | 6 hours | Amar: 6 hours, Patrick: 2 hours
 Write in the report | 1.5 hours | Amar: 1.5 hours
@@ -123,6 +123,7 @@ Display status messages to frontend (Pug) | 2 hours | Sebastian: 2 hours
 Travis CI | 1 hour | Patrick: 1 hour
 Functions to handle PatientInfo | 2 hours | Patrick: 2 hours
 Functions to handle PatientAllergy | 2 hours | Teklie: 2 hours
+Functions to handle PatientDiagnosis | 3 hours | Kirsten and Arnaud: 3 hours
 
 ## Reflections
 <!---
@@ -147,6 +148,8 @@ In this sprint we decided it was important to meet. This allowed us the opportun
 Pair programming was tried by a few members in the group, which proved helpful in making sure that all cases were considered, such as error handling. Since some group members have experience in developing web-applications while others have none, pair-programming proved to be an efficient way to transfer knowledge from one group member to another while also implementing features. Another benefit of pair-programming was the ability to brainstorm different ideas and discuss solutions to problems.
 
 During this sprint we were still not able to make full use of all agile methods. One of the reasons for this is, that not all base modules in our application have been fully implemented thus preventing people from working on certain features. However we expect the remaining base modules (template engine & testing environment) to be incorporated during the coming sprint. Once the basis for our application is complete, we can implement more features which we haven't been able to work on.
+
+Some hurdles in this sprint were overcoming the learning curve and getting all members of the team familiar with the technology platforms. As expected we still have some teething issues with platforms and coding language used but at the end of this sprint the team was more familiar and comfortable in the project space. The team has also grown more comfortable with each other and matured from the first sprint. Over all this sprint went well considering it was our first real working sprint.
 
 <!--While working in the backend, a postman has been used to fire requests such as post,put and delete to API. This tool helped us to check the functions we implemented to handle requests coming from the front-end before the views were set up.-->
 
