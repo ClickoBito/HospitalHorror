@@ -7,7 +7,7 @@ const SessionFileStore = require('session-file-store')(session);
 const app = express();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-
+const pug = require('pug');
 // configuration ===========================================
 
 // set our port
@@ -32,6 +32,9 @@ app.use(bodyParser.json());
 
 // parse application/vnd.api+json as json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+
+// set the pug view engine
+app.set('view engine', 'pug');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
