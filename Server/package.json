@@ -3,7 +3,7 @@
   "main": "server.js",
   "scripts": {
     "start": "set NODE_ENV=development&&node ./server.js",
-    "create_test_db": "NODE_ENV=test node ./database/resync.js && node ./database/loadTestData.js",
+    "create_test_db": "NODE_ENV=test node ./database/resync.js && NODE_ENV=test node ./database/loadTestData.js",
     "test": "cross-env NODE_ENV=test ./node_modules/.bin/mocha --recursive --require babel-core/register --exit",
     "test2": "jshint server.js",
     "resync": "node ./database/resync.js",
