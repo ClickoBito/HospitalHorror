@@ -99,6 +99,7 @@ The following features were commited to for the second sprint:
 - Create admin register screen
 - Create register functionality
 - Display status messages to frontend
+- Initialize testing framework
 
 ## Work Done
 <!---
