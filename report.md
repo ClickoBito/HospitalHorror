@@ -111,6 +111,7 @@ Please report on all activities; for example, in addition to coding, planning an
 Feature | Time estimated | Time spent per team member
 --------|----------------|--------
 Create login screen | 1 hour | Sebastian and Arnaud: 30 minutes
+Node/Express tutorials | 2 hours | Sebastian: 2 hours
 Authentication for login | 6 hours | Sebastian and Arnaud: 3 hours
 Create admin register screen | 4 hours | Arnaud: 4 hours
 Create register functionality | 4 hours | Sebastian: 4 hours
@@ -145,7 +146,7 @@ In this sprint we decided it was important to meet. This allowed us the opportun
 
 Pair programming was tried by a few members in the group, which proved helpful in making sure that all cases were considered, such as error handling. Since some group members have experience in developing web-applications while others have none, pair-programming proved to be an efficient way to transfer knowledge from one group member to another while also implementing features. Another benefit of pair-programming was the ability to brainstorm different ideas and discuss solutions to problems.
 
-During this sprint we were stilln ot able to make full use of all agile methods. One of the reasons for this is, that not all base modules in our application have been fully implemented thus preventing people from working on certain features. However we expect the remaining base modules (template engine & testing environment) to be incorporated during the coming sprint. Once the basis for our application is complete, we can implement more features which we haven't been able to work on.
+During this sprint we were still not able to make full use of all agile methods. One of the reasons for this is, that not all base modules in our application have been fully implemented thus preventing people from working on certain features. However we expect the remaining base modules (template engine & testing environment) to be incorporated during the coming sprint. Once the basis for our application is complete, we can implement more features which we haven't been able to work on.
 
 <!--While working in the backend, a postman has been used to fire requests such as post,put and delete to API. This tool helped us to check the functions we implemented to handle requests coming from the front-end before the views were set up.-->
 
