@@ -14,7 +14,6 @@ const Op        = Sequelize.Op;
 
 let dbconfig;
 if (fs.existsSync('../../config/local.js')) {
-	console.log('yay');
 	dbconfig = require('../../config/local.js');
 } else {
 	dbconfig = require('../../config/travis.js')
