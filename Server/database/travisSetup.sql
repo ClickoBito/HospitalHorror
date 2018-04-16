@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS 'hospitalHorror';
+CREATE DATABASE hospitalHorror;
 GRANT ALL ON hospitalHorror.* TO 'root'@'localhost';
 
 # Create database user
