@@ -13,10 +13,10 @@ const db        = {};
 const Op        = Sequelize.Op;
 
 let dbconfig;
-if (fs.existsSync('../../config/local.js')) {
+if (fs.existsSync('./config/local.js')) {
 	dbconfig = require('../../config/local.js');
 } else {
-	dbconfig = require('../../config/travis.js')
+	dbconfig = require('../../config/travis.js');
 }
 
 // Define operator aliases here
