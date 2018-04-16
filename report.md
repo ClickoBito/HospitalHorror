@@ -111,7 +111,7 @@ Please report on all activities; for example, in addition to coding, planning an
 Feature | Time estimated | Time spent per team member
 --------|----------------|--------
 Create login screen | 1 hour | Sebastian and Arnaud: 30 minutes
-Node/Express tutorials | 2 hours | Sebastian: 2 hours
+Node/Express tutorials | 4 hours | Sebastian: 2 hours, Carl: 2 hours
 Authentication for login | 6 hours | Sebastian and Arnaud: 3 hours
 Create admin register screen | 4 hours | Arnaud: 4 hours
 Create register functionality | 4 hours | Sebastian: 4 hours
@@ -120,7 +120,8 @@ Implementation of database | 13 hours | Amar: 13 hours, Patrick: 4 hours
 Created testdata for the database | 6 hours | Amar: 6 hours, Patrick: 2 hours
 Write in the report | 1.5 hours | Amar: 1.5 hours
 Display status messages to frontend (Pug) | 2 hours | Sebastian: 2 hours
-Travis CI | 1 hour | Patrick: 1 hour
+Mocha test framework | 4 hours | Carl: 4 hours
+Travis CI | 7 hours | Patrick: 1 hour, Carl: 6 hours
 Functions to handle PatientInfo | 2 hours | Patrick: 2 hours
 Functions to handle PatientAllergy | 2 hours | Teklie: 2 hours
 Functions to handle PatientDiagnosis | 3 hours | Kirsten and Arnaud: 3 hours
@@ -147,6 +148,8 @@ Keep within 1000-1500 words. Discuss any deviations from the sprint commitment. 
 Sprint 2 began with a consultation with our customer. From this meeting, we were able to gather the main project requirements and verify existing requirements that we had collected. Each requirement was broken down into manageable-sized tasks for one person and individually created as a story card on Trello. When meeting with the client we negotiated a reasonable amount of functionality that can be derived by the next acceptance test. To determine the workload, we looked at the number of recourses available, hours available and experience needed. We were able to factor these aspects in when planning for our sprint 2 delivery. One of the ways we did this is by creating research and design story cards. This would ensure that the necessary groundwork can be done and is a part of our sprint cycle.
 
 What went well in this sprint, is that we built a good foundation of understanding within our team. We achieved this by meeting and working together to design an Entity Relationship Diagram which would form the starting point of our project. We also were able to identify which functional requirements we would be able to meet for our customer and which requirements we could put on a backlog for sprint 3. This allowed us to work at a sustainable pace. Other than that, we started getting more and more into code reviewing on GitHub, which let us verify the code as a part of the work process before merging it with bigger branches. Continuous integration was an integral part of this since it helps combat merge conflicts and other issues. It let many of us follow the changes that were made in the code so that we could be updated with the code implementation, but also if the changes needed some improvements, it could be added by the code reviewer.
+
+Another aspect that will ensure quality in the future is that we extended our testing framework. There is now a test suite for the project using mocha, chai, and supertest. Using these we will be able to implement both unit and integration tests that execute automatically using Travis every time a commit is pushed to the repository. The configuration for Travis includes the setup of our database, so full functionality tests are possible to implement.
 
 In this sprint, we decided it was important to meet. This allowed us the opportunity to help each other out and tackle any issues we had. We also were able to finalize a few pending decisions that considered the technologies we were using, such as the template engine used in the backend. Short retrospectives were held during these meetings so that everyone was brought up to speed. There were some small issues with keeping track of what other people in the project were working on, which can be improved by meeting more frequently in the coming sprints. Easter was obviously preventing us from working optimally. We also encouraged each other to keep our Trello-board up-to-date for preventing overlapping work and communications issues.
 
