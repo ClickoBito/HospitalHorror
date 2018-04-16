@@ -5,6 +5,7 @@ addons:
   mariadb: '10.0'
 before_install:
 - cd Server
+- mysql -u root --password="" < Server/database/travisSetup.sql
 install:
 - npm install
 # Load tables and test data
