@@ -128,22 +128,22 @@ module.exports.logout = function(req, res, next) {
 	res.status(200).send('Logout successful');
 };
 
-isAdmin = function(req) {
+function isAdmin(req) {
 	return req.session.user && req.session.user.userType === 'Admin';
-};
+}
 module.exports.isAdmin = isAdmin;
 
-isDoctor = function(req) {
+function isDoctor(req) {
 	return req.session.user && req.session.user.userType === 'Doctor';
-};
+}
 module.exports.isDoctor = isDoctor;
 
-isNurse = function(req) {
+function isNurse(req) {
 	return req.session.user && req.session.user.userType === 'Nurse';
-};
+}
 module.exports.isNurse = isNurse;
 
-isSecretary = function(req) {
+function isSecretary(req) {
 	return req.session.user && req.session.user.userType === 'Secretary';
-};
+}
 module.exports.isSecretary = isSecretary;
