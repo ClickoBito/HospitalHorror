@@ -12,10 +12,12 @@ module.exports.login = function(req, res, next) {
 	}).then(user => {
 
 		if (user) {
+			// set the session cookie
+			req.session.user = user;
+
 			let userinfo = user.get({plain: true});
-			console.log(userinfo.userType);
-			
-			if (userinfo.userType === 'Admin') 
+
+			if (userinfo.userType === 'Admin')
 				res.redirect('/admin/');
 			else if (userinfo.userType === 'Doctor') {
 				// controller.getAllPatients;
@@ -40,7 +42,9 @@ module.exports.login = function(req, res, next) {
 
 
 module.exports.register = function (req, res, next) {
-	console.log(req.body);
+	// TODO: display error message
+	if (!isAdmin(req))
+		res.redirect('/');
 
 	model.User.findOrCreate({
 		where: {username: req.body.username},
@@ -101,21 +105,45 @@ module.exports.register = function (req, res, next) {
 					res.redirect('/');
 				});
 			}
-			console.log('User successfully created');
-			res.render('index', {status: 'User successfully created.'});
+			// TODO: fix the correct redirect then render sth.
+			// Don't try to send 2 responses
+			//console.log('User successfully created');
+			//res.render('index', {status: 'User successfully created.'});
 
 		}
 		else {
 			console.log('User with this username already found');
+			// TODO: need to redirect after a POST-request
 			res.render('admin', {
 				status: 'Username taken.'
-			});	
+			});
 		}
 	});
 
 };
 
 module.exports.logout = function(req, res, next) {
+	res.clearCookie('connect.sid');
 	req.session.destroy();
 	res.status(200).send('Logout successful');
 };
+
+isAdmin = function(req) {
+	return req.session.user && req.session.user.userType === 'Admin';
+};
+module.exports.isAdmin = isAdmin;
+
+isDoctor = function(req) {
+	return req.session.user && req.session.user.userType === 'Doctor';
+};
+module.exports.isDoctor = isDoctor;
+
+isNurse = function(req) {
+	return req.session.user && req.session.user.userType === 'Nurse';
+};
+module.exports.isNurse = isNurse;
+
+isSecretary = function(req) {
+	return req.session.user && req.session.user.userType === 'Secretary';
+};
+module.exports.isSecretary = isSecretary;

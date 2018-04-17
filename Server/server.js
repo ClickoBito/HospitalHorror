@@ -17,14 +17,14 @@ const port = process.env.PORT || 8890;
 //app.use(favicon(path.join(__dirname, '/public', 'favicon.ico')));
 
 // handling authentication
-/*app.use(session({
+app.use(session({
 	secret: 'supersecretsecret',
 	name: 'hhcookie',
-	store: new SessionFileStore(),
+	store: new SessionFileStore({logFn: function(){}}),
 	//proxy: true,
 	resave: false,
-	saveUninitialized: true
-}));*/
+	saveUninitialized: false
+}));
 
 // get all data/stuff of the body (POST) parameters
 // parse application/json
