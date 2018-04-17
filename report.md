@@ -162,6 +162,45 @@ Some hurdles in this sprint were overcoming the learning curve and getting all m
 
 <!--While working in the backend, a postman has been used to fire requests such as post,put and delete to API. This tool helped us to check the functions we implemented to handle requests coming from the front-end before the views were set up.-->
 
+# Sprint 3 Log
+This is the third sprint of the project ...
+
+## Commitment
+<!---
+List the features/stories that the team committed to finish during the sprint.
+--->
+The following features were commited to for the second sprint:
+
+- Authentication in the backend
+
+## Work Done
+<!---
+Log what was accomplished, and how.
+Please report on all activities; for example, in addition to coding, planning and design discussion.
+--->
+<!--
+*Name and ID of each feature* | *X hours* | *Member A: Y hours, Member B: Z hours*
+-->
+Feature | Time estimated | Time spent per team member
+--------|----------------|--------
+Backend authentication | 1 hour | Patrick: 1 hour
+
+## Reflections
+<!---
+Reflect on how the work worked.
+This data will form the basis for your final reflection.
+As the postmortem will be a writeup, it's fine to use shorthand notes, bullet list, and similar.
+Keep within 1000-1500 words. Discuss any deviations from the sprint commitment. Reflect on the agile practice practiced:
+- Did your experience correspond to or contradict with what literature claims?
+    - Analysis of why. Mostly interesting if something unexpected happens, but even
+      if everything runs according to plan, reflecting on the underlying mechanisms
+      can be interesting.
+- How did the practices interact?
+  Did they complement or counteract each other?
+- How efficient were the practices, given the time they took to use?
+---->
+[...]
+
 # Sprint X Log
 *As for the previous sprints.*
 
