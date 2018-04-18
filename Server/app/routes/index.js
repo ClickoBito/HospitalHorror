@@ -6,7 +6,7 @@ const router = express.Router();
 const AuthCtrl = require('../controllers/auth.js');
 const PatientInfoCtrl = require('../controllers/patientinfo.js');
 const PatientAllergyCtrl = require('../controllers/patientallergy.js');
-const PatientCtrl = require('../controllers/patient.js')
+const PatientCtrl = require('../controllers/patient.js');
 
 // RESTful API
 
