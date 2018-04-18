@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - '8'
 addons:
-  mariadb: '10.0'
+  mariadb: '10.2'
 before_install:
 - cd Server
 - mysql -u root --password="" < database/travisSetup.sql
@@ -12,7 +12,7 @@ install:
 - npm run create_test_db
 script:
 - npm test
-- npm run test2
+- npm run lint-test
 
 notifications:
   slack:
