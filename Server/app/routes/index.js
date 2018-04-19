@@ -38,6 +38,13 @@ router.get('/admin', function (req, res) {
 	res.render('admin');
 });
 
+
+router.get('/error', function (req, res) {
+	res.render('index', {
+		status: req.session.error
+	});
+});
+
 // router.get('/doctor', function (req, res) {
 // 	console.log('Doctor logged in');
 // 	//res.sendFile('./views/doctor.pug', { root: __dirname + "./../.." });
@@ -47,6 +54,7 @@ router.get('/admin', function (req, res) {
 // frontend routes =========================================================
 // route to handle all other requests
 router.get('*', function(req, res) {
+	delete req.session.error;
 	res.render('index');
 });
 

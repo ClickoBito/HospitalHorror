@@ -26,17 +26,15 @@ module.exports.login = function(req, res, next) {
 		} else {
 			console.log("Wrong login-credentials");
 			// TODO: display error message in frontend
-			res.render('index', {
-				status: 'Username or password is wrong.'
-			});
+			req.session.error = 'Username or password is wrong.'
+			res.redirect('/error/');
 		}
 
 	}, err => {
 		console.log("Error logging in");
 		console.log(err);
-		res.render('index', {
-			status: 'There was an error logging in, please try again later.'
-		});
+		req.session.error = 'There was an error logging in. Please try again later.'
+		res.redirect('/error/');
 	});
 };
 
@@ -67,8 +65,8 @@ module.exports.register = function (req, res, next) {
 					res.redirect('/');
 				}, err => {
 					console.log(err);
-					// TODO: display error message in frontend
-					res.redirect('/');
+					req.session.error = 'There was an error creating your account. Please try again later.'
+					res.redirect('/error/');
 				});
 			}
 
@@ -84,8 +82,8 @@ module.exports.register = function (req, res, next) {
 						res.redirect('/');
 					}, err => {
 						console.log(err);
-						// TODO: display error message in frontend
-						res.redirect('/');
+						req.session.error = 'There was an error creating your account. Please try again later.'
+						res.redirect('/error/');
 					});
 				}
 
@@ -101,8 +99,8 @@ module.exports.register = function (req, res, next) {
 					res.redirect('/');
 				}, err => {
 					console.log(err);
-					// TODO: display error message in frontend
-					res.redirect('/');
+					req.session.error = 'There was an error creating your account. Please try again later.'
+					res.redirect('/error/');
 				});
 			}
 			// TODO: fix the correct redirect then render sth.
@@ -114,9 +112,8 @@ module.exports.register = function (req, res, next) {
 		else {
 			console.log('User with this username already found');
 			// TODO: need to redirect after a POST-request
-			res.render('admin', {
-				status: 'Username taken.'
-			});
+			req.session.error = 'Username taken. Please try something else.'
+			res.redirect('/error/');
 		}
 	});
 
