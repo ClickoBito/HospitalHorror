@@ -53,12 +53,16 @@ router.get('/admin', function (req, res) {
 
 // Sends user to index page and displays error message
 router.get('/error', function (req, res) {
-	res.status(req.session.errorcode);
-	res.render('index', {
-		status: req.session.error
-	});
-	delete req.session.error;
-	delete req.session.errorcode;
+	if(req.session.error !== undefined) {
+		res.status(req.session.errorcode);
+		res.render('index', {
+			status: req.session.error
+		});
+		delete req.session.error;
+		delete req.session.errorcode;
+	}
+	else
+		res.redirect('/')
 });
 
 // router.get('/doctor', function (req, res) {
