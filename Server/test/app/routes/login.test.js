@@ -33,7 +33,6 @@ describe('Testing the logout-function', () => {
 		supertest(app)
 		.post('/logout')
 		.send()
-		.expect(200)
 		.end((err, res) => {
 			should.not.exist(err);
 			done();
