@@ -3,7 +3,7 @@ const controller = require('../controllers/patient.js');
 
 module.exports.login = function(req, res, next) {
 	// debug
-	console.log(req.body);
+	// console.log(req.body);
 	model.User.findOne({
 		where: {
 			username: req.body.username,
@@ -16,13 +16,16 @@ module.exports.login = function(req, res, next) {
 			req.session.user = user;
 
 			let userinfo = user.get({plain: true});
-
+			console.log(userinfo)
 			if (userinfo.userType === 'Admin')
 				res.redirect('/admin/');
-			else if (userinfo.userType === 'Doctor') {
-				// controller.getAllPatients;
+			else if (userinfo.userType === 'Doctor') 
 				res.redirect('/doctor/');
-			}
+			else if (userinfo.userType === 'Nurse') 
+				res.redirect('/doctor/');
+			else 
+				res.redirect('/doctor/');
+			
 		} else {
 			console.log("Wrong login-credentials");
 			// TODO: display error message in frontend
@@ -42,9 +45,12 @@ module.exports.login = function(req, res, next) {
 
 
 module.exports.register = function (req, res, next) {
-	// TODO: display error message
-	if (!isAdmin(req))
-		res.redirect('/');
+	if (!isAdmin(req)) {
+		req.session.error = 'Admin privileges not found. User not created.'
+		req.session.errorcode = 403;
+		res.redirect('/error/');
+		return;
+	}
 
 	model.User.findOrCreate({
 		where: {username: req.body.username},
@@ -53,7 +59,8 @@ module.exports.register = function (req, res, next) {
 		//Check if user was created or if it already exists
 		if (created) {
 			console.log('User successfully created');
-
+			console.log(req.body.username + ' ' + req.body.password);
+			
 			//Check user type and create corresponding model
 			if (req.body.usertype === 'Doctor') {
 				model.Doctor.create({
@@ -63,6 +70,7 @@ module.exports.register = function (req, res, next) {
 				}).then(doctor => {
 					// let info = doctor.get({plain:true})
 					console.log('Doctor created');
+					req.session.destroy();
 					// TODO: redirect to appropriate page
 					res.redirect('/');
 				}, err => {
@@ -81,6 +89,7 @@ module.exports.register = function (req, res, next) {
 					}).then(nurse => {
 						// let info = nurse.get({plain:true})
 						console.log('Nurse created');
+						req.session.destroy();
 						// TODO: redirect to appropriate page
 						res.redirect('/');
 					}, err => {
@@ -99,6 +108,7 @@ module.exports.register = function (req, res, next) {
 				}).then(secretary => {
 					// let info = secretary.get({plain:true})
 					console.log('Secretary created');
+					req.session.destroy();
 					// TODO: redirect to appropriate page
 					res.redirect('/');
 				}, err => {
@@ -112,7 +122,6 @@ module.exports.register = function (req, res, next) {
 		}
 		else {
 			console.log('User with this username already found');
-			// TODO: need to redirect after a POST-request
 			req.session.error = 'Username taken. Please try something else.';
 			req.session.errorcode = 400;
 			res.redirect('/error/');
@@ -122,9 +131,10 @@ module.exports.register = function (req, res, next) {
 };
 
 module.exports.logout = function(req, res, next) {
+	console.log(req.session.user);
 	res.clearCookie('connect.sid');
 	req.session.destroy();
-	res.status(200).send('Logout successful');
+	res.redirect('/');
 };
 
 function isAdmin(req) {

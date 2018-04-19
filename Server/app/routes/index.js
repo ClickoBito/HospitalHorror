@@ -40,12 +40,18 @@ router.get('/home/:id', function(req, res) {
 	res.sendFile('./views/home.html', { root: __dirname + "./../.." });
 });
 
+// Checks if user is admin
 router.get('/admin', function (req, res) {
-	console.log('Admin logged in');
-	res.render('admin');
+	if(!AuthCtrl.isAdmin(req)) {
+		req.session.error = 'Only admins can access this page.';
+		req.session.errorcode = 401;
+		res.redirect('/error/');
+	} 
+	else
+		res.render('admin');
 });
 
-
+// Sends user to index page and displays error message
 router.get('/error', function (req, res) {
 	res.status(req.session.errorcode);
 	res.render('index', {
@@ -56,9 +62,9 @@ router.get('/error', function (req, res) {
 });
 
 // router.get('/doctor', function (req, res) {
-// 	console.log('Doctor logged in');
-// 	//res.sendFile('./views/doctor.pug', { root: __dirname + "./../.." });
-
+	// 	console.log('Doctor logged in');
+	// 	//res.sendFile('./views/doctor.pug', { root: __dirname + "./../.." });
+	
 // });
 
 // frontend routes =========================================================

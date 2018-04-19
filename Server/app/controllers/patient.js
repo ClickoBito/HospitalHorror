@@ -1,4 +1,5 @@
 const model = require('../models/');
+const AuthCtrl = require('../controllers/auth.js');
 
 //var PatientList;                        
 
@@ -18,6 +19,15 @@ module.exports.create = function (req, res, next) {
 var patientsList;
 
 module.exports.getAllPatients = function (req, res, next) {
+    console.log(req.session);
+    //Check if user is authorized to render doctor page
+    if(!AuthCtrl.isDoctor(req)) {
+        req.session.error = 'Only doctors can access this page.';
+        req.session.errorcode = 403;
+        res.redirect('/error/');
+        return;
+    }
+
     model.Patient.findAll({
         attributes: ['firstname', 'lastname'],
         limit: 5
