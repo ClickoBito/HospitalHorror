@@ -11,6 +11,7 @@
     "load_testdata": "node ./database/loadTestData.js"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "dottie": "^2.0.0",
     "express": "^4.16.2",

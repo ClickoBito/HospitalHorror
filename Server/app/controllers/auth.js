@@ -1,5 +1,6 @@
 const model = require('../models/');
 const controller = require('../controllers/patient.js');
+const  bCrypt= require('bcryptjs');
 
 module.exports.login = function(req, res, next) {
 	// debug
@@ -7,8 +8,9 @@ module.exports.login = function(req, res, next) {
 	model.User.findOne({
 		where: {
 			username: req.body.username,
-			password: req.body.password
+			password: req.body.password // encryptPassword(req.body.password)
 		}
+
 	}).then(user => {
 
 		if (user) {
@@ -19,13 +21,13 @@ module.exports.login = function(req, res, next) {
 			console.log(userinfo);
 			if (userinfo.userType === 'Admin')
 				res.redirect('/admin/');
-			else if (userinfo.userType === 'Doctor') 
+			else if (userinfo.userType === 'Doctor')
 				res.redirect('/doctor/');
-			else if (userinfo.userType === 'Nurse') 
+			else if (userinfo.userType === 'Nurse')
 				res.redirect('/doctor/');
-			else 
+			else
 				res.redirect('/doctor/');
-			
+
 		} else {
 			console.log("Wrong login-credentials");
 			// TODO: display error message in frontend
@@ -54,13 +56,13 @@ module.exports.register = function (req, res, next) {
 
 	model.User.findOrCreate({
 		where: {username: req.body.username},
-		defaults: {password: req.body.password, userType: req.body.usertype}
+		defaults: {password: encryptPassword(req.body.password), userType: req.body.usertype}
 	}).spread((user, created) => {
 		//Check if user was created or if it already exists
 		if (created) {
 			console.log('User successfully created');
 			console.log(req.body.username + ' ' + req.body.password);
-			
+
 			//Check user type and create corresponding model
 			if (req.body.usertype === 'Doctor') {
 				model.Doctor.create({
@@ -156,3 +158,8 @@ function isSecretary(req) {
 	return req.session.user && req.session.user.userType === 'Secretary';
 }
 module.exports.isSecretary = isSecretary;
+
+function encryptPassword(password) {
+    return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
+}
+module.exports.encryptPassword = encryptPassword;
