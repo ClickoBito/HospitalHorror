@@ -124,3 +124,6 @@ INSERT INTO Diagnosis (PatientId, DoctorId, DiagnosisTypeId, TreatmentId) VALUES
 INSERT INTO Diagnosis (PatientId, DoctorId, DiagnosisTypeId, TreatmentId) VALUES (2, 3, 2, 2);
 INSERT INTO Diagnosis (PatientId, DoctorId, DiagnosisTypeId, TreatmentId) VALUES (3, 2, 3, 3);
 INSERT INTO Diagnosis (PatientId, DoctorId, DiagnosisTypeId, TreatmentId) VALUES (4, 1, 4, 4);
+
+#Added column for Speciality in Doctor table
+Alter TABLe Doctor ADD Speciality VARCHAR(50);
