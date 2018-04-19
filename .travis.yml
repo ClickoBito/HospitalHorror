@@ -12,7 +12,6 @@ install:
 - npm run create_test_db
 script:
 - npm test
-- npm run lint-test
 
 notifications:
   slack:

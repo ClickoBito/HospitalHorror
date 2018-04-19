@@ -3,8 +3,9 @@
   "main": "server.js",
   "scripts": {
     "start": "set NODE_ENV=development&&node ./server.js",
+    "test": "npm run lint-test && npm run mocha-test",
     "create_test_db": "NODE_ENV=test node ./database/resync.js && NODE_ENV=test node ./database/loadTestData.js",
-    "test": "cross-env NODE_ENV=test ./node_modules/.bin/mocha --recursive --require babel-core/register --exit",
+    "mocha-test": "cross-env NODE_ENV=test ./node_modules/.bin/mocha --recursive --require babel-core/register --exit",
     "lint-test": "jshint server.js app/ config/ database/ test/",
     "resync": "node ./database/resync.js",
     "load_testdata": "node ./database/loadTestData.js"
