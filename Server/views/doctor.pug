@@ -1,7 +1,7 @@
 extends layout
-block navbar
-	include navbar.pug
+include navbar
 block content
+	+navbar(username.firstname + ' ' + username.lastname)
 	div.wrapper.col-m-4.sticky-top
 		nav(id='sidebar sticky-top')
 			// Sidebar Links
@@ -16,25 +16,21 @@ block content
 										li.list-group-item #{patient.firstname + ' ' + patient.lastname}
 								ul#patientsList.list-group-flush
 									h2 Nurses
-									li.list-group-item.active Elon Musk
-									li.list-group-item Julian Assange
-									li.list-group-item Snoop Dogg
+									each nurse in nurses
+										li.list-group-item #{nurse.firstname + ' ' + nurse.lastname}
 					#main.col
 						table.table.table-striped
 							thead
 								tr
 									th(scope='col') Patient Name
 									th(scope='col') Last Visit
-									th(scope='col') Allergies
-									th(scope='col') Status
 									th(scope='col') Blood Pressure
 							tbody
 								tr
 									th(scope='row') Mark Zuckerberg
-									td 11/04/2018
-									td Privacy
-									td Nervous
-									td 120
+									td #{patientInfo.bloodpressure}
+									td #{patientInfo.weight}
+
 						.form-group
 							label(for='doctorNotes')
 								strong Doctor's Notes
