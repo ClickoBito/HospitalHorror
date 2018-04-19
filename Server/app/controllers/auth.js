@@ -103,10 +103,6 @@ module.exports.register = function (req, res, next) {
 					res.redirect('/error/');
 				});
 			}
-			// TODO: fix the correct redirect then render sth.
-			// Don't try to send 2 responses
-			//console.log('User successfully created');
-			//res.render('index', {status: 'User successfully created.'});
 
 		}
 		else {

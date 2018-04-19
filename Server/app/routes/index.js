@@ -50,6 +50,7 @@ router.get('/error', function (req, res) {
 	res.render('index', {
 		status: req.session.error
 	});
+	delete req.session.error;
 });
 
 // router.get('/doctor', function (req, res) {
@@ -61,7 +62,6 @@ router.get('/error', function (req, res) {
 // frontend routes =========================================================
 // route to handle all other requests
 router.get('*', function(req, res) {
-	delete req.session.error;
 	res.render('index');
 });
 
