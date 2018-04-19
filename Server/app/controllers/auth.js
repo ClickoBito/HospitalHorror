@@ -23,9 +23,9 @@ module.exports.login = function(req, res, next) {
 			if (userinfo.userType === 'Admin')
 				res.redirect('/admin/');
 			else if (userinfo.userType === 'Doctor')
-				res.redirect('/doctor/');
+				res.redirect('/doctor/' + userinfo.id);
 			else if (userinfo.userType === 'Nurse')
-				res.redirect('/doctor/');
+				res.redirect('/nurse/');
 			else
 				res.redirect('/secretary/');
 
