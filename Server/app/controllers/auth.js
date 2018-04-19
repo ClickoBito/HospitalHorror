@@ -16,7 +16,7 @@ module.exports.login = function(req, res, next) {
 			req.session.user = user;
 
 			let userinfo = user.get({plain: true});
-			console.log(userinfo)
+			console.log(userinfo);
 			if (userinfo.userType === 'Admin')
 				res.redirect('/admin/');
 			else if (userinfo.userType === 'Doctor') 
@@ -46,7 +46,7 @@ module.exports.login = function(req, res, next) {
 
 module.exports.register = function (req, res, next) {
 	if (!isAdmin(req)) {
-		req.session.error = 'Admin privileges not found. User not created.'
+		req.session.error = 'Admin privileges not found. User not created.';
 		req.session.errorcode = 403;
 		res.redirect('/error/');
 		return;

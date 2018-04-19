@@ -62,7 +62,7 @@ router.get('/error', function (req, res) {
 		delete req.session.errorcode;
 	}
 	else
-		res.redirect('/')
+		res.redirect('/');
 });
 
 // router.get('/doctor', function (req, res) {
