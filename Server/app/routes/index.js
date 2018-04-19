@@ -47,6 +47,7 @@ router.get('/admin', function (req, res) {
 
 
 router.get('/error', function (req, res) {
+	res.status(req.session.errorcode);
 	res.render('index', {
 		status: req.session.error
 	});

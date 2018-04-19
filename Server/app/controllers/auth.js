@@ -26,14 +26,16 @@ module.exports.login = function(req, res, next) {
 		} else {
 			console.log("Wrong login-credentials");
 			// TODO: display error message in frontend
-			req.session.error = 'Username or password is wrong.'
+			req.session.error = 'Username or password is wrong.';
+			req.session.errorcode = 401;
 			res.redirect('/error/');
 		}
 
 	}, err => {
 		console.log("Error logging in");
 		console.log(err);
-		req.session.error = 'There was an error logging in. Please try again later.'
+		req.session.error = 'There was an error logging in. Please try again later.';
+		req.session.errorcode = 500;
 		res.redirect('/error/');
 	});
 };
@@ -65,7 +67,8 @@ module.exports.register = function (req, res, next) {
 					res.redirect('/');
 				}, err => {
 					console.log(err);
-					req.session.error = 'There was an error creating your account. Please try again later.'
+					req.session.error = 'There was an error creating your account. Please try again later.';
+					req.session.errorcode = 500;
 					res.redirect('/error/');
 				});
 			}
@@ -82,7 +85,8 @@ module.exports.register = function (req, res, next) {
 						res.redirect('/');
 					}, err => {
 						console.log(err);
-						req.session.error = 'There was an error creating your account. Please try again later.'
+						req.session.error = 'There was an error creating your account. Please try again later.';
+						req.session.errorcode = 500;
 						res.redirect('/error/');
 					});
 				}
@@ -99,7 +103,8 @@ module.exports.register = function (req, res, next) {
 					res.redirect('/');
 				}, err => {
 					console.log(err);
-					req.session.error = 'There was an error creating your account. Please try again later.'
+					req.session.error = 'There was an error creating your account. Please try again later.';
+					req.session.errorcode = 500;
 					res.redirect('/error/');
 				});
 			}
@@ -108,7 +113,8 @@ module.exports.register = function (req, res, next) {
 		else {
 			console.log('User with this username already found');
 			// TODO: need to redirect after a POST-request
-			req.session.error = 'Username taken. Please try something else.'
+			req.session.error = 'Username taken. Please try something else.';
+			req.session.errorcode = 400;
 			res.redirect('/error/');
 		}
 	});
