@@ -7,6 +7,8 @@ const AuthCtrl = require('../controllers/auth.js');
 const PatientInfoCtrl = require('../controllers/patientinfo.js');
 const PatientAllergyCtrl = require('../controllers/patientallergy.js');
 const PatientCtrl = require('../controllers/patient.js');
+const PatientDiagnosisCtrl = require('../controllers/patientdiagnosis.js');
+
 
 // RESTful API
 
@@ -27,6 +29,11 @@ router.delete('/patientinfo/:id', PatientInfoCtrl.delete);
 router.post('/patientallergy', PatientAllergyCtrl.create);
 router.put('/patientallergy/:id', PatientAllergyCtrl.edit);
 router.delete('/patientallergy/:id', PatientAllergyCtrl.delete);
+
+// PatientDiagnosis
+router.post('/patientdiagnosis', PatientDiagnosisCtrl.create);
+router.put('/patientdiagnosis/:id', PatientDiagnosisCtrl.edit);
+router.delete('/patientdiagnosis/:id', PatientDiagnosisCtrl.delete);
 
 // TODO: put function in a controller
 router.get('/home/:id', function(req, res) {
