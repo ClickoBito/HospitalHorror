@@ -52,6 +52,7 @@ router.get('/error', function (req, res) {
 		status: req.session.error
 	});
 	delete req.session.error;
+	delete req.session.errorcode;
 });
 
 // router.get('/doctor', function (req, res) {
