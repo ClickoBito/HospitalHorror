@@ -31,6 +31,9 @@ router.delete('/patientallergy/:id', PatientAllergyCtrl.delete);
 
 // Treatment
 router.post('/treatment', TreatmentCtrl.createTreatment);
+//router.get('/treatment/:id', TreatmentCtrl.getTreatment);
+router.put('/treatment/:id', TreatmentCtrl.editTreatment);
+router.delete('/treatment/:id', TreatmentCtrl.deleteTreatment);
 
 // TODO: put function in a controller
 router.get('/home/:id', function(req, res) {
