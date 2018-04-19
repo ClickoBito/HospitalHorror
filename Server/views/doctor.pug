@@ -1,33 +1,7 @@
 extends layout
+block navbar
+	include navbar.pug
 block content
-	// Start of Navbar
-	#{'nav'}(class='navbar navbar-expand-lg navbar-light bg-light')
-		a(class='navbar-brand') MediSys
-		button(class='navbar-toggler' 
-			type='button' 
-			data-toggle='collapse' 
-			data-target='#navbarSupportedContent' 
-			aria-controls='navbarSupportedContent' 
-			aria-expanded='false' 
-			aria-label='Toggle navigation'
-		)
-			span(class='navbar-toggler-icon')
-		div(class='navbarSupportedContent collapse navbar-collapse')
-			ul(class='navbar-nav mr-auto')
-				li(class='nav-item')
-					button(class='btn btn-danger', type='button') Logout
-				li
-					button(class='btn btn-outline-secondary disabled') Signed in as: Dr Derek Shepherd
-			form(class='form-inline my-2 my-lg-0')
-				input(class='form-control mr-sm-2'
-					type='search' 
-					placeholder='Search' 
-					aria-label='Search'
-				)
-				button(class='btn btn-outline-success my-2 my-sm-0'
-					type='submit'
-				) Search
-
 	div.wrapper.col-m-4.sticky-top
 		nav(id='sidebar sticky-top')
 			// Sidebar Links
