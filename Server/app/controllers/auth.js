@@ -8,34 +8,32 @@ module.exports.login = function(req, res, next) {
 	// app.print(req.body);
 	model.User.findOne({
 		where: {
-			username: req.body.username,
-			password: req.body.password // encryptPassword(req.body.password)
+			username: req.body.username
 		}
-
-	}).then(user => {
-
-		if (user) {
-			// set the session cookie
-			req.session.user = user;
-
-			let userinfo = user.get({plain: true});
-			// app.print(userinfo);
-			if (userinfo.userType === 'Admin')
-				res.redirect('/admin/');
-			else if (userinfo.userType === 'Doctor')
-				res.redirect('/doctor/');
-			else if (userinfo.userType === 'Nurse')
-				res.redirect('/doctor/');
-			else
-				res.redirect('/secretary/');
-
-		} else {
-			app.print("Wrong login-credentials");
-			// TODO: display error message in frontend
-			req.session.error = 'Username or password is wrong.';
-			req.session.errorcode = 401;
-			res.redirect('/error/');
-		}
+		}).then(user => {
+			//Check if entered password matches
+			bCrypt.compare(req.body.password, user.password, function(err, matches) {
+				if(matches) {
+					req.session.user = user;
+					let userinfo = user.get({plain: true});
+					console.log(userinfo);
+					if (userinfo.userType === 'Admin')
+						res.redirect('/admin/');
+					else if (userinfo.userType === 'Doctor')
+						res.redirect('/doctor/');
+					else if (userinfo.userType === 'Nurse')
+						res.redirect('/doctor/');
+					else
+						res.redirect('/secretary/');
+				}
+				else {
+					console.log("Wrong login-credentials");
+					// TODO: display error message in frontend
+					req.session.error = 'Username or password is wrong.';
+					req.session.errorcode = 401;
+					res.redirect('/error/');
+				}
+			});
 
 	}, err => {
 		app.print("Error logging in");
