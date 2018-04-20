@@ -56,7 +56,7 @@ module.exports.register = function (req, res, next) {
 
 	model.User.findOrCreate({
 		where: {username: req.body.username},
-		defaults: {password: encryptPassword(req.body.password), userType: req.body.usertype}
+		defaults: {password: req.body.password, userType: req.body.usertype}
 	}).spread((user, created) => {
 		//Check if user was created or if it already exists
 		if (created) {
