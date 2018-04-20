@@ -184,6 +184,7 @@ Please report on all activities; for example, in addition to coding, planning an
 Feature | Time estimated | Time spent per team member
 --------|----------------|--------
 Backend authentication | 1 hour | Patrick: 1 hour
+Password encryption    | 2 hours| Teklie and Sabastian : 2 hours
 
 ## Reflections
 <!---
