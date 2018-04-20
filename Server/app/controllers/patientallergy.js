@@ -1,45 +1,46 @@
 const model = require('../models/');
+const app = require('../../server.js');
 
 module.exports.create = function(req, res, next) {
-	console.log('Trying to create a patientAllegy');
-	console.log(req.body);
+	app.print('Trying to create a patientAllegy');
+	app.print(req.body);
 	model.Allergy.create(req.body)
 	.then(info => {
-		console.log('Created PatientAllergy');
-		console.log(info.get({plain:true}));
+		app.print('Created PatientAllergy');
+		app.print(info.get({plain:true}));
 		// TODO: redirect to some page
 		res.redirect('/');
 	}, err => {
-		console.log(err);
+		app.print(err);
 		// TODO: redirect to error page e.g.
 		res.redirect('/');
 	});
 };
 module.exports.edit = function(req, res, next) {
-	console.log('Trying to update a PatientAllergy');
-	console.log(req.body);
+	app.print('Trying to update a PatientAllergy');
+	app.print(req.body);
 	model.Allergy.update(req.body,{where: {id: req.params.id}})
 	.then(info => {
-		console.log('Updated PatientAllergy');
+		app.print('Updated PatientAllergy');
 		// TODO: redirect to some page
 		res.redirect('/');
 	}, err => {
-		console.log(err);
+		app.print(err);
 		// TODO: redirect to error page e.g.
 		res.redirect('/');
 	});
 };
 
 module.exports.delete = function(req, res, next) {
-	console.log('Trying to delete a PatientAllergy');
+	app.print('Trying to delete a PatientAllergy');
 	model.Allergy.destroy({where: {id: req.params.id}})
 	.then(response => {
-		console.log('Deleted PatientAllergy');
-		console.log(response);
+		app.print('Deleted PatientAllergy');
+		app.print(response);
 		// TODO: redirect to some page
 		res.redirect('/');
 	}, err => {
-		console.log(err);
+		app.print(err);
 		// TODO: redirect to error page e.g.
 		res.redirect('/');
 	});

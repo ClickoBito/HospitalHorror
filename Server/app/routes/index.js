@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const app = require('../../server.js');
 
 
 // controller
@@ -46,7 +47,7 @@ router.get('/admin', function (req, res) {
 		req.session.error = 'Only admins can access this page.';
 		req.session.errorcode = 401;
 		res.redirect('/error/');
-	} 
+	}
 	else
 		res.render('admin');
 });
@@ -58,17 +59,17 @@ router.get('/error', function (req, res) {
 		res.render('index', {
 			status: req.session.error
 		});
-		delete req.session.error;
-		delete req.session.errorcode;
+		req.session.error = undefined;
+		req.session.errorcode = undefined;
 	}
 	else
 		res.redirect('/');
 });
 
 // router.get('/doctor', function (req, res) {
-	// 	console.log('Doctor logged in');
+	// 	app.print('Doctor logged in');
 	// 	//res.sendFile('./views/doctor.pug', { root: __dirname + "./../.." });
-	
+
 // });
 
 // frontend routes =========================================================

@@ -45,6 +45,12 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 // set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/public'));
 
+function print(s) {
+	if (process.env.NODE_ENV !== 'test')
+		console.log(s);
+}
+module.exports.print = print;
+
 // routes ==================================================
 const index = require('./app/routes/index');
 app.use('/', index);
@@ -54,7 +60,7 @@ app.use('/', index);
 app.listen(port);
 
 // shoutout to the user
-console.log('Magic happens on port ' + port);
+print('Magic happens on port ' + port);
 
 // expose app
 exports = module.exports = app;
