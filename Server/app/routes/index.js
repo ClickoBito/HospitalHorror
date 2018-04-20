@@ -9,6 +9,7 @@ const PatientAllergyCtrl = require('../controllers/patientallergy.js');
 const PatientCtrl = require('../controllers/patient.js');
 const PatientDiagnosisCtrl = require('../controllers/patientdiagnosis.js');
 const DoctorCtrl = require('../controllers/doctor.js')
+const UpdaterCtrl = require('../controllers/updater.js')
 
 // RESTful API
 
@@ -19,6 +20,7 @@ router.post('/logout', AuthCtrl.logout);
 
 // Patient
 router.get('/doctor/:id', DoctorCtrl.getDoctorDashboardData);
+//router.get('/doctor', UpdaterCtrl.updatePatientInfo);
 
 // PatientInfo
 router.post('/patientinfo', PatientInfoCtrl.create);

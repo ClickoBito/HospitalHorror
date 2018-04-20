@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 module.exports.getDoctorDashboardData = function(req, res){
     Sequelize.Promise.all([
         model.Patient.findAll({
-            attributes: ['firstname', 'lastname'],
+            attributes: ['firstname', 'lastname', 'id'],
             limit: 20
         }),
         model.Nurse.findAll({
