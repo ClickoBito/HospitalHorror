@@ -54,7 +54,7 @@ router.get('/admin', function (req, res) {
 
 router.get('/secretary', function (req, res) {
 	res.render('patient');
-})
+});
 
 // Sends user to index page and displays error message
 router.get('/error', function (req, res) {
