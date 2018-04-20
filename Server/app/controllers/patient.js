@@ -8,7 +8,7 @@ module.exports.create = function (req, res, next) {
     console.log(req.body);
     model.Patient.create(req.body).then(patient => {
         console.log('Created Patient');
-        console.log(info.get({ plain: true }));
+        console.log(patient.get({ plain: true }));
         res.redirect('/');
     }, err => {
         console.log(err);

@@ -19,6 +19,7 @@ router.post('/logout', AuthCtrl.logout);
 
 // Patient
 router.get('/doctor', PatientCtrl.getAllPatients);
+router.post('/createpatient', PatientCtrl.create);
 
 // PatientInfo
 router.post('/patientinfo', PatientInfoCtrl.create);
@@ -50,6 +51,10 @@ router.get('/admin', function (req, res) {
 	else
 		res.render('admin');
 });
+
+router.get('/secretary', function (req, res) {
+	res.render('patient');
+})
 
 // Sends user to index page and displays error message
 router.get('/error', function (req, res) {
