@@ -1,6 +1,6 @@
 /*jslint node: true */
 'use strict';
-
+const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
 	let Doctor = sequelize.define('Doctor', {
 		id: {
@@ -13,6 +13,10 @@ module.exports = function(sequelize, DataTypes) {
 		dateofbirth: DataTypes.DATEONLY,
 		phone: DataTypes.STRING,
 		email: DataTypes.STRING,
+		Speciality: {
+			type:  Sequelize.ENUM,
+			values: ['Dermatologist', 'Hematologist', 'Diabetologist', 'Psychiatrist']
+		},
 		createdAt: {
 			type: DataTypes.DATE,
 			defaultValue: sequelize.fn('NOW')
