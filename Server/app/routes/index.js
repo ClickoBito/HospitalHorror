@@ -9,7 +9,7 @@ const PatientAllergyCtrl = require('../controllers/patientallergy.js');
 const PatientCtrl = require('../controllers/patient.js');
 const PatientDiagnosisCtrl = require('../controllers/patientdiagnosis.js');
 const DoctorCtrl = require('../controllers/doctor.js')
-const UpdaterCtrl = require('../controllers/updater.js')
+//const UpdaterCtrl = require('../controllers/updater.js')
 
 // RESTful API
 
