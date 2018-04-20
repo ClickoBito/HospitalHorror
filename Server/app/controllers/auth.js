@@ -1,10 +1,11 @@
 const model = require('../models/');
 const controller = require('../controllers/patient.js');
-const  bCrypt= require('bcryptjs');
+const bCrypt= require('bcryptjs');
+const app = require('../../server.js');
 
 module.exports.login = function(req, res, next) {
 	// debug
-	// console.log(req.body);
+	// app.print(req.body);
 	model.User.findOne({
 		where: {
 			username: req.body.username,
@@ -18,7 +19,7 @@ module.exports.login = function(req, res, next) {
 			req.session.user = user;
 
 			let userinfo = user.get({plain: true});
-			console.log(userinfo);
+			app.print(userinfo);
 			if (userinfo.userType === 'Admin')
 				res.redirect('/admin/');
 			else if (userinfo.userType === 'Doctor')
@@ -29,7 +30,7 @@ module.exports.login = function(req, res, next) {
 				res.redirect('/doctor/');
 
 		} else {
-			console.log("Wrong login-credentials");
+			app.print("Wrong login-credentials");
 			// TODO: display error message in frontend
 			req.session.error = 'Username or password is wrong.';
 			req.session.errorcode = 401;
@@ -37,8 +38,8 @@ module.exports.login = function(req, res, next) {
 		}
 
 	}, err => {
-		console.log("Error logging in");
-		console.log(err);
+		app.print("Error logging in");
+		app.print(err);
 		req.session.error = 'There was an error logging in. Please try again later.';
 		req.session.errorcode = 500;
 		res.redirect('/error/');
@@ -60,8 +61,8 @@ module.exports.register = function (req, res, next) {
 	}).spread((user, created) => {
 		//Check if user was created or if it already exists
 		if (created) {
-			console.log('User successfully created');
-			console.log(req.body.username + ' ' + req.body.password);
+			app.print('User successfully created');
+			app.print(req.body.username + ' ' + req.body.password);
 
 			//Check user type and create corresponding model
 			if (req.body.usertype === 'Doctor') {
@@ -71,12 +72,12 @@ module.exports.register = function (req, res, next) {
 					email: req.body.email, UserId: user.id
 				}).then(doctor => {
 					// let info = doctor.get({plain:true})
-					console.log('Doctor created');
+					app.print('Doctor created');
 					req.session.destroy();
 					// TODO: redirect to appropriate page
 					res.redirect('/');
 				}, err => {
-					console.log(err);
+					app.print(err);
 					req.session.error = 'There was an error creating your account. Please try again later.';
 					req.session.errorcode = 500;
 					res.redirect('/error/');
@@ -90,12 +91,12 @@ module.exports.register = function (req, res, next) {
 						email: req.body.email, UserId: user.id
 					}).then(nurse => {
 						// let info = nurse.get({plain:true})
-						console.log('Nurse created');
+						app.print('Nurse created');
 						req.session.destroy();
 						// TODO: redirect to appropriate page
 						res.redirect('/');
 					}, err => {
-						console.log(err);
+						app.print(err);
 						req.session.error = 'There was an error creating your account. Please try again later.';
 						req.session.errorcode = 500;
 						res.redirect('/error/');
@@ -109,12 +110,12 @@ module.exports.register = function (req, res, next) {
 					email: req.body.email, UserId: user.id
 				}).then(secretary => {
 					// let info = secretary.get({plain:true})
-					console.log('Secretary created');
+					app.print('Secretary created');
 					req.session.destroy();
 					// TODO: redirect to appropriate page
 					res.redirect('/');
 				}, err => {
-					console.log(err);
+					app.print(err);
 					req.session.error = 'There was an error creating your account. Please try again later.';
 					req.session.errorcode = 500;
 					res.redirect('/error/');
@@ -123,7 +124,7 @@ module.exports.register = function (req, res, next) {
 
 		}
 		else {
-			console.log('User with this username already found');
+			app.print('User with this username already found');
 			req.session.error = 'Username taken. Please try something else.';
 			req.session.errorcode = 400;
 			res.redirect('/error/');
@@ -133,7 +134,6 @@ module.exports.register = function (req, res, next) {
 };
 
 module.exports.logout = function(req, res, next) {
-	console.log(req.session.user);
 	res.clearCookie('connect.sid');
 	req.session.destroy();
 	res.redirect('/');
