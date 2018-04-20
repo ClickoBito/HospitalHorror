@@ -19,7 +19,7 @@ router.post('/logout', AuthCtrl.logout);
 
 // Patient
 router.get('/doctor', PatientCtrl.getAllPatients);
-router.post('/createpatient', PatientCtrl.create);
+router.post('/patient', PatientCtrl.create);
 
 // PatientInfo
 router.post('/patientinfo', PatientInfoCtrl.create);
@@ -47,7 +47,7 @@ router.get('/admin', function (req, res) {
 		req.session.error = 'Only admins can access this page.';
 		req.session.errorcode = 401;
 		res.redirect('/error/');
-	} 
+	}
 	else
 		res.render('admin');
 });
@@ -73,7 +73,7 @@ router.get('/error', function (req, res) {
 // router.get('/doctor', function (req, res) {
 	// 	console.log('Doctor logged in');
 	// 	//res.sendFile('./views/doctor.pug', { root: __dirname + "./../.." });
-	
+
 // });
 
 // frontend routes =========================================================
