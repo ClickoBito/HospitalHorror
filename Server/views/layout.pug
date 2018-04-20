@@ -3,6 +3,7 @@ html
     head
         title Doctor
         link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css' integrity='sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4' crossorigin='anonymous')
+        script(src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous')
         style(type='text/css').
             #main {
                 border-left: 1px solid #333;
@@ -16,6 +17,12 @@ html
             .nav-item {
                 width: 90px;
             }
+
+            #nursesList, #patientsList{
+                max-height: 300px;
+                overflow: auto;
+            }
+            
     body
         block content
         br

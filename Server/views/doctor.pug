@@ -4,20 +4,22 @@ block content
 	+navbar(username.firstname + ' ' + username.lastname)
 	div.wrapper.col-m-4.sticky-top
 		nav(id='sidebar sticky-top')
-			// Sidebar Links
+			//- Sidebar Links
 			.container-fluid
 				.row
 					#sticky-sidebar.col-2.sidebar-sticky
 						.sticky-top
 							.nav.flex-column
+								h2 Patients
 								ul#patientsList.list-group-flush
-									h2 Patients
 									each patient in patients
-										li.list-group-item #{patient.firstname + ' ' + patient.lastname}
-								ul#patientsList.list-group-flush
+										li.list-group-item 
+											a(href='' onclick='getCurrentPatientId(#{patient.id})') #{patient.firstname + ' ' + patient.lastname}
+								ul#nursesList.list-group-flush
 									h2 Nurses
 									each nurse in nurses
-										li.list-group-item #{nurse.firstname + ' ' + nurse.lastname}
+										li.list-group-item 
+											a(href='') #{nurse.firstname + ' ' + nurse.lastname}
 					#main.col
 						table.table.table-striped
 							thead
@@ -27,11 +29,14 @@ block content
 									th(scope='col') Blood Pressure
 							tbody
 								tr
-									th(scope='row') Mark Zuckerberg
-									td #{patientInfo.bloodpressure}
-									td #{patientInfo.weight}
+									th(scope='row') #{patients[1].firstname + ' ' + patients[1].lastname}
+									td#pbp #{patientInfo.bloodpressure}
+									td#pw #{patientInfo.weight}
 
 						.form-group
 							label(for='doctorNotes')
 								strong Doctor's Notes
 							textarea#exampleTextarea.form-control(rows='10' placeholder='Enter patient notes here...')
+							//-script.
+								-include '../app/controllers/updater.js'
+								
