@@ -19,7 +19,7 @@ module.exports.login = function(req, res, next) {
 			req.session.user = user;
 
 			let userinfo = user.get({plain: true});
-			app.print(userinfo);
+			// app.print(userinfo);
 			if (userinfo.userType === 'Admin')
 				res.redirect('/admin/');
 			else if (userinfo.userType === 'Doctor')

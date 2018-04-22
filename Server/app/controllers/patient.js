@@ -7,11 +7,22 @@ const app = require('../../server.js');
 module.exports.create = function (req, res, next) {
     //app.print('Attempting to create a patient');
     app.print(req.body);
-    model.Patient.create(req.body).then(patient => {
-        console.log('Created Patient');
-        console.log(patient.get({ plain: true }));
+    model.Patient.findOrCreate({
+        where: {ssNbr: req.body.ssNbr},
+        defaults: req.body
+    }).spread((patient, created) => {
+        if(created) {
+            app.print('Created Patient');
+            app.print(patient.get({ plain: true }));
+            res.redirect('/');
 
-        res.redirect('/');
+        }
+        else {
+            app.print('Patient with this SSN already exists.');
+            req.session.error = 'Patient with this SSN already exists.';
+            req.session.errorcode = 400;
+            res.redirect('/error/');
+        }
     }, err => {
         app.print(err);
         res.redirect('/');
