@@ -15,7 +15,9 @@ block content
 		div(class='navbarSupportedContent collapse navbar-collapse')
 			ul(class='navbar-nav mr-auto')
 				li(class='nav-item')
-					button(class='btn btn-danger', type='button') Logout
+					form(action='/logout', method='post')
+						input(type='hidden')
+						button(class='btn btn-danger', type='submit') Logout
 				li
 					button(class='btn btn-outline-secondary disabled') Signed in as: Dr Derek Shepherd
 			form(class='form-inline my-2 my-lg-0')

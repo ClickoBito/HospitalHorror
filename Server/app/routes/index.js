@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const app = require('../../server.js');
 
 
 // controller
 const AuthCtrl = require('../controllers/auth.js');
 const PatientInfoCtrl = require('../controllers/patientinfo.js');
 const PatientAllergyCtrl = require('../controllers/patientallergy.js');
-const PatientCtrl = require('../controllers/patient.js')
 const TreatmentCtrl = require('../controllers/treatment.js')
+const PatientCtrl = require('../controllers/patient.js');
+const PatientDiagnosisCtrl = require('../controllers/patientdiagnosis.js');
 
 // RESTful API
 
@@ -31,23 +33,49 @@ router.delete('/patientallergy/:id', PatientAllergyCtrl.delete);
 
 // Treatment
 router.post('/treatment', TreatmentCtrl.createTreatment);
-//router.get('/treatment/:id', TreatmentCtrl.getTreatment);
 router.put('/treatment/:id', TreatmentCtrl.editTreatment);
 router.delete('/treatment/:id', TreatmentCtrl.deleteTreatment);
+//TODO: Check if this statement is required
+//router.get('/treatment/:id', TreatmentCtrl.getTreatment);
+
+// PatientDiagnosis
+router.post('/patientdiagnosis', PatientDiagnosisCtrl.create);
+router.put('/patientdiagnosis/:id', PatientDiagnosisCtrl.edit);
+router.delete('/patientdiagnosis/:id', PatientDiagnosisCtrl.delete);
 
 // TODO: put function in a controller
 router.get('/home/:id', function(req, res) {
 	res.sendFile('./views/home.html', { root: __dirname + "./../.." });
 });
 
+// Checks if user is admin
 router.get('/admin', function (req, res) {
-	console.log('Admin logged in');
-	res.render('admin');
+	if(!AuthCtrl.isAdmin(req)) {
+		req.session.error = 'Only admins can access this page.';
+		req.session.errorcode = 401;
+		res.redirect('/error/');
+	}
+	else
+		res.render('admin');
+});
+
+// Sends user to index page and displays error message
+router.get('/error', function (req, res) {
+	if(req.session.error !== undefined) {
+		res.status(req.session.errorcode);
+		res.render('index', {
+			status: req.session.error
+		});
+		req.session.error = undefined;
+		req.session.errorcode = undefined;
+	}
+	else
+		res.redirect('/');
 });
 
 // router.get('/doctor', function (req, res) {
-// 	console.log('Doctor logged in');
-// 	//res.sendFile('./views/doctor.pug', { root: __dirname + "./../.." });
+	// 	app.print('Doctor logged in');
+	// 	//res.sendFile('./views/doctor.pug', { root: __dirname + "./../.." });
 
 // });
 

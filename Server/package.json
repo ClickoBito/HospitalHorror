@@ -3,13 +3,15 @@
   "main": "server.js",
   "scripts": {
     "start": "set NODE_ENV=development&&node ./server.js",
+    "test": "npm run lint-test && npm run mocha-test",
     "create_test_db": "NODE_ENV=test node ./database/resync.js && NODE_ENV=test node ./database/loadTestData.js",
-    "test": "cross-env NODE_ENV=test ./node_modules/.bin/mocha --recursive --require babel-core/register --exit",
-    "test2": "jshint server.js",
+    "mocha-test": "cross-env NODE_ENV=test ./node_modules/.bin/mocha --recursive --require babel-core/register --exit",
+    "lint-test": "jshint server.js app/ config/ database/ test/",
     "resync": "node ./database/resync.js",
     "load_testdata": "node ./database/loadTestData.js"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "dottie": "^2.0.0",
     "express": "^4.16.2",

@@ -1,13 +1,13 @@
 const model = require('../models/');
 const app = require('../../server.js');
 
-module.exports.create = function(req, res, next) { // create is a function in a sequelize
-	app.print('Trying to create a PatientInfo');
+module.exports.create = function(req, res, next) {
+	app.print('Trying to create a patientDiagnosis');
 	app.print(req.body);
-	model.PatientInfo.create(req.body)//creating a patientinfo
+	model.Diagnosis.create(req.body)
 	.then(info => {
-		app.print('Created PatientInfo');
-		app.print(info.get({plain:true}));// redirecting info
+		app.print('Created patientDiagnosis');
+		app.print(info.get({plain:true}));
 		// TODO: redirect to some page
 		res.redirect('/');
 	}, err => {
@@ -16,13 +16,12 @@ module.exports.create = function(req, res, next) { // create is a function in a 
 		res.redirect('/');
 	});
 };
-
 module.exports.edit = function(req, res, next) {
-	app.print('Trying to update a PatientInfo');
+	app.print('Trying to update a patientDiagnosis');
 	app.print(req.body);
-	model.PatientInfo.update(req.body,{where: {id: req.params.id}})
+	model.Diagnosis.update(req.body,{where: {id: req.params.id}})
 	.then(info => {
-		app.print('Updated PatientInfo');
+		app.print('Updated patientDiagnosis');
 		// TODO: redirect to some page
 		res.redirect('/');
 	}, err => {
@@ -33,10 +32,11 @@ module.exports.edit = function(req, res, next) {
 };
 
 module.exports.delete = function(req, res, next) {
-	app.print('Trying to delete a PatientInfo');
-	model.PatientInfo.destroy({where: {id: req.params.id}})
+	app.print('Trying to delete a patientDiagnosis');
+	model.Diagnosis.destroy({where: {id: req.params.id}})
 	.then(response => {
-		app.print('Deleted PatientInfo');
+		app.print('Deleted patientDiagnosis');
+		app.print(response);
 		// TODO: redirect to some page
 		res.redirect('/');
 	}, err => {

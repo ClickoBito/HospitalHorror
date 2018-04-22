@@ -1,4 +1,5 @@
 const model = require('../models');
+const app = require('../../server.js');
 
 module.exports.getAllNurses = function (req, res, next) {
     model.Nurse.findAll({
@@ -6,11 +7,11 @@ module.exports.getAllNurses = function (req, res, next) {
         limit: 5
     }).then(nurses => {
         nurses.forEach(n => {
-            console.log(n.get({ plain: true }));
-            
+            app.print(n.get({ plain: true }));
+
         });
         //res.render('doctor', {
-            //title: 'Nurses', 
+            //title: 'Nurses',
             //nurses: nurses});
     });
 };

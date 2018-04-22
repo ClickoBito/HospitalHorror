@@ -1,16 +1,18 @@
 const model = require('../models/');
+const AuthCtrl = require('../controllers/auth.js');
+const app = require('../../server.js');
 
-//var PatientList;                        
+//var PatientList;
 
 module.exports.create = function (req, res, next) {
-    //console.log('Attempting to create a patient');
-    console.log(req.body);
+    //app.print('Attempting to create a patient');
+    app.print(req.body);
     model.Patient.create(req.body).then(patient => {
-        console.log('Created Patient');
-        console.log(info.get({ plain: true }));
+        app.print('Created Patient');
+        app.print(info.get({ plain: true }));
         res.redirect('/');
     }, err => {
-        console.log(err);
+        app.print(err);
         res.redirect('/');
     });
 };
@@ -18,18 +20,27 @@ module.exports.create = function (req, res, next) {
 var patientsList;
 
 module.exports.getAllPatients = function (req, res, next) {
+    app.print(req.session);
+    //Check if user is authorized to render doctor page
+    if(!AuthCtrl.isDoctor(req)) {
+        req.session.error = 'Only doctors can access this page.';
+        req.session.errorcode = 403;
+        res.redirect('/error/');
+        return;
+    }
+
     model.Patient.findAll({
         attributes: ['firstname', 'lastname'],
         limit: 5
     }).then(patients => {
         patients.forEach(p => {
-            console.log(p.get({ plain: true }));
-            
-            patientsList = p; 
+            app.print(p.get({ plain: true }));
+
+            patientsList = p;
 
         });
         res.render('doctor', {
-            title: 'Patients', 
+            title: 'Patients',
             patients: patients});
     });
 };

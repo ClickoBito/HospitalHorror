@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
 	});
 
  	Treatment.associate = function(models) {
-		models.Treatment.belongsTo(models.TreatmentType)
+		models.Treatment.belongsTo(models.TreatmentType);
 		models.Treatment.hasOne(models.Diagnosis);
 	};
 

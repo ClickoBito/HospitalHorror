@@ -1,14 +1,17 @@
 const model = require('../models/');
 const controller = require('../controllers/patient.js');
+const bCrypt= require('bcryptjs');
+const app = require('../../server.js');
 
 module.exports.login = function(req, res, next) {
 	// debug
-	console.log(req.body);
+	// app.print(req.body);
 	model.User.findOne({
 		where: {
 			username: req.body.username,
-			password: req.body.password
+			password: req.body.password // encryptPassword(req.body.password)
 		}
+
 	}).then(user => {
 
 		if (user) {
@@ -16,35 +19,41 @@ module.exports.login = function(req, res, next) {
 			req.session.user = user;
 
 			let userinfo = user.get({plain: true});
-
+			app.print(userinfo);
 			if (userinfo.userType === 'Admin')
 				res.redirect('/admin/');
-			else if (userinfo.userType === 'Doctor') {
-				// controller.getAllPatients;
+			else if (userinfo.userType === 'Doctor')
 				res.redirect('/doctor/');
-			}
+			else if (userinfo.userType === 'Nurse')
+				res.redirect('/doctor/');
+			else
+				res.redirect('/doctor/');
+
 		} else {
-			console.log("Wrong login-credentials");
+			app.print("Wrong login-credentials");
 			// TODO: display error message in frontend
-			res.render('index', {
-				status: 'Username or password is wrong.'
-			});
+			req.session.error = 'Username or password is wrong.';
+			req.session.errorcode = 401;
+			res.redirect('/error/');
 		}
 
 	}, err => {
-		console.log("Error logging in");
-		console.log(err);
-		res.render('index', {
-			status: 'There was an error logging in, please try again later.'
-		});
+		app.print("Error logging in");
+		app.print(err);
+		req.session.error = 'There was an error logging in. Please try again later.';
+		req.session.errorcode = 500;
+		res.redirect('/error/');
 	});
 };
 
 
 module.exports.register = function (req, res, next) {
-	// TODO: display error message
-	if (!isAdmin(req))
-		res.redirect('/');
+	if (!isAdmin(req)) {
+		req.session.error = 'Admin privileges not found. User not created.';
+		req.session.errorcode = 403;
+		res.redirect('/error/');
+		return;
+	}
 
 	model.User.findOrCreate({
 		where: {username: req.body.username},
@@ -52,7 +61,8 @@ module.exports.register = function (req, res, next) {
 	}).spread((user, created) => {
 		//Check if user was created or if it already exists
 		if (created) {
-			console.log('User successfully created');
+			app.print('User successfully created');
+			app.print(req.body.username + ' ' + req.body.password);
 
 			//Check user type and create corresponding model
 			if (req.body.usertype === 'Doctor') {
@@ -62,13 +72,15 @@ module.exports.register = function (req, res, next) {
 					email: req.body.email, UserId: user.id
 				}).then(doctor => {
 					// let info = doctor.get({plain:true})
-					console.log('Doctor created');
+					app.print('Doctor created');
+					req.session.destroy();
 					// TODO: redirect to appropriate page
 					res.redirect('/');
 				}, err => {
-					console.log(err);
-					// TODO: display error message in frontend
-					res.redirect('/');
+					app.print(err);
+					req.session.error = 'There was an error creating your account. Please try again later.';
+					req.session.errorcode = 500;
+					res.redirect('/error/');
 				});
 			}
 
@@ -79,13 +91,15 @@ module.exports.register = function (req, res, next) {
 						email: req.body.email, UserId: user.id
 					}).then(nurse => {
 						// let info = nurse.get({plain:true})
-						console.log('Nurse created');
+						app.print('Nurse created');
+						req.session.destroy();
 						// TODO: redirect to appropriate page
 						res.redirect('/');
 					}, err => {
-						console.log(err);
-						// TODO: display error message in frontend
-						res.redirect('/');
+						app.print(err);
+						req.session.error = 'There was an error creating your account. Please try again later.';
+						req.session.errorcode = 500;
+						res.redirect('/error/');
 					});
 				}
 
@@ -96,27 +110,24 @@ module.exports.register = function (req, res, next) {
 					email: req.body.email, UserId: user.id
 				}).then(secretary => {
 					// let info = secretary.get({plain:true})
-					console.log('Secretary created');
+					app.print('Secretary created');
+					req.session.destroy();
 					// TODO: redirect to appropriate page
 					res.redirect('/');
 				}, err => {
-					console.log(err);
-					// TODO: display error message in frontend
-					res.redirect('/');
+					app.print(err);
+					req.session.error = 'There was an error creating your account. Please try again later.';
+					req.session.errorcode = 500;
+					res.redirect('/error/');
 				});
 			}
-			// TODO: fix the correct redirect then render sth.
-			// Don't try to send 2 responses
-			//console.log('User successfully created');
-			//res.render('index', {status: 'User successfully created.'});
 
 		}
 		else {
-			console.log('User with this username already found');
-			// TODO: need to redirect after a POST-request
-			res.render('admin', {
-				status: 'Username taken.'
-			});
+			app.print('User with this username already found');
+			req.session.error = 'Username taken. Please try something else.';
+			req.session.errorcode = 400;
+			res.redirect('/error/');
 		}
 	});
 
@@ -125,7 +136,7 @@ module.exports.register = function (req, res, next) {
 module.exports.logout = function(req, res, next) {
 	res.clearCookie('connect.sid');
 	req.session.destroy();
-	res.status(200).send('Logout successful');
+	res.redirect('/');
 };
 
 function isAdmin(req) {
@@ -147,3 +158,8 @@ function isSecretary(req) {
 	return req.session.user && req.session.user.userType === 'Secretary';
 }
 module.exports.isSecretary = isSecretary;
+
+function encryptPassword(password) {
+    return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
+}
+module.exports.encryptPassword = encryptPassword;
