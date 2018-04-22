@@ -7,7 +7,7 @@ const app = require('../../server.js');
 const AuthCtrl = require('../controllers/auth.js');
 const PatientInfoCtrl = require('../controllers/patientinfo.js');
 const PatientAllergyCtrl = require('../controllers/patientallergy.js');
-const TreatmentCtrl = require('../controllers/treatment.js')
+const TreatmentCtrl = require('../controllers/treatment.js');
 const PatientCtrl = require('../controllers/patient.js');
 const PatientDiagnosisCtrl = require('../controllers/patientdiagnosis.js');
 
