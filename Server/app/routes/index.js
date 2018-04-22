@@ -60,8 +60,15 @@ router.get('/admin', function (req, res) {
 		res.render('admin');
 });
 
+// Check if user is a secretary, then render create patient view
 router.get('/secretary', function (req, res) {
-	res.render('patient');
+	if (!AuthCtrl.isSecretary(req)) {
+		req.session.error = 'Only secretaries can access this page.';
+		req.session.errorcode = 401;
+		res.redirect('/error/');
+	}
+	else
+		res.render('patient');
 });
 
 // Sends user to index page and displays error message
