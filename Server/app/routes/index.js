@@ -20,6 +20,7 @@ router.post('/logout', AuthCtrl.logout);
 
 // Patient
 router.get('/doctor', PatientCtrl.getAllPatients);
+router.post('/patient', PatientCtrl.create);
 
 // PatientInfo
 router.post('/patientinfo', PatientInfoCtrl.create);
@@ -57,6 +58,17 @@ router.get('/admin', function (req, res) {
 	}
 	else
 		res.render('admin');
+});
+
+// Check if user is a secretary, then render create patient view
+router.get('/secretary', function (req, res) {
+	if (!AuthCtrl.isSecretary(req)) {
+		req.session.error = 'Only secretaries can access this page.';
+		req.session.errorcode = 401;
+		res.redirect('/error/');
+	}
+	else
+		res.render('patient');
 });
 
 // Sends user to index page and displays error message
