@@ -7,29 +7,11 @@ const model = require('../../../app/models/');
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-// This sleep function is needed for the tests below to work
-function sleep(ms) {
-    var start = new Date().getTime();
-    for (var i = 0; i<1e7; i++) {
-        if(((new Date().getTime() - start) > ms)) {
-            break;
-        }
-    }
-}
-
 describe('Test of creating treatments', function() {
     beforeEach(function (done) {
         // Create 5 treatments to store them to the database
-        for(var i=0; i<4; i++){
-            supertest(app)
-            .post('/treatment')
-            .send({description: 'Treatment created', TreatmentTypeId: '2'})
-            .expect(302)
-            .end((err, res) => {
-                should.not.exist(err);
-                res.headers.location.substring(0,6).should.not.equal('/error/');
-            });
-        }
+        // We chain the 5 requests so that we can be sure that they have all been processed
+        // before we proceed with the test
         supertest(app)
         .post('/treatment')
         .send({description: 'Treatment created', TreatmentTypeId: '2'})
@@ -37,9 +19,39 @@ describe('Test of creating treatments', function() {
         .end((err, res) => {
             should.not.exist(err);
             res.headers.location.substring(0,6).should.not.equal('/error/');
-            //Sleep is necesarry to store all new treatments in the database before the tests begin
-            sleep(500);
-            done();
+            supertest(app)
+            .post('/treatment')
+            .send({description: 'Treatment created', TreatmentTypeId: '2'})
+            .expect(302)
+            .end((err, res) => {
+                should.not.exist(err);
+                res.headers.location.substring(0,6).should.not.equal('/error/');
+                supertest(app)
+                .post('/treatment')
+                .send({description: 'Treatment created', TreatmentTypeId: '2'})
+                .expect(302)
+                .end((err, res) => {
+                    should.not.exist(err);
+                    res.headers.location.substring(0,6).should.not.equal('/error/');
+                    supertest(app)
+                    .post('/treatment')
+                    .send({description: 'Treatment created', TreatmentTypeId: '2'})
+                    .expect(302)
+                    .end((err, res) => {
+                        should.not.exist(err);
+                        res.headers.location.substring(0,6).should.not.equal('/error/');
+                        supertest(app)
+                        .post('/treatment')
+                        .send({description: 'Treatment created', TreatmentTypeId: '2'})
+                        .expect(302)
+                        .end((err, res) => {
+                            should.not.exist(err);
+                            res.headers.location.substring(0,6).should.not.equal('/error/');
+                            done();
+                        });
+                    });
+                });
+            });
         });
     });
     afterEach(function (done) {
