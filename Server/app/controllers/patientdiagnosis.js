@@ -1,45 +1,46 @@
 const model = require('../models/');
+const app = require('../../server.js');
 
 module.exports.create = function(req, res, next) {
-	console.log('Trying to create a patientDiagnosis');
-	console.log(req.body);
+	app.print('Trying to create a patientDiagnosis');
+	app.print(req.body);
 	model.Diagnosis.create(req.body)
 	.then(info => {
-		console.log('Created patientDiagnosis');
-		console.log(info.get({plain:true}));
+		app.print('Created patientDiagnosis');
+		app.print(info.get({plain:true}));
 		// TODO: redirect to some page
 		res.redirect('/');
 	}, err => {
-		console.log(err);
+		app.print(err);
 		// TODO: redirect to error page e.g.
 		res.redirect('/');
 	});
 };
 module.exports.edit = function(req, res, next) {
-	console.log('Trying to update a patientDiagnosis');
-	console.log(req.body);
+	app.print('Trying to update a patientDiagnosis');
+	app.print(req.body);
 	model.Diagnosis.update(req.body,{where: {id: req.params.id}})
 	.then(info => {
-		console.log('Updated patientDiagnosis');
+		app.print('Updated patientDiagnosis');
 		// TODO: redirect to some page
 		res.redirect('/');
 	}, err => {
-		console.log(err);
+		app.print(err);
 		// TODO: redirect to error page e.g.
 		res.redirect('/');
 	});
 };
 
 module.exports.delete = function(req, res, next) {
-	console.log('Trying to delete a patientDiagnosis');
+	app.print('Trying to delete a patientDiagnosis');
 	model.Diagnosis.destroy({where: {id: req.params.id}})
 	.then(response => {
-		console.log('Deleted patientDiagnosis');
-		console.log(response);
+		app.print('Deleted patientDiagnosis');
+		app.print(response);
 		// TODO: redirect to some page
 		res.redirect('/');
 	}, err => {
-		console.log(err);
+		app.print(err);
 		// TODO: redirect to error page e.g.
 		res.redirect('/');
 	});
