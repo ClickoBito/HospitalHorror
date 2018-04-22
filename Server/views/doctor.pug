@@ -3,40 +3,53 @@ include navbar
 block content
 	+navbar(username.firstname + ' ' + username.lastname)
 	div.wrapper.col-m-4.sticky-top
-		nav(id='sidebar sticky-top')
+		nav.sticky-top
 			//- Sidebar Links
 			.container-fluid
 				.row
 					#sticky-sidebar.col-2.sidebar-sticky
 						.sticky-top
 							.nav.flex-column
-								h2 Patients
+								i#patientsIcon(class='fa fa-hospital-o')
+									h4#sidebarTitle Patients
 								ul#patientsList.list-group-flush
-									each patient in patients
-										li.list-group-item 
-											a(href='' onclick='getCurrentPatientId(#{patient.id})') #{patient.firstname + ' ' + patient.lastname}
+								each patient in patients
+									li#patient.list-group-item 
+									a#patientLink(href='' onclick='getCurrentPatientId(#{patient.id})') #{patient.firstname + ' ' + patient.lastname}
+								i#nursesIcon(class='fa fa-user')
+									h4#sidebarTitle Nurses
 								ul#nursesList.list-group-flush
-									h2 Nurses
-									each nurse in nurses
-										li.list-group-item 
-											a(href='') #{nurse.firstname + ' ' + nurse.lastname}
+								each nurse in nurses
+									li.list-group-item 
+									a#nurseLink(href='') #{nurse.firstname + ' ' + nurse.lastname}
 					#main.col
-						table.table.table-striped
-							thead
+						label(for='patientInfo')
+							h3 #{patients[1].firstname + ' ' + patients[1].lastname}'s Info
+						table#patientInfoTable.table.table-curved
+							thead#table-head
 								tr
-									th(scope='col') Patient Name
 									th(scope='col') Last Visit
 									th(scope='col') Blood Pressure
+									th(scope='col') Weight
+									th(scope='col') Date of Birth
 							tbody
+							each pi in patientInfo
 								tr
-									th(scope='row') #{patients[1].firstname + ' ' + patients[1].lastname}
-									td#pbp #{patientInfo.bloodpressure}
-									td#pw #{patientInfo.weight}
-
+									td#ca(scope='row') #{pi.createdAt.toString().substr(0,24)}
+									td#pbp #{pi.bloodpressure}
+									td#pw #{pi.weight}
+									td#pdb #{patients[pi.PatientId].dateofbirth}
+						.card
+							.card-body
+								h4.card-title Previous Notes
+								each pin,i in patientInfo
+									p.card-text Notes ##{i+1}: #{pin.description} 
 						.form-group
 							label(for='doctorNotes')
-								strong Doctor's Notes
-							textarea#exampleTextarea.form-control(rows='10' placeholder='Enter patient notes here...')
-							//-script.
-								-include '../app/controllers/updater.js'
-								
+								h3 Doctor's Notes
+							textarea#doctorNoteArea.form-control(rows='10' placeholder='Enter patient notes here...') 
+							script.
+								function getCurrentPatientId(id){
+									document.getElementById('ca').innerHTML = "getTitle(value)";
+									document.getElementById('pbp').innerHTML = "getPrice(value)";
+								}
