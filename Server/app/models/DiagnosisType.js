@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
-		diagnosisTypeName: DataTypes.STRING,
+		name: DataTypes.STRING,
 		createdAt: {
 			type: DataTypes.DATE,
 			defaultValue: sequelize.fn('NOW')
@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.DATE,
 			defaultValue: sequelize.fn('NOW')
 		}
-    }, {
+	}, {
 		tableName: 'DiagnosisType',
 		timestamps: true
 	});
