@@ -1,5 +1,6 @@
 const model = require('../models/');
 const Sequelize = require('sequelize');
+const app = require('../../server.js');
 
 module.exports.getDoctorDashboardData = function(req, res){
     Sequelize.Promise.all([
@@ -25,13 +26,13 @@ module.exports.getDoctorDashboardData = function(req, res){
             nurses: nurses,
             patientInfo: patientInfo,
             username: username
-        })
-        console.log('printing nurses ovject: ', nurses)
+        });
+        app.print('printing nurses ovject: ', nurses);
         nurses.forEach(n => {
-            console.log('printing nurses', n.get({plain:true}));
+            app.print('printing nurses', n.get({plain:true}));
         });
     }, err => {
-        console.log(err);
+        app.print(err);
         res.status(500).send({ error: err.errors });
     });
-}
+};
