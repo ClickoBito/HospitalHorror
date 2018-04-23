@@ -87,21 +87,21 @@ INSERT INTO PatientInfo (bloodPressure, weight, description, PatientId)
 VALUES ('140/95', 65, 'Patient seems sick.', 4);
 
 # DiagnosisType
-INSERT INTO DiagnosisType (diagnosisTypeName) VALUES ('pneumonia');
-INSERT INTO DiagnosisType (diagnosisTypeName) VALUES ('endocarditis');
-INSERT INTO DiagnosisType (diagnosisTypeName) VALUES ('myositis');
-INSERT INTO DiagnosisType (diagnosisTypeName) VALUES ('chorditis');
+INSERT INTO DiagnosisType (name) VALUES ('pneumonia');
+INSERT INTO DiagnosisType (name) VALUES ('endocarditis');
+INSERT INTO DiagnosisType (name) VALUES ('myositis');
+INSERT INTO DiagnosisType (name) VALUES ('chorditis');
 
 # AllergyType
-INSERT INTO AllergyType (AllergyTypeName) VALUES ('milk');
-INSERT INTO AllergyType (AllergyTypeName) VALUES ('cadmium');
-INSERT INTO AllergyType (AllergyTypeName) VALUES ('latex');
-INSERT INTO AllergyType (AllergyTypeName) VALUES ('egg');
+INSERT INTO AllergyType (name) VALUES ('milk');
+INSERT INTO AllergyType (name) VALUES ('cadmium');
+INSERT INTO AllergyType (name) VALUES ('latex');
+INSERT INTO AllergyType (name) VALUES ('egg');
 
 # TreatmentType
-INSERT INTO TreatmentType (TreatmentTypeName) VALUES ('antibiotic');
-INSERT INTO TreatmentType (TreatmentTypeName) VALUES ('corticosteroid');
-INSERT INTO TreatmentType (TreatmentTypeName) VALUES ('speech therapy');
+INSERT INTO TreatmentType (name) VALUES ('antibiotic');
+INSERT INTO TreatmentType (name) VALUES ('corticosteroid');
+INSERT INTO TreatmentType (name) VALUES ('speech therapy');
 
 # Allergy
 INSERT INTO Allergy (AllergyTypeId, PatientId) VALUES (1, 4);
