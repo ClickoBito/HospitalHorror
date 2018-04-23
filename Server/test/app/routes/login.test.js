@@ -16,6 +16,39 @@ describe('Testing the login-function', () => {
 		});
 	});
 
+	it('Valid login for a Doctor', done => {
+		supertest(app)
+		.post('/login')
+		.send({username: 'doctor', password: 'doctor'})
+		.end((err, res) => {
+			should.not.exist(err);
+			res.headers.location.substring(0,6).should.not.equal('/error');
+			done();
+		});
+	});
+
+	it('Valid login for a Nurse', done => {
+		supertest(app)
+		.post('/login')
+		.send({username: 'nurse', password: 'nurse'})
+		.end((err, res) => {
+			should.not.exist(err);
+			res.headers.location.substring(0,6).should.not.equal('/error');
+			done();
+		});
+	});
+
+	it('Valid login for a Secretary', done => {
+		supertest(app)
+		.post('/login')
+		.send({username: 'secretary', password: 'secretary'})
+		.end((err, res) => {
+			should.not.exist(err);
+			res.headers.location.substring(0,6).should.not.equal('/error');
+			done();
+		});
+	});
+
 	it('Invalid login', done => {
 		supertest(app)
 		.post('/login')
