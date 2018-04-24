@@ -185,6 +185,7 @@ Feature | Time estimated | Time spent per team member
 --------|----------------|--------
 Backend authentication | 1 hour | Patrick: 1 hour
 Password encryption    | 2 hours| Teklie and Sabastian : 2 hours
+Relocating css code/other|4.5 hours | Amar and Arnaud :4.5 hours 
 
 ## Reflections
 <!---
