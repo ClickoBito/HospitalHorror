@@ -2,19 +2,19 @@
 # Users
 INSERT INTO User (username, password, userType) VALUES ('JustineD','admin123','Admin');
 INSERT INTO User (username, password, userType) VALUES ('AndyF','hello123','Admin');
-INSERT INTO User (username, password, userType) VALUES ('admin','admin','Admin');
+INSERT INTO User (username, password, userType) VALUES ('admin','$2a$08$KRlqPEBYeNTRCtdx1vvpoeyGjyjyf0INv2H0i/xVtymAOcCtbKSQu','Admin');
 
 INSERT INTO User (username, password, userType) VALUES ('JohanL','doctor123','Doctor');
 INSERT INTO User (username, password, userType) VALUES ('EddieC','letmein123','Doctor');
-INSERT INTO User (username, password, userType) VALUES ('doctor','doctor','Doctor');
+INSERT INTO User (username, password, userType) VALUES ('doctor','$2a$08$GMBmlqp6uFX2xLyPMfcTQei2sTeh5wINJc3BtOcdGQRmQolcpuLHC','Doctor');
 
 INSERT INTO User (username, password, userType) VALUES ('HarleyS','nurse123','Nurse');
 INSERT INTO User (username, password, userType) VALUES ('AngelinaD','iloveyou','Nurse');
-INSERT INTO User (username, password, userType) VALUES ('nurse','nurse','Nurse');
+INSERT INTO User (username, password, userType) VALUES ('nurse','$2a$08$04EhoHt09ucTMEx/6aRAM.Gl8qLZbC09d2ZofxClWi8kvsC3csECi','Nurse');
 
 INSERT INTO User (username, password, userType) VALUES ('JannaJ','secretary123','Secretary');
 INSERT INTO User (username, password, userType) VALUES ('BreannaS','superman','Secretary');
-INSERT INTO User (username, password, userType) VALUES ('secretary','secretary','Secretary');
+INSERT INTO User (username, password, userType) VALUES ('secretary','$2a$08$M8NxswrRGphByIBR1n0YpO820ZcKSwcliM2BQ6/ZW87Uq/lf55k6m','Secretary');
 
 # Admins
 INSERT INTO Admin (firstname, lastname, dateofbirth, phone, email, UserId)

@@ -11,29 +11,37 @@ module.exports.login = function(req, res, next) {
 			username: req.body.username
 		}
 		}).then(user => {
-			//Check if entered password matches
-			bCrypt.compare(req.body.password, user.password, function(err, matches) {
-				if(matches) {
-					req.session.user = user;
-					let userinfo = user.get({plain: true});
-					console.log(userinfo);
-					if (userinfo.userType === 'Admin')
-						res.redirect('/admin/');
-					else if (userinfo.userType === 'Doctor')
-						res.redirect('/doctor/');
-					else if (userinfo.userType === 'Nurse')
-						res.redirect('/doctor/');
-					else
-						res.redirect('/secretary/');
-				}
-				else {
-					console.log("Wrong login-credentials");
-					// TODO: display error message in frontend
-					req.session.error = 'Username or password is wrong.';
-					req.session.errorcode = 401;
-					res.redirect('/error/');
-				}
-			});
+			if (user) {
+				//Check password
+				bCrypt.compare(req.body.password, user.password, function(err, matches) {
+					if(matches) {
+						app.print('password matching');
+						req.session.user = user;
+						let userinfo = user.get({plain: true});
+						console.log(userinfo);
+						if (userinfo.userType === 'Admin')
+							res.redirect('/admin/');
+						else if (userinfo.userType === 'Doctor')
+							res.redirect('/doctor/');
+						else if (userinfo.userType === 'Nurse')
+							res.redirect('/doctor/');
+						else
+							res.redirect('/secretary/');
+					}
+					else {
+						console.log("Wrong login-credentials");
+						req.session.error = 'Username or password is wrong.';
+						req.session.errorcode = 401;
+						res.redirect('/error/');
+					}
+				});
+			}
+			else {
+				console.log("Wrong login-credentials");
+				req.session.error = 'Username or password is wrong.';
+				req.session.errorcode = 401;
+				res.redirect('/error/');
+			}
 
 	}, err => {
 		app.print("Error logging in");
@@ -55,13 +63,13 @@ module.exports.register = function (req, res, next) {
 
 	model.User.findOrCreate({
 		where: {username: req.body.username},
-		defaults: {password: req.body.password, userType: req.body.usertype}
+		defaults: {password: encryptPassword(req.body.password), userType: req.body.usertype}
 	}).spread((user, created) => {
 		//Check if user was created or if it already exists
 		if (created) {
 			app.print('User successfully created');
-			app.print(req.body.username + ' ' + req.body.password);
-
+			// app.print(req.body.username + ' ' + req.body.password);
+			app.print(user.get())
 			//Check user type and create corresponding model
 			if (req.body.usertype === 'Doctor') {
 				model.Doctor.create({
