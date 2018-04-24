@@ -15,7 +15,7 @@ block content
 								ul#patientsList.list-group-flush
 								each patient in patients
 									li#patient.list-group-item 
-									a#patientLink(href='' onclick='getCurrentPatientId(#{patient.id})') #{patient.firstname + ' ' + patient.lastname}
+									a#patientLink(href='javascript:void(0);' type='get' 'onclick'='getPatientData('+patient.id + ')') #{patient.firstname + ' ' + patient.lastname}
 								i#nursesIcon(class='fa fa-user')
 									h4#sidebarTitle Nurses
 								ul#nursesList.list-group-flush
@@ -49,7 +49,12 @@ block content
 								h3 Doctor's Notes
 							textarea#doctorNoteArea.form-control(rows='10' placeholder='Enter patient notes here...') 
 							script.
-								function getCurrentPatientId(id){
-									document.getElementById('ca').innerHTML = "getTitle(value)";
-									document.getElementById('pbp').innerHTML = "getPrice(value)";
+								function getPatientData(id){
+									let xhr = new XMLHttpRequest();
+									xhr.open('GET', "/patient/" + id, false);
+									xhr.addEventListener('load', function(e) {
+										$('#main').html(xhr.responseText);
+									});
+									xhr.send();
 								}
+

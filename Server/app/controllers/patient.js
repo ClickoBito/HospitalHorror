@@ -1,6 +1,7 @@
 const model = require('../models/');
 const AuthCtrl = require('../controllers/auth.js');
 const app = require('../../server.js');
+const Sequelize = require('sequelize');
 
 //var PatientList;
 
@@ -56,3 +57,21 @@ module.exports.getAllPatients = function (req, res, next) {
             patients: patients});
     });
 };
+
+
+module.exports.getPatientData = function(req, res){
+    Sequelize.Promise.all([
+        model.PatientInfo.findAll({
+            where: {PatientId: req.params.pid},
+            attributes: ['bloodpressure', 'weight', 'description', 'createdAt', 'updatedAt', 'PatientId']
+        }),
+        model.Doctor.findOne({
+            where: {PatientId: req.params.id},
+            attributes: ['firstname', 'lastname']
+        })
+    ]).spread((patientInfos, doctorInfo) => {
+        patientInfos.forEach(pi => {
+            console.log('Logging clicked patient info: ' + pi.weight);
+        });
+    })
+}

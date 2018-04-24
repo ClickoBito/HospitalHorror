@@ -21,7 +21,7 @@ router.post('/login', AuthCtrl.login);
 router.post('/logout', AuthCtrl.logout);
 
 // Patient
-
+router.get('/patient/:id', PatientCtrl.getPatientData);
 router.get('/doctor/:id', DoctorCtrl.getDoctorDashboardData);
 router.post('/patient', PatientCtrl.create);
 
