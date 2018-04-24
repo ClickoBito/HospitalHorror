@@ -67,9 +67,8 @@ module.exports.register = function (req, res, next) {
 	}).spread((user, created) => {
 		//Check if user was created or if it already exists
 		if (created) {
-			app.print('User successfully created');
+			// app.print('User successfully created');
 			// app.print(req.body.username + ' ' + req.body.password);
-			app.print(user.get())
 			//Check user type and create corresponding model
 			if (req.body.usertype === 'Doctor') {
 				model.Doctor.create({
