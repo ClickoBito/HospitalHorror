@@ -20,6 +20,11 @@
       h4.card-title Previous Notes
       each pin,i in patient.PatientInfos
         p.card-text Notes ##{i+1}: #{pin.description} 
+  .card
+      .card-body
+        h4.card-title Previous Diagnoses
+        each d,i in patient.Diagnoses
+          p.card-text Diagnosis ##{i+1}: #{d.DiagnosisType.name}
   .form-group
     label(for='doctorNotes')
       h3 Doctor's Notes

@@ -86,26 +86,11 @@ module.exports.getPatientData = function(req, res,next){
         }
       ]
     }).then(patient => {
-      app.print(patient.get({plain:true}));
+      //app.print(patient.get({plain:true}));
 
       res.render('patientprofile', {patient: patient});
 
     }, err => {
 
     });
-
-    /*Sequelize.Promise.all([
-        model.PatientInfo.findAll({
-            where: {PatientId: req.params.pid},
-            attributes: ['bloodpressure', 'weight', 'description', 'createdAt', 'updatedAt', 'PatientId']
-        }),
-        model.Doctor.findOne({
-            where: {PatientId: req.params.id},
-            attributes: ['firstname', 'lastname']
-        })
-    ]).spread((patientInfos, doctorInfo) => {
-        patientInfos.forEach(pi => {
-            app.print('Logging clicked patient info: ' + pi.weight);
-        });
-    });*/
 };
