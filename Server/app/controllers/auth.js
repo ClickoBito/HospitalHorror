@@ -15,10 +15,10 @@ module.exports.login = function(req, res, next) {
 				//Check password
 				bCrypt.compare(req.body.password, user.password, function(err, matches) {
 					if(matches) {
-						app.print('password matching');
+						// app.print('password matching');
 						req.session.user = user;
 						let userinfo = user.get({plain: true});
-						console.log(userinfo);
+						// app.print(userinfo);
 						if (userinfo.userType === 'Admin')
 							res.redirect('/admin/');
 						else if (userinfo.userType === 'Doctor')
