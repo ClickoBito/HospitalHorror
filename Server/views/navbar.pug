@@ -16,6 +16,8 @@ mixin navbar(loggedinUser)
                         i(class='fa fa-search')
             ul#right-hand-buttons(class='nav navbar-nav flex-row justify-content-center flex-nowrap')
                 li(class='nav-item')
-                    button#loggedin(class='btn btn-sm btn-outline-secondary disabled') Loggedin as: #{loggedinUser}
+                    button#loggedin(class='btn btn-sm btn-outline-secondary disabled') Logged in as: #{loggedinUser}
                 li(class='nav-item')
-                    button#logout(class='btn btn-danger btn-sm', type='button') Logout
+                    form(action='/logout', method='post')
+                        input(type='hidden')
+                        button(class='btn btn-danger', type='submit') Logout
