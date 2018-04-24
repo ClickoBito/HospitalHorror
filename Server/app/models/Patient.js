@@ -29,8 +29,11 @@ module.exports = function(sequelize, DataTypes) {
 	}, {
 		tableName: 'Patient',
 		timestamps: true,
-
-
+		getterMethods: {
+		fullname: function() {
+			return this.firstname + ' ' + this.lastname;
+		}
+}
 
 	});
 

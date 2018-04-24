@@ -59,8 +59,42 @@ module.exports.getAllPatients = function (req, res, next) {
 };
 
 
-module.exports.getPatientData = function(req, res){
-    Sequelize.Promise.all([
+module.exports.getPatientData = function(req, res,next){
+    // TODO - authentication
+
+    model.Patient.findOne({
+      where: {id: req.params.id},
+      include: [
+        {
+          model: model.PatientInfo
+        },
+        {
+          model: model.Diagnosis,
+          include: [
+            {
+              model: model.DiagnosisType
+            }
+          ]
+        },
+        {
+          model: model.Allergy,
+          include: [
+            {
+              model: model.AllergyType
+            }
+          ]
+        }
+      ]
+    }).then(patient => {
+      app.print(patient.get({plain:true}));
+
+      res.render('patientprofile', {patient: patient});
+
+    }, err => {
+
+    });
+
+    /*Sequelize.Promise.all([
         model.PatientInfo.findAll({
             where: {PatientId: req.params.pid},
             attributes: ['bloodpressure', 'weight', 'description', 'createdAt', 'updatedAt', 'PatientId']
@@ -71,7 +105,7 @@ module.exports.getPatientData = function(req, res){
         })
     ]).spread((patientInfos, doctorInfo) => {
         patientInfos.forEach(pi => {
-            console.log('Logging clicked patient info: ' + pi.weight);
+            app.print('Logging clicked patient info: ' + pi.weight);
         });
-    })
-}
+    });*/
+};
