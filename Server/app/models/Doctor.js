@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
 		email: DataTypes.STRING,
 		Speciality: {
 			type:  Sequelize.ENUM,
-			values: ['Dermatologist', 'Hematologist', 'Diabetologist', 'Psychiatrist']
+			values: ['Anesthesiologists','Cardiologist','Dermatologist', 'Hematologist', 'Diabetologist', 'Psychiatrist','Pediatrician','General Practioner']
 		},
 		createdAt: {
 			type: DataTypes.DATE,
