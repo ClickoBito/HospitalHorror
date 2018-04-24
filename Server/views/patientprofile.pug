@@ -1,0 +1,31 @@
+.col
+  label(for='patientInfo')
+    h3 #{patient.fullname}'s Info
+  table#patientInfoTable.table.table-curved
+    thead#table-head
+      tr
+        th(scope='col') Last Visit
+        th(scope='col') Blood Pressure
+        th(scope='col') Weight
+        th(scope='col') Date of Birth
+    tbody
+    each pi in patient.PatientInfos
+      tr
+        td#ca(scope='row') #{pi.createdAt.toString().substr(0,24)}
+        td#pbp #{pi.bloodpressure}
+        td#pw #{pi.weight}
+        td#pdb #{patient.dateofbirth}
+  .card
+    .card-body
+      h4.card-title Previous Notes
+      each pin,i in patient.PatientInfos
+        p.card-text Notes ##{i+1}: #{pin.description} 
+  .card
+      .card-body
+        h4.card-title Previous Diagnoses
+        each d,i in patient.Diagnoses
+          p.card-text Diagnosis ##{i+1}: #{d.DiagnosisType.name}
+  .form-group
+    label(for='doctorNotes')
+      h3 Doctor's Notes
+    textarea#doctorNoteArea.form-control(rows='10' placeholder='Enter patient notes here...')

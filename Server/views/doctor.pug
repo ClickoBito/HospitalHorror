@@ -1,69 +1,59 @@
 extends layout
+include navbar
 block content
-	// Start of Navbar
-	#{'nav'}(class='navbar navbar-expand-lg navbar-light bg-light')
-		a(class='navbar-brand') MediSys
-		button(class='navbar-toggler' 
-			type='button' 
-			data-toggle='collapse' 
-			data-target='#navbarSupportedContent' 
-			aria-controls='navbarSupportedContent' 
-			aria-expanded='false' 
-			aria-label='Toggle navigation'
-		)
-			span(class='navbar-toggler-icon')
-		div(class='navbarSupportedContent collapse navbar-collapse')
-			ul(class='navbar-nav mr-auto')
-				li(class='nav-item')
-					form(action='/logout', method='post')
-						input(type='hidden')
-						button(class='btn btn-danger', type='submit') Logout
-				li
-					button(class='btn btn-outline-secondary disabled') Signed in as: Dr Derek Shepherd
-			form(class='form-inline my-2 my-lg-0')
-				input(class='form-control mr-sm-2'
-					type='search' 
-					placeholder='Search' 
-					aria-label='Search'
-				)
-				button(class='btn btn-outline-success my-2 my-sm-0'
-					type='submit'
-				) Search
-
+	+navbar(username.firstname + ' ' + username.lastname)
 	div.wrapper.col-m-4.sticky-top
-		nav(id='sidebar sticky-top')
-			// Sidebar Links
+		nav.sticky-top
+			//- Sidebar Links
 			.container-fluid
 				.row
 					#sticky-sidebar.col-2.sidebar-sticky
 						.sticky-top
 							.nav.flex-column
+								i#patientsIcon(class='fa fa-hospital-o')
+									h4#sidebarTitle Patients
 								ul#patientsList.list-group-flush
-									h2 Patients
-									each patient in patients
-										li.list-group-item #{patient.firstname + ' ' + patient.lastname}
-								ul#patientsList.list-group-flush
-									h2 Nurses
-									li.list-group-item.active Elon Musk
-									li.list-group-item Julian Assange
-									li.list-group-item Snoop Dogg
+								each patient in patients
+									li#patient.list-group-item 
+									a#patientLink(href='javascript:void(0);' type='get' 'onclick'='getPatientData('+patient.id + ')') #{patient.firstname + ' ' + patient.lastname}
+								i#nursesIcon(class='fa fa-user')
+									h4#sidebarTitle Nurses
+								ul#nursesList.list-group-flush
+								each nurse in nurses
+									li.list-group-item 
+									a#nurseLink(href='') #{nurse.firstname + ' ' + nurse.lastname}
 					#main.col
-						table.table.table-striped
-							thead
+						label(for='patientInfo')
+							h3 #{patients[1].firstname + ' ' + patients[1].lastname}'s Info
+						table#patientInfoTable.table.table-curved
+							thead#table-head
 								tr
-									th(scope='col') Patient Name
 									th(scope='col') Last Visit
-									th(scope='col') Allergies
-									th(scope='col') Status
 									th(scope='col') Blood Pressure
+									th(scope='col') Weight
+									th(scope='col') Date of Birth
 							tbody
+							each pi in patientInfo
 								tr
-									th(scope='row') Mark Zuckerberg
-									td 11/04/2018
-									td Privacy
-									td Nervous
-									td 120
+									td#ca(scope='row') #{pi.createdAt.toString().substr(0,24)}
+									td#pbp #{pi.bloodpressure}
+									td#pw #{pi.weight}
+									td#pdb #{patients[pi.PatientId].dateofbirth}
+						.card
+							.card-body
+								h4.card-title Previous Notes
+								each pin,i in patientInfo
+									p.card-text Notes ##{i+1}: #{pin.description} 
 						.form-group
 							label(for='doctorNotes')
-								strong Doctor's Notes
-							textarea#exampleTextarea.form-control(rows='10' placeholder='Enter patient notes here...')
+								h3 Doctor's Notes
+							textarea#doctorNoteArea.form-control(rows='10' placeholder='Enter patient notes here...') 
+							script.
+								function getPatientData(id){
+									let xhr = new XMLHttpRequest();
+									xhr.open('GET', "/patient/" + id, false);
+									xhr.addEventListener('load', function(e) {
+										$('#main').html(xhr.responseText);
+									});
+									xhr.send();
+								}

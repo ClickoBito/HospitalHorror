@@ -1,6 +1,7 @@
 const model = require('../models/');
 const AuthCtrl = require('../controllers/auth.js');
 const app = require('../../server.js');
+const Sequelize = require('sequelize');
 
 //var PatientList;
 
@@ -54,5 +55,42 @@ module.exports.getAllPatients = function (req, res, next) {
         res.render('doctor', {
             title: 'Patients',
             patients: patients});
+    });
+};
+
+
+module.exports.getPatientData = function(req, res,next){
+    // TODO - authentication
+
+    model.Patient.findOne({
+      where: {id: req.params.id},
+      include: [
+        {
+          model: model.PatientInfo
+        },
+        {
+          model: model.Diagnosis,
+          include: [
+            {
+              model: model.DiagnosisType
+            }
+          ]
+        },
+        {
+          model: model.Allergy,
+          include: [
+            {
+              model: model.AllergyType
+            }
+          ]
+        }
+      ]
+    }).then(patient => {
+      //app.print(patient.get({plain:true}));
+
+      res.render('patientprofile', {patient: patient});
+
+    }, err => {
+
     });
 };
