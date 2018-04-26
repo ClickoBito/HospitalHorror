@@ -5,7 +5,7 @@
     .patientimage(style="width:250px; padding:20px")
       img(src="/img/patienticon.png" alt="Patient Icon" style="max-height:200px")
     .patient_data(style="flex:1; padding:20px")
-      p Age: #{patient.dateofbirth}
+      p Age: #{patient.age} (#{patient.dateofbirth_formatted})
       p Address: #{patient.address}
       p Phone: #{patient.phone}
       if patient.Allergies.length > 0

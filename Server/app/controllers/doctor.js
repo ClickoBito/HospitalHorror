@@ -27,10 +27,10 @@ module.exports.getDoctorDashboardData = function(req, res){
             patientInfo: patientInfo,
             username: username
         });
-        app.print('printing nurses ovject: ', nurses);
+        /*app.print('printing nurses ovject: ', nurses);
         nurses.forEach(n => {
             app.print('printing nurses', n.get({plain:true}));
-        });
+        });*/
     }, err => {
         app.print(err);
         res.status(500).send({ error: err.errors });
