@@ -16,7 +16,7 @@ module.exports.getDoctorDashboardData = function(req, res){
     if (usertype === 'Doctor') {
         typeModel = model.Doctor;
     }
-    else   
+    else
         typeModel = model.Nurse;
 
     Sequelize.Promise.all([
