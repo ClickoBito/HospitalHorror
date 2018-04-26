@@ -1,6 +1,18 @@
 .col
   label(for='patientInfo')
     h3 #{patient.fullname}'s Info
+  .patient_gen_info(style="display:flex")
+    .patientimage(style="width:250px; padding:20px")
+      img(src="/img/patienticon.png" alt="Patient Icon" style="max-height:200px")
+    .patient_data(style="flex:1; padding:20px")
+      p Age: #{patient.dateofbirth}
+      p Address: #{patient.address}
+      p Phone: #{patient.phone}
+      if patient.Allergies.length > 0
+        p Allergies
+          ul
+            each al in patient.Allergies
+              li #{al.AllergyType.name}
   table#patientInfoTable.table.table-curved
     thead#table-head
       tr
