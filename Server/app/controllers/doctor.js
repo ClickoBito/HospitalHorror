@@ -5,7 +5,7 @@ const online = require('./online.js');
 const AuthCtrl = require('../controllers/auth.js');
 
 module.exports.getDoctorDashboardData = function(req, res){
-    if(!AuthCtrl.isDoctor(req)) {
+    if(!AuthCtrl.isDoctor(req) && !AuthCtrl.isNurse(req)) {
         req.session.error = 'Only doctors can access this page.';
         req.session.errorcode = 403;
         res.redirect('/error/');
