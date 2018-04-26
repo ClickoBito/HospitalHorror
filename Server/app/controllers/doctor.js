@@ -2,8 +2,16 @@ const model = require('../models/');
 const Sequelize = require('sequelize');
 const app = require('../../server.js');
 const online = require('./online.js');
+const AuthCtrl = require('../controllers/auth.js');
 
 module.exports.getDoctorDashboardData = function(req, res){
+    if(!AuthCtrl.isDoctor(req)) {
+        req.session.error = 'Only doctors can access this page.';
+        req.session.errorcode = 403;
+        res.redirect('/error/');
+        return;
+    }
+
     Sequelize.Promise.all([
         model.Patient.findAll({
             attributes: ['firstname', 'lastname', 'id', 'dateofbirth'],
