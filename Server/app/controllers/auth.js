@@ -18,13 +18,13 @@ module.exports.login = function(req, res, next) {
 						// app.print('password matching');
 						req.session.user = user;
 						let userinfo = user.get({plain: true});
-						// app.print(userinfo);
+						app.print(userinfo);
 						if (userinfo.userType === 'Admin')
 							res.redirect('/admin/');
 						else if (userinfo.userType === 'Doctor')
 							res.redirect('/doctor/' + userinfo.id);
 						else if (userinfo.userType === 'Nurse')
-							res.redirect('/doctor/');
+							res.redirect('/doctor/' + userinfo.id);
 						else
 							res.redirect('/secretary/');
 					}
