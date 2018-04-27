@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import supertest from 'supertest';
 import app from '../../../server';
+import each from 'async/each';
 
 const should = require('chai').should();
 const model = require('../../../app/models/');
@@ -9,49 +10,26 @@ const Op = Sequelize.Op;
 
 describe('Test of creating treatments', function() {
     beforeEach(function (done) {
-        // Create 5 treatments to store them to the database
-        // We chain the 5 requests so that we can be sure that they have all been processed
-        // before we proceed with the test
-        supertest(app)
-        .post('/treatment')
-        .send({description: 'Treatment created', TreatmentTypeId: '2'})
-        .expect(302)
-        .end((err, res) => {
-            should.not.exist(err);
-            res.headers.location.substring(0,6).should.not.equal('/error/');
+        // Create 5 treatments and store them in the database
+        var treatments = [
+            {description: 'Treatment 1 created', TreatmentTypeId: '2'},
+            {description: 'Treatment 2 created', TreatmentTypeId: '2'},
+            {description: 'Treatment 3 created', TreatmentTypeId: '2'},
+            {description: 'Treatment 4 created', TreatmentTypeId: '2'},
+            {description: 'Treatment 5 created', TreatmentTypeId: '2'}
+        ];
+        each(treatments, function(treatment, callback) {
             supertest(app)
-            .post('/treatment')
-            .send({description: 'Treatment created', TreatmentTypeId: '2'})
-            .expect(302)
-            .end((err, res) => {
-                should.not.exist(err);
-                res.headers.location.substring(0,6).should.not.equal('/error/');
-                supertest(app)
                 .post('/treatment')
-                .send({description: 'Treatment created', TreatmentTypeId: '2'})
+                .send(treatment)
                 .expect(302)
                 .end((err, res) => {
                     should.not.exist(err);
-                    res.headers.location.substring(0,6).should.not.equal('/error/');
-                    supertest(app)
-                    .post('/treatment')
-                    .send({description: 'Treatment created', TreatmentTypeId: '2'})
-                    .expect(302)
-                    .end((err, res) => {
-                        should.not.exist(err);
-                        res.headers.location.substring(0,6).should.not.equal('/error/');
-                        supertest(app)
-                        .post('/treatment')
-                        .send({description: 'Treatment created', TreatmentTypeId: '2'})
-                        .expect(302)
-                        .end((err, res) => {
-                            should.not.exist(err);
-                            res.headers.location.substring(0,6).should.not.equal('/error/');
-                            done();
-                        });
-                    });
+                    callback();
                 });
-            });
+        }, function(err) {
+            should.not.exist(err);
+            done();
         });
     });
     afterEach(function (done) {
@@ -81,7 +59,7 @@ describe('Test of creating treatments', function() {
         order: [['createdAt', 'DESC'], ['id', 'DESC']]
         }).then(function(treatments) {
             for(var i=0; i<5; i++){
-                treatments[i].description.should.equal('Treatment created');
+                treatments[i].description.should.match(/Treatment \d created/);
                 treatments[i].TreatmentTypeId.should.equal(2);
             }
             done();
