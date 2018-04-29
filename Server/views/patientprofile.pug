@@ -37,6 +37,9 @@
         h4.card-title Previous Diagnoses
         each d,i in patient.Diagnoses
           p.card-text Diagnosis ##{i+1}: #{d.DiagnosisType.name}
+          p.v-card-media Diagnosis Image:
+          .patientdiagnosisimage(style="width:250px; padding:20px")
+            img(src=d.imageurl alt="Diagnosis image loading" style="max-height:200px")
   .form-group
     label(for='doctorNotes')
       h3 Doctor's Notes
