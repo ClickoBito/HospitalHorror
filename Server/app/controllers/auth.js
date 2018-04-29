@@ -2,6 +2,7 @@ const model = require('../models/');
 const controller = require('../controllers/patient.js');
 const bCrypt= require('bcryptjs');
 const app = require('../../server.js');
+const online = require('./online.js');
 
 module.exports.login = function(req, res, next) {
 	// debug
@@ -18,6 +19,7 @@ module.exports.login = function(req, res, next) {
 						// app.print('password matching');
 						req.session.user = user;
 						let userinfo = user.get({plain: true});
+						online.addUser(userinfo.id);
 						// app.print(userinfo);
 						if (userinfo.userType === 'Admin')
 							res.redirect('/admin/');
@@ -140,6 +142,8 @@ module.exports.register = function (req, res, next) {
 
 module.exports.logout = function(req, res, next) {
 	res.clearCookie('connect.sid');
+	if (req.session.user)
+		online.deleteUser(req.session.user.id);
 	req.session.destroy();
 	res.redirect('/');
 };
