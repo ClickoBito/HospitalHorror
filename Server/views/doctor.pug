@@ -30,6 +30,8 @@ block content
 								each doctor in doctors
 									li.list-group-item
 									a#doctorLink(href='') #{doctor.fullname}
+										- if (onlineusers.includes(doctor.UserId))
+											i.fa.fa-check-circle(style='color:green;margin-left:0.5rem')
 
 					#main.col
 						label(for='patientInfo')
