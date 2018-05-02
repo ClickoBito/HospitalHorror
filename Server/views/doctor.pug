@@ -24,6 +24,13 @@ block content
 									a#nurseLink(href='') #{nurse.fullname}
 										- if (onlineusers.includes(nurse.UserId))
 											i.fa.fa-check-circle(style='color:green;margin-left:0.5rem')
+								i#doctorsIcon(class='fa fa-user-md')
+									h4#sidebarTitle Doctors
+								ul#doctorList.list-group-flush
+								each doctor in doctors
+									li.list-group-item
+									a#doctorLink(href='') #{doctor.fullname}
+
 					#main.col
 						label(for='patientInfo')
 							h3 #{patients[1].firstname + ' ' + patients[1].lastname}'s Info
