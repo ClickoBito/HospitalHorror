@@ -4,6 +4,8 @@ html(lang="en")
     meta(charset="UTF-8")
     title Hospital Horror
     link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous")
+    link(href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet")
+    link(rel="stylesheet" href="style.css")
     style.
       .card {
       margin-top: 20%;
@@ -11,13 +13,12 @@ html(lang="en")
       .input-group {
       margin-top: 5%;
       }
-  body#clrblk
+  body#clrblk.indexBody
     .container
       #loginbox.mainbox.col-md-6.mx-auto
         .card.maincard
           .card-header
             .card-title Login
-            p= status
           .card-body
             form#loginform.form-horizontal(role="form" method="post" action="/login")
               .input-group
@@ -32,6 +33,6 @@ html(lang="en")
                
               .form-group
                 // Button
-                .col-sm-12.controls
+                #btn-login-window.col-sm-12.controls
                   button#btn-login.btn.btn-success(type="submit") Login 
               
