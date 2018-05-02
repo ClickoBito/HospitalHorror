@@ -16,14 +16,6 @@ block content
 								each patient in patients
 									li#patient.list-group-item 
 									a#patientLink(href='javascript:void(0);' type='get' 'onclick'='getPatientData('+ patient.id + ')') #{patient.firstname + ' ' + patient.lastname}
-								i#nursesIcon(class='fa fa-user')
-									h4#sidebarTitle Nurses
-								ul#nursesList.list-group-flush
-								each nurse in nurses
-									li.list-group-item 
-									a#nurseLink(href='') #{nurse.fullname}
-										- if (onlineusers.includes(nurse.UserId))
-											i.fa.fa-check-circle(style='color:green;margin-left:0.5rem')
 								i#doctorsIcon(class='fa fa-user-md')
 									h4#sidebarTitle Doctors
 								ul#doctorList.list-group-flush
@@ -31,6 +23,14 @@ block content
 									li.list-group-item
 									a#doctorLink(href='') #{doctor.fullname}
 										- if (onlineusers.includes(doctor.UserId))
+											i.fa.fa-check-circle(style='color:green;margin-left:0.5rem')
+								i#nursesIcon(class='fa fa-user')
+									h4#sidebarTitle Nurses
+								ul#nursesList.list-group-flush
+								each nurse in nurses
+									li.list-group-item 
+									a#nurseLink(href='') #{nurse.fullname}
+										- if (onlineusers.includes(nurse.UserId))
 											i.fa.fa-check-circle(style='color:green;margin-left:0.5rem')
 
 					#main.col
