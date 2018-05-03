@@ -17,7 +17,7 @@ const search = (body, assert, expect = 200) => {
 };
 
 describe('Test of the back-end search functionality', () => {
-    describe('Search success exact match cases', () => {
+    describe('Search success cases', () => {
         it('Should find one user for each case that is correct type', (done) => {
             const tests = [
                 {search: 'Robert', resultType: 'patients', matchedOn: 'firstname'},
@@ -62,6 +62,24 @@ describe('Test of the back-end search functionality', () => {
                 done();
             });
         });
+        it('Should return diagnosis from search', (done) => {
+            const tests = [
+                {body: {diagnosis: true, search: 'this is not valid'}, expectedResults: 0},
+                {body: {diagnosis: true, search: 'speech therapist'}, expectedResults: 1},
+                {body: {diagnosis: true, search: 'endocarditis'}, expectedResults: 1},
+                {body: {diagnosis: true, search: 'tablet'}, expectedResults: 3}
+            ];
+            each(tests, function(test, callback) {
+                search(test.body, (res) => {
+                    res.body.should.be.an('object');
+                    res.body.resultCount.should.equal(test.expectedResults);
+                    callback();
+                });
+            }, function(err) {
+                should.not.exist(err);
+                done();
+            });
+        });
         it('Should return nothing from invalid search', (done) => {
             search({ search : 'Not a valid search query' }, (res) => {
                 res.body.should.be.an('object');
@@ -73,6 +91,7 @@ describe('Test of the back-end search functionality', () => {
 
     describe('Search failure cases', () => {
         it('Should return 400 bad request when no body', (done) => {
+            // Not using the search method to exclude send option
             supertest(app)
                 .get('/search')
                 .expect(400)
@@ -84,16 +103,16 @@ describe('Test of the back-end search functionality', () => {
                 });
         });
         it('Should return 400 bad request when bad body', (done) => {
-            const bodies = [
-                null,
-                {},
-                {not_search: 'yo!'},
-                {search: null},
-                {search: 1},
-                {search: {nested: 'wat'}}
+            const tests = [
+                {body: null},
+                {body: {}},
+                {body: {not_search: 'yo!'}},
+                {body: {search: null}},
+                {body: {search: 1}},
+                {body: {search: {nested: 'wat'}}}
             ];
-            each(bodies, function(body, callback) {
-                search(body, (res) => {
+            each(tests, function(test, callback) {
+                search(test.body, (res) => {
                     res.body.should.be.an('object');
                     res.body.should.have.all.keys('error');
                     callback();

@@ -9,6 +9,10 @@ export function search(req, res) {
     if (_.isEmpty(req.body) || !_.isString(req.body.search)) {
         return res.status(400).json({error: 'Invalid search body'});
     }
+    personSearch(req, res);
+}
+
+export function personSearch(req, res) {
     const personQuery = {
         [Op.or]: [
             {firstname: {[Op.like]: req.body.search + '%'}},
