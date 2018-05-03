@@ -3,9 +3,9 @@
 
 const db = {
 	host: 'localhost',
-	databasename: 'hospitalHorror',
+	databasename: 'hospital',
 	user: 'root',
-	password: ''
+	password: 'root'
 };
 
 module.exports = db;

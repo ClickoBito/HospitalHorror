@@ -129,20 +129,30 @@
 				padding-right: 0;
 			}
 
-			.form-control , .form-control:focus, input:focus {
+			.form-control , .form-control:focus, input:focus  {
 				border-top: none;
 				border-right: none;
 				border-left: none;
 				border-bottom: 0.2em solid turquoise;
 				background: transparent;
 				color: white;
-				outline: none !important;
+				
 			}
 
 			input::-webkit-input-placeholder{
-				color: white;
-				background: white;
+				color: transparent;
+				background: transparent;
 			}
+
+
+			input:-webkit-autofill,
+			input:-webkit-autofill:hover,
+			input:-webkit-autofill:focus,
+			input:-webkit-autofill:active {
+ 			   transition: background-color 5000s ease-in-out 0s;
+ 			   -webkit-text-fill-color: white 
+		}
+
 
 			input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 				background-color: rgba(255, 255, 255, 0.5) !important;
