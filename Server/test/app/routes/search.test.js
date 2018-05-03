@@ -44,6 +44,24 @@ describe('Test of the back-end search functionality', () => {
                 done();
             });
         });
+        it('Should find correct number of users for partial matches', (done) => {
+            const tests = [
+                {search: 'Edd', expectedResults: 1},
+                {search: 'edd', expectedResults: 1},
+                {search: 'Ja', expectedResults: 2},
+                {search: 'c', expectedResults: 2}
+            ];
+            each(tests, function(test, callback) {
+                search({ search: test.search }, (res) => {
+                    res.body.should.be.an('object');
+                    res.body.resultCount.should.equal(test.expectedResults);
+                    callback();
+                });
+            }, function(err) {
+                should.not.exist(err);
+                done();
+            });
+        });
         it('Should return nothing from invalid search', (done) => {
             search({ search : 'Not a valid search query' }, (res) => {
                 res.body.should.be.an('object');
