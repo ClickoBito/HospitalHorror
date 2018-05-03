@@ -46,6 +46,7 @@ describe('Test of the back-end search functionality', () => {
                 });
         });
     });
+
     describe('Search failure cases', () => {
         it('Should return 400 bad request when no body', (done) => {
             supertest(app)

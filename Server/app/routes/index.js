@@ -11,6 +11,7 @@ const TreatmentCtrl = require('../controllers/treatment.js');
 const PatientCtrl = require('../controllers/patient.js');
 const PatientDiagnosisCtrl = require('../controllers/patientdiagnosis.js');
 const DoctorCtrl = require('../controllers/doctor.js');
+const SearchCtrl = require('../controllers/search.js');
 //gconst UpdaterCtrl = require('../controllers/updater.js')
 
 // RESTful API
@@ -46,6 +47,9 @@ router.delete('/treatment/:id', TreatmentCtrl.deleteTreatment);
 router.post('/patientdiagnosis', PatientDiagnosisCtrl.create);
 router.put('/patientdiagnosis/:id', PatientDiagnosisCtrl.edit);
 router.delete('/patientdiagnosis/:id', PatientDiagnosisCtrl.delete);
+
+// TODO: require auth to search
+router.get('/search', SearchCtrl.search);
 
 // TODO: put function in a controller
 router.get('/home/:id', function(req, res) {
