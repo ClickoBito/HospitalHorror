@@ -9,11 +9,16 @@ describe('Test of the back-end search functionality', () => {
     describe('Search success cases', () => {
         it('Should find one user for each case that is correct type', (done) => {
             const tests = [
-                {search: 'Robert', expectKey: 'patients'},
-                {search: 'Jason', expectKey: 'admins'},
-                {search: 'Cole', expectKey: 'doctors'},
-                {search: 'Brad', expectKey: 'nurses'},
-                {search: 'Miley', expectKey: 'secretaries'}
+                {search: 'Robert', resultType: 'patients', matchedOn: 'firstname'},
+                {search: 'Gustavsson', resultType: 'patients', matchedOn: 'lastname'},
+                {search: 'Jason', resultType: 'admins', matchedOn: 'firstname'},
+                {search: 'Walker', resultType: 'admins', matchedOn: 'lastname'},
+                {search: 'Cole', resultType: 'doctors', matchedOn: 'firstname'},
+                {search: 'Berg', resultType: 'doctors', matchedOn: 'lastname'},
+                {search: 'Brad', resultType: 'nurses', matchedOn: 'firstname'},
+                {search: 'Hunter', resultType: 'nurses', matchedOn: 'lastname'},
+                {search: 'Miley', resultType: 'secretaries', matchedOn: 'firstname'},
+                {search: 'Haley', resultType: 'secretaries', matchedOn: 'lastname'}
             ];
             each(tests, function(test, callback) {
                 supertest(app)
@@ -24,8 +29,8 @@ describe('Test of the back-end search functionality', () => {
                         should.not.exist(err);
                         res.body.should.be.an('object');
                         res.body.resultCount.should.equal(1);
-                        res.body[test.expectKey].length.should.equal(1);
-                        res.body[test.expectKey][0].firstname.should.equal(test.search);
+                        res.body[test.resultType].length.should.equal(1);
+                        res.body[test.resultType][0][test.matchedOn].should.equal(test.search);
                         callback();
                     });
             }, function(err) {
