@@ -66,7 +66,9 @@ describe('Test of the back-end search functionality', () => {
             const tests = [
                 {body: {diagnosis: true, search: 'this is not valid'}, expectedResults: 0},
                 {body: {diagnosis: true, search: 'speech therapist'}, expectedResults: 1},
+                {body: {diagnosis: true, search: 'should be'}, expectedResults: 4},
                 {body: {diagnosis: true, search: 'endocarditis'}, expectedResults: 1},
+                {body: {diagnosis: true, search: 'antibiotic'}, expectedResults: 2},
                 {body: {diagnosis: true, search: 'tablet'}, expectedResults: 3}
             ];
             each(tests, function(test, callback) {
