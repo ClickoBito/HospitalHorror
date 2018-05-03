@@ -5,8 +5,19 @@ import _ from 'lodash';
 
 const should = require('chai').should();
 
+const search = (body, assert, expect = 200) => {
+    supertest(app)
+        .get('/search')
+        .send(body)
+        .expect(expect)
+        .end((err, res) => {
+            should.not.exist(err);
+            assert(res);
+        });
+};
+
 describe('Test of the back-end search functionality', () => {
-    describe('Search success cases', () => {
+    describe('Search success exact match cases', () => {
         it('Should find one user for each case that is correct type', (done) => {
             const tests = [
                 {search: 'Robert', resultType: 'patients', matchedOn: 'firstname'},
@@ -21,34 +32,24 @@ describe('Test of the back-end search functionality', () => {
                 {search: 'Haley', resultType: 'secretaries', matchedOn: 'lastname'}
             ];
             each(tests, function(test, callback) {
-                supertest(app)
-                    .get('/search')
-                    .send({ search: test.search })
-                    .expect(200)
-                    .end((err, res) => {
-                        should.not.exist(err);
-                        res.body.should.be.an('object');
-                        res.body.resultCount.should.equal(1);
-                        res.body[test.resultType].length.should.equal(1);
-                        res.body[test.resultType][0][test.matchedOn].should.equal(test.search);
-                        callback();
-                    });
+                search({ search: test.search }, (res) => {
+                    res.body.should.be.an('object');
+                    res.body.resultCount.should.equal(1);
+                    res.body[test.resultType].length.should.equal(1);
+                    res.body[test.resultType][0][test.matchedOn].should.equal(test.search);
+                    callback();
+                });
             }, function(err) {
                 should.not.exist(err);
                 done();
             });
         });
         it('Should return nothing from invalid search', (done) => {
-            supertest(app)
-                .get('/search')
-                .send({ search : 'Not a valid search query' })
-                .expect(200)
-                .end((err, res) => {
-                    should.not.exist(err);
-                    res.body.should.be.an('object');
-                    res.body.resultCount.should.equal(0);
-                    done();
-                });
+            search({ search : 'Not a valid search query' }, (res) => {
+                res.body.should.be.an('object');
+                res.body.resultCount.should.equal(0);
+                done();
+            });
         });
     });
 
@@ -74,16 +75,11 @@ describe('Test of the back-end search functionality', () => {
                 {search: {nested: 'wat'}}
             ];
             each(bodies, function(body, callback) {
-                supertest(app)
-                    .get('/search')
-                    .send(body)
-                    .expect(400)
-                    .end((err, res) => {
-                        should.not.exist(err);
-                        res.body.should.be.an('object');
-                        res.body.should.have.all.keys('error');
-                        callback();
-                    });
+                search(body, (res) => {
+                    res.body.should.be.an('object');
+                    res.body.should.have.all.keys('error');
+                    callback();
+                }, 400);
             }, function(err) {
                 should.not.exist(err);
                 done();
