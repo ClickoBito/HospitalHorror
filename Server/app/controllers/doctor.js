@@ -11,13 +11,8 @@ module.exports.getDoctorDashboardData = function(req, res){
         res.redirect('/error/');
         return;
     }
-    let typeModel;
     let usertype = req.session.user.userType;
-    if (usertype === 'Doctor') {
-        typeModel = model.Doctor;
-    }
-    else
-        typeModel = model.Nurse;
+    let typeModel = userType === 'Doctor' ? model.Doctor : model.Nurse;
 
     Sequelize.Promise.all([
         model.Patient.findAll({
