@@ -57,17 +57,17 @@ INSERT INTO Secretary (firstname, lastname, dateofbirth, phone, email, UserId)
 VALUES ('Miley', 'Haley', '1972-01-09', '+46700000011', 'MileyH@gmail.com', 12);
 
 # Patients
-INSERT INTO Patient (gender, ssNbr, firstname, lastname, address, dateofbirth, phone)
-VALUES (1, '8604090000', 'Alex', 'Bengtsson', 'Granvägen 22', '1986-04-09', '+46700000012');
+INSERT INTO Patient (gender, ssNbr, firstname, lastname, address, dateofbirth, phone, DoctorId)
+VALUES (1, '8604090000', 'Alex', 'Bengtsson', 'Granvägen 22', '1986-04-09', '+46700000012', 1);
 
-INSERT INTO Patient (gender, ssNbr, firstname, lastname, address, dateofbirth, phone)
-VALUES (1, '7612140000', 'Robert', 'Gustavsson', 'Ostvägen 3', '1976-12-14', '+46700000013');
+INSERT INTO Patient (gender, ssNbr, firstname, lastname, address, dateofbirth, phone, DoctorId)
+VALUES (1, '7612140000', 'Robert', 'Gustavsson', 'Ostvägen 3', '1976-12-14', '+46700000013', 1);
 
-INSERT INTO Patient (gender, ssNbr, firstname, lastname, address, dateofbirth, phone)
-VALUES (0, '5812140000', 'Ingrid', 'Ingvarsson', 'Lyxvägen 4', '1958-12-14', '+46700000014');
+INSERT INTO Patient (gender, ssNbr, firstname, lastname, address, dateofbirth, phone, DoctorId)
+VALUES (0, '5812140000', 'Ingrid', 'Ingvarsson', 'Lyxvägen 4', '1958-12-14', '+46700000014', 2);
 
-INSERT INTO Patient (gender, ssNbr, firstname, lastname, address, dateofbirth, phone)
-VALUES (0, '9108270000', 'Melina', 'Ekberg', 'Frölundavägen 10', '1991-08-27', '+46700000015');
+INSERT INTO Patient (gender, ssNbr, firstname, lastname, address, dateofbirth, phone, DoctorId)
+VALUES (0, '9108270000', 'Melina', 'Ekberg', 'Frölundavägen 10', '1991-08-27', '+46700000015', 3);
 
 # PatientInfo
 INSERT INTO PatientInfo (bloodPressure, weight, description, PatientId)
