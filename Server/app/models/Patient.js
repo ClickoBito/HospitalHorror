@@ -2,6 +2,7 @@
 'use strict';
 
 const Sequelize = require('sequelize');
+const moment = require('moment');
 
 module.exports = function(sequelize, DataTypes) {
 	let Patient = sequelize.define('Patient', {
@@ -30,13 +31,18 @@ module.exports = function(sequelize, DataTypes) {
 		tableName: 'Patient',
 		timestamps: true,
 		getterMethods: {
-		fullname: function() {
-			return this.firstname + ' ' + this.lastname;
+			fullname: function() {
+				return this.firstname + ' ' + this.lastname;
+			},
+			age: function() {
+				return moment().diff(this.dateofbirth, 'years');
+			},
+			dateofbirth_formatted: function() {
+				return moment(this.dateofbirth).format('Do MMM YYYY');
+			}
 		}
-}
 
 	});
-
 
 	Patient.associate = function(models) {
 		models.Patient.hasMany(models.PatientInfo);
