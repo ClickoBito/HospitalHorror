@@ -14,14 +14,14 @@ describe('Test of the back-end search functionality', () => {
         ];
         each(tests, function(test, callback) {
             supertest(app)
-                .post('/search')
+                .get('/search')
                 .send({ username : test.username })
                 .expect(200)
                 .end((err, res) => {
                     should.not.exist(err);
                     res.body.should.be.an('object');
                     res.body.searchResults.should.equal(1);
-                    res.body.dataValues.userType.should.equal(test.userType);
+                    res.body.users[0].userType.should.equal(test.userType);
                     callback();
                 });
         }, function(err) {
@@ -29,16 +29,27 @@ describe('Test of the back-end search functionality', () => {
             done();
         });
     });
-    it('Should gracefully return nothing from invalid search', (done) => {
+    it('Should return nothing from invalid search', (done) => {
         supertest(app)
-            .post('/search')
+            .get('/search')
             .send({ username : 'Not a valid name' })
             .expect(200)
             .end((err, res) => {
                 should.not.exist(err);
                 res.body.should.be.an('object');
-                res.body.should.equal({searchResults: 0});
-                callback();
+                res.body.should.include({searchResults: 0});
+                done();
+            });
+    });
+    it('Should return 400 bad request when no body', (done) => {
+        supertest(app)
+            .get('/search')
+            .expect(400)
+            .end((err, res) => {
+                should.not.exist(err);
+                res.body.should.be.an('object');
+                res.body.should.have.all.keys('error');
+                done();
             });
     });
 });
