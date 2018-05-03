@@ -8,7 +8,7 @@
 			}
 
 			.indexBody  {
-				background-image:url("https://pixabay.com/get/e832b6062df0013ed1534705fb0938c9bd22ffd41cb314439df5c87fae/abstract-1779540_1920.png")!important;
+				background-image:url("img/loginBackground.png")!important;
 			}
 
 			#nurseLink, #patientLink{
@@ -116,6 +116,7 @@
 			.card-title {
 				font-size: 2em;
 				line-height: 1;
+				text-align: center;
 			}
 
 			#btn-login {
@@ -126,4 +127,23 @@
 			#btn-login-window{
 				padding-left: 0;
 				padding-right: 0;
+			}
+
+			.form-control , .form-control:focus, input:focus {
+				border-top: none;
+				border-right: none;
+				border-left: none;
+				border-bottom: 0.2em solid turquoise;
+				background: transparent;
+				color: white;
+				outline: none !important;
+			}
+
+			input::-webkit-input-placeholder{
+				color: white;
+				background: white;
+			}
+
+			input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+				background-color: rgba(255, 255, 255, 0.5) !important;
 			}

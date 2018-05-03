@@ -18,21 +18,21 @@ html(lang="en")
       #loginbox.mainbox.col-md-6.mx-auto
         .card.maincard
           .card-header
-            .card-title Login
+            .card-title Sign in to MediSys
           .card-body
             form#loginform.form-horizontal(role="form" method="post" action="/login")
               .input-group
                 span.input-group-addon
                   i.glyphicon.glyphicon-user
-                input#login-username.form-control(type="text" name="username" value="" placeholder="username")
+                input#login-username.form-control(type="text" name="username" value="" placeholder="Username")
               .input-group
                 span.input-group-addon
                   i.glyphicon.glyphicon-lock
-                input#login-password.form-control(type="password" name="password" placeholder="password")
+                input#login-password.form-control(type="password" name="password" placeholder="Password")
               .input-group
                
               .form-group
                 // Button
                 #btn-login-window.col-sm-12.controls
-                  button#btn-login.btn.btn-success(type="submit") Login 
+                  button#btn-login.btn.btn-success(type="submit") Sign in 
               
