@@ -27,13 +27,19 @@ module.exports = function(sequelize, DataTypes) {
 		}
 	}, {
 		tableName: 'Doctor',
-		timestamps: true
+		timestamps: true,
+		getterMethods: {
+			fullname: function() {
+				return this.firstname + ' ' + this.lastname;
+			}
+		}
 	});
 
 
 	Doctor.associate = function(models) {
 		models.Doctor.belongsTo(models.User);
 		models.Doctor.hasMany(models.Diagnosis);
+		models.Doctor.hasMany(models.Patient);
 	};
 
 	return Doctor;
