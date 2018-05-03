@@ -1,159 +1,159 @@
 
+body {
+	background: #f5f6fa;
+	padding: 5px;
+	color: #464978;
+	font-family: "Lucida Sans Unicode, Lucida Grande, sans-serif"	
+}
 
-			body {
-				background: #f5f6fa;
-				padding: 5px;
-				color: #464978;
-				font-family: "Lucida Sans Unicode, Lucida Grande, sans-serif"	
-			}
+.indexBody  {
+	background-image:url("img/loginBackground.png")!important;
+}
 
-			.indexBody  {
-				background-image:url("img/loginBackground.png")!important;
-			}
+#nurseLink, #patientLink{
+	text-align: center;
+	color: #464978;
+	background-color: white;
+	border-radius: 15px;
+	font-size-adjust: 0.58;
+}
 
-			#nurseLink, #patientLink{
-				text-align: center;
-				color: #464978;
-				background-color: white;
-				border-radius: 15px;
-				font-size-adjust: 0.58;
-			}
+#doctorNoteArea, .card_doc {
+	border-radius: 150px;
+}
 
-			#doctorNoteArea, .card_doc {
-				border-radius: 150px;
-			}
+.card_doc{
+	background: #5277E2;
+	color: #f5f6fa;
+	margin-bottom: 15px;
+}
 
-			.card_doc{
-				background: #5277E2;
-				color: #f5f6fa;
-				margin-bottom: 15px;
-			}
+.navbar {
+	text-align: center;
+	list-style-type: none;
+}
 
-			.navbar {
-				text-align: center;
-				list-style-type: none;
-			}
+#search-button{
+	border-left: 1em !important;
+}
 
-			#search-button{
-				border-left: 1em !important;
-			}
+#search-bar{
+	width: 50%;
+}
 
-			#search-bar{
-				width: 50%;
-			}
+.fa-plus{
+	font-size: 2em;
+	color: red;
+	margin-right: 15px;
+}
 
-			.fa-plus{
-				font-size: 2em;
-				color: red;
-				margin-right: 15px;
-			}
+#patientsIcon, #nursesIcon{
+	font-size: 1.4em;
+}
 
-			#patientsIcon, #nursesIcon{
-				font-size: 1.4em;
-			}
+#sidebarTitle{
+	margin-left: 15px;
+}
 
-			#sidebarTitle{
-				margin-left: 15px;
-			}
+#patientsList, #nursesList {
+	border: thin !important;
+	padding: 0 !important;
+	margin: 5px;
+}
 
-			#patientsList, #nursesList {
-				border: thin !important;
-				padding: 0 !important;
-				margin: 5px;
-			}
+#nursesIcon{
+	padding-top: 20px;
+}
 
-			#nursesIcon{
-				padding-top: 20px;
-			}
+.list-group-item, #patient {
+	background: #e81b2c;
+	border: none !important;
+	padding: 0 !important;
+	margin: 3px;
+}
 
-			.list-group-item, #patient {
-				background: #e81b2c;
-				border: none !important;
-				padding: 0 !important;
-				margin: 3px;
-			}
+#loggedin {
+	margin-right: 5px;
+}
 
-			#loggedin {
-				margin-right: 5px;
-			}
+h4{
+	display: inline-block;
+}
 
-			h4{
-				display: inline-block;
-			}
+.sticky-top, #main {
+	margin-top: 20px;
+}
 
-			.sticky-top, #main {
-				margin-top: 20px;
-			}
+.td, .th {
+	border-radius:15px !important;
+}
 
-			.td, .th {
-				border-radius:15px !important;
-			}
+#table-head{
+	font-size-adjust: 1;
+	text-decoration: underline;
+}
 
-			#table-head{
-				font-size-adjust: 1;
-				text-decoration: underline;
-			}
+.card_mod_idex {
+	margin-top: 20%;
+}
+.input-group_mod_index {
+	margin-top: 5%;
+}
+.card-header {
+	background-color: rgba(255, 255, 255, 0);
+	border: none;
+	padding-bottom: 0;
+	color: white;
+}
+.card-body {
+	padding-top: 0;
+}
+.maincard {
+	background-color: rgba(0, 0, 0, 0.6);
+	font-family: 'Open Sans', sans-serif;
+}
+.card-title {
+	font-size: 2em;
+	line-height: 1;
+	text-align: center;
+	margin: 2em 0;
+}
 
-			.card_mod_idex {
-				margin-top: 20%;
-			}
-			.input-group_mod_index {
-				margin-top: 5%;
-			}
-			.card-header {
-				background-color: rgba(255, 255, 255, 0);
-				border: none;
-				padding-bottom: 0;
-				color: white;
-			}
-			.card-body {
-				padding-top: 0;
-			}
-			.maincard {
-				background-color: rgba(255, 255, 255, 0.1);
-				font-family: 'Open Sans', sans-serif;
-			}
-			.card-title {
-				font-size: 2em;
-				line-height: 1;
-				text-align: center;
-			}
+#btn-login {
+	margin-top: 2em;
+	width: 100%;
+	height: 3em;
+}
 
-			#btn-login {
-				width: 100%;
-				height: 3em;
-			}
+#btn-login-window{
+	padding-left: 0;
+	padding-right: 0;
+}
 
-			#btn-login-window{
-				padding-left: 0;
-				padding-right: 0;
-			}
+.form-control , .form-control:focus  {
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom: 0.2em solid turquoise;
+	background: transparent;
+	color: white;
+	
+}
 
-			.form-control , .form-control:focus, input:focus  {
-				border-top: none;
-				border-right: none;
-				border-left: none;
-				border-bottom: 0.2em solid turquoise;
-				background: transparent;
-				color: white;
-				
-			}
-
-			input::-webkit-input-placeholder{
-				color: transparent;
-				background: transparent;
-			}
-
-
-			input:-webkit-autofill,
-			input:-webkit-autofill:hover,
-			input:-webkit-autofill:focus,
-			input:-webkit-autofill:active {
- 			   transition: background-color 5000s ease-in-out 0s;
- 			   -webkit-text-fill-color: white 
-		}
+input::-webkit-input-placeholder{
+	color: rgba(255, 255, 255, 0.6)!important;
+}
 
 
-			input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
-				background-color: rgba(255, 255, 255, 0.5) !important;
-			}
+@-webkit-keyframes autofill {
+	to {
+		color: #666;
+		background: transparent;
+	}
+}
+
+input:-webkit-autofill {
+	-webkit-animation-name: autofill;
+	-webkit-animation-fill-mode: both;
+	-webkit-text-fill-color: white;
+}

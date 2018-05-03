@@ -22,6 +22,7 @@ block content
                                 each nurse in nurses
                                     li.list-group-item 
                                     a#nurseLink(href='') #{nurse.firstname + ' ' + nurse.lastname}
+                    div#vr
                     #main.col
                         label(for='patientInfo')
                             h3 #{patients[1].firstname + ' ' + patients[1].lastname}'s Info
@@ -60,4 +61,6 @@ block content
 
                     #CHEESY_FOOTER
                         h6#TEXT_BIRD
+                    footer
+                        p Copyright &copy; 2018 - MediSys
 
