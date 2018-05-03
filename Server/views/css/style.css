@@ -5,7 +5,7 @@ body {
 	font-family: "Lucida Sans Unicode, Lucida Grande, sans-serif"
 }
 
-#nurseLink, #patientLink{
+#nurseLink, #patientLink, #doctorLink{
 	text-align: center;
 	color: #464978;
 	background-color: white;
@@ -42,7 +42,7 @@ body {
 	margin-right: 15px;
 }
 
-#patientsIcon, #nursesIcon{
+#patientsIcon, #nursesIcon, #doctorsIcon{
 	font-size: 1.4em;
 }
 
@@ -50,13 +50,13 @@ body {
 	margin-left: 15px;
 }
 
-#patientsList, #nursesList {
+#patientsList, #nursesList, #doctorList {
 	border: none !important;
 	padding: 0 !important;
 	margin: 5px;
 }
 
-#nursesIcon{
+#nursesIcon, #doctorsIcon{
 	padding-top: 20px;
 }
 

@@ -29,6 +29,15 @@ module.exports.getDoctorDashboardData = function(req, res){
               }
             ]
         }),
+        model.Doctor.findAll({
+            attributes: ['firstname', 'lastname', 'UserId'],
+            limit: 20,
+            include: [
+              {
+                model: model.User
+              }
+            ]
+        }),
         model.PatientInfo.findAll({
             where: {PatientId: '1'},
             attributes: ['bloodpressure','weight','PatientId', 'createdAt', 'description'],
@@ -37,11 +46,12 @@ module.exports.getDoctorDashboardData = function(req, res){
             where: {UserId: req.params.id},
             attributes: ['firstname', 'lastname']
         })
-    ]).spread((patients, nurses, patientInfo, username) => {
+    ]).spread((patients, nurses, doctors, patientInfo, username) => {
 
         res.render('doctor', {
             patients: patients,
             nurses: nurses,
+            doctors: doctors,
             patientInfo: patientInfo,
             username: username,
             onlineusers: online.getOnlineUsers
