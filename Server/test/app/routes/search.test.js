@@ -1,55 +1,87 @@
 import supertest from 'supertest';
 import app from '../../../server';
 import each from 'async/each';
+import _ from 'lodash';
 
-const should = require('chai').should();import _ from 'lodash';
+const should = require('chai').should();
 
 describe('Test of the back-end search functionality', () => {
-    it('Should find one user for each case that is correct type', (done) => {
-        const tests = [
-            {username: 'admin', userType: 'Admin'},
-            {username: 'doctor', userType: 'Doctor'},
-            {username: 'nurse', userType: 'Nurse'},
-            {username: 'secretary', userType: 'Secretary'}
-        ];
-        each(tests, function(test, callback) {
+    describe('Search success cases', () => {
+        it('Should find one user for each case that is correct type', (done) => {
+            const tests = [
+                {search: 'Robert', expectKey: 'patients'},
+                {search: 'Jason', expectKey: 'admins'},
+                {search: 'Cole', expectKey: 'doctors'},
+                {search: 'Brad', expectKey: 'nurses'},
+                {search: 'Miley', expectKey: 'secretaries'}
+            ];
+            each(tests, function(test, callback) {
+                supertest(app)
+                    .get('/search')
+                    .send({ search: test.search })
+                    .expect(200)
+                    .end((err, res) => {
+                        should.not.exist(err);
+                        res.body.should.be.an('object');
+                        res.body.resultCount.should.equal(1);
+                        res.body[test.expectKey].length.should.equal(1);
+                        res.body[test.expectKey][0].firstname.should.equal(test.search);
+                        callback();
+                    });
+            }, function(err) {
+                should.not.exist(err);
+                done();
+            });
+        });
+        it('Should return nothing from invalid search', (done) => {
             supertest(app)
                 .get('/search')
-                .send({ username : test.username })
+                .send({ search : 'Not a valid search query' })
                 .expect(200)
                 .end((err, res) => {
                     should.not.exist(err);
                     res.body.should.be.an('object');
-                    res.body.searchResults.should.equal(1);
-                    res.body.users[0].userType.should.equal(test.userType);
-                    callback();
+                    res.body.resultCount.should.equal(0);
+                    done();
                 });
-        }, function(err) {
-            should.not.exist(err);
-            done();
         });
     });
-    it('Should return nothing from invalid search', (done) => {
-        supertest(app)
-            .get('/search')
-            .send({ username : 'Not a valid name' })
-            .expect(200)
-            .end((err, res) => {
+    describe('Search failure cases', () => {
+        it('Should return 400 bad request when no body', (done) => {
+            supertest(app)
+                .get('/search')
+                .expect(400)
+                .end((err, res) => {
+                    should.not.exist(err);
+                    res.body.should.be.an('object');
+                    res.body.should.have.all.keys('error');
+                    done();
+                });
+        });
+        it('Should return 400 bad request when bad body', (done) => {
+            const bodies = [
+                null,
+                {},
+                {not_search: 'yo!'},
+                {search: null},
+                {search: 1},
+                {search: {nested: 'wat'}}
+            ];
+            each(bodies, function(body, callback) {
+                supertest(app)
+                    .get('/search')
+                    .send(body)
+                    .expect(400)
+                    .end((err, res) => {
+                        should.not.exist(err);
+                        res.body.should.be.an('object');
+                        res.body.should.have.all.keys('error');
+                        callback();
+                    });
+            }, function(err) {
                 should.not.exist(err);
-                res.body.should.be.an('object');
-                res.body.should.include({searchResults: 0});
                 done();
             });
-    });
-    it('Should return 400 bad request when no body', (done) => {
-        supertest(app)
-            .get('/search')
-            .expect(400)
-            .end((err, res) => {
-                should.not.exist(err);
-                res.body.should.be.an('object');
-                res.body.should.have.all.keys('error');
-                done();
-            });
+        });
     });
 });
