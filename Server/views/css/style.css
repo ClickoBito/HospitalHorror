@@ -75,10 +75,6 @@ h4{
 	display: inline-block;
 }
 
-.sticky-top, #main {
-	margin-top: 20px;
-}
-
 .td, .th {
 	border-radius:15px !important;
 }
