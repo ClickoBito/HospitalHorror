@@ -2,6 +2,8 @@ extends layout
 include navbar
 block content
     +navbar(username.firstname + ' ' + username.lastname)
+    div#backgroundHr
+        hr#navbarWrapperHr
     div.wrapper.col-m-4.sticky-top
         nav.sticky-top
             //- Sidebar Links
@@ -48,7 +50,7 @@ block content
                         .form-group
                             label(for='doctorNotes')
                                 h3 Doctor's Notes
-                            textarea#doctorNoteArea.form-control(rows='10' placeholder='Enter patient notes here...') 
+                            textarea#doctorNoteArea.form-control(rows='10' value="" placeholder='Enter patient notes here...') 
                             script.
                                 function getPatientData(id){
                                     let xhr = new XMLHttpRequest();
