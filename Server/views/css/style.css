@@ -2,7 +2,7 @@ body {
 	background: #f5f6fa;
 	padding: 5px;
 	color: #464978;
-	font-family: "Lucida Sans Unicode, Lucida Grande, sans-serif"
+	font-family: 'Open Sans', sans-serif;
 }
 
 #doctorBody {
@@ -11,7 +11,6 @@ body {
 	/* background-image: url("https://www.planwallpaper.com/static/images/desktop-backgrounds1_wvNeWqW.jpg"); */
 	padding: 5px;
 	color: #dc3545;
-	font-family: 'Open Sans', sans-serif;
 	font-size: 0.95em;
 }
 
@@ -117,7 +116,7 @@ h4{
 	color: rgb(112, 111, 111);
 	height: auto;
 	width: 2056px;
-	background: rgba(0, 0, 0, 0) url("https://image.ibb.co/gesMRx/footer2.jpg") 
+	background: rgba(0, 0, 0, 0) url("https://image.ibb.co/gesMRx/footer2.jpg")
 	scroll 100% 100% / auto padding-box border-box;
 	background-repeat: no-repeat;
 	background-size: auto;
@@ -233,7 +232,7 @@ footer {
 	border-bottom: 0.2em solid turquoise;
 	background: transparent;
 	color: white;
-	
+
 }
 
 .indexBody .fa-plus{
