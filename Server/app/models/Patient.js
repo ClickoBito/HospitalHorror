@@ -48,6 +48,7 @@ module.exports = function(sequelize, DataTypes) {
 		models.Patient.hasMany(models.PatientInfo);
 		models.Patient.hasMany(models.Allergy);
 		models.Patient.hasMany(models.Diagnosis);
+		models.Patient.belongsTo(models.Doctor);
 	};
 
 	return Patient;

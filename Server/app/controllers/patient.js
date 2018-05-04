@@ -15,6 +15,7 @@ module.exports.create = function (req, res, next) {
         if(created) {
             app.print('Created Patient');
             app.print(patient.get({ plain: true }));
+            // TODO: redirect to something better
             res.redirect('/');
 
         }
@@ -26,6 +27,7 @@ module.exports.create = function (req, res, next) {
         }
     }, err => {
         app.print(err);
+        // TODO: redirect to something better
         res.redirect('/');
     });
 };
@@ -55,6 +57,8 @@ module.exports.getAllPatients = function (req, res, next) {
         res.render('doctor', {
             title: 'Patients',
             patients: patients});
+    }, err => {
+      // TODO
     });
 };
 
@@ -83,14 +87,44 @@ module.exports.getPatientData = function(req, res,next){
               model: model.AllergyType
             }
           ]
+        },
+        {
+          model: model.Doctor
         }
       ]
     }).then(patient => {
-      //app.print(patient.get({plain:true}));
 
       res.render('patientprofile', {patient: patient});
 
     }, err => {
-
+      // TODO
     });
+};
+
+module.exports.createPatientForm = function(req, res, next) {
+  if (false) {
+  // TODO: enable this later. Disabled for debugging
+  //if (!AuthCtrl.isSecretary(req)) {
+    req.session.error = 'Only secretaries can access this page.';
+    req.session.errorcode = 401;
+    res.redirect('/error/');
+  } else {
+    Sequelize.Promise.all([
+        model.Doctor.findAll({
+          attributes: ['id', 'firstname', 'lastname'],
+        }),
+    ]).spread(doctors => {
+      // TODO: fix this
+      let username = {
+        firstname: 'JOHN',
+        lastname: 'DOE'
+      };
+      res.render('createpatient', {
+        doctors: doctors,
+        username: username
+      });
+    }, err => {
+      // TODO
+    });
+  }
 };
