@@ -2,8 +2,18 @@ const model = require('../models/');
 const Sequelize = require('sequelize');
 const app = require('../../server.js');
 const online = require('./online.js');
+const AuthCtrl = require('../controllers/auth.js');
 
-module.exports.getDoctorDashboardData = function(req, res){
+module.exports.getDashboard = function(req, res){
+    if(!AuthCtrl.isDoctor(req) && !AuthCtrl.isNurse(req)) {
+        req.session.error = 'Only doctors can access this page.';
+        req.session.errorcode = 403;
+        res.redirect('/error/');
+        return;
+    }
+    let usertype = req.session.user.userType;
+    let typeModel = usertype === 'Doctor' ? model.Doctor : model.Nurse;
+
     Sequelize.Promise.all([
         model.Patient.findAll({
             attributes: ['firstname', 'lastname', 'id', 'dateofbirth'],
@@ -31,7 +41,7 @@ module.exports.getDoctorDashboardData = function(req, res){
             where: {PatientId: '1'},
             attributes: ['bloodpressure','weight','PatientId', 'createdAt', 'description'],
           }),
-        model.Doctor.findOne({
+        typeModel.findOne({
             where: {UserId: req.params.id},
             attributes: ['firstname', 'lastname']
         })

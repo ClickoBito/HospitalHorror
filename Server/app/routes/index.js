@@ -22,8 +22,13 @@ router.post('/logout', AuthCtrl.logout);
 
 // Patient
 router.get('/patient/:id', PatientCtrl.getPatientData);
-router.get('/doctor/:id', DoctorCtrl.getDoctorDashboardData);
 router.post('/patient', PatientCtrl.create);
+
+// Doctors
+router.get('/doctor/:id', DoctorCtrl.getDashboard);
+
+// Nurses
+router.get('/nurse/:id', DoctorCtrl.getDashboard);
 
 // PatientInfo
 router.post('/patientinfo', PatientInfoCtrl.create);

@@ -35,7 +35,7 @@ var patientsList;
 module.exports.getAllPatients = function (req, res, next) {
     app.print(req.session);
     //Check if user is authorized to render doctor page
-    if(!AuthCtrl.isDoctor(req)) {
+    if(!AuthCtrl.isDoctor(req) && !AuthCtrl.isNurse(req)) {
         req.session.error = 'Only doctors can access this page.';
         req.session.errorcode = 403;
         res.redirect('/error/');
