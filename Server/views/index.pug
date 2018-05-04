@@ -3,18 +3,24 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     title Hospital Horror
+    link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet')
     link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous")
     link(href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet")
     link(rel="stylesheet" href="style.css")
     style.
-      .card {
-      margin-top: 20%;
-      }
       .input-group {
-      margin-top: 5%;
+        margin-top: 5%;
+      }
+      .logo {
+        margin: 5% 0 2% 0;
+        text-align: center;
+        font-size: 4rem;
+        color: red;
       }
   body#clrblk.indexBody
     .container
+      .logo
+        i.fa.fa-plus   MediSys
       #loginbox.mainbox.col-md-6.mx-auto
         .card.maincard
           .card-header

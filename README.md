@@ -26,8 +26,7 @@ const db = {
 
 module.exports = db;
 ```
-
-- Start the app by running in the *Server/*-directory: `npm start`. Alternatively run `nodemon` (if it's installed) or possibly *forever*: `forever start server.js`
-- If you get errors about non-existing tables or attributes, you might have to recreate the database by running in the *Server/*-directory: `npm run resync`.
-- *Optional:* Insert testdata into the database by running in the *Server/*-directory: `npm run load_testdata`.
+- Create the database by running in the *Server/*-directory: `npm run resync`.
+- *Optional, but recommended:* Insert testdata into the database by running in the *Server/*-directory: `npm run load_testdata`.
+- Start the app by running in the *Server/*-directory: `npm start`. Alternatively run `nodemon -e html,css,js,pug` (if it's installed) or possibly *forever*: `forever start server.js`
 - Visit `http://localhost:8890`

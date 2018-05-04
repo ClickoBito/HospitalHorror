@@ -1,0 +1,89 @@
+body {
+	background: #f5f6fa;
+	padding: 5px;
+	color: #464978;
+	font-family: "Lucida Sans Unicode, Lucida Grande, sans-serif"
+}
+
+#nurseLink, #patientLink, #doctorLink{
+	text-align: center;
+	color: #464978;
+	background-color: white;
+	border-radius: 15px;
+	font-size-adjust: 0.58;
+}
+
+#doctorNoteArea, .card {
+	border-radius: 15px;
+}
+
+.card{
+	background: #5277E2;
+	color: #f5f6fa;
+	margin-bottom: 15px;
+}
+
+.navbar {
+	text-align: center;
+	list-style-type: none;
+}
+
+#search-button{
+	border-left: 1em !important;
+}
+
+#search-bar{
+	width: 50%;
+}
+
+.fa-plus{
+	font-size: 2em;
+	color: red;
+	margin-right: 15px;
+}
+
+#patientsIcon, #nursesIcon, #doctorsIcon{
+	font-size: 1.4em;
+}
+
+#sidebarTitle{
+	margin-left: 15px;
+}
+
+#patientsList, #nursesList, #doctorList {
+	border: none !important;
+	padding: 0 !important;
+	margin: 5px;
+}
+
+#nursesIcon, #doctorsIcon{
+	padding-top: 20px;
+}
+
+.list-group-item, #patient {
+	background: #f5f6fa;
+	border: none !important;
+	padding: 0 !important;
+	margin: 3px;
+}
+
+#loggedin {
+	margin-right: 5px;
+}
+
+h4{
+	display: inline-block;
+}
+
+.sticky-top, #main {
+	margin-top: 20px;
+}
+
+.td, .th {
+	border-radius:15px !important;
+}
+
+#table-head{
+	font-size-adjust: 1;
+	text-decoration: underline;
+}
