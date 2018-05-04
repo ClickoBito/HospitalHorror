@@ -2,7 +2,7 @@ body {
 	background: #f5f6fa;
 	padding: 5px;
 	color: #464978;
-	font-family: "Lucida Sans Unicode, Lucida Grande, sans-serif"
+	font-family: 'Noto Sans', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
 
 #nurseLink, #patientLink, #doctorLink{
