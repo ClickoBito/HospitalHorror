@@ -1,7 +1,5 @@
 body {
-	background: #f5f6fa;
-	padding: 5px;
-	color: #464978;
+	background-image:url("/img/mainBackground.jpg");
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -140,7 +138,6 @@ h4{
 }
 
 #main {
-	border-radius: 1em;
 	margin-right: 6em;
 }
 
@@ -187,10 +184,6 @@ footer {
 	color: red;
 }
 
-.indexBody, .adminBody  {
-	background-image:url("/img/mainBackground.jpg")!important;
-}
-
 .indexBody .card-header, .adminBody .card-header {
 	background-color: rgba(255, 255, 255, 0);
 	border: none;
@@ -205,6 +198,7 @@ footer {
 .indexBody .maincard, .adminBody .card {
 	background-color: rgba(0, 0, 0, 0.6);
 	font-family: 'Open Sans', sans-serif;
+	border-radius: 1em;
 }
 
 .indexBody .card-title, .adminBody .card-title {
@@ -261,7 +255,6 @@ footer {
 
 #adminOption {
 	background-color: #334acc;
-	border-radius: 1em;
 }
 
 .adminLabel {
