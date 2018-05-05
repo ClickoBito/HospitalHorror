@@ -5,39 +5,31 @@ html(lang="en")
     title Hospital Horror
     link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet')
     link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous")
-    style.
-      .input-group {
-        margin-top: 5%;
-      }
-      .logo {
-        margin: 5% 0 2% 0;
-        text-align: center;
-        font-size: 4rem;
-        color: red;
-      }
-  body#clrblk
+    link(href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet")
+    style(type='text/css')
+            include css/style.css
+  body#clrblk.indexBody
     .container
       .logo
         i.fa.fa-plus   MediSys
       #loginbox.mainbox.col-md-6.mx-auto
         .card.maincard
           .card-header
-            .card-title Login
-            p= status
+            .card-title Sign in to MediSys
           .card-body
             form#loginform.form-horizontal(role="form" method="post" action="/login")
               .input-group
                 span.input-group-addon
                   i.glyphicon.glyphicon-user
-                input#login-username.form-control(type="text" name="username" value="" placeholder="username")
+                input#login-username.form-control(type="text" name="username" value="" placeholder="Username")
               .input-group
                 span.input-group-addon
                   i.glyphicon.glyphicon-lock
-                input#login-password.form-control(type="password" name="password" placeholder="password")
+                input#login-password.form-control(type="password" name="password" placeholder="Password")
               .input-group
                
               .form-group
                 // Button
-                .col-sm-12.controls
-                  button#btn-login.btn.btn-success(type="submit") Login 
+                #btn-login-window.col-sm-12.controls
+                  button#btn-login.btn.btn-success(type="submit") Sign in 
               

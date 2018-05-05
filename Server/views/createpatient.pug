@@ -1,9 +1,7 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    title Hospital Horror
-    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous")
+extends layout
+include navbar
+block content
+  +navbar(username.firstname + ' ' + username.lastname)
   body#clrblk
     .container
       #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.mx-auto(style="margin-top:50px;")
@@ -20,14 +18,19 @@ html(lang="en")
                   option(value="1") Male
                   option(value="0") Female
               .form-group(style="margin: 0px 5px 25px 5px")
-                label Social Security Number
-                input.form-control(type="text" name="ssNbr" placeholder="SSN")
+                label(for="sel_doc") Assigned doctor
+                select#sel_doc.form-control(name="DoctorId")
+                  each d in doctors 
+                    option(value=d.id) #{d.fullname}
               .form-group(style="margin: 0px 5px 25px 5px")
                 label First name
                 input.form-control(type="text" name="firstname" placeholder="First name")
               .form-group(style="margin: 0px 5px 25px 5px")
                 label Last name
                 input.form-control(type="text" name="lastname" placeholder="Last name")
+              .form-group(style="margin: 0px 5px 25px 5px")
+                label Social Security Number
+                input.form-control(type="text" name="ssNbr" placeholder="SSN")
               .form-group(style="margin: 0px 5px 25px 5px")
                 label Address
                 input.form-control(type="text" name="address" placeholder="Address")

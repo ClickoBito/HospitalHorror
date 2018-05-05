@@ -39,6 +39,7 @@ module.exports = function(sequelize, DataTypes) {
 	Doctor.associate = function(models) {
 		models.Doctor.belongsTo(models.User);
 		models.Doctor.hasMany(models.Diagnosis);
+		models.Doctor.hasMany(models.Patient);
 	};
 
 	return Doctor;

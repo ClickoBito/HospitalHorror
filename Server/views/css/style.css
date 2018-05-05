@@ -2,23 +2,36 @@ body {
 	background: #f5f6fa;
 	padding: 5px;
 	color: #464978;
-	font-family: "Lucida Sans Unicode, Lucida Grande, sans-serif"
+	font-family: 'Open Sans', sans-serif;
+}
+
+#doctorBody {
+	background-image: url("/img/doctorBackground.jpeg");
+	background-repeat: no-repeat;
+	/* background-image: url("https://www.planwallpaper.com/static/images/desktop-backgrounds1_wvNeWqW.jpg"); */
+	padding: 5px;
+	color: #dc3545;
+	font-size: 0.95em;
 }
 
 #nurseLink, #patientLink, #doctorLink{
 	text-align: center;
-	color: #464978;
-	background-color: white;
-	border-radius: 15px;
+	color: white;
+	background-color: rgba(255,255,255, 0.1);
+	border-radius: 10px;
 	font-size-adjust: 0.58;
+	padding: 0.2em 0;
+	margin: 0.1em 0;
 }
 
 #doctorNoteArea, .card {
 	border-radius: 15px;
+	background-color: rgba(255,255,255, 0.1);
+	color: white;
 }
 
 .card{
-	background: #5277E2;
+	background-color: rgba(255,255,255, 0.1);
 	color: #f5f6fa;
 	margin-bottom: 15px;
 }
@@ -26,6 +39,11 @@ body {
 .navbar {
 	text-align: center;
 	list-style-type: none;
+	border-top-left-radius: 1em;
+	border-top-right-radius: 1em;
+	background: rgba(0,0,0, 0.7);
+	margin: 0 1em;
+	padding-top: 1.5em;
 }
 
 #search-button{
@@ -33,21 +51,28 @@ body {
 }
 
 #search-bar{
-	width: 50%;
+	width: 30em;
+	margin-left: 5.5em!important;
 }
 
-.fa-plus{
-	font-size: 2em;
+#doctorBody .fa-plus{
+	font-size: 3em;
 	color: red;
-	margin-right: 15px;
+	margin-right: 0.5em;
+	margin-left: -0.1em;
+}
+
+#brand {
+	color: red;
 }
 
 #patientsIcon, #nursesIcon, #doctorsIcon{
 	font-size: 1.4em;
+	margin-left: 0.25em;
 }
 
-#sidebarTitle{
-	margin-left: 15px;
+#sidebarTitle {
+	margin-left: 1.5em;
 }
 
 #patientsList, #nursesList, #doctorList {
@@ -68,15 +93,12 @@ body {
 }
 
 #loggedin {
-	margin-right: 5px;
+	margin-right: 1em;
+	color: white;
 }
 
 h4{
 	display: inline-block;
-}
-
-.sticky-top, #main {
-	margin-top: 20px;
 }
 
 .td, .th {
@@ -86,4 +108,152 @@ h4{
 #table-head{
 	font-size-adjust: 1;
 	text-decoration: underline;
+}
+
+/* -------------------------------------CHEESY FOOTER WITH BIRD------------------------------------- */
+
+#CHEESY_FOOTER {
+	color: rgb(112, 111, 111);
+	height: auto;
+	width: 2056px;
+	background: rgba(0, 0, 0, 0) url("https://image.ibb.co/gesMRx/footer2.jpg")
+	scroll 100% 100% / auto padding-box border-box;
+	background-repeat: no-repeat;
+	background-size: auto;
+}
+
+#TEXT_BIRD {
+	color: black;
+	letter-spacing: 6.6px;
+	text-align: center;
+	text-shadow: rgba(1, 26, 68, 0.53) 0px 1px 0px;
+	text-transform: uppercase;
+	font: normal normal 400 normal 22px / normal Caecilia, Georgia, serif;
+	padding: 125px 20px 0px;
+	margin-top: 5em;
+}
+
+/* ----------------------------------END OF CHEESY FOOTER WITH BIRD------------------------------------- */
+
+#sticky-sidebar {
+	max-width: 14em!important;
+}
+
+#main {
+	border-radius: 1em;
+	margin-right: 6em;
+}
+
+.wrapper {
+	margin: 0 1em;
+	background: rgba(0,0,0, 0.7);
+	color: white;
+	border-bottom-left-radius: 1em;
+	border-bottom-right-radius: 1em;
+	padding-top: 2em;
+}
+
+#navbarWrapperHr {
+	width: 98%;
+	background: rgba(255,255,255,0.2);
+	margin: 0em auto;
+}
+
+#backgroundHr {
+	margin: 0 1em;
+	padding-top: 1em;
+	background: rgba(0,0,0, 0.7);
+}
+#vr {
+	border-left: 0.1em solid rgba(255,255,255,0.1);
+}
+
+#copyright {
+	margin: 1em;
+}
+
+footer {
+	margin: 0 auto;
+}
+
+.indexBody .input-group {
+	margin-top: 5%;
+}
+
+.indexBody .logo {
+	margin: 5% 0 2% 0;
+	text-align: center;
+	font-size: 4rem;
+	color: red;
+}
+
+.indexBody  {
+	background-image:url("img/loginBackground.png")!important;
+}
+
+.indexBody .card-header {
+	background-color: rgba(255, 255, 255, 0);
+	border: none;
+	padding-bottom: 0;
+	color: white;
+}
+
+.indexBody .card-body {
+	padding-top: 0;
+}
+
+.indexBody .maincard {
+	background-color: rgba(0, 0, 0, 0.6);
+	font-family: 'Open Sans', sans-serif;
+}
+
+.indexBody .card-title {
+	font-size: 2em;
+	line-height: 1;
+	text-align: center;
+	margin: 1em 0;
+}
+
+.indexBody #btn-login {
+	margin-top: 2em;
+	width: 100%;
+	height: 3em;
+}
+
+.indexBody #btn-login-window{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.indexBody .form-control, .indexBody .form-control:focus  {
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom: 0.2em solid turquoise;
+	background: transparent;
+	color: white;
+
+}
+
+.indexBody .fa-plus{
+	font-size: 1em;
+	color: red;
+	margin-right: 0;
+}
+
+.indexBody input::-webkit-input-placeholder{
+	color: rgba(255, 255, 255, 0.6)!important;
+}
+
+@-webkit-keyframes autofill {
+	to {
+		color: #666;
+		background: transparent;
+	}
+}
+
+.indexBody input:-webkit-autofill {
+	-webkit-animation-name: autofill;
+	-webkit-animation-fill-mode: both;
+	-webkit-text-fill-color: white;
 }
