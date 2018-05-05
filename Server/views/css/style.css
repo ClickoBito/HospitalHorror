@@ -188,7 +188,7 @@ footer {
 }
 
 .indexBody, .adminBody  {
-	background-image:url("/img/loginBackground.jpg")!important;
+	background-image:url("/img/mainBackground.jpg")!important;
 }
 
 .indexBody .card-header, .adminBody .card-header {
@@ -260,7 +260,7 @@ footer {
 }
 
 #adminOption {
-	background-color: #3357cc;
+	background-color: #334acc;
 	border-radius: 1em;
 }
 
