@@ -6,7 +6,7 @@ body {
 }
 
 #doctorBody {
-	background-image: url("/img/doctorBackground.jpeg");
+	background-image: url("/img/doctorBackground.jpeg") !important;
 	background-repeat: no-repeat;
 	/* background-image: url("https://www.planwallpaper.com/static/images/desktop-backgrounds1_wvNeWqW.jpg"); */
 	padding: 5px;
@@ -110,7 +110,7 @@ h4{
 	text-decoration: underline;
 }
 
-/* -------------------------------------CHEESY FOOTER WITH BIRD------------------------------------- */
+/* -------------------------------------CHEESY FOOTER------------------------------------- */
 
 #CHEESY_FOOTER {
 	color: rgb(112, 111, 111);
@@ -133,7 +133,7 @@ h4{
 	margin-top: 5em;
 }
 
-/* ----------------------------------END OF CHEESY FOOTER WITH BIRD------------------------------------- */
+/* ----------------------------------END OF CHEESY FOOTER------------------------------------- */
 
 #sticky-sidebar {
 	max-width: 14em!important;
@@ -188,7 +188,7 @@ footer {
 }
 
 .indexBody  {
-	background-image:url("img/loginBackground.png")!important;
+	background-image:url("/img/loginBackground2.jpg")!important;
 }
 
 .indexBody .card-header {
@@ -229,7 +229,7 @@ footer {
 	border-top: none;
 	border-right: none;
 	border-left: none;
-	border-bottom: 0.2em solid turquoise;
+	border-bottom: 0.2em ridge #3399cc;
 	background: transparent;
 	color: white;
 
