@@ -24,13 +24,13 @@ body {
 	margin: 0.1em 0;
 }
 
-#doctorNoteArea, .card {
+#doctorNoteArea, #doctorBody .card {
 	border-radius: 15px;
 	background-color: rgba(255,255,255, 0.1);
 	color: white;
 }
 
-.card{
+#doctorBody .card{
 	background-color: rgba(255,255,255, 0.1);
 	color: #f5f6fa;
 	margin-bottom: 15px;
@@ -187,49 +187,50 @@ footer {
 	color: red;
 }
 
-.indexBody  {
-	background-image:url("/img/loginBackground2.jpg")!important;
+.indexBody, .adminBody  {
+	background-image:url("/img/loginBackground.jpg")!important;
 }
 
-.indexBody .card-header {
+.indexBody .card-header, .adminBody .card-header {
 	background-color: rgba(255, 255, 255, 0);
 	border: none;
 	padding-bottom: 0;
 	color: white;
 }
 
-.indexBody .card-body {
+.indexBody .card-body, .adminBody .card-body {
 	padding-top: 0;
 }
 
-.indexBody .maincard {
+.indexBody .maincard, .adminBody .card {
 	background-color: rgba(0, 0, 0, 0.6);
 	font-family: 'Open Sans', sans-serif;
 }
 
-.indexBody .card-title {
+.indexBody .card-title, .adminBody .card-title {
 	font-size: 2em;
 	line-height: 1;
 	text-align: center;
-	margin: 1em 0;
+	margin-top: 1em;
 }
 
-.indexBody #btn-login {
+.indexBody #btn-login, .adminBody #btn-login {
 	margin-top: 2em;
 	width: 100%;
 	height: 3em;
 }
 
-.indexBody #btn-login-window{
+.indexBody #btn-login-window, .adminBody #btn-login-window {
 	padding-left: 0;
 	padding-right: 0;
 }
 
-.indexBody .form-control, .indexBody .form-control:focus  {
+.indexBody .form-control, .indexBody .form-control:focus, .adminBody .form-control, .adminBody .form-control:focus  {
 	border-top: none;
 	border-right: none;
 	border-left: none;
 	border-bottom: 0.2em ridge #3399cc;
+	border-radius: 0;
 	background: transparent;
 	color: white;
 
@@ -241,7 +242,7 @@ footer {
 	margin-right: 0;
 }
 
-.indexBody input::-webkit-input-placeholder{
+.indexBody input::-webkit-input-placeholder, .adminBody input::-webkit-input-placeholder {
 	color: rgba(255, 255, 255, 0.6)!important;
 }
 
@@ -252,8 +253,18 @@ footer {
 	}
 }
 
-.indexBody input:-webkit-autofill {
+.indexBody input:-webkit-autofill, .adminBody input:-webkit-autofill {
 	-webkit-animation-name: autofill;
 	-webkit-animation-fill-mode: both;
 	-webkit-text-fill-color: white;
+}
+
+#adminOption {
+	background-color: #3357cc;
+	border-radius: 1em;
+}
+
+.adminLabel {
+	font-weight: bold;
+	color: white;
 }

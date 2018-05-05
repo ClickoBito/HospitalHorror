@@ -4,7 +4,9 @@ html(lang="en")
     meta(charset="UTF-8")
     title Hospital Horror
     link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous")
-  body#clrblk
+    style(type='text/css')
+            include css/style.css
+  body#clrblk.adminBody
     .container
       #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.mx-auto(style="margin-top:50px;")
         .card
@@ -15,34 +17,34 @@ html(lang="en")
           .card-body(style="padding-top:30px")
             form#registerform.form-horizontal(role="form" method="post" action="/register")
               .form-group(style="margin: 0px 5px 25px 5px")
-                label(for="sel1") User type
+                label.adminLabel(labelfor="sel1") User type
                 select#sel1.form-control(name="usertype")
-                  option Doctor
-                  option Nurse
-                  option Secretary
+                  option#adminOption Doctor
+                  option#adminOption Nurse
+                  option#adminOption Secretary
               .form-group(style="margin: 0px 5px 25px 5px")
-                label Username
+                label.adminLabel Username
                 input.form-control(type="username" name="username" placeholder="Username")
               .form-group(style="margin: 0px 5px 25px 5px")
-                label Password
+                label.adminLabel Password
                 input.form-control(type="password" name="password" placeholder="Password")
               .form-group(style="margin: 0px 5px 25px 5px")
-                label First name
+                label.adminLabel First name
                 input.form-control(type="text" name="firstname" placeholder="Firstname")
               .form-group(style="margin: 0px 5px 25px 5px")
-                label Last name
+                label.adminLabel Last name
                 input.form-control(type="text" name="lastname" placeholder="Lastname")
               .form-group(style="margin: 0px 5px 25px 5px")
-                label Phone
+                label.adminLabel Phone
                 input.form-control(type="text" name="phone" placeholder="Phone")
               .form-group(style="margin: 0px 5px 25px 5px")
-                label Email
+                label.adminLabel Email
                 input.form-control(type="email" name="email" placeholder="Email")
               .form-group(style="margin: 0px 5px 25px 5px")
-                label Date of birth                
+                label.adminLabel Date of birth                
                 input.form-control(type="date" value="1980-08-19" name="dateofbirth")          
               .form-group(style="margin-top:10px")
                   // Button
-                  .col-sm-12.controls
+                  .col-sm-12.controls#btn-login-window
                     button#btn-login.btn.btn-success(type="submit") Submit 
               
