@@ -63,9 +63,9 @@ describe('Test of the back-end search functionality', () => {
         });
         it('Should return diagnosis from search', (done) => {
             const tests = [
-                { search: 'this%20is%20not%20valid', expectedResults: 0 },
-                { search: 'speech%20therapist', expectedResults: 1 },
-                { search: 'should%20be', expectedResults: 4 },
+                { search: 'this is not valid', expectedResults: 0 },
+                { search: 'speech therapist', expectedResults: 1 },
+                { search: 'should be', expectedResults: 4 },
                 { search: 'endocarditis', expectedResults: 1 },
                 { search: 'antibiotic', expectedResults: 2 },
                 { search: 'tablet', expectedResults: 3 }
@@ -93,12 +93,11 @@ describe('Test of the back-end search functionality', () => {
     describe('Search failure cases', () => {
         it('Should return 400 bad request when bad body', (done) => {
             const tests = [
-                { search: null },
+                { search: '/' },
                 { search: '' },
-                { search: 'Edd' },
-                { search: 'search' },
-                { search: 'search=Edd' },
+                { search: '?not_search' },
                 { search: '?not_search=Edd' },
+                { search: '?search' },
                 { search: '?search=' },
             ];
             each(tests, function(test, callback) {

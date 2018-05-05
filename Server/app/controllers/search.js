@@ -6,22 +6,23 @@ const online = require('./online.js');
 const Op = Sequelize.Op;
 
 module.exports.search = function (req, res) {
-    if (_.isEmpty(req.body) || !_.isString(req.body.search)) {
+    if (_.isEmpty(req.query) || !_.isString(req.query.search) || req.query.search.length === 0) {
         return res.status(400).json({error: 'Invalid search body'});
     }
-    if (req.body.diagnosis) {
-        return diagnosisSearch(req, res);
+    const urlQuery = req.query.search;
+    if (req.query.diagnosis) {
+        return diagnosisSearch(req, res, urlQuery);
     }
-    personSearch(req, res);
+    personSearch(req, res, urlQuery);
 };
 
-function diagnosisSearch(req, res) {
+function diagnosisSearch(req, res, urlQuery) {
     const diagnosisQuery = {
         where: {
             [Op.or]: [
-                { '$Treatment.description$': {[Op.like]: '%' + req.body.search + '%' }},
-                { '$DiagnosisType.name$': {[Op.like]: '%' + req.body.search + '%' }},
-                { '$Treatment.TreatmentType.name$': {[Op.like]: '%' + req.body.search + '%' }}
+                { '$Treatment.description$': {[Op.like]: '%' + urlQuery + '%' }},
+                { '$DiagnosisType.name$': {[Op.like]: '%' + urlQuery + '%' }},
+                { '$Treatment.TreatmentType.name$': {[Op.like]: '%' + urlQuery + '%' }}
             ]
         },
         include: [
@@ -44,12 +45,12 @@ function diagnosisSearch(req, res) {
     });
 }
 
-function personSearch(req, res) {
+function personSearch(req, res, urlQuery) {
     const personQuery = {
         where: {
             [Op.or]: [
-                { firstname: {[Op.like]: req.body.search + '%' }},
-                { lastname: {[Op.like]: req.body.search + '%' }}
+                { firstname: {[Op.like]: urlQuery + '%' }},
+                { lastname: {[Op.like]: urlQuery + '%' }}
         ]},
         limit: 20
     };
