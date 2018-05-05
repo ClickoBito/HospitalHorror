@@ -5,7 +5,7 @@ const app = require('../../server.js');
 const online = require('./online.js');
 const Op = Sequelize.Op;
 
-export const search = (req, res) => {
+module.exports.search = function (req, res) {
     if (_.isEmpty(req.body) || !_.isString(req.body.search)) {
         return res.status(400).json({error: 'Invalid search body'});
     }
@@ -15,7 +15,7 @@ export const search = (req, res) => {
     personSearch(req, res);
 };
 
-const diagnosisSearch = (req, res) => {
+function diagnosisSearch(req, res) {
     const diagnosisQuery = {
         where: {
             [Op.or]: [
@@ -42,9 +42,9 @@ const diagnosisSearch = (req, res) => {
         app.print(err);
         res.status(500).send({ error: err.errors });
     });
-};
+}
 
-const personSearch = (req, res) => {
+function personSearch(req, res) {
     const personQuery = {
         where: {
             [Op.or]: [
@@ -72,4 +72,4 @@ const personSearch = (req, res) => {
         app.print(err);
         res.status(500).send({ error: err.errors });
     });
-};
+}
