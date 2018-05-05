@@ -5,10 +5,9 @@ import _ from 'lodash';
 
 const should = require('chai').should();
 
-const search = (body, assert, expect = 200) => {
+const search = (fields, assert, expect = 200) => {
     supertest(app)
-        .get('/search')
-        .send(body)
+        .get('/search' + fields)
         .expect(expect)
         .end((err, res) => {
             should.not.exist(err);
@@ -32,7 +31,7 @@ describe('Test of the back-end search functionality', () => {
                 { search: 'Haley', resultType: 'secretaries', matchedOn: 'lastname' }
             ];
             each(tests, function(test, callback) {
-                search({ search: test.search }, (res) => {
+                search('?search=' + test.search, (res) => {
                     res.body.should.be.an('object');
                     res.body.resultCount.should.equal(1);
                     res.body[test.resultType].length.should.equal(1);
@@ -52,7 +51,7 @@ describe('Test of the back-end search functionality', () => {
                 { search: 'c', expectedResults: 2 }
             ];
             each(tests, function(test, callback) {
-                search({ search: test.search }, (res) => {
+                search('?search=' + test.search, (res) => {
                     res.body.should.be.an('object');
                     res.body.resultCount.should.equal(test.expectedResults);
                     callback();
@@ -64,15 +63,15 @@ describe('Test of the back-end search functionality', () => {
         });
         it('Should return diagnosis from search', (done) => {
             const tests = [
-                { body: { diagnosis: true, search: 'this is not valid' }, expectedResults: 0 },
-                { body: { diagnosis: true, search: 'speech therapist' }, expectedResults: 1 },
-                { body: { diagnosis: true, search: 'should be' }, expectedResults: 4 },
-                { body: { diagnosis: true, search: 'endocarditis' }, expectedResults: 1 },
-                { body: { diagnosis: true, search: 'antibiotic' }, expectedResults: 2 },
-                { body: { diagnosis: true, search: 'tablet' }, expectedResults: 3 }
+                { search: 'this%20is%20not%20valid', expectedResults: 0 },
+                { search: 'speech%20therapist', expectedResults: 1 },
+                { search: 'should%20be', expectedResults: 4 },
+                { search: 'endocarditis', expectedResults: 1 },
+                { search: 'antibiotic', expectedResults: 2 },
+                { search: 'tablet', expectedResults: 3 }
             ];
             each(tests, function(test, callback) {
-                search(test.body, (res) => {
+                search('?diagnosis=true&search=' + test.search, (res) => {
                     res.body.should.be.an('object');
                     res.body.resultCount.should.equal(test.expectedResults);
                     callback();
@@ -83,7 +82,7 @@ describe('Test of the back-end search functionality', () => {
             });
         });
         it('Should return nothing from invalid search', (done) => {
-            search({ search : 'Not a valid search query' }, (res) => {
+            search('?search=sdfasdfasdfasdfasdf', (res) => {
                 res.body.should.be.an('object');
                 res.body.resultCount.should.equal(0);
                 done();
@@ -92,29 +91,18 @@ describe('Test of the back-end search functionality', () => {
     });
 
     describe('Search failure cases', () => {
-        it('Should return 400 bad request when no body', (done) => {
-            // Not using the search method to exclude send option
-            supertest(app)
-                .get('/search')
-                .expect(400)
-                .end((err, res) => {
-                    should.not.exist(err);
-                    res.body.should.be.an('object');
-                    res.body.should.have.all.keys('error');
-                    done();
-                });
-        });
         it('Should return 400 bad request when bad body', (done) => {
             const tests = [
-                { body: null },
-                { body: {} },
-                { body: { not_search: 'yo!' } },
-                { body: { search: null } },
-                { body: { search: 1 } },
-                { body: { search: { nested: 'wat' } } }
+                { search: null },
+                { search: '' },
+                { search: 'Edd' },
+                { search: 'search' },
+                { search: 'search=Edd' },
+                { search: '?not_search=Edd' },
+                { search: '?search=' },
             ];
             each(tests, function(test, callback) {
-                search(test.body, (res) => {
+                search(test.search, (res) => {
                     res.body.should.be.an('object');
                     res.body.should.have.all.keys('error');
                     callback();
