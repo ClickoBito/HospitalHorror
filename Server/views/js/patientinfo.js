@@ -28,6 +28,13 @@ function insertPatientData(){
     xhr.open('POST', '/patientinfo');
     xhr.send(xhrData);
     $('#insertModal').modal('toggle');
+
+    let pid = $('#PatientId').val();
+    xhr.open('GET', "/patient/" + pid, false);
+    xhr.addEventListener('load', function(e) {
+        $('#patientinfocol').html(xhr.responseText);
+    });
+    xhr.send();
 }
   
 function editPatientData(){
@@ -41,4 +48,13 @@ function editPatientData(){
         event.preventDefault();
     });
     $('#editModal').modal('toggle');
+
+    let pid = $('#PatientId').val();
+    xhr.open('GET', "/patient/" + pid, false);
+    xhr.addEventListener('load', function(e) {
+        $('#patientinfocol').html(xhr.responseText);
+    });
+    xhr.send();
+
+
 }

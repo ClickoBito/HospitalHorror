@@ -8,7 +8,7 @@
       .modal-body
         form#patientdatainsertform.form-horizontal(role="form")
           .form-group
-            input.form-control#PatientId(value=patient.id name="PatientId") 
+            input.form-control#PatientId(type="hidden" value=patient.id name="PatientId") 
           .form-group
             input.form-control#bloodpressure(type="text" name="bloodpressure" placeholder="Enter bloodpressure")
           .form-group
@@ -26,9 +26,9 @@
       .modal-body
         form#patientdataeditform.form-horizontal(role="form")
           .form-group
-            input.form-control#PatientId(value=patient.id name="PatientId") 
+            input.form-control#PatientId(type="hidden" value=patient.id name="PatientId") 
           .form-group
-            input.form-control#PatientInfoId(name="id" value="id")
+            input.form-control#PatientInfoId(type="hidden" name="id" value="id")
           .form-group
             input.form-control#bloodpressureedit(type="text" name="bloodpressure" placeholder="Enter bloodpressure")
           .form-group
@@ -36,7 +36,7 @@
           .form-group
             input.form-control#descriptionedit(type="text" name="description" placeholder="enter description")
           button.btn.btn-success('onclick'='editPatientData()') Submit
-.col
+.col#patientinfocol
   label(for='patientInfo')
     h3 #{patient.fullname}'s Info
   .patient_gen_info(style="display:flex")
@@ -68,8 +68,7 @@
         td#pdb #{patient.dateofbirth}
         td
           button#editPatientData.btn.btn-sm.btn-success(style='overflow: auto;', type='button', data-toggle='modal', data-target='#editModal' 'onclick'='editMode('+pi.id + ')') Edit
-  button#addPatientData.btn.btn-sm.btn-primary.pull-right(style='overflow: auto;', type='button', data-toggle='modal', data-target='#insertModal') Add Patient Data  
-
+  button#addPatientData.btn.btn-sm.btn-primary.btn-lg.btn-block(style='margin-bottom: 5px;', type='button', data-toggle='modal', data-target='#insertModal') Add Patient Data  
   .card
     .card-body
       h4.card-title Previous Notes
