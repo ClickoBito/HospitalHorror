@@ -6,17 +6,20 @@ const online = require('./online.js');
 const Op = Sequelize.Op;
 
 module.exports.search = function (req, res) {
+    // Conditional html or json response for testing purpose
+    let responseHandler = req.body.json ? respondJSON : respondHTML;
+    // If search query missing return 400 bad request
     if (_.isEmpty(req.query) || !_.isString(req.query.search) || req.query.search.length === 0) {
-        return res.status(400).json({error: 'Invalid search body'});
+        return responseHandler(res, {error: 'Invalid search body'}, 400);
     }
     const urlQuery = req.query.search;
     if (req.query.diagnosis) {
-        return diagnosisSearch(req, res, urlQuery);
+        return diagnosisSearch(req, res, urlQuery, responseHandler);
     }
-    personSearch(req, res, urlQuery);
+    personSearch(req, res, urlQuery, responseHandler);
 };
 
-function diagnosisSearch(req, res, urlQuery) {
+function diagnosisSearch(req, res, urlQuery, responseHandler) {
     const diagnosisQuery = {
         where: {
             [Op.or]: [
@@ -35,17 +38,18 @@ function diagnosisSearch(req, res, urlQuery) {
         limit: 20
     };
     model.Diagnosis.findAll(diagnosisQuery).then((diagnoses) => {
-        return res.status(200).json({
+        const result = {
             resultCount: diagnoses.length,
             diagnoses
-        });
+        };
+        responseHandler(res, result);
     }, err => {
         app.print(err);
-        res.status(500).send({ error: err.errors });
+        responseHandler(res, { error: err.errors }, 500);
     });
 }
 
-function personSearch(req, res, urlQuery) {
+function personSearch(req, res, urlQuery, responseHandler) {
     const personQuery = {
         where: {
             [Op.or]: [
@@ -61,16 +65,28 @@ function personSearch(req, res, urlQuery) {
         model.Admin.findAll(personQuery),
         model.Secretary.findAll(personQuery)
     ]).spread((patients, doctors, nurses, admins, secretaries) => {
-        return res.status(200).json({
+        const result = {
             resultCount: patients.length + doctors.length + nurses.length + admins.length + secretaries.length,
             patients,
             doctors,
             nurses,
             admins,
             secretaries
-        });
+        };
+        responseHandler(res, result);
     }, err => {
         app.print(err);
-        res.status(500).send({ error: err.errors });
+        responseHandler(res, { error: err.errors }, 500);
     });
+}
+
+function respondJSON(res, result, status = 200) {
+    res.status(status).json(result);
+}
+
+function respondHTML(res, result, status = 200) {
+    if (result.error || status != 200) {
+        // TODO handle HTML error response
+    }
+    res.render('searchResult', {searchResult: result});
 }

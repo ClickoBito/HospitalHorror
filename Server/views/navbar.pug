@@ -16,17 +16,13 @@ mixin navbar(loggedinUser)
                     script.
                         function getSearchData() {
                             let searchString = document.getElementById('searchField').value;
-                            fetch('http://localhost:8890/search?search=' + searchString, {
-                                method: 'GET'
-                                }).then(function(response) {
-                                    return response.json();
-                                }).then(function(responseJSON) {
-                                    //- TODO use response and remove console log
-                                    console.log(responseJSON);
-                                }).catch(function(error) {
-                                    //- TODO handle error and remove console log
-                                    console.log(error);
-                                })
+                            let xhr = new XMLHttpRequest();
+                            xhr.open('GET', '/search?search=' + searchString, false);
+                            xhr.addEventListener('load', function(e) {
+                                console.log(xhr.responseText);
+                                $('#main').html(xhr.responseText);
+                            });
+                            xhr.send();
                         }
             ul#right-hand-buttons(class='nav navbar-nav flex-row justify-content-center flex-nowrap')
                 li(class='nav-item')

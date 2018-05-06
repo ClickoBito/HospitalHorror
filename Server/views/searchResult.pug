@@ -1,0 +1,53 @@
+mixin diagnosisResult(searchResult)
+  ul
+    li foo
+    li bar
+    li baz
+
+mixin genericPersonList(peopleList)
+    ul#peopleList.list-group-flush
+    each person in peopleList
+        li.list-group-item
+        | #{person.fullname || (person.firstname + ' ' + person.lastname)}
+
+mixin peopleResult(searchResult)
+    .nav.flex-column
+        //- Patients
+        i#patientsIcon(class='fa fa-hospital-o')
+            h4#sidebarTitle Patients
+        ul#patientsList.list-group-flush
+        each patient in searchResult.patients
+            li#patient.list-group-item
+            a#patientLink(href='javascript:void(0);' type='get' 'onclick'='getPatientData('+patient.id + ')') #{patient.firstname + ' ' + patient.lastname}
+        //- Doctors
+        i#doctorsIcon(class='fa fa-user-md')
+            h4#sidebarTitle Doctors
+        +genericPersonList(searchResult.doctors)
+        //- Nurses
+        i#nursesIcon(class='fa fa-user')
+            h4#sidebarTitle Nurses
+        +genericPersonList(searchResult.nurses)
+        //- Secretaries
+        i#nursesIcon(class='fa fa-user')
+            h4#sidebarTitle Secretaries
+        +genericPersonList(searchResult.secretaries)
+        //- Admins
+        i#nursesIcon(class='fa fa-user-plus')
+            h4#sidebarTitle Admins
+        +genericPersonList(searchResult.admins)
+
+.col
+    if !searchResult
+        label(for='searchResult')
+        h3 No Search Results Provided
+    else
+        label(for='searchResult')
+        h3 Search Results
+        if searchResult.diagnosis
+            +diagnosisResult(searchResult)
+        else if searchResult
+            +peopleResult(searchResult)
+        else
+            p Unable to process search results
+
+

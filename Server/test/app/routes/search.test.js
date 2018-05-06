@@ -8,6 +8,7 @@ const should = require('chai').should();
 const search = (fields, assert, expect = 200) => {
     supertest(app)
         .get('/search' + fields)
+        .send({ json: true })
         .expect(expect)
         .end((err, res) => {
             should.not.exist(err);
