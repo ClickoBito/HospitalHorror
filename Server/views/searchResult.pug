@@ -12,8 +12,11 @@ mixin diagnosisResult(searchResult)
                             p.card-text Treatment: #{diagnosis.Treatment.TreatmentType.name}
                             .row
                                 .col-md-6
-                                    p.card-text Patient:
-                                        a(href='javascript:void(0);' type='get' 'onclick'='getPatientData(' + diagnosis.Patient.id + ')') #{' ' + diagnosis.Patient.firstname + ' ' + diagnosis.Patient.lastname}
+                                    p.card-text Patient: 
+                                        a#searchPersonLink(href='javascript:void(0);'
+                                            type='get'
+                                            onclick='getPatientData(' + diagnosis.Patient.id + ')'
+                                        ) #{diagnosis.Patient.firstname + ' ' + diagnosis.Patient.lastname}
                                 .col-md-6
                                     p.card-text Doctor: #{diagnosis.Doctor.firstname + ' ' + diagnosis.Doctor.lastname}
                     .col-md-4
@@ -21,10 +24,14 @@ mixin diagnosisResult(searchResult)
                             img(src=diagnosis.imageurl alt="Diagnosis image loading" style="max-height:200px")
 
 mixin genericPersonList(peopleList)
-    ul#peopleList.list-group-flush
+    ul#searchPersonList.list-group-flush
     each person in peopleList
         li.list-group-item
-        | #{person.fullname || (person.firstname + ' ' + person.lastname)}
+        a#searchPersonLink(
+            href='javascript:void(0);'
+            type='get'
+            onclick='getPersonData(' + person.id + ')'
+            ) #{person.fullname || (person.firstname + ' ' + person.lastname)}
 
 mixin peopleResult(searchResult)
     .nav.flex-column
@@ -32,10 +39,14 @@ mixin peopleResult(searchResult)
         if searchResult.patients && searchResult.patients.length > 0
             i#patientsIcon(class='fa fa-hospital-o')
                 h4#sidebarTitle Patients
-            ul#patientsList.list-group-flush
+            ul#searchPersonList.list-group-flush
             each patient in searchResult.patients
                 li#patient.list-group-item
-                a#patientLink(href='javascript:void(0);' type='get' 'onclick'='getPatientData(' + patient.id + ')') #{patient.firstname + ' ' + patient.lastname}
+                a#searchPersonLink(
+                    href='javascript:void(0);'
+                    type='get'
+                    onclick='getPatientData(' + patient.id + ')'
+                ) #{patient.firstname + ' ' + patient.lastname}
         //- Doctors
         if searchResult.doctors && searchResult.doctors.length > 0
             i#doctorsIcon(class='fa fa-user-md')
@@ -56,6 +67,11 @@ mixin peopleResult(searchResult)
             i#nursesIcon(class='fa fa-user-plus')
                 h4#sidebarTitle Admins
             +genericPersonList(searchResult.admins)
+
+script.
+    function getPersonData(personId) {
+        alert('Clicked ' + personId);
+    }
 
 .col
     if !searchResult
