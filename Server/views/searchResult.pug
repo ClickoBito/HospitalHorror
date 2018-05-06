@@ -43,7 +43,7 @@ mixin peopleResult(searchResult)
     else
         label(for='searchResult')
         h3 Search Results
-        if searchResult.diagnosis
+        if searchResult.diagnoses
             +diagnosisResult(searchResult)
         else if searchResult
             +peopleResult(searchResult)
