@@ -47,13 +47,15 @@ module.exports.getDashboard = function(req, res){
         })
     ]).spread((patients, nurses, doctors, patientInfo, username) => {
 
-        res.render('doctor', {
+        res.render('dashboard', {
             patients: patients,
             nurses: nurses,
             doctors: doctors,
             patientInfo: patientInfo,
             username: username,
-            onlineusers: online.getOnlineUsers
+            usertype: usertype,
+            onlineusers: online.getOnlineUsers,
+            moment: require('moment')
         });
 
     }, err => {
