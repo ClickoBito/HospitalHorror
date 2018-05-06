@@ -97,6 +97,16 @@ body {
 	color: white;
 }
 
+#welcomeName h1 {
+	font-size: 3rem;
+	text-align: center;
+}
+
+#nextAppointments h4, #nextShifts h4 {
+	margin-top: 5%;
+	text-decoration: underline;
+}
+
 h4{
 	display: inline-block;
 }
