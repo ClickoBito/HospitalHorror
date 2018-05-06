@@ -50,6 +50,6 @@ module.exports.get = function(req, res, next){
 	model.PatientInfo.findOne({
 		where: {id: req.params.id}
 	}).then(patientinfo =>{
-		res.json({patientinfo})
-	})
-}
+		res.json({patientinfo});
+	});
+};
