@@ -2,12 +2,17 @@ mixin diagnosisResult(searchResult)
     ul#diagnosisList.list-group-flush
     each diagnosis in searchResult.diagnoses
         li.list-group-item
-        - console.log(diagnosis)
         .card
-            .card-body
-                h4.card-title #{diagnosis.DiagnosisType.name}
-                p.card-text Diagnosis: #{diagnosis.Treatment.description}
-                p.card-text Treatment: #{diagnosis.Treatment.TreatmentType.name}
+            .card-block
+                .row
+                    .col-md-8
+                        .div(style='padding:10px')
+                            h4.card-title #{diagnosis.DiagnosisType.name}
+                            p.card-text Diagnosis: #{diagnosis.Treatment.description}
+                            p.card-text Treatment: #{diagnosis.Treatment.TreatmentType.name}
+                    .col-md-4
+                        .patientdiagnosisimage(style="width:250px; padding:20px")
+                            img(src=diagnosis.imageurl alt="Diagnosis image loading" style="max-height:200px")
 
 mixin genericPersonList(peopleList)
     ul#peopleList.list-group-flush
