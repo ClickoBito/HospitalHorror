@@ -1,3 +1,9 @@
+mixin searchPersonLink(person, linkType)
+    a#searchPersonLink(href='javascript:void(0);'
+        type='get'
+        onclick='getPersonData(' + person.id + ',\'' + linkType + '\')'
+    ) #{person.fullname || (person.firstname + ' ' + person.lastname)}
+
 mixin diagnosisResult(searchResult)
     ul#diagnosisList.list-group-flush
     each diagnosis in searchResult.diagnoses
@@ -13,12 +19,10 @@ mixin diagnosisResult(searchResult)
                             .row
                                 .col-md-6
                                     p.card-text Patient: 
-                                        a#searchPersonLink(href='javascript:void(0);'
-                                            type='get'
-                                            onclick='getPatientData(' + diagnosis.Patient.id + ')'
-                                        ) #{diagnosis.Patient.firstname + ' ' + diagnosis.Patient.lastname}
+                                        +searchPersonLink(diagnosis.Patient, 'Patient')
                                 .col-md-6
-                                    p.card-text Doctor: #{diagnosis.Doctor.firstname + ' ' + diagnosis.Doctor.lastname}
+                                    p.card-text Doctor: 
+                                        +searchPersonLink(diagnosis.Doctor, 'Doctor')
                     .col-md-4
                         .patientdiagnosisimage(style="width:250px; padding:20px")
                             img(src=diagnosis.imageurl alt="Diagnosis image loading" style="max-height:200px")
@@ -27,11 +31,7 @@ mixin genericPersonList(peopleList, listType)
     ul#searchPersonList.list-group-flush
     each person in peopleList
         li.list-group-item
-        a#searchPersonLink(
-            href='javascript:void(0);'
-            type='get'
-            onclick='getPersonData(' + person.id + ',\'' + listType + '\')'
-            ) #{person.fullname || (person.firstname + ' ' + person.lastname)}
+        +searchPersonLink(person, listType)
 
 mixin peopleResult(searchResult)
     .nav.flex-column
@@ -62,11 +62,11 @@ mixin peopleResult(searchResult)
             +genericPersonList(searchResult.admins, 'Admin')
 
 script.
-    function getPersonData(personId, listType) {
-        if (listType === 'Patient') {
+    function getPersonData(personId, type) {
+        if (type === 'Patient') {
             return getPatientData(personId);
         }
-        alert('Clicked ' + listType + ', id: ' + personId);
+        alert('Clicked ' + type + ', id: ' + personId);
     }
 
 .col
