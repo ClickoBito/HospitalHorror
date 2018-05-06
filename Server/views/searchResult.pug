@@ -1,8 +1,13 @@
 mixin diagnosisResult(searchResult)
-  ul
-    li foo
-    li bar
-    li baz
+    ul#diagnosisList.list-group-flush
+    each diagnosis in searchResult.diagnoses
+        li.list-group-item
+        - console.log(diagnosis)
+        .card
+            .card-body
+                h4.card-title #{diagnosis.DiagnosisType.name}
+                p.card-text Diagnosis: #{diagnosis.Treatment.description}
+                p.card-text Treatment: #{diagnosis.Treatment.TreatmentType.name}
 
 mixin genericPersonList(peopleList)
     ul#peopleList.list-group-flush
