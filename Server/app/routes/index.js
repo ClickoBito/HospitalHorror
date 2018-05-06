@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const app = require('../../server.js');
+const formidable = require('express-formidable');
 
 
 // controller
@@ -34,9 +35,10 @@ router.get('/doctor/:id', DoctorCtrl.getDashboard);
 router.get('/nurse/:id', DoctorCtrl.getDashboard);
 
 // PatientInfo
-router.post('/patientinfo', PatientInfoCtrl.create);
-router.put('/patientinfo/:id', PatientInfoCtrl.edit);
+router.post('/patientinfo', formidable(), PatientInfoCtrl.create);
+router.post('/patientinfo/:id', formidable(), PatientInfoCtrl.edit);
 router.delete('/patientinfo/:id', PatientInfoCtrl.delete);
+router.get('/patientinfo/:id', PatientInfoCtrl.get);
 
 // PatientAllergy
 router.post('/patientallergy', PatientAllergyCtrl.create);
