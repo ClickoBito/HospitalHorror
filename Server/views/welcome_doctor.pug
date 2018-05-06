@@ -1,0 +1,18 @@
+mixin welcome_doctor(user, patients)
+	div#welcomeName
+		h1 Welcome #{user.fullname}!
+	div#nextAppointments
+		h4 Your next appointments
+	table#nextAppointmentsTable.table.table-curved
+		thead#table-head
+			tr
+				th(scope='col') Patient
+				th(scope='col') Time
+		tbody
+		each p,i in patients
+			tr
+				td #{p.fullname}
+				- let time = moment().add(i,'h').format('HH:mm')
+				td #{time}
+				if i > 1
+					- break

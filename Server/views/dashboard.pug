@@ -36,33 +36,22 @@ block content
                                             i.fa.fa-check-circle(style='color:green;margin-left:0.5rem')
                     div#vr
                     #main.col
-                        label(for='patientInfo')
-                            h3 #{patients[1].firstname + ' ' + patients[1].lastname}'s Info
-                        table#patientInfoTable.table.table-curved
-                            thead#table-head
-                                tr
-                                    th(scope='col') Last Visit
-                                    th(scope='col') Blood Pressure
-                                    th(scope='col') Weight
-                                    th(scope='col') Date of Birth
-                            tbody
-                            each pi in patientInfo
-                                tr
-                                    td#ca(scope='row') #{pi.createdAt.toString().substr(0,24)}
-                                    td#pbp #{pi.bloodpressure}
-                                    td#pw #{pi.weight}
-                                    td#pdb #{patients[pi.PatientId].dateofbirth}
-                        .card
-                            .card-body
-                                h4.card-title Previous Notes
-                                each pin,i in patientInfo
-                                    p.card-text Notes ##{i+1}: #{pin.description} 
-                        .form-group
-                            label(for='doctorNotes')
-                                h3 Doctor's Notes
-                            textarea#doctorNoteArea.form-control(rows='10' value="" placeholder='Enter patient notes here...') 
-                            script
-                                include js/doctor.js
+                      if usertype == 'Doctor'
+                        include welcome_doctor
+                        +welcome_doctor(username, patients)
+                      else if usertype == 'Nurse'
+                        include welcome_nurse
+                        +welcome_nurse(username)
+                    script.
+                      function getPatientData(id){
+                          let xhr = new XMLHttpRequest();
+                          xhr.open('GET', "/patient/" + id, false);
+                          xhr.addEventListener('load', function(e) {
+                              $('#main').html(xhr.responseText);
+                          });
+                          xhr.send();
+                      }
+
                     #CHEESY_FOOTER
                         h6#TEXT_BIRD
                     footer

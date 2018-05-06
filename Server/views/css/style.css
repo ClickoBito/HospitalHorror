@@ -1,12 +1,10 @@
 body {
-	background: #f5f6fa;
-	padding: 5px;
-	color: #464978;
+	background-image:url("/img/mainBackground.jpg");
 	font-family: 'Open Sans', sans-serif;
 }
 
 #doctorBody {
-	background-image: url("/img/doctorBackground.jpeg");
+	background-image: url("/img/doctorBackground.jpeg") !important;
 	background-repeat: no-repeat;
 	/* background-image: url("https://www.planwallpaper.com/static/images/desktop-backgrounds1_wvNeWqW.jpg"); */
 	padding: 5px;
@@ -24,13 +22,13 @@ body {
 	margin: 0.1em 0;
 }
 
-#doctorNoteArea, .card {
+#doctorNoteArea, #doctorBody .card {
 	border-radius: 15px;
 	background-color: rgba(255,255,255, 0.1);
 	color: white;
 }
 
-.card{
+#doctorBody .card{
 	background-color: rgba(255,255,255, 0.1);
 	color: #f5f6fa;
 	margin-bottom: 15px;
@@ -97,6 +95,16 @@ body {
 	color: white;
 }
 
+#welcomeName h1 {
+	font-size: 3rem;
+	text-align: center;
+}
+
+#nextAppointments h4, #nextShifts h4 {
+	margin-top: 5%;
+	text-decoration: underline;
+}
+
 h4{
 	display: inline-block;
 }
@@ -110,7 +118,7 @@ h4{
 	text-decoration: underline;
 }
 
-/* -------------------------------------CHEESY FOOTER WITH BIRD------------------------------------- */
+/* -------------------------------------CHEESY FOOTER------------------------------------- */
 
 #CHEESY_FOOTER {
 	color: rgb(112, 111, 111);
@@ -133,14 +141,13 @@ h4{
 	margin-top: 5em;
 }
 
-/* ----------------------------------END OF CHEESY FOOTER WITH BIRD------------------------------------- */
+/* ----------------------------------END OF CHEESY FOOTER------------------------------------- */
 
 #sticky-sidebar {
 	max-width: 14em!important;
 }
 
 #main {
-	border-radius: 1em;
 	margin-right: 6em;
 }
 
@@ -187,49 +194,47 @@ footer {
 	color: red;
 }
 
-.indexBody  {
-	background-image:url("img/loginBackground.png")!important;
-}
-
-.indexBody .card-header {
+.indexBody .card-header, .adminBody .card-header {
 	background-color: rgba(255, 255, 255, 0);
 	border: none;
 	padding-bottom: 0;
 	color: white;
 }
 
-.indexBody .card-body {
+.indexBody .card-body, .adminBody .card-body {
 	padding-top: 0;
 }
 
-.indexBody .maincard {
+.indexBody .maincard, .adminBody .card {
 	background-color: rgba(0, 0, 0, 0.6);
 	font-family: 'Open Sans', sans-serif;
+	border-radius: 1em;
 }
 
-.indexBody .card-title {
+.indexBody .card-title, .adminBody .card-title {
 	font-size: 2em;
 	line-height: 1;
 	text-align: center;
-	margin: 1em 0;
+	margin-top: 1em;
 }
 
-.indexBody #btn-login {
+.indexBody #btn-login, .adminBody #btn-login {
 	margin-top: 2em;
 	width: 100%;
 	height: 3em;
 }
 
-.indexBody #btn-login-window{
+.indexBody #btn-login-window, .adminBody #btn-login-window {
 	padding-left: 0;
 	padding-right: 0;
 }
 
-.indexBody .form-control, .indexBody .form-control:focus  {
+.indexBody .form-control, .indexBody .form-control:focus, .adminBody .form-control, .adminBody .form-control:focus  {
 	border-top: none;
 	border-right: none;
 	border-left: none;
-	border-bottom: 0.2em solid turquoise;
+	border-bottom: 0.2em ridge #3399cc;
+	border-radius: 0;
 	background: transparent;
 	color: white;
 
@@ -241,7 +246,7 @@ footer {
 	margin-right: 0;
 }
 
-.indexBody input::-webkit-input-placeholder{
+.indexBody input::-webkit-input-placeholder, .adminBody input::-webkit-input-placeholder {
 	color: rgba(255, 255, 255, 0.6)!important;
 }
 
@@ -252,8 +257,17 @@ footer {
 	}
 }
 
-.indexBody input:-webkit-autofill {
+.indexBody input:-webkit-autofill, .adminBody input:-webkit-autofill {
 	-webkit-animation-name: autofill;
 	-webkit-animation-fill-mode: both;
 	-webkit-text-fill-color: white;
+}
+
+#adminOption {
+	background-color: #334acc;
+}
+
+.adminLabel {
+	font-weight: bold;
+	color: white;
 }
