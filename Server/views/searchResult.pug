@@ -13,28 +13,33 @@ mixin genericPersonList(peopleList)
 mixin peopleResult(searchResult)
     .nav.flex-column
         //- Patients
-        i#patientsIcon(class='fa fa-hospital-o')
-            h4#sidebarTitle Patients
-        ul#patientsList.list-group-flush
-        each patient in searchResult.patients
-            li#patient.list-group-item
-            a#patientLink(href='javascript:void(0);' type='get' 'onclick'='getPatientData(' + patient.id + ')') #{patient.firstname + ' ' + patient.lastname}
+        if searchResult.patients && searchResult.patients.length > 0
+            i#patientsIcon(class='fa fa-hospital-o')
+                h4#sidebarTitle Patients
+            ul#patientsList.list-group-flush
+            each patient in searchResult.patients
+                li#patient.list-group-item
+                a#patientLink(href='javascript:void(0);' type='get' 'onclick'='getPatientData(' + patient.id + ')') #{patient.firstname + ' ' + patient.lastname}
         //- Doctors
-        i#doctorsIcon(class='fa fa-user-md')
-            h4#sidebarTitle Doctors
-        +genericPersonList(searchResult.doctors)
+        if searchResult.doctors && searchResult.doctors.length > 0
+            i#doctorsIcon(class='fa fa-user-md')
+                h4#sidebarTitle Doctors
+            +genericPersonList(searchResult.doctors)
         //- Nurses
-        i#nursesIcon(class='fa fa-user')
-            h4#sidebarTitle Nurses
-        +genericPersonList(searchResult.nurses)
+        if searchResult.nurses && searchResult.nurses.length > 0
+            i#nursesIcon(class='fa fa-user')
+                h4#sidebarTitle Nurses
+            +genericPersonList(searchResult.nurses)
         //- Secretaries
-        i#nursesIcon(class='fa fa-user')
-            h4#sidebarTitle Secretaries
-        +genericPersonList(searchResult.secretaries)
+        if searchResult.secretaries && searchResult.secretaries.length > 0
+            i#nursesIcon(class='fa fa-user')
+                h4#sidebarTitle Secretaries
+            +genericPersonList(searchResult.secretaries)
         //- Admins
-        i#nursesIcon(class='fa fa-user-plus')
-            h4#sidebarTitle Admins
-        +genericPersonList(searchResult.admins)
+        if searchResult.admins && searchResult.admins.length > 0
+            i#nursesIcon(class='fa fa-user-plus')
+                h4#sidebarTitle Admins
+            +genericPersonList(searchResult.admins)
 
 .col
     if !searchResult
