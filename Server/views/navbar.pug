@@ -3,17 +3,38 @@ mixin navbar(loggedinUser)
         i(class='fa fa-plus')
         a#brand(class='navbar-brand mr-0') MediSys
         button(class='navbar-toggler ml-1', 
-            type='button', 
-            data-toggle='collapse', 
-            data-target='#navbarSupportedContent' 
+            type='button',
+            data-toggle='collapse',
+            data-target='#navbarSupportedContent'
         )
             span(class='navbar-toggler-icon')
         div#navbarSupportedContent(class='navbar-collapse collapse justify-content-between align-items-center w-100')
             div#search-bar(class='input-group input-group-sm navbar-nav mx-auto text-center')
-                input.input-group-sm.form-control(type='search' placeholder='Search' aria-label='Search' aria-describedby='basic-addon2')
-                div.input-group-append
-                    button#search-button.btn.btn-sm.btn-outline-secondary(type='button')
-                        i(class='fa fa-search')
+                input.input-group-sm.form-control(type='search' id='searchField' placeholder='Search' aria-label='Search' aria-describedby='basic-addon2')
+                button#search-button.btn.btn-sm.btn-outline-secondary(type='submit' href='javascript:void(0);' onclick='getSearchData()')
+                    i(class='fa fa-search')
+                    script.
+                        var searchField = document.getElementById("searchField");
+                        searchField.addEventListener("keyup", function(event) {
+                            // Number 13 is the "Enter" key on the keyboard
+                            if (event.keyCode === 13) {
+                                getSearchData();
+                            }
+                        });
+                        function getSearchData() {
+                            let searchString = document.getElementById('searchField').value.trim();
+                            if (searchString.length > 0) {
+                                if (/&[\s]*diagnosis$/i.test(searchString)) {
+                                    searchString = searchString.replace(/[\s]*&[\s]*diagnosis$/i, '&diagnosis=true');
+                                }
+                                let xhr = new XMLHttpRequest();
+                                xhr.open('GET', '/search?search=' + searchString, false);
+                                xhr.addEventListener('load', function(e) {
+                                    $('#main').html(xhr.responseText);
+                                });
+                                xhr.send();
+                            }
+                        }
             ul#right-hand-buttons(class='nav navbar-nav flex-row justify-content-center flex-nowrap')
                 li(class='nav-item')
                     button#loggedin(class='btn btn-sm btn-outline-secondary disabled') Logged in as: #{loggedinUser}

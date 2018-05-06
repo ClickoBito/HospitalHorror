@@ -1,0 +1,92 @@
+mixin searchPersonLink(person, linkType)
+    a#searchPersonLink(href='javascript:void(0);'
+        type='get'
+        onclick='getPersonData(' + person.id + ',\'' + linkType + '\')'
+    ) #{person.fullname || (person.firstname + ' ' + person.lastname)}
+
+mixin diagnosisResult(searchResult)
+    ul#diagnosisList.list-group-flush
+    each diagnosis in searchResult.diagnoses
+        li.list-group-item
+        .card
+            .card-block
+                .row
+                    .col-md-8
+                        .div(style='padding:10px')
+                            h4.card-title #{diagnosis.DiagnosisType.name}
+                            p.card-text Diagnosis: #{diagnosis.Treatment.description}
+                            p.card-text Treatment: #{diagnosis.Treatment.TreatmentType.name}
+                            .row
+                                .col-md-6
+                                    p.card-text Patient: 
+                                        +searchPersonLink(diagnosis.Patient, 'Patient')
+                                .col-md-6
+                                    p.card-text Doctor: 
+                                        +searchPersonLink(diagnosis.Doctor, 'Doctor')
+                    .col-md-4
+                        .patientdiagnosisimage(style="width:250px; padding:20px")
+                            img(src=diagnosis.imageurl alt="Diagnosis image loading" style="max-height:200px")
+
+mixin genericPersonList(peopleList, listType)
+    ul#searchPersonList.list-group-flush
+    each person in peopleList
+        li.list-group-item
+        +searchPersonLink(person, listType)
+
+mixin peopleResult(searchResult)
+    .nav.flex-column
+        //- Patients
+        if searchResult.patients && searchResult.patients.length > 0
+            i#patientsIcon(class='fa fa-hospital-o')
+                h4#sidebarTitle Patients
+            +genericPersonList(searchResult.patients, 'Patient')
+        //- Doctors
+        if searchResult.doctors && searchResult.doctors.length > 0
+            i#doctorsIcon(class='fa fa-user-md')
+                h4#sidebarTitle Doctors
+            +genericPersonList(searchResult.doctors, 'Doctor')
+        //- Nurses
+        if searchResult.nurses && searchResult.nurses.length > 0
+            i#nursesIcon(class='fa fa-user')
+                h4#sidebarTitle Nurses
+            +genericPersonList(searchResult.nurses, 'Nurse')
+        //- Secretaries
+        if searchResult.secretaries && searchResult.secretaries.length > 0
+            i#nursesIcon(class='fa fa-user')
+                h4#sidebarTitle Secretaries
+            +genericPersonList(searchResult.secretaries, 'Secretary')
+        //- Admins
+        if searchResult.admins && searchResult.admins.length > 0
+            i#nursesIcon(class='fa fa-user-plus')
+                h4#sidebarTitle Admins
+            +genericPersonList(searchResult.admins, 'Admin')
+
+script.
+    function getPersonData(personId, type) {
+        if (type === 'Patient') {
+            return getPatientData(personId);
+        }
+        alert('Clicked ' + type + ', id: ' + personId);
+    }
+
+.col
+    if !searchResult
+        //- If no searchResult ERROR
+        label(for='searchResult')
+        h3 500 - No Search Results Provided
+    else if searchResult.resultCount > 0
+        //- If search results to display
+        label(for='searchResult')
+        h3 Search Results
+        if searchResult.diagnoses
+            //- Display diagnosis result
+            +diagnosisResult(searchResult)
+        else if searchResult
+            //- display people result
+            +peopleResult(searchResult)
+        else
+            p Unable to process search results
+    else
+        //- Nothing found
+        label(for='searchResult')
+        h3 No Search Results Found

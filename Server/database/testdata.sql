@@ -120,7 +120,7 @@ INSERT INTO Treatment (description, TreatmentTypeId)
 VALUES ('A speech therapist should be visited 3 times a week', 3);
 
 # Diagnosis
-INSERT INTO Diagnosis (imageurl,PatientId, DoctorId, DiagnosisTypeId, TreatmentId) VALUES ('https://www.go-imaging.com/wp-content/uploads/2017/07/x-ray.jpg',1, 1, 1, 1);
-INSERT INTO Diagnosis (imageurl,PatientId, DoctorId, DiagnosisTypeId, TreatmentId) VALUES ('http://pulsemedicalimaging.com.au/wp/wp-content/uploads/2015/04/xray3.jpg',2, 3, 2, 2);
-INSERT INTO Diagnosis (imageurl,PatientId, DoctorId, DiagnosisTypeId, TreatmentId) VALUES ('https://physicsworld.com/wp-content/uploads/2014/02/PW-2014-02-25-Cartlidge-hyper.jpg',3, 2, 3, 3);
-INSERT INTO Diagnosis (imageurl,PatientId, DoctorId, DiagnosisTypeId, TreatmentId) VALUES ('http://bedsidexray.com/wp-content/uploads/2014/10/Chest-X-Ray-Image.jpg',4, 1, 4, 4);
+INSERT INTO Diagnosis (imageurl, PatientId, DoctorId, DiagnosisTypeId, TreatmentId) VALUES ('https://www.go-imaging.com/wp-content/uploads/2017/07/x-ray.jpg',1, 1, 1, 1);
+INSERT INTO Diagnosis (imageurl, PatientId, DoctorId, DiagnosisTypeId, TreatmentId) VALUES ('http://pulsemedicalimaging.com.au/wp/wp-content/uploads/2015/04/xray3.jpg',2, 3, 2, 2);
+INSERT INTO Diagnosis (imageurl, PatientId, DoctorId, DiagnosisTypeId, TreatmentId) VALUES ('https://physicsworld.com/wp-content/uploads/2014/02/PW-2014-02-25-Cartlidge-hyper.jpg',3, 2, 3, 3);
+INSERT INTO Diagnosis (imageurl, PatientId, DoctorId, DiagnosisTypeId, TreatmentId) VALUES ('http://bedsidexray.com/wp-content/uploads/2014/10/Chest-X-Ray-Image.jpg',4, 1, 4, 4);
