@@ -12,7 +12,7 @@ module.exports.search = function (req, res) {
     if (_.isEmpty(req.query) || !_.isString(req.query.search) || req.query.search.length === 0) {
         return responseHandler(res, {error: 'Invalid search body'}, 400);
     }
-    const urlQuery = req.query.search;
+    const urlQuery = req.query.search.trim();
     if (req.query.diagnosis) {
         return diagnosisSearch(req, res, urlQuery, responseHandler);
     }

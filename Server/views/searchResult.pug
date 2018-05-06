@@ -18,7 +18,7 @@ mixin peopleResult(searchResult)
         ul#patientsList.list-group-flush
         each patient in searchResult.patients
             li#patient.list-group-item
-            a#patientLink(href='javascript:void(0);' type='get' 'onclick'='getPatientData('+patient.id + ')') #{patient.firstname + ' ' + patient.lastname}
+            a#patientLink(href='javascript:void(0);' type='get' 'onclick'='getPatientData(' + patient.id + ')') #{patient.firstname + ' ' + patient.lastname}
         //- Doctors
         i#doctorsIcon(class='fa fa-user-md')
             h4#sidebarTitle Doctors
@@ -38,16 +38,22 @@ mixin peopleResult(searchResult)
 
 .col
     if !searchResult
+        //- If no searchResult ERROR
         label(for='searchResult')
-        h3 No Search Results Provided
-    else
+        h3 500 - No Search Results Provided
+    else if searchResult.resultCount > 0
+        //- If search results to display
         label(for='searchResult')
         h3 Search Results
         if searchResult.diagnoses
+            //- Display diagnosis result
             +diagnosisResult(searchResult)
         else if searchResult
+            //- display people result
             +peopleResult(searchResult)
         else
             p Unable to process search results
-
-
+    else
+        //- Nothing found
+        label(for='searchResult')
+        h3 No Search Results Found
