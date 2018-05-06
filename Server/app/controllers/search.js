@@ -33,7 +33,15 @@ function diagnosisSearch(req, res, urlQuery, responseHandler) {
                 model: model.Treatment,
                 include: [{ model: model.TreatmentType }]
             },
-            { model: model.DiagnosisType }
+            { model: model.DiagnosisType },
+            {
+                model: model.Patient,
+                attributes: ['id', 'firstname', 'lastname']
+            },
+            {
+                model: model.Doctor,
+                attributes: ['id', 'firstname', 'lastname']
+            }
         ],
         limit: 20
     };

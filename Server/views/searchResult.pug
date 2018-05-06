@@ -10,6 +10,12 @@ mixin diagnosisResult(searchResult)
                             h4.card-title #{diagnosis.DiagnosisType.name}
                             p.card-text Diagnosis: #{diagnosis.Treatment.description}
                             p.card-text Treatment: #{diagnosis.Treatment.TreatmentType.name}
+                            .row
+                                .col-md-6
+                                    p.card-text Patient:
+                                        a(href='javascript:void(0);' type='get' 'onclick'='getPatientData(' + diagnosis.Patient.id + ')') #{' ' + diagnosis.Patient.firstname + ' ' + diagnosis.Patient.lastname}
+                                .col-md-6
+                                    p.card-text Doctor: #{diagnosis.Doctor.firstname + ' ' + diagnosis.Doctor.lastname}
                     .col-md-4
                         .patientdiagnosisimage(style="width:250px; padding:20px")
                             img(src=diagnosis.imageurl alt="Diagnosis image loading" style="max-height:200px")
