@@ -3,8 +3,8 @@ const app = require('../../server.js');
 
 module.exports.create = function(req, res, next) { // create is a function in a sequelize
 	app.print('Trying to create a PatientInfo');
-	app.print(req.body);
-	model.PatientInfo.create(req.body)//creating a patientinfo
+	app.print(req.fields);
+	model.PatientInfo.create(req.fields)//creating a patientinfo
 	.then(info => {
 		app.print('Created PatientInfo');
 		app.print(info.get({plain:true}));// redirecting info
@@ -19,8 +19,8 @@ module.exports.create = function(req, res, next) { // create is a function in a 
 
 module.exports.edit = function(req, res, next) {
 	app.print('Trying to update a PatientInfo');
-	app.print(req.body);
-	model.PatientInfo.update(req.body,{where: {id: req.params.id}})
+	app.print(req.fields);
+	model.PatientInfo.update(req.fields,{where: {id: req.params.id}})
 	.then(info => {
 		app.print('Updated PatientInfo');
 		// TODO: redirect to some page
@@ -45,3 +45,11 @@ module.exports.delete = function(req, res, next) {
 		res.redirect('/');
 	});
 };
+
+module.exports.get = function(req, res, next){
+	model.PatientInfo.findOne({
+		where: {id: req.params.id}
+	}).then(patientinfo =>{
+		res.json({patientinfo})
+	})
+}

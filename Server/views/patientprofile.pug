@@ -1,3 +1,41 @@
+#insertModal.modal.fade(data-backdrop="false" tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true') 
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title(style="color:black;") Please Fill in The Patient's Data
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          .span(aria-hidden="true") x
+      .modal-body
+        form#patientdatainsertform.form-horizontal(role="form")
+          .form-group
+            input.form-control#PatientId(value=patient.id name="PatientId") 
+          .form-group
+            input.form-control#bloodpressure(type="text" name="bloodpressure" placeholder="Enter bloodpressure")
+          .form-group
+            input.form-control#weight(type="number" name="weight" placeholder="enter weight")
+          .form-group
+            input.form-control#description(type="text" name="description" placeholder="enter description")
+          button.btn.btn-success('onclick'='insertPatientData()') Submit 
+#editModal.modal.fade(data-backdrop="false" tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true') 
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title(style="color:black;") Please Update The Patient's Data
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          .span(aria-hidden="true") x
+      .modal-body
+        form#patientdataeditform.form-horizontal(role="form")
+          .form-group
+            input.form-control#PatientId(value=patient.id name="PatientId") 
+          .form-group
+            input.form-control#PatientInfoId(name="id" value="id")
+          .form-group
+            input.form-control#bloodpressureedit(type="text" name="bloodpressure" placeholder="Enter bloodpressure")
+          .form-group
+            input.form-control#weightedit(type="number" name="weight" placeholder="enter weight")
+          .form-group
+            input.form-control#descriptionedit(type="text" name="description" placeholder="enter description")
+          button.btn.btn-success('onclick'='editPatientData()') Submit
 .col
   label(for='patientInfo')
     h3 #{patient.fullname}'s Info
@@ -28,6 +66,10 @@
         td#pbp #{pi.bloodpressure}
         td#pw #{pi.weight}
         td#pdb #{patient.dateofbirth}
+        td
+          button#editPatientData.btn.btn-sm.btn-success(style='overflow: auto;', type='button', data-toggle='modal', data-target='#editModal' 'onclick'='editMode('+pi.id + ')') Edit
+  button#addPatientData.btn.btn-sm.btn-primary.pull-right(style='overflow: auto;', type='button', data-toggle='modal', data-target='#insertModal') Add Patient Data  
+
   .card
     .card-body
       h4.card-title Previous Notes
@@ -41,7 +83,5 @@
           p.v-card-media Diagnosis Image:
           .patientdiagnosisimage(style="width:250px; padding:20px")
             img(src=d.imageurl alt="Diagnosis image loading" style="max-height:200px")
-  .form-group
-    label(for='doctorNotes')
-      h3 Doctor's Notes
-    textarea#doctorNoteArea.form-control(rows='10' placeholder='Enter patient notes here...')
+script
+  include js/patientinfo.js

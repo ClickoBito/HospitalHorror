@@ -8,6 +8,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const pug = require('pug');
+const formidable = require('express-formidable');
 // configuration ===========================================
 
 // set our port
@@ -29,6 +30,8 @@ app.use(session({
 // get all data/stuff of the body (POST) parameters
 // parse application/json
 app.use(bodyParser.json());
+
+app.use(formidable());
 
 // parse application/vnd.api+json as json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));

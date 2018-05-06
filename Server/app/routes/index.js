@@ -34,8 +34,9 @@ router.get('/nurse/:id', DoctorCtrl.getDashboard);
 
 // PatientInfo
 router.post('/patientinfo', PatientInfoCtrl.create);
-router.put('/patientinfo/:id', PatientInfoCtrl.edit);
+router.post('/patientinfo/:id', PatientInfoCtrl.edit);
 router.delete('/patientinfo/:id', PatientInfoCtrl.delete);
+router.get('/patientinfo/:id', PatientInfoCtrl.get);
 
 // PatientAllergy
 router.post('/patientallergy', PatientAllergyCtrl.create);
