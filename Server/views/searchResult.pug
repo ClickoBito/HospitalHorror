@@ -23,14 +23,14 @@ mixin diagnosisResult(searchResult)
                         .patientdiagnosisimage(style="width:250px; padding:20px")
                             img(src=diagnosis.imageurl alt="Diagnosis image loading" style="max-height:200px")
 
-mixin genericPersonList(peopleList)
+mixin genericPersonList(peopleList, listType)
     ul#searchPersonList.list-group-flush
     each person in peopleList
         li.list-group-item
         a#searchPersonLink(
             href='javascript:void(0);'
             type='get'
-            onclick='getPersonData(' + person.id + ')'
+            onclick='getPersonData(' + person.id + ',\'' + listType + '\')'
             ) #{person.fullname || (person.firstname + ' ' + person.lastname)}
 
 mixin peopleResult(searchResult)
@@ -39,38 +39,34 @@ mixin peopleResult(searchResult)
         if searchResult.patients && searchResult.patients.length > 0
             i#patientsIcon(class='fa fa-hospital-o')
                 h4#sidebarTitle Patients
-            ul#searchPersonList.list-group-flush
-            each patient in searchResult.patients
-                li#patient.list-group-item
-                a#searchPersonLink(
-                    href='javascript:void(0);'
-                    type='get'
-                    onclick='getPatientData(' + patient.id + ')'
-                ) #{patient.firstname + ' ' + patient.lastname}
+            +genericPersonList(searchResult.patients, 'Patient')
         //- Doctors
         if searchResult.doctors && searchResult.doctors.length > 0
             i#doctorsIcon(class='fa fa-user-md')
                 h4#sidebarTitle Doctors
-            +genericPersonList(searchResult.doctors)
+            +genericPersonList(searchResult.doctors, 'Doctor')
         //- Nurses
         if searchResult.nurses && searchResult.nurses.length > 0
             i#nursesIcon(class='fa fa-user')
                 h4#sidebarTitle Nurses
-            +genericPersonList(searchResult.nurses)
+            +genericPersonList(searchResult.nurses, 'Nurse')
         //- Secretaries
         if searchResult.secretaries && searchResult.secretaries.length > 0
             i#nursesIcon(class='fa fa-user')
                 h4#sidebarTitle Secretaries
-            +genericPersonList(searchResult.secretaries)
+            +genericPersonList(searchResult.secretaries, 'Secretary')
         //- Admins
         if searchResult.admins && searchResult.admins.length > 0
             i#nursesIcon(class='fa fa-user-plus')
                 h4#sidebarTitle Admins
-            +genericPersonList(searchResult.admins)
+            +genericPersonList(searchResult.admins, 'Admin')
 
 script.
-    function getPersonData(personId) {
-        alert('Clicked ' + personId);
+    function getPersonData(personId, listType) {
+        if (listType === 'Patient') {
+            return getPatientData(personId);
+        }
+        alert('Clicked ' + listType + ', id: ' + personId);
     }
 
 .col
