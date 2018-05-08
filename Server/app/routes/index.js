@@ -1,3 +1,4 @@
+const model = require('../models/');
 const express = require('express');
 const router = express.Router();
 const app = require('../../server.js');
@@ -73,7 +74,10 @@ router.get('/admin', function (req, res) {
 		res.redirect('/error/');
 	}
 	else
-		res.render('admin');
+		//res.render('admin');
+		console.log("hello------");
+		console.log( model.Doctor.rawAttributes.speciality.values);
+		res.render('admin', {speciality: model.Doctor.rawAttributes.speciality.values});
 });
 
 // Sends user to index page and displays error message
@@ -101,6 +105,7 @@ router.get('/error', function (req, res) {
 router.get('*', function(req, res) {
 	res.render('index');
 });
+
 
 
 

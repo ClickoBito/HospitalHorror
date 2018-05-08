@@ -18,10 +18,16 @@ html(lang="en")
             form#registerform.form-horizontal(role="form" method="post" action="/register")
               .form-group(style="margin: 0px 5px 25px 5px")
                 label.adminLabel(labelfor="sel1") User type
-                select#sel1.form-control(name="usertype")
+                select#sel1.form-control(name="usertype" onchange='showDoctorType()')
                   option#adminOption Doctor
                   option#adminOption Nurse
                   option#adminOption Secretary
+              .form-group(style="margin: 0px 5px 25px 5px")
+                  label.adminLabel(for="sel2" id="speciality") Speciality
+                  console.log(speciality)
+                  select#sel2.form-control(name="speciality")
+                    each s in speciality 
+                      option(value=s) #{s}
               .form-group(style="margin: 0px 5px 25px 5px")
                 label.adminLabel Username
                 input.form-control(type="username" name="username" placeholder="Username")
@@ -47,4 +53,17 @@ html(lang="en")
                   // Button
                   .col-sm-12.controls#btn-login-window
                     button#btn-login.btn.btn-success(type="submit") Submit 
+script.
+    function showDoctorType(){
+    test = document.getElementById('sel1').value
+    console.log(test);
+    if (test == "Doctor"){
+      document.getElementById("sel2").style.display = "block";
+      document.getElementById("speciality").style.display = "block";
+      }
+      else{
+        document.getElementById("sel2").style.display = "none";
+      document.getElementById("speciality").style.display = "none";
+      }
+      };
               
