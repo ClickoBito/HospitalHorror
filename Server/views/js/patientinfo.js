@@ -9,15 +9,15 @@ function editMode(piid) {
             $('#bloodpressureedit').val(jsonResponse.patientinfo.bloodpressure);
             $('#weightedit').val(jsonResponse.patientinfo.weight);
             $('#descriptionedit').val(jsonResponse.patientinfo.description);
-        })
+        });
     });
     xhr.send();
 }
-  
+
   //-function insertMode(id){
     //-$("#PatienId").val(id);
   //-}
-  
+
 function insertPatientData(){
     let patientdatainsertform = document.getElementById("patientdatainsertform");
     patientdatainsertform.addEventListener("submit", function (event) {
@@ -36,9 +36,9 @@ function insertPatientData(){
     });
     xhr.send();
 }
-  
+
 function editPatientData(){
-    let xhr = new XMLHttpRequest();     
+    let xhr = new XMLHttpRequest();
     let piid = $("#PatientInfoId").val();
     xhr.open('POST', "/patientinfo/" + piid);
     let patientdataeditform = document.getElementById("patientdataeditform");

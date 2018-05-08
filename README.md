@@ -9,6 +9,7 @@ Contains the [report](report.md), the [source code for the app](Server) and the 
 - Install [Node.js](https://nodejs.org)
 - Install [MariaDB](https://downloads.mariadb.org/) (MySQL *might* work as well) and create a database on your localhost. Alternatively create a database on another host.
 - To install all dependencies go to *Server/* and run: `npm i`
+- Install [Sass](https://sass-lang.com/) globally: `npm -g i sass`
 - Create the file *Server/config/local.js* and enter the following:
 
 ```
@@ -28,5 +29,5 @@ module.exports = db;
 ```
 - Create the database by running in the *Server/*-directory: `npm run resync`.
 - *Optional, but recommended:* Insert testdata into the database by running in the *Server/*-directory: `npm run load_testdata`.
-- Start the app by running in the *Server/*-directory: `npm start`. Alternatively run `nodemon -e html,css,js,pug` (if it's installed) or possibly *forever*: `forever start server.js`
+- Start the app by running in the *Server/*-directory: `npm start`. Alternatively run `nodemon --exec "npm start" -e html,scss,js,pug` (if it's installed) or possibly *forever*: `forever start server.js`
 - Visit `http://localhost:8890`
