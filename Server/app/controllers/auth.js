@@ -32,7 +32,7 @@ module.exports.login = function(req, res, next) {
 							res.redirect('/');
 					}
 					else {
-						console.log("Wrong login-credentials");
+						app.print("Wrong login-credentials");
 						req.session.error = 'Username or password is wrong.';
 						req.session.errorcode = 401;
 						res.redirect('/error/');
@@ -40,7 +40,7 @@ module.exports.login = function(req, res, next) {
 				});
 			}
 			else {
-				console.log("Wrong login-credentials");
+				app.print("Wrong login-credentials");
 				req.session.error = 'Username or password is wrong.';
 				req.session.errorcode = 401;
 				res.redirect('/error/');
