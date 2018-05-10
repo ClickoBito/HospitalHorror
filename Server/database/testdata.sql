@@ -37,14 +37,14 @@ INSERT INTO Doctor (firstname, lastname, dateofbirth, phone, email, image, UserI
 VALUES ('Cole', 'Berg', '1968-07-20', '+46700000005', 'ColeB@gmail.com', 'https://image.freepik.com/free-photo/doctor-standing-with-a-folder-and-a-stethoscope_1291-16.jpg', 6);
 
 # Nurses
-INSERT INTO Nurse (firstname, lastname, dateofbirth, phone, email, UserId)
-VALUES ('Harley', 'Stephenson', '1985-04-27', '+46700000006', 'HarleyS@gmail.com', 7);
+INSERT INTO Nurse (firstname, lastname, dateofbirth, phone, email, image, UserId)
+VALUES ('Harley', 'Stephenson', '1985-04-27', '+46700000006', 'HarleyS@gmail.com', 'https://image.freepik.com/fotos-kostenlos/tragender-hut-und-maske-der-uberzeugten-weiblichen-medizinischen-arbeitskraft-die-zur-kamera-schaut_1301-7806.jpg', 7);
 
-INSERT INTO Nurse (firstname, lastname, dateofbirth, phone, email, UserId)
-VALUES ('Angelina', 'Davidsson', '1982-09-08', '+46700000007', 'AngelinaD@gmail.com', 8);
+INSERT INTO Nurse (firstname, lastname, dateofbirth, phone, email, image, UserId)
+VALUES ('Angelina', 'Davidsson', '1982-09-08', '+46700000007', 'AngelinaD@gmail.com', 'https://image.freepik.com/fotos-kostenlos/frau-mit-stethoskop-holding-eine-zwischenablage_1098-2502.jpg', 8);
 
-INSERT INTO Nurse (firstname, lastname, dateofbirth, phone, email, UserId)
-VALUES ('Brad', 'Hunter', '1977-08-10', '+46700000008', 'BradH@gmail.com', 9);
+INSERT INTO Nurse (firstname, lastname, dateofbirth, phone, email, image, UserId)
+VALUES ('Melanie', 'Hunter', '1977-08-10', '+46700000008', 'BradH@gmail.com', 'https://image.freepik.com/fotos-kostenlos/arzt-im-krankenhaus_1398-3720.jpg', 9);
 
 # Secretaries
 INSERT INTO Secretary (firstname, lastname, dateofbirth, phone, email, UserId)
