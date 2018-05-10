@@ -26,7 +26,7 @@ describe('Test of the back-end search functionality', () => {
                 { search: 'Walker', resultType: 'admins', matchedOn: 'lastname' },
                 { search: 'Cole', resultType: 'doctors', matchedOn: 'firstname' },
                 { search: 'Berg', resultType: 'doctors', matchedOn: 'lastname' },
-                { search: 'Brad', resultType: 'nurses', matchedOn: 'firstname' },
+                { search: 'Melanie', resultType: 'nurses', matchedOn: 'firstname' },
                 { search: 'Hunter', resultType: 'nurses', matchedOn: 'lastname' },
                 { search: 'Miley', resultType: 'secretaries', matchedOn: 'firstname' },
                 { search: 'Haley', resultType: 'secretaries', matchedOn: 'lastname' }
