@@ -113,6 +113,7 @@ module.exports.createPatientForm = function(req, res, next) {
           attributes: ['id', 'firstname', 'lastname'],
         }),
     ]).spread(doctors => {
+      app.print(req.session.user)
       // TODO: fix this
       let username = {
         firstname: 'JOHN',
