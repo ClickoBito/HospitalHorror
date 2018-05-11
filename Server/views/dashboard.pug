@@ -13,7 +13,9 @@ block content
                         .sticky-top
                             .nav.flex-column
                                 i#patientsIcon(class='fa fa-hospital-o')
-                                    h4#sidebarTitle Patients
+                                    h4#sidebarTitle Patients 
+                                        a(href="/createpatient" style={color: 'white'})
+                                            h4 +
                                 ul#patientsList.list-group-flush
                                 each patient in patients
                                     li#patient.list-group-item 
