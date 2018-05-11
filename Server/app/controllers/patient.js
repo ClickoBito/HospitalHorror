@@ -110,7 +110,6 @@ module.exports.createPatientForm = function(req, res, next) {
     typemodel = model.Nurse;
   else 
     typemodel = model.Secretary;
-  app.print(req.params.id)
 
   Sequelize.Promise.all([
       model.Doctor.findAll({
