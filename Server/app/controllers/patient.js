@@ -93,8 +93,7 @@ module.exports.getPatientData = function(req, res,next){
         }
       ]
     }).then(patient => {
-
-      res.render('patientprofile', {patient: patient});
+      res.render('patientprofile', {patient: patient, user: req.session.user});
 
     }, err => {
       // TODO
