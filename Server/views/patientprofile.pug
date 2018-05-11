@@ -40,8 +40,6 @@
   label(for='patientInfo')
     h3 #{patient.fullname}'s Info
   .patient_gen_info(style="display:flex")
-    .patientimage(style="width:250px; padding:20px")
-      img(src="/img/patienticon.png" alt="Patient Icon" style="max-height:200px")
     .patient_data(style="flex:1; padding:20px")
       p Age: #{patient.age} (#{patient.dateofbirth_formatted})
       p Assigned Doctor: #{patient.Doctor.fullname}
