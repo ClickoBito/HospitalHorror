@@ -48,6 +48,7 @@ module.exports.getDashboard = function(req, res){
     ]).spread((patients, nurses, doctors, patientInfo, username) => {
 
         res.render('dashboard', {
+            id: req.params.id,
             patients: patients,
             nurses: nurses,
             doctors: doctors,
