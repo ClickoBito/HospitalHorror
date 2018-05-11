@@ -9,7 +9,6 @@ Contains the [report](report.md), the [source code for the app](Server) and the 
 - Install [Node.js](https://nodejs.org)
 - Install [MariaDB](https://downloads.mariadb.org/) (MySQL *might* work as well) and create a database on your localhost. Alternatively create a database on another host.
 - To install all dependencies go to *Server/* and run: `npm i`
-- Install [Sass](https://sass-lang.com/) globally: `npm -g i sass`
 - Create the file *Server/config/local.js* and enter the following:
 
 ```
