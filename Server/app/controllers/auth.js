@@ -19,6 +19,7 @@ module.exports.login = function(req, res, next) {
 						// app.print('password matching');
 						req.session.user = user;
 						let userinfo = user.get({plain: true});
+						req.session.userid = userinfo.id;
 						online.addUser(userinfo.id);
 						// app.print(userinfo);
 						if (userinfo.userType === 'Admin')
