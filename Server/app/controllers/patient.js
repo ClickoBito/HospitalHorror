@@ -116,7 +116,7 @@ module.exports.createPatientForm = function(req, res, next) {
         attributes: ['id', 'firstname', 'lastname'],
       }),
       typemodel.findOne({
-        where: { UserId: req.params.id },
+        where: { UserId: req.session.userid },
         attributes: ['firstname', 'lastname']
       })
   ]).spread((doctors, username) => {
