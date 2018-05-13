@@ -15,6 +15,7 @@ module.exports = function(sequelize, DataTypes) {
 		dateofbirth: DataTypes.DATEONLY,
 		phone: DataTypes.STRING,
 		email: DataTypes.STRING,
+		image: DataTypes.STRING,
 		createdAt: {
 			type: DataTypes.DATE,
 			defaultValue: sequelize.fn('NOW')
