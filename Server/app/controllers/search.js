@@ -91,19 +91,19 @@ function buildPersonQuery(urlQuery, hasSSNR = false) {
         return { error: 'invalid search' };
     }
     var options = [];
-    _.forEach(searchParameters, function(paramter) {
-        options.push({[Op.like]: paramter + '%' });
+    _.forEach(searchParameters, function(parameter) {
+        options.push({[Op.like]: '%' + parameter + '%' });
     });
-    var options2 = [
+    var searchOn = [
         { firstname: { [Op.or]: options }},
         { lastname: { [Op.or]: options }}
     ];
     if (hasSSNR) {
-        options2.push({ ssNbr: { [Op.or]: options }});
+        searchOn.push({ ssNbr: { [Op.or]: options }});
     }
     return {
         where: {
-            [Op.or]: options2},
+            [Op.or]: searchOn},
         limit: 20
     };
 }
