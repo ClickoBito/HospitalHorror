@@ -58,16 +58,10 @@ function diagnosisSearch(req, res, urlQuery, responseHandler) {
 }
 
 function personSearch(req, res, urlQuery, responseHandler) {
-    const personQuery = {
-        where: {
-            [Op.or]: [
-                { firstname: {[Op.like]: urlQuery + '%' }},
-                { lastname: {[Op.like]: urlQuery + '%' }}
-        ]},
-        limit: 20
-    };
+    const personQuery = buildPersonQuery(urlQuery);
+    const patientQuery = buildPersonQuery(urlQuery, true);
     Sequelize.Promise.all([
-        model.Patient.findAll(personQuery),
+        model.Patient.findAll(patientQuery),
         model.Doctor.findAll(personQuery),
         model.Nurse.findAll(personQuery),
         model.Admin.findAll(personQuery),
@@ -86,6 +80,36 @@ function personSearch(req, res, urlQuery, responseHandler) {
         app.print(err);
         responseHandler(res, { error: err.errors }, 500);
     });
+}
+
+function buildPersonQuery(urlQuery, hasSSNR = false) {
+    var searchParameters = urlQuery.split(/,\s*|\s+|,/);
+    _.remove(searchParameters, function(item) {
+        return item === '';
+    });
+    if (searchParameters.length === 0) {
+        return { error: 'invalid search' };
+    }
+    var options = [];
+    _.forEach(searchParameters, function(paramter) {
+        options.push({[Op.like]: paramter + '%' });
+    });
+    var options2 = [
+        { firstname: { [Op.or]: options }},
+        { lastname: { [Op.or]: options }}
+    ];
+    if (hasSSNR) {
+        options2.push({ ssNbr: { [Op.or]: options }});
+    }
+    return {
+        where: {
+            [Op.or]: options2},
+        limit: 20
+    };
+}
+
+function getOpLike(param) {
+    return {[Op.like]: param + '%' };
 }
 
 function respondJSON(res, result, status = 200) {
