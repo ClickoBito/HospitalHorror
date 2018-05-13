@@ -40,8 +40,6 @@
   label(for='patientInfo')
     h3 #{patient.fullname}'s Info
   .patient_gen_info(style="display:flex")
-    .patientimage(style="width:250px; padding:20px")
-      img(src="/img/patienticon.png" alt="Patient Icon" style="max-height:200px")
     .patient_data(style="flex:1; padding:20px")
       p Age: #{patient.age} (#{patient.dateofbirth_formatted})
       p Assigned Doctor: #{patient.Doctor.fullname}
@@ -58,16 +56,15 @@
         th(scope='col') Last Visit
         th(scope='col') Blood Pressure
         th(scope='col') Weight
-        th(scope='col') Date of Birth
     tbody
     each pi in patient.PatientInfos
       tr
         td#ca(scope='row') #{pi.createdAt.toString().substr(0,24)}
         td#pbp #{pi.bloodpressure}
         td#pw #{pi.weight}
-        td#pdb #{patient.dateofbirth}
-        td
-          button#editPatientData.btn.btn-sm.btn-success(style='overflow: auto;', type='button', data-toggle='modal', data-target='#editModal' 'onclick'='editMode('+pi.id + ')') Edit
+        if user.userType === 'Doctor'
+          td
+            button#editPatientData.btn.btn-sm.btn-success(style='overflow: auto;', type='button', data-toggle='modal', data-target='#editModal' 'onclick'='editMode('+pi.id + ')') Edit
   button#addPatientData.btn.btn-sm.btn-primary.btn-lg.btn-block(style='margin-bottom: 5px;', type='button', data-toggle='modal', data-target='#insertModal') Add Patient Data  
   .card
     .card-body

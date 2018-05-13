@@ -46,7 +46,6 @@ module.exports.getDashboard = function(req, res){
             attributes: ['firstname', 'lastname']
         })
     ]).spread((patients, nurses, doctors, patientInfo, username) => {
-
         res.render('dashboard', {
             patients: patients,
             nurses: nurses,

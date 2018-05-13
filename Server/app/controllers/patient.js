@@ -93,8 +93,7 @@ module.exports.getPatientData = function(req, res,next){
         }
       ]
     }).then(patient => {
-
-      res.render('patientprofile', {patient: patient});
+      res.render('patientprofile', {patient: patient, user: req.session.user});
 
     }, err => {
       // TODO
@@ -102,29 +101,30 @@ module.exports.getPatientData = function(req, res,next){
 };
 
 module.exports.createPatientForm = function(req, res, next) {
-  if (false) {
-  // TODO: enable this later. Disabled for debugging
-  //if (!AuthCtrl.isSecretary(req)) {
-    req.session.error = 'Only secretaries can access this page.';
-    req.session.errorcode = 401;
-    res.redirect('/error/');
-  } else {
-    Sequelize.Promise.all([
-        model.Doctor.findAll({
-          attributes: ['id', 'firstname', 'lastname'],
-        }),
-    ]).spread(doctors => {
-      // TODO: fix this
-      let username = {
-        firstname: 'JOHN',
-        lastname: 'DOE'
-      };
-      res.render('createpatient', {
-        doctors: doctors,
-        username: username
-      });
-    }, err => {
-      // TODO
+  
+  let usertype = req.session.user.userType;
+  let typemodel;
+  if (usertype === 'Doctor')
+    typemodel = model.Doctor;
+  else if (usertype === 'Nurse')
+    typemodel = model.Nurse;
+  else 
+    typemodel = model.Secretary;
+
+  Sequelize.Promise.all([
+      model.Doctor.findAll({
+        attributes: ['id', 'firstname', 'lastname'],
+      }),
+      typemodel.findOne({
+        where: { UserId: req.session.userid },
+        attributes: ['firstname', 'lastname']
+      })
+  ]).spread((doctors, username) => {
+    res.render('createpatient', {
+      doctors: doctors,
+      username: username
     });
-  }
+  }, err => {
+    // TODO
+  });
 };
