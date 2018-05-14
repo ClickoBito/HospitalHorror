@@ -19,13 +19,13 @@ block content
                                 ul#patientsList.list-group-flush
                                 each patient in patients
                                     li#patient.list-group-item 
-                                    a#patientLink(href='javascript:void(0);' type='get' 'onclick'='getPatientData('+patient.id + ')') #{patient.firstname + ' ' + patient.lastname}
+                                    a#patientLink(href='javascript:void(0);' type='get' 'onclick'='getPatientData('+ patient.id + ')') #{patient.firstname + ' ' + patient.lastname}
                                 i#doctorsIcon(class='fa fa-user-md')
                                     h4#sidebarTitle Doctors
                                 ul#doctorList.list-group-flush
                                 each doctor in doctors
                                     li.list-group-item
-                                    a#doctorLink(href='') #{doctor.fullname}
+                                    a#doctorLink(href='javascript:void(0);' type='get'  'onclick'='getDoctorProfile('+ doctor.id + ')') #{doctor.fullname}
                                         - if (onlineusers.includes(doctor.UserId))
                                             i.fa.fa-check-circle(style='color:green;margin-left:0.5rem')
                                 i#nursesIcon(class='fa fa-user')
@@ -33,7 +33,7 @@ block content
                                 ul#nursesList.list-group-flush
                                 each nurse in nurses
                                     li.list-group-item 
-                                    a#nurseLink(href='') #{nurse.fullname}
+                                    a#nurseLink(href='javascript:void(0);' type='get'  'onclick'='getNurseProfile('+ nurse.id + ')') #{nurse.fullname}
                                         - if (onlineusers.includes(nurse.UserId))
                                             i.fa.fa-check-circle(style='color:green;margin-left:0.5rem')
                     div#vr
@@ -44,15 +44,8 @@ block content
                       else if usertype == 'Nurse'
                         include welcome_nurse
                         +welcome_nurse(username)
-                    script.
-                      function getPatientData(id){
-                          let xhr = new XMLHttpRequest();
-                          xhr.open('GET', "/patient/" + id, false);
-                          xhr.addEventListener('load', function(e) {
-                              $('#main').html(xhr.responseText);
-                          });
-                          xhr.send();
-                      }
+                    script
+                      include js/dashboard.js
 
                     #CHEESY_FOOTER
                         h6#TEXT_BIRD

@@ -20,7 +20,7 @@ module.exports.getDashboard = function(req, res){
             limit: 20
         }),
         model.Nurse.findAll({
-            attributes: ['firstname', 'lastname', 'UserId'],
+            attributes: ['id', 'firstname', 'lastname', 'UserId'],
             limit: 20,
             include: [
               {
@@ -29,7 +29,7 @@ module.exports.getDashboard = function(req, res){
             ]
         }),
         model.Doctor.findAll({
-            attributes: ['firstname', 'lastname', 'UserId'],
+            attributes: ['id', 'firstname', 'lastname', 'UserId'],
             limit: 20,
             include: [
               {
@@ -61,4 +61,15 @@ module.exports.getDashboard = function(req, res){
         app.print(err);
         res.status(500).send({ error: err.errors });
     });
+};
+
+module.exports.getDoctorProfile = function(req, res, next) {
+	// TODO - authentication
+	model.Doctor.findOne({
+		where: {id: req.params.id},
+	}).then(doctor => {
+		res.render('doctorprofile', {doctor: doctor});
+	}, err => {
+		// TODO
+	});
 };
