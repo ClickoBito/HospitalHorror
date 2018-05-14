@@ -1,0 +1,10 @@
+.col#nurseprofilecol
+	label(for='nurseProfile')
+		h3 #{nurse.fullname}'s Info
+	.nurse_profile(style="display:flex")
+		.nurseimage(style="width:250px; padding:20px") 
+			img(src=nurse.image alt="Nurse Image" style="max-height:200px")
+		.nurse_data(style="flex:1; padding:20px")
+			p Age: #{nurse.age} (#{nurse.dateofbirth_formatted})
+			p Phone: #{nurse.phone}
+			p Email: #{nurse.email}
