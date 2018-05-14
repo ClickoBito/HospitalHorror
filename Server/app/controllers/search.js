@@ -108,10 +108,6 @@ function buildPersonQuery(urlQuery, hasSSNR = false) {
     };
 }
 
-function getOpLike(param) {
-    return {[Op.like]: param + '%' };
-}
-
 function respondJSON(res, result, status = 200) {
     res.status(status).json(result);
 }
