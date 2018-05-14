@@ -1,12 +1,15 @@
 mixin welcome_nurse(user)
 	div#welcomeName
 		h1 Welcome #{user.fullname}!
+	- let endtime = moment().add(8,'h').hours() + ':00'
+	div#currentShifts
+			h4 Your current shift will end at: #{endtime} 
 	div#nextShifts
 		h4 Your next shifts
 	table#nextAppointmentsTable.table.table-curved
 		thead#table-head
 			tr
-				th(scope='col') Day
+				th(scope='col') Date
 				th(scope='col') Time
 		tbody
 		each val in [1, 2, 3]
