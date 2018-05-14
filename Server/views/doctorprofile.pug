@@ -1,0 +1,11 @@
+.col#doctorprofilecol
+	label(for='doctorProfile')
+		h3 Dr. #{doctor.fullname}'s Info
+	.doctor_profile(style="display:flex")
+		.doctorimage(style="width:250px; padding:20px") 
+			img(src=doctor.image alt="Doctor Image" style="max-height:200px; max-width:200px")
+		.doctor_data(style="flex:1; padding:20px")
+			p Age: #{doctor.age} (#{doctor.dateofbirth_formatted})
+			p Speciality: #{doctor.speciality}
+			p Phone: #{doctor.phone}
+			p Email: #{doctor.email}

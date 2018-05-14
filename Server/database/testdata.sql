@@ -27,14 +27,14 @@ INSERT INTO Admin (firstname, lastname, dateofbirth, phone, email, UserId)
 VALUES ('Jason', 'Walker', '1982-05-01', '+46700000002', 'JasonW@gmail.com', 3);
 
 # Doctors
-INSERT INTO Doctor (firstname, lastname, dateofbirth, phone, email, image, UserId)
-VALUES ('Johan', 'Larsson', '1965-12-15', '+46700000003', 'JohanL@gmail.com', 'https://image.freepik.com/free-photo/doctor-smiling-with-stethoscope_1154-36.jpg', 4);
+INSERT INTO Doctor (firstname, lastname, dateofbirth, phone, email, image, speciality, UserId)
+VALUES ('Johan', 'Larsson', '1965-12-15', '+46700000003', 'JohanL@gmail.com', 'https://image.freepik.com/free-photo/doctor-smiling-with-stethoscope_1154-36.jpg', 'Cardiologist', 4);
 
-INSERT INTO Doctor (firstname, lastname, dateofbirth, phone, email, image, UserId)
-VALUES ('Eddie', 'Cruz', '1969-02-26', '+46700000004', 'EddieC@gmail.com', 'https://image.freepik.com/free-photo/doctor-with-his-arms-crossed-over-white-background_1368-5790.jpg', 5);
+INSERT INTO Doctor (firstname, lastname, dateofbirth, phone, email, image, speciality, UserId)
+VALUES ('Eddie', 'Cruz', '1969-02-26', '+46700000004', 'EddieC@gmail.com', 'https://image.freepik.com/free-photo/doctor-with-his-arms-crossed-over-white-background_1368-5790.jpg', 'Hematologist', 5);
 
-INSERT INTO Doctor (firstname, lastname, dateofbirth, phone, email, image, UserId)
-VALUES ('Cole', 'Berg', '1968-07-20', '+46700000005', 'ColeB@gmail.com', 'https://image.freepik.com/free-photo/doctor-standing-with-a-folder-and-a-stethoscope_1291-16.jpg', 6);
+INSERT INTO Doctor (firstname, lastname, dateofbirth, phone, email, image, speciality, UserId)
+VALUES ('Cole', 'Berg', '1968-07-20', '+46700000005', 'ColeB@gmail.com', 'https://image.freepik.com/free-photo/doctor-standing-with-a-folder-and-a-stethoscope_1291-16.jpg', 'Dermatologist', 6);
 
 # Nurses
 INSERT INTO Nurse (firstname, lastname, dateofbirth, phone, email, image, UserId)
