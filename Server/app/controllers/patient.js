@@ -101,14 +101,21 @@ module.exports.getPatientData = function(req, res,next){
 };
 
 module.exports.createPatientForm = function(req, res, next) {
-  
+  if (!req.session.user) {
+      app.print('Can\'t access CreatePatient-form - Not logged in.');
+      req.session.error = 'Not logged in.';
+      req.session.errorcode = 400;
+      res.redirect('/error/');
+      return;
+  }
+
   let usertype = req.session.user.userType;
   let typemodel;
   if (usertype === 'Doctor')
     typemodel = model.Doctor;
   else if (usertype === 'Nurse')
     typemodel = model.Nurse;
-  else 
+  else
     typemodel = model.Secretary;
 
   Sequelize.Promise.all([
