@@ -29,7 +29,7 @@ module.exports.login = function(req, res, next) {
 						else if (userinfo.userType === 'Nurse')
 							res.redirect('/nurse/' + userinfo.id);
 						else
-							res.redirect('/createpatient/' + userinfo.id);
+							res.redirect('/createpatient/');
 					}
 					else {
 						app.print("Wrong login-credentials");
