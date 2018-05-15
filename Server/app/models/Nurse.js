@@ -2,6 +2,7 @@
 'use strict';
 
 const Sequelize = require('sequelize');
+const moment = require('moment');
 
 module.exports = function(sequelize, DataTypes) {
 	let Nurse = sequelize.define('Nurse', {
@@ -30,6 +31,12 @@ module.exports = function(sequelize, DataTypes) {
 		getterMethods: {
 			fullname: function() {
 				return this.firstname + ' ' + this.lastname;
+			},
+			age: function() {
+				return moment().diff(this.dateofbirth, 'years');
+			},
+			dateofbirth_formatted: function() {
+				return moment(this.dateofbirth).format('Do MMM YYYY');
 			}
 		}
 	});

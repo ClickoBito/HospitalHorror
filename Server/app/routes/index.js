@@ -13,6 +13,7 @@ const TreatmentCtrl = require('../controllers/treatment.js');
 const PatientCtrl = require('../controllers/patient.js');
 const PatientDiagnosisCtrl = require('../controllers/patientdiagnosis.js');
 const DoctorCtrl = require('../controllers/doctor.js');
+const NurseCtrl = require('../controllers/nurse.js');
 const SearchCtrl = require('../controllers/search.js');
 //gconst UpdaterCtrl = require('../controllers/updater.js')
 
@@ -31,9 +32,11 @@ router.post('/patient', PatientCtrl.create);
 
 // Doctors
 router.get('/doctor/:id', DoctorCtrl.getDashboard);
+router.get('/doctorprofile/:id', DoctorCtrl.getDoctorProfile);
 
 // Nurses
 router.get('/nurse/:id', DoctorCtrl.getDashboard);
+router.get('/nurseprofile/:id', NurseCtrl.getNurseProfile);
 
 // PatientInfo
 router.post('/patientinfo', formidable(), PatientInfoCtrl.create);

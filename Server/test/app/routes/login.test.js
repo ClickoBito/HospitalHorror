@@ -4,7 +4,7 @@ import app from '../../../server';
 
 const should = require('chai').should();
 
-describe('Testing the login-function', () => {
+describe('Testing the login- and logout-function', () => {
 	it('Valid login for an Administrator', done => {
 		supertest(app)
 		.post('/login')
@@ -59,9 +59,7 @@ describe('Testing the login-function', () => {
 			done();
 		});
 	});
-});
 
-describe('Testing the logout-function', () => {
 	it('Sending logout-request', done => {
 		supertest(app)
 		.post('/logout')
