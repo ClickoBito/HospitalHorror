@@ -106,7 +106,6 @@ router.get('/error', function (req, res) {
 // frontend routes =========================================================
 // route to handle all other requests
 router.get('*', function(req, res) {
-	app.print(req.session.status)
 	if(req.session.status){
 		res.render('index', {
 			status: req.session.status
