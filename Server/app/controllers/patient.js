@@ -129,7 +129,8 @@ module.exports.createPatientForm = function(req, res, next) {
   ]).spread((doctors, username) => {
     res.render('createpatient', {
       doctors: doctors,
-      username: username
+      username: username,
+      moment: require('moment')
     });
   }, err => {
     // TODO
