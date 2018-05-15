@@ -101,14 +101,14 @@ module.exports.getPatientData = function(req, res,next){
 };
 
 module.exports.createPatientForm = function(req, res, next) {
-  
+
   let usertype = req.session.user.userType;
   let typemodel;
   if (usertype === 'Doctor')
     typemodel = model.Doctor;
   else if (usertype === 'Nurse')
     typemodel = model.Nurse;
-  else 
+  else
     typemodel = model.Secretary;
 
   Sequelize.Promise.all([
@@ -122,7 +122,8 @@ module.exports.createPatientForm = function(req, res, next) {
   ]).spread((doctors, username) => {
     res.render('createpatient', {
       doctors: doctors,
-      username: username
+      username: username,
+      moment: require('moment')
     });
   }, err => {
     // TODO

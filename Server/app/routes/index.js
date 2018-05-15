@@ -26,7 +26,7 @@ router.post('/logout', AuthCtrl.logout);
 // Patient
 router.get('/patient/:id', PatientCtrl.getPatientData);
 router.get('/doctor/:id', DoctorCtrl.getDashboard);
-router.get('/createpatient/', PatientCtrl.createPatientForm);
+router.get('/createpatient', PatientCtrl.createPatientForm);
 router.post('/patient', PatientCtrl.create);
 
 // Doctors
@@ -75,7 +75,6 @@ router.get('/admin', function (req, res) {
 	}
 	else
 		//res.render('admin');
-		console.log( model.Doctor.rawAttributes.speciality.values);
 		res.render('admin', {speciality: model.Doctor.rawAttributes.speciality.values});
 });
 

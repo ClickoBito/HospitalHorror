@@ -104,7 +104,7 @@ body {
 	text-align: center;
 }
 
-#nextAppointments h4, #nextShifts h4 {
+#nextAppointments h4, #nextShifts h4, #currentShifts h4 {
 	margin-top: 5%;
 	text-decoration: underline;
 }
@@ -235,4 +235,11 @@ h4{
 .adminLabel {
 	font-weight: bold;
 	color: white;
+}
+
+#datetime{
+  margin-right:1em;
+  colour:red;
+  text-decoration: underline;
+  text-align: right;
 }
