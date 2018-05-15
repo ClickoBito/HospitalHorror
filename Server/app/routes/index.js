@@ -78,7 +78,6 @@ router.get('/admin', function (req, res) {
 	}
 	else
 		//res.render('admin');
-		console.log("hello------");
 		console.log( model.Doctor.rawAttributes.speciality.values);
 		res.render('admin', {speciality: model.Doctor.rawAttributes.speciality.values});
 });

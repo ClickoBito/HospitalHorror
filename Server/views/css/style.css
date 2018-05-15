@@ -148,6 +148,13 @@ body {
   color: white;
 }
 
+#datetime{
+  margin-right:1em;
+  colour:red;
+  text-decoration: underline;
+  text-align: right;
+}
+
 #welcomeName h1 {
   font-size: 3rem;
   text-align: center;
@@ -158,6 +165,12 @@ body {
   text-decoration: underline;
 }
 
+#currentShifts h4 {
+  margin-top: 5%;
+  text-align: center;
+  text-decoration: underline;
+  color: white;
+}
 h4 {
   display: inline-block;
 }
