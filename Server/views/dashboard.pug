@@ -45,14 +45,14 @@ html
                                                 i.fa.fa-check-circle(style='color:green;margin-left:0.5rem')
                         div#vr
                         #main.col
-                        if usertype == 'Doctor'
-                            include welcome_doctor
-                            +welcome_doctor(username, patients)
-                        else if usertype == 'Nurse'
-                            include welcome_nurse
-                            +welcome_nurse(username)
-                        script
-                        include js/dashboard.js
+                            if usertype == 'Doctor'
+                                include welcome_doctor
+                                +welcome_doctor(username, patients)
+                            else if usertype == 'Nurse'
+                                include welcome_nurse
+                                +welcome_nurse(username)
+                            script
+                                include js/dashboard.js
 
                         #CHEESY_FOOTER
                             h6#TEXT_BIRD
