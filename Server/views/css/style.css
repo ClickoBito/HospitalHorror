@@ -8,7 +8,6 @@
   background: rgba(0, 0, 0, 0.7);
   margin: 0 1em;
   padding-top: 1.5em;
-  margin-bottom: 0.05em;
 }
 
 #search-button {
@@ -53,12 +52,11 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-#doctorBody {
+#doctorBody, .createpatientBody {
   background-image: url("/img/doctorBackground.jpeg") !important;
   background-repeat: no-repeat;
   /* background-image: url("https://www.planwallpaper.com/static/images/desktop-backgrounds1_wvNeWqW.jpg"); */
   padding: 5px;
-  color: #dc3545;
   font-size: 0.95em;
 }
 
@@ -97,7 +95,7 @@ body {
   margin-bottom: 15px;
 }
 
-#doctorBody .fa-plus {
+#doctorBody .fa-plus, .createpatientBody .fa-plus {
   font-size: 3em;
   color: red;
   margin-right: 0.5em;
@@ -202,42 +200,42 @@ h4 {
   color: red;
 }
 
-.indexBody .card-header, .adminBody .card-header {
+.indexBody .card-header, .adminBody .card-header, .createpatientBody .card-header {
   background-color: rgba(255, 255, 255, 0);
   border: none;
   padding-bottom: 0;
   color: white;
 }
 
-.indexBody .card-body, .adminBody .card-body {
-  padding-top: 0;
+.indexBody .card-body, .adminBody .card-body, .createpatientBody .card-body {
+  padding-top: 30px;
 }
 
-.indexBody .maincard, .adminBody .card {
+.indexBody .maincard, .adminBody .card, .createpatientBody .card {
   background-color: rgba(0, 0, 0, 0.6);
   font-family: "Open Sans", sans-serif;
   border-radius: 1em;
 }
 
-.indexBody .card-title, .adminBody .card-title {
+.indexBody .card-title, .adminBody .card-title, .createpatientBody .card-title {
   font-size: 2em;
   line-height: 1;
   text-align: center;
   margin-top: 1em;
 }
 
-.indexBody #btn-login, .adminBody #btn-login {
+.indexBody #btn-login, .adminBody #btn-login, .createpatientBody #btn-login {
   margin-top: 2em;
   width: 100%;
   height: 3em;
 }
 
-.indexBody #btn-login-window, .adminBody #btn-login-window {
+.indexBody #btn-login-window, .adminBody #btn-login-window, .createpatientBody #btn-login-window {
   padding-left: 0;
   padding-right: 0;
 }
 
-.indexBody .form-control, .indexBody .form-control:focus, .adminBody .form-control, .adminBody .form-control:focus {
+.inputForm, .inputForm:focus {
   border-top: none;
   border-right: none;
   border-left: none;
@@ -253,7 +251,7 @@ h4 {
   margin-right: 0;
 }
 
-.indexBody input::-webkit-input-placeholder, .adminBody input::-webkit-input-placeholder {
+.indexBody input::-webkit-input-placeholder, .adminBody input::-webkit-input-placeholder, .createpatientBody input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.6) !important;
 }
 
@@ -263,19 +261,27 @@ h4 {
     background: transparent;
   }
 }
-.indexBody input:-webkit-autofill, .adminBody input:-webkit-autofill {
+.indexBody input:-webkit-autofill, .adminBody input:-webkit-autofill, .createpatientBody input:-webkit-autofill {
   -webkit-animation-name: autofill;
   -webkit-animation-fill-mode: both;
   -webkit-text-fill-color: white;
 }
 
-#adminOption {
+#selectOption {
   background-color: #334acc;
 }
 
-.adminLabel {
+.formLabel {
   font-weight: bold;
   color: white;
+}
+
+#loginbox {
+  margin: 50px 0;
+}
+
+.adminBody .form-group, .createpatientBody .form-group {
+  margin: 0px 5px 25px 5px;
 }
 
 /*# sourceMappingURL=views/css/style.css.map */
