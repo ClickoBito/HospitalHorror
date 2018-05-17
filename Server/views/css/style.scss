@@ -133,16 +133,13 @@ h4{
 	margin: 0 1em;
 	background: rgba(0,0,0, 0.7);
 	color: white;
+	border-top-left-radius: 1em;
+	border-top-right-radius: 1em;
 	border-bottom-left-radius: 1em;
 	border-bottom-right-radius: 1em;
 	padding-top: 2em;
 }
 
-#backgroundHr {
-	margin: 0 1em;
-	padding-top: 1em;
-	background: rgba(0,0,0, 0.7);
-}
 #vr {
 	border-left: 0.1em solid rgba(255,255,255,0.1);
 }

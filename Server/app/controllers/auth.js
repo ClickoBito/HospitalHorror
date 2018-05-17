@@ -16,7 +16,6 @@ module.exports.login = function(req, res, next) {
 				//Check password
 				bCrypt.compare(req.body.password, user.password, function(err, matches) {
 					if(matches) {
-						// app.print('password matching');
 						req.session.user = user;
 						let userinfo = user.get({plain: true});
 						req.session.userid = userinfo.id;
@@ -29,7 +28,7 @@ module.exports.login = function(req, res, next) {
 						else if (userinfo.userType === 'Nurse')
 							res.redirect('/nurse/' + userinfo.id);
 						else
-							res.redirect('/createpatient/' + userinfo.id);
+							res.redirect('/createpatient/');
 					}
 					else {
 						app.print("Wrong login-credentials");

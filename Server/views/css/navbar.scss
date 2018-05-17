@@ -3,9 +3,12 @@
 	list-style-type: none;
 	border-top-left-radius: 1em;
 	border-top-right-radius: 1em;
+	border-bottom-left-radius: 1em;
+	border-bottom-right-radius: 1em;
 	background: rgba(0,0,0, 0.7);
 	margin: 0 1em;
 	padding-top: 1.5em;
+	margin-bottom: 0.1em;
 	padding-bottom: 1.5em;
 }
 
@@ -16,10 +19,4 @@
 #search-bar{
 	width: 30em;
 	margin-left: 5.5em!important;
-}
-
-#navbarWrapperHr {
-	width: 98%;
-	background: rgba(255,255,255,0.2);
-	margin: 0em auto;
 }

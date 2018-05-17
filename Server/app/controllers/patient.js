@@ -15,8 +15,14 @@ module.exports.create = function (req, res, next) {
         if(created) {
             app.print('Created Patient');
             app.print(patient.get({ plain: true }));
-            // TODO: redirect to something better
-            res.redirect('/');
+            if (AuthCtrl.isSecretary(req)) {
+                req.session.status = 'Patient created';
+                res.redirect('/');
+            }
+            else if (AuthCtrl.isDoctor(req)) 
+                res.redirect('/doctor/' + req.session.userid);           
+            else 
+                res.redirect('/nurse/' + req.session.userid);
 
         }
         else {
