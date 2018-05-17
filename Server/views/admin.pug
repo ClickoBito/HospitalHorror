@@ -8,48 +8,48 @@ html(lang="en")
             include css/style.css
   body#clrblk.adminBody
     .container
-      #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.mx-auto(style="margin-top:50px;")
+      #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.mx-auto
         .card
           .card-header
             .card-title Register user
             // <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
             p= status
-          .card-body(style="padding-top:30px")
+          .card-body
             form#registerform.form-horizontal(role="form" method="post" action="/register")
-              .form-group(style="margin: 0px 5px 25px 5px")
-                label.adminLabel(labelfor="sel1") User type
-                select#sel1.form-control(name="usertype" onchange='showDoctorType()')
-                  option#adminOption Doctor
-                  option#adminOption Nurse
-                  option#adminOption Secretary
-              .form-group(style="margin: 0px 5px 25px 5px")
-                  label.adminLabel(for="sel2" id="speciality") Speciality
+              .form-group
+                label.formLabel(labelfor="sel1") User type
+                select#sel1.form-control.inputForm(name="usertype" onchange='showDoctorType()')
+                  option#selectOption Doctor
+                  option#selectOption Nurse
+                  option#selectOption Secretary
+              .form-group
+                  label.formLabel(for="sel2" id="speciality") Speciality
                   console.log(speciality)
-                  select#sel2.form-control(name="speciality")
+                  select#sel2.form-control.inputForm(name="speciality")
                     each s in speciality 
-                      option(value=s) #{s}
-              .form-group(style="margin: 0px 5px 25px 5px")
-                label.adminLabel Username
-                input.form-control(type="username" name="username" placeholder="Username")
-              .form-group(style="margin: 0px 5px 25px 5px")
-                label.adminLabel Password
-                input.form-control(type="password" name="password" placeholder="Password")
-              .form-group(style="margin: 0px 5px 25px 5px")
-                label.adminLabel First name
-                input.form-control(type="text" name="firstname" placeholder="Firstname")
-              .form-group(style="margin: 0px 5px 25px 5px")
-                label.adminLabel Last name
-                input.form-control(type="text" name="lastname" placeholder="Lastname")
-              .form-group(style="margin: 0px 5px 25px 5px")
-                label.adminLabel Phone
-                input.form-control(type="text" name="phone" placeholder="Phone")
-              .form-group(style="margin: 0px 5px 25px 5px")
-                label.adminLabel Email
-                input.form-control(type="email" name="email" placeholder="Email")
-              .form-group(style="margin: 0px 5px 25px 5px")
-                label.adminLabel Date of birth                
-                input.form-control(type="date" value="1980-08-19" name="dateofbirth")          
-              .form-group(style="margin-top:10px")
+                      option#selectOption(value=s) #{s}
+              .form-group
+                label.formLabel Username
+                input.form-control.inputForm(type="username" name="username" placeholder="Username")
+              .form-group
+                label.formLabel Password
+                input.form-control.inputForm(type="password" name="password" placeholder="Password")
+              .form-group
+                label.formLabel First name
+                input.form-control.inputForm(type="text" name="firstname" placeholder="Firstname")
+              .form-group
+                label.formLabel Last name
+                input.form-control.inputForm(type="text" name="lastname" placeholder="Lastname")
+              .form-group
+                label.formLabel Phone
+                input.form-control.inputForm(type="text" name="phone" placeholder="Phone")
+              .form-group
+                label.formLabel Email
+                input.form-control.inputForm(type="email" name="email" placeholder="Email")
+              .form-group
+                label.formLabel Date of birth                
+                input.form-control.inputForm(type="date" value="1980-08-19" name="dateofbirth")          
+              .form-group
                   // Button
                   .col-sm-12.controls#btn-login-window
                     button#btn-login.btn.btn-success(type="submit") Submit 

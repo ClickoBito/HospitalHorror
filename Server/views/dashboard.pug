@@ -1,53 +1,63 @@
-extends layout
-include navbar
-block content
-    +navbar(username.firstname + ' ' + username.lastname)
-    div#backgroundHr
-        hr#navbarWrapperHr
-    div.wrapper.col-m-4.sticky-top
-        nav.sticky-top
-            //- Sidebar Links
-            .container-fluid
-                .row
-                    #sticky-sidebar.col-2.sidebar-sticky
-                        .sticky-top
-                            .nav.flex-column
-                                i#patientsIcon(class='fa fa-hospital-o')
-                                    h4#sidebarTitle Patients 
-                                        a(href="/createpatient/", style={color: 'white'})
-                                            h4 +
-                                ul#patientsList.list-group-flush
-                                each patient in patients
-                                    li#patient.list-group-item 
-                                    a#patientLink(href='javascript:void(0);' type='get' 'onclick'='getPatientData('+ patient.id + ')') #{patient.firstname + ' ' + patient.lastname}
-                                i#doctorsIcon(class='fa fa-user-md')
-                                    h4#sidebarTitle Doctors
-                                ul#doctorList.list-group-flush
-                                each doctor in doctors
-                                    li.list-group-item
-                                    a#doctorLink(href='javascript:void(0);' type='get'  'onclick'='getDoctorProfile('+ doctor.id + ')') #{doctor.fullname}
-                                        - if (onlineusers.includes(doctor.UserId))
-                                            i.fa.fa-check-circle(style='color:green;margin-left:0.5rem')
-                                i#nursesIcon(class='fa fa-user')
-                                    h4#sidebarTitle Nurses
-                                ul#nursesList.list-group-flush
-                                each nurse in nurses
-                                    li.list-group-item 
-                                    a#nurseLink(href='javascript:void(0);' type='get'  'onclick'='getNurseProfile('+ nurse.id + ')') #{nurse.fullname}
-                                        - if (onlineusers.includes(nurse.UserId))
-                                            i.fa.fa-check-circle(style='color:green;margin-left:0.5rem')
-                    div#vr
-                    #main.col
-                      if usertype == 'Doctor'
-                        include welcome_doctor
-                        +welcome_doctor(username, patients)
-                      else if usertype == 'Nurse'
-                        include welcome_nurse
-                        +welcome_nurse(username)
-                    script
-                      include js/dashboard.js
+doctype html
+html
+    head
+        title Doctor
+        link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet')
+        link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css' integrity='sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4' crossorigin='anonymous')
+        style(type='text/css')
+            include css/style.css
+    body#doctorBody
+        include navbar
+        +navbar(username.firstname + ' ' + username.lastname)
+        div#backgroundHr
+            hr#navbarWrapperHr
+        div.wrapper.col-m-4.sticky-top
+            nav.sticky-top
+                //- Sidebar Links
+                .container-fluid
+                    .row
+                        #sticky-sidebar.col-2.sidebar-sticky
+                            .sticky-top
+                                .nav.flex-column
+                                    i#patientsIcon(class='fa fa-hospital-o')
+                                        h4#sidebarTitle Patients 
+                                            a(href="/createpatient/", style={color: 'white'})
+                                                h4 +
+                                    ul#patientsList.list-group-flush
+                                    each patient in patients
+                                        li#patient.list-group-item 
+                                        a#patientLink(href='javascript:void(0);' type='get' 'onclick'='getPatientData('+ patient.id + ')') #{patient.firstname + ' ' + patient.lastname}
+                                    i#doctorsIcon(class='fa fa-user-md')
+                                        h4#sidebarTitle Doctors
+                                    ul#doctorList.list-group-flush
+                                    each doctor in doctors
+                                        li.list-group-item
+                                        a#doctorLink(href='javascript:void(0);' type='get'  'onclick'='getDoctorProfile('+ doctor.id + ')') #{doctor.fullname}
+                                            - if (onlineusers.includes(doctor.UserId))
+                                                i.fa.fa-check-circle(style='color:green;margin-left:0.5rem')
+                                    i#nursesIcon(class='fa fa-user')
+                                        h4#sidebarTitle Nurses
+                                    ul#nursesList.list-group-flush
+                                    each nurse in nurses
+                                        li.list-group-item 
+                                        a#nurseLink(href='javascript:void(0);' type='get'  'onclick'='getNurseProfile('+ nurse.id + ')') #{nurse.fullname}
+                                            - if (onlineusers.includes(nurse.UserId))
+                                                i.fa.fa-check-circle(style='color:green;margin-left:0.5rem')
+                        div#vr
+                        #main.col
+                            if usertype == 'Doctor'
+                                include welcome_doctor
+                                +welcome_doctor(username, patients)
+                            else if usertype == 'Nurse'
+                                include welcome_nurse
+                                +welcome_nurse(username)
+                            script
+                                include js/dashboard.js
 
-                    #CHEESY_FOOTER
-                        h6#TEXT_BIRD
-                    footer
-                        p#copyright Copyright &copy; 2018 - MediSys
+                        #CHEESY_FOOTER
+                            h6#TEXT_BIRD
+                        footer
+                            p#copyright Copyright &copy; 2018 - MediSys
+        script(src='https://code.jquery.com/jquery-3.3.1.js' integrity='sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=' crossorigin='anonymous')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js' integrity='sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ' crossorigin='anonymous')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js' integrity='sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm' crossorigin='anonymous')
