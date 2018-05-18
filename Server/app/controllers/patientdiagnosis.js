@@ -2,14 +2,14 @@ const model = require('../models/');
 const app = require('../../server.js');
 
 module.exports.create = function(req, res, next) {
-	app.print('Trying to create a patientDiagnosis');
-	app.print(req.body);
-	model.Diagnosis.create(req.body)
+	app.print('Trying to create a patient diagnosis');
+	app.print(req.fields);
+	model.Diagnosis.create(req.fields)
 	.then(info => {
-		app.print('Created patientDiagnosis');
+		app.print('Created patient diagnosis');
 		app.print(info.get({plain:true}));
 		// TODO: redirect to some page
-		res.redirect('/');
+		res.redirect('/patient/' + info.PatientId);
 	}, err => {
 		app.print(err);
 		// TODO: redirect to error page e.g.

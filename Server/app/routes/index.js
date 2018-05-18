@@ -50,16 +50,15 @@ router.put('/patientallergy/:id', PatientAllergyCtrl.edit);
 router.delete('/patientallergy/:id', PatientAllergyCtrl.delete);
 
 // Treatment
-router.post('/treatment', TreatmentCtrl.createTreatment);
+router.post('/treatment', formidable(), TreatmentCtrl.createTreatment);
 router.put('/treatment/:id', TreatmentCtrl.editTreatment);
 router.delete('/treatment/:id', TreatmentCtrl.deleteTreatment);
-//TODO: Check if this statement is required
-//router.get('/treatment/:id', TreatmentCtrl.getTreatment);
 
 // PatientDiagnosis
-router.post('/patientdiagnosis', PatientDiagnosisCtrl.create);
+router.post('/patientdiagnosis', formidable(), PatientDiagnosisCtrl.create);
 router.put('/patientdiagnosis/:id', PatientDiagnosisCtrl.edit);
 router.delete('/patientdiagnosis/:id', PatientDiagnosisCtrl.delete);
+router.get('/patientdiagnosis', TreatmentCtrl.getTreatmentDiagnosisData);
 
 // TODO: require auth to search
 router.get('/search', SearchCtrl.search);

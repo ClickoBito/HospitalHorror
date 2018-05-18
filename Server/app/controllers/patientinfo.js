@@ -8,8 +8,8 @@ module.exports.create = function(req, res, next) { // create is a function in a 
 	.then(info => {
 		app.print('Created PatientInfo');
 		app.print(info.get({plain:true}));// redirecting info
-		// TODO: redirect to some page
-		res.redirect('/');
+		app.print('Redirecting to: /patient/' + info.PatientId);
+		res.redirect('/patient/' + info.PatientId);
 	}, err => {
 		app.print(err);
 		// TODO: redirect to error page e.g.
@@ -23,8 +23,8 @@ module.exports.edit = function(req, res, next) {
 	model.PatientInfo.update(req.fields,{where: {id: req.params.id}})
 	.then(info => {
 		app.print('Updated PatientInfo');
-		// TODO: redirect to some page
-		res.redirect('/');
+		app.print('Redirecting to: /patient/' + req.fields.PatientId);
+		res.redirect('/patient/' + req.fields.PatientId);
 	}, err => {
 		app.print(err);
 		// TODO: redirect to error page e.g.

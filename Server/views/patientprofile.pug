@@ -1,41 +1,4 @@
-#insertModal.modal.fade(data-backdrop="false" tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true') 
-  .modal-dialog(role='document')
-    .modal-content
-      .modal-header
-        h5#exampleModalLabel.modal-title(style="color:black;") Please Fill in The Patient's Data
-        button.close(type='button', data-dismiss='modal', aria-label='Close')
-          .span(aria-hidden="true") x
-      .modal-body
-        form#patientdatainsertform.form-horizontal(role="form")
-          .form-group
-            input.form-control#PatientId(type="hidden" value=patient.id name="PatientId") 
-          .form-group
-            input.form-control#bloodpressure(type="text" name="bloodpressure" placeholder="Enter bloodpressure")
-          .form-group
-            input.form-control#weight(type="number" name="weight" placeholder="enter weight")
-          .form-group
-            input.form-control#description(type="text" name="description" placeholder="enter description")
-          button.btn.btn-success('onclick'='insertPatientData()') Submit 
-#editModal.modal.fade(data-backdrop="false" tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true') 
-  .modal-dialog(role='document')
-    .modal-content
-      .modal-header
-        h5#exampleModalLabel.modal-title(style="color:black;") Please Update The Patient's Data
-        button.close(type='button', data-dismiss='modal', aria-label='Close')
-          .span(aria-hidden="true") x
-      .modal-body
-        form#patientdataeditform.form-horizontal(role="form")
-          .form-group
-            input.form-control#PatientId(type="hidden" value=patient.id name="PatientId") 
-          .form-group
-            input.form-control#PatientInfoId(type="hidden" name="id" value="id")
-          .form-group
-            input.form-control#bloodpressureedit(type="text" name="bloodpressure" placeholder="Enter bloodpressure")
-          .form-group
-            input.form-control#weightedit(type="number" name="weight" placeholder="enter weight")
-          .form-group
-            input.form-control#descriptionedit(type="text" name="description" placeholder="enter description")
-          button.btn.btn-success('onclick'='editPatientData()') Submit
+include modals
 .col#patientinfocol
   label(for='patientInfo')
     h3 #{patient.fullname}'s Info
@@ -56,6 +19,7 @@
         th(scope='col') Last Visit
         th(scope='col') Blood Pressure
         th(scope='col') Weight
+        th(scope='col') Edit
     tbody
     each pi in patient.PatientInfos
       tr
@@ -79,5 +43,9 @@
           p.v-card-media Diagnosis Image:
           .patientdiagnosisimage(style="width:250px; padding:20px")
             img(src=d.imageurl alt="Diagnosis image loading" style="max-height:200px")
+  button#addDiagnosisData.btn.btn-sm.btn-primary.btn-lg.btn-block(style='margin-bottom: 5px;', type='button', data-toggle='modal', data-target='#insertDiagnosisModal' 'onclick'='getDiagnosisData()') Add Diagnosis
+  button#addTreatmentData.btn.btn-sm.btn-primary.btn-lg.btn-block(style='margin-bottom: 5px;', type='button', data-toggle='modal', data-target='#insertTreatmentModal' 'onclick'='getTreatmentData()') Add Treatment
+
 script
   include js/patientinfo.js
+  include js/treatmentdiagnosis.js

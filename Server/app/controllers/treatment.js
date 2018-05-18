@@ -1,10 +1,15 @@
 const model = require('../models/');
+const Sequelize = require('sequelize');
+const app = require('../../server.js');
 
 module.exports.createTreatment = function(req, res, next) { // create is a function in a sequelize
-	model.Treatment.create(req.body)//creating a treatment
+	app.print('Trying to create a treatment');
+	app.print(req.fields);
+	model.Treatment.create(req.fields)//creating a treatment
 	.then(response => {
-		// TODO: redirect to some page
-		res.redirect('/');
+		app.print('Created treatment');
+		app.print(response.get({plain:true}));
+		res.redirect('/patient/'+req.fields.PatientId);
 	}, err => {
 		console.log(err);
 		// TODO: redirect to error page e.g.
@@ -36,20 +41,31 @@ module.exports.deleteTreatment = function(req, res, next) {
 	});
 };
 
-/*
-// TODO: Update if this is needed or not
-// Unsure if this will be used later
+module.exports.getTreatmentDiagnosisData = function(req, res, next){
+	let userId = req.session.user.id;
+	let dataArray = [];
+	Sequelize.Promise.all([
+		model.Treatment.findAll(),
+		model.TreatmentType.findAll(),
+		model.Diagnosis.findAll(),
+		model.DiagnosisType.findAll(),
+		model.Doctor.findOne({
+			where: {UserId: userId},
+			attributes: ['firstname', 'lastname', 'id']
+		})
+	]).spread((treatment, treatmentType, diagnosis, diagnosisType, doctorId) => {
 
-module.exports.getTreatment = function(req, res, next) {
-	model.Treatment.findById(req.params.id).then(response => {
-		//console.log(response);
 		let data = {
-			treatment: response
+			treatment: treatment,
+			treatmentType: treatmentType,
+			diagnosis: diagnosis,
+			diagnosisType: diagnosisType,
+			doctorId: doctorId
 		};
+
 		res.json(data);
-		//console.log('The treatment fetched is: ', response.get({plain:true}));
-        //    res.render('treatment', {
-        //    treatment: response});
-    });
+	}, err => {
+					app.print(err);
+					res.status(500).send({ error: err.errors });
+	});
 };
-*/

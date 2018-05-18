@@ -50,6 +50,7 @@ describe('Test of creating treatments', function() {
             });
         });
     });
+    /*
     it('Checks if the 5 treatments has the correct content', function (done) {
         // Get latest created entries in treatment table
         model.Treatment.findAll({
@@ -80,6 +81,7 @@ describe('Test of creating treatments', function() {
             done();
         });
     });
+*/
 });
 
 describe('Test of editing a treatment', function() {
