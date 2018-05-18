@@ -1,0 +1,80 @@
+#insertModal.modal.fade(data-backdrop="false" tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title(style="color:black;") Please Fill in The Patient's Data
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          .span(aria-hidden="true") x
+      .modal-body
+        form#patientdatainsertform.form-horizontal(role="form")
+          .form-group
+            input.form-control#PatientId(type="hidden" value=patient.id name="PatientId")
+          .form-group
+            input.form-control#bloodpressure(type="text" name="bloodpressure" placeholder="Enter bloodpressure")
+          .form-group
+            input.form-control#weight(type="number" name="weight" placeholder="enter weight")
+          .form-group
+            input.form-control#description(type="text" name="description" placeholder="enter description")
+          button.btn.btn-success('onclick'='insertPatientData()') Submit
+
+#editModal.modal.fade(data-backdrop="false" tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title(style="color:black;") Please Update The Patient's Data
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          .span(aria-hidden="true") x
+      .modal-body
+        form#patientdataeditform.form-horizontal(role="form")
+          .form-group
+            input.form-control#PatientIdedit(type="hidden" value=patient.id name="PatientId")
+          .form-group
+            input.form-control#PatientInfoId(type="hidden" name="id" value="id")
+          .form-group
+            input.form-control#bloodpressureedit(type="text" name="bloodpressure" placeholder="Enter bloodpressure")
+          .form-group
+            input.form-control#weightedit(type="number" name="weight" placeholder="enter weight")
+          .form-group
+            input.form-control#descriptionedit(type="text" name="description" placeholder="enter description")
+          button.btn.btn-success('onclick'='editPatientData()') Submit
+
+#insertDiagnosisModal.modal.fade(style="color:black;" data-backdrop="false" tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title() Please Add a Diagnosis to The Patient
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          .span(aria-hidden="true") x
+      .modal-body
+        form#adddiagnosisform.form-horizontal(role="form")
+          .form-group
+            input.form-control#DiagnosisId(type="hidden" name="id")
+          .form-group
+            input.form-control#PatientIddiagnosis(type="hidden" value=patient.id name="PatientId")
+          .form-group
+            input.form-control#DoctorId(type="hidden" name="DoctorId")
+          .form-group
+            select#dtype.form-control(name="DiagnosisTypeId")
+          .form-group
+            select#ttype.form-control(name="TreatmentId")
+          .form-group
+            input.form-control#imageurl(type="text" name="imageurl" placeholder="Enter Image Url Here")
+          button.btn.btn-success('onclick'='insertDiagnosis()') Submit
+          
+
+#insertTreatmentModal.modal.fade(style="color:black;" data-backdrop="false" tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title() Please Add a Treatment to The Patient
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          .span(aria-hidden="true") x
+      .modal-body
+        form#addtreatmentform.form-horizontal(role="form")
+          .form-group
+            input.form-control#tPatientId(type="text" value=patient.id name="PatientId")
+          .form-group
+            select#treatmenttype.form-control(name="TreatmentTypeId")
+          .form-group
+            input.form-control#tdescription(type="text" name="description" placeholder="Enter Treatment Description Here")
+          button.btn.btn-success('onclick'='insertTreatment()') Submit

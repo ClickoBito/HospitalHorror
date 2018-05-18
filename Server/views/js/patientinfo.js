@@ -1,3 +1,4 @@
+//populating the edit modal with data of the patient info that is to be edited
 function editMode(piid) {
     $('#PatientInfoId').val(piid);
     let xhr = new XMLHttpRequest();
@@ -14,10 +15,7 @@ function editMode(piid) {
     xhr.send();
 }
 
-  //-function insertMode(id){
-    //-$("#PatienId").val(id);
-  //-}
-
+//inserting the form with patientinfo data
 function insertPatientData(){
     let patientdatainsertform = document.getElementById("patientdatainsertform");
     patientdatainsertform.addEventListener("submit", function (event) {
@@ -26,35 +24,38 @@ function insertPatientData(){
     let xhrData = new FormData(patientdatainsertform);
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '/patientinfo');
-    xhr.send(xhrData);
-    $('#insertModal').modal('toggle');
-
-    let pid = $('#PatientId').val();
-    xhr.open('GET', "/patient/" + pid, false);
     xhr.addEventListener('load', function(e) {
         $('#patientinfocol').html(xhr.responseText);
     });
-    xhr.send();
+
+    xhr.send(xhrData);
+    $('#insertModal').modal('toggle');
+    clearModal();
 }
 
+//submitting the updated patientinfo
 function editPatientData(){
-    let xhr = new XMLHttpRequest();
-    let piid = $("#PatientInfoId").val();
-    xhr.open('POST', "/patientinfo/" + piid);
     let patientdataeditform = document.getElementById("patientdataeditform");
-    let editForm = new FormData(patientdataeditform);
-    xhr.send(editForm);
+
     patientdataeditform.addEventListener("submit", function (event) {
         event.preventDefault();
     });
-    $('#editModal').modal('toggle');
-
-    let pid = $('#PatientId').val();
-    xhr.open('GET', "/patient/" + pid, false);
+    let xhr = new XMLHttpRequest();
+    let piid = $("#PatientInfoId").val();
+    xhr.open('POST', "/patientinfo/" + piid);
+    let editForm = new FormData(patientdataeditform);
     xhr.addEventListener('load', function(e) {
         $('#patientinfocol').html(xhr.responseText);
     });
-    xhr.send();
+
+    xhr.send(editForm);
+    $('#editModal').modal('toggle');
+    clearModal();
+}
 
 
+function clearModal(){
+    $('.modal').on('hidden.bs.modal', function(){
+        $(this).find('form')[0].reset();
+    });    
 }
