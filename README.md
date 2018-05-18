@@ -27,6 +27,10 @@ const db = {
 module.exports = db;
 ```
 - Create the database by running in the *Server/*-directory: `npm run resync`.
-- *Optional, but recommended:* Insert testdata into the database by running in the *Server/*-directory: `npm run load_testdata`.
-- Start the app by running in the *Server/*-directory: `npm start`. Alternatively run `nodemon --exec "npm start" -e html,scss,js,pug` (if it's installed) or possibly *forever*: `forever start server.js`
+- *Optional, but really recommended:* Insert testdata into the database by running in the *Server/*-directory: `npm run load_testdata`. You can now login with one of the follwoing:
+	* `admin/admin` (as an admin)
+	* `doctor/doctor` (as a doctor)
+	* `nurse/nurse` (as a nurse)
+	* `secretary/secretary` (as a secretary)
+- Start the app by running in the *Server/*-directory: `npm start`. Alternatively run `nodemon --exec "npm start" -e html,scss,js,pug` (if it's installed).
 - Visit `http://localhost:8890`
