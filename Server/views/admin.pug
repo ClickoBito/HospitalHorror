@@ -8,14 +8,13 @@ html(lang="en")
             include css/style.css
   body#clrblk.adminBody
     .container
-      form.admin-logout-button(action='/logout', method='post')
-          input(type='hidden')
-          button(class='btn btn-danger', type='submit') Logout
-    .container
       #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.mx-auto
         .card
           .card-header
             .card-title Register user
+              form.admin-logout-button(action='/logout', method='post')
+                input(type='hidden')
+                button(class='btn btn-danger', type='submit') Logout
             // <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
             p= status
           .card-body
