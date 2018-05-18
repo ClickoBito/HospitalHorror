@@ -21,6 +21,10 @@
   margin-left: 5.5em !important;
 }
 
+.admin-logout-button {
+  float: right;
+}
+
 #CHEESY_FOOTER {
   color: #706f6f;
   height: auto;
