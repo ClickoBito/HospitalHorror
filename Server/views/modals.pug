@@ -72,7 +72,7 @@
       .modal-body
         form#addtreatmentform.form-horizontal(role="form")
           .form-group
-            input.form-control#tPatientId(type="text" value=patient.id name="PatientId")
+            input.form-control#tPatientId(type="hidden" value=patient.id name="PatientId")
           .form-group
             select#treatmenttype.form-control(name="TreatmentTypeId")
           .form-group

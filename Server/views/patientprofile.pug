@@ -43,8 +43,9 @@ include modals
           p.v-card-media Diagnosis Image:
           .patientdiagnosisimage(style="width:250px; padding:20px")
             img(src=d.imageurl alt="Diagnosis image loading" style="max-height:200px")
-  button#addDiagnosisData.btn.btn-sm.btn-primary.btn-lg.btn-block(style='margin-bottom: 5px;', type='button', data-toggle='modal', data-target='#insertDiagnosisModal' 'onclick'='getDiagnosisData()') Add Diagnosis
-  button#addTreatmentData.btn.btn-sm.btn-primary.btn-lg.btn-block(style='margin-bottom: 5px;', type='button', data-toggle='modal', data-target='#insertTreatmentModal' 'onclick'='getTreatmentData()') Add Treatment
+  if user.userType == 'Doctor'            
+    button#addDiagnosisData.btn.btn-sm.btn-primary.btn-lg.btn-block(style='margin-bottom: 5px;', type='button', data-toggle='modal', data-target='#insertDiagnosisModal' 'onclick'='getDiagnosisData()') Add Diagnosis
+    button#addTreatmentData.btn.btn-sm.btn-primary.btn-lg.btn-block(style='margin-bottom: 5px;', type='button', data-toggle='modal', data-target='#insertTreatmentModal' 'onclick'='getTreatmentData()') Add Treatment
 
 script
   include js/patientinfo.js
