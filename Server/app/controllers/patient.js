@@ -14,8 +14,8 @@ module.exports.create = function (req, res, next) {
         if(created) {
             app.print('Created Patient');
             if (AuthCtrl.isSecretary(req)) {
-                req.session.status = 'Patient created';
-                res.redirect('/');
+                req.session.status = 'Patient created.';
+                res.redirect('/createpatient');
             }
             else if (AuthCtrl.isDoctor(req))
                 res.redirect('/doctor/' + req.session.userid);
@@ -142,9 +142,17 @@ module.exports.createPatientForm = function(req, res, next) {
         attributes: ['firstname', 'lastname']
       })
   ]).spread((doctors, username) => {
+    let status;
+    if (req.session.status) {
+      status = req.session.status;
+      req.session.status = undefined;
+    } else
+      status = undefined;
+
     res.render('createpatient', {
       doctors: doctors,
-      username: username
+      username: username,
+      status: status
     });
   }, err => {
     app.print(err);
