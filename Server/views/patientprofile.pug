@@ -22,7 +22,8 @@ include modals
         th(scope='col') Last Visit
         th(scope='col') Blood Pressure
         th(scope='col') Weight
-        th(scope='col') Edit
+        if user.userType == 'Doctor'
+          th(scope='col') Edit
     tbody
     each pi in patient.PatientInfos
       tr
