@@ -15,7 +15,8 @@ const PatientDiagnosisCtrl = require('../controllers/patientdiagnosis.js');
 const DoctorCtrl = require('../controllers/doctor.js');
 const NurseCtrl = require('../controllers/nurse.js');
 const SearchCtrl = require('../controllers/search.js');
-//gconst UpdaterCtrl = require('../controllers/updater.js')
+const AdminCtrl = require('../controllers/admin.js');
+
 
 // RESTful API
 
@@ -44,7 +45,7 @@ router.post('/patientinfo/:id', formidable(), PatientInfoCtrl.edit);
 router.delete('/patientinfo/:id', PatientInfoCtrl.delete);
 router.get('/patientinfo/:id', PatientInfoCtrl.get);
 
-// PatientAllergy
+// PatientAllergy - not yet implemented in frontend
 router.post('/patientallergy', PatientAllergyCtrl.create);
 router.put('/patientallergy/:id', PatientAllergyCtrl.edit);
 router.delete('/patientallergy/:id', PatientAllergyCtrl.delete);
@@ -63,56 +64,38 @@ router.get('/patientdiagnosis', TreatmentCtrl.getTreatmentDiagnosisData);
 // TODO: require auth to search
 router.get('/search', SearchCtrl.search);
 
-// TODO: put function in a controller
-router.get('/home/:id', function(req, res) {
-	res.sendFile('./views/home.html', { root: __dirname + "./../.." });
-});
+// Admin-route
+router.get('/admin', AdminCtrl.createUser);
 
-// Checks if user is admin
-router.get('/admin', function (req, res) {
-	if(!AuthCtrl.isAdmin(req)) {
-		req.session.error = 'Only admins can access this page.';
-		req.session.errorcode = 401;
-		res.redirect('/error/');
-	}
-	else
-		res.render('admin', {speciality: model.Doctor.rawAttributes.speciality.values});
-});
-
-// Sends user to index page and displays error message
+// Error-route
 router.get('/error', function (req, res) {
 	if(req.session.error !== undefined) {
+		let error = req.session.error;
 		res.status(req.session.errorcode);
-		res.render('index', {
-			status: req.session.error
-		});
 		req.session.error = undefined;
 		req.session.errorcode = undefined;
+		res.render('index', {
+			status: error
+		});
 	}
 	else
 		res.redirect('/');
 });
 
-// router.get('/doctor', function (req, res) {
-	// 	app.print('Doctor logged in');
-	// 	//res.sendFile('./views/doctor.pug', { root: __dirname + "./../.." });
-
-// });
-
 // frontend routes =========================================================
 // route to handle all other requests
 router.get('*', function(req, res) {
 	if(req.session.status){
+		let status = req.session.status;
+		req.session.status = undefined;
 		res.render('index', {
-			status: req.session.status
+			status: status
 		});
 	}
 	else
 		res.render('index');
 	req.session.status = undefined;
 });
-
-
 
 
 module.exports = router;

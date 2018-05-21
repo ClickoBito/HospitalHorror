@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.DATE,
 			defaultValue: sequelize.fn('NOW')
 		}
-    }, {
+	}, {
 		tableName: 'Diagnosis',
 		timestamps: true
 	});

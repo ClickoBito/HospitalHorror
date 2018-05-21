@@ -20,12 +20,12 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.DATE,
 			defaultValue: sequelize.fn('NOW')
 		}
-    }, {
+	}, {
 		tableName: 'Treatment',
 		timestamps: true
 	});
 
- 	Treatment.associate = function(models) {
+	Treatment.associate = function(models) {
 		models.Treatment.belongsTo(models.TreatmentType);
 		models.Treatment.hasOne(models.Diagnosis);
 	};

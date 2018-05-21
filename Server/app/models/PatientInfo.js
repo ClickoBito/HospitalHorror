@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
 	});
 
 	PatientInfo.associate = function(models) {
-        PatientInfo.belongsTo(models.Patient);
+		PatientInfo.belongsTo(models.Patient);
 	};
 
 	return PatientInfo;
