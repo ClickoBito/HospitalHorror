@@ -14,8 +14,8 @@ mixin diagnosisResult(searchResult)
                     .col-md-8
                         .div(style='padding:10px')
                             h4.card-title #{diagnosis.DiagnosisType.name}
-                            p.card-text Diagnosis: #{diagnosis.Treatment.description}
-                            p.card-text Treatment: #{diagnosis.Treatment.TreatmentType.name}
+                            p.card-text Treatment: #{diagnosis.Treatment.description}
+                            p.card-text Measure: #{diagnosis.Treatment.TreatmentType.name}
                             .row
                                 .col-md-6
                                     p.card-text Patient: 
@@ -65,6 +65,10 @@ script.
     function getPersonData(personId, type) {
         if (type === 'Patient') {
             return getPatientData(personId);
+        } else if (type === 'Doctor') {
+            return getDoctorProfile(personId);
+        } else if (type === 'Nurse') {
+            return getNurseProfile(personId);
         }
         alert('Clicked ' + type + ', id: ' + personId);
     }
