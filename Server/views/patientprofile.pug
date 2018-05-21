@@ -13,6 +13,9 @@ include modals
           ul
             each al in patient.Allergies
               li #{al.AllergyType.name}
+  h3 Patient Data
+    button#addPatientData.btn.btn-sm.btn-primary.btn-lg(style='background-color: transparent; border: 0px;', type='button', data-toggle='modal', data-target='#insertModal')  
+      i.fa.fa-plus-square
   table#patientInfoTable.table.table-curved
     thead#table-head
       tr
@@ -29,23 +32,24 @@ include modals
         if user.userType === 'Doctor'
           td
             button#editPatientData.btn.btn-sm.btn-success(style='overflow: auto;', type='button', data-toggle='modal', data-target='#editModal' 'onclick'='editMode('+pi.id + ')') Edit
-  button#addPatientData.btn.btn-sm.btn-primary.btn-lg.btn-block(style='margin-bottom: 5px;', type='button', data-toggle='modal', data-target='#insertModal') Add Patient Data  
   .card
     .card-body
-      h4.card-title Previous Notes
+      h4.card-title Notes
       each pin,i in patient.PatientInfos
         p.card-text Notes ##{i+1}: #{pin.description} 
   .card
       .card-body
-        h4.card-title Previous Diagnoses
+        h4.card-title Diagnoses
+        if user.userType == 'Doctor'
+          button#addDiagnosisData.btn.btn-sm.btn-primary.btn-lg(style='background-color: transparent; border: 0px;', type='button', data-toggle='modal', data-target='#insertDiagnosisModal' 'onclick'='getDiagnosisData()')
+            i.fa.fa-plus-square
         each d,i in patient.Diagnoses
           p.card-text Diagnosis ##{i+1}: #{d.DiagnosisType.name}
           p.v-card-media Diagnosis Image:
           .patientdiagnosisimage(style="width:250px; padding:20px")
             img(src=d.imageurl alt="Diagnosis image loading" style="max-height:200px")
   if user.userType == 'Doctor'            
-    button#addDiagnosisData.btn.btn-sm.btn-primary.btn-lg.btn-block(style='margin-bottom: 5px;', type='button', data-toggle='modal', data-target='#insertDiagnosisModal' 'onclick'='getDiagnosisData()') Add Diagnosis
-    button#addTreatmentData.btn.btn-sm.btn-primary.btn-lg.btn-block(style='margin-bottom: 5px;', type='button', data-toggle='modal', data-target='#insertTreatmentModal' 'onclick'='getTreatmentData()') Add Treatment
+    button#addTreatmentData.btn.btn-sm.btn-secondary(style='margin-bottom: 5px;', type='button', data-toggle='modal', data-target='#insertTreatmentModal' 'onclick'='getTreatmentData()') Add Treatment
 
 script
   include js/patientinfo.js
