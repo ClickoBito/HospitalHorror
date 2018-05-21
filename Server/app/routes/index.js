@@ -15,6 +15,7 @@ const PatientDiagnosisCtrl = require('../controllers/patientdiagnosis.js');
 const DoctorCtrl = require('../controllers/doctor.js');
 const NurseCtrl = require('../controllers/nurse.js');
 const SearchCtrl = require('../controllers/search.js');
+const AdminCtrl = require('../controllers/admin.js');
 
 
 // RESTful API
@@ -64,31 +65,7 @@ router.get('/patientdiagnosis', TreatmentCtrl.getTreatmentDiagnosisData);
 router.get('/search', SearchCtrl.search);
 
 // Admin-route
-router.get('/admin', function (req, res) {
-	if(!AuthCtrl.isAdmin(req)) {
-		req.session.error = 'Only admins can access this page.';
-		req.session.errorcode = 401;
-		res.redirect('/error/');
-	}
-	else {
-		if(req.session.error != undefined) {
-			let error = req.session.error;
-			res.status(req.session.errorcode);
-			req.session.error = undefined;
-			req.session.errorcode = undefined;
-			res.render('admin', {speciality: model.Doctor.rawAttributes.speciality.values, status: error});
-		}
-		else if (req.session.status) {
-			let status = req.session.status;
-			req.session.status = undefined;
-			res.render('admin', {speciality: model.Doctor.rawAttributes.speciality.values, status: status});
-
-		}
-		else
-			res.render('admin', {speciality: model.Doctor.rawAttributes.speciality.values});
-
-	}
-});
+router.get('/admin', AdminCtrl.createUser);
 
 // Error-route
 router.get('/error', function (req, res) {
