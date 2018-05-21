@@ -4,15 +4,15 @@ const app = require('../../server.js');
 
 module.exports.createTreatment = function(req, res, next) { // create is a function in a sequelize
 	app.print('Trying to create a treatment');
-	app.print(req.fields);
 	model.Treatment.create(req.fields)//creating a treatment
 	.then(response => {
 		app.print('Created treatment');
-		app.print(response.get({plain:true}));
 		res.redirect('/patient/'+req.fields.PatientId);
 	}, err => {
-		console.log(err);
-		// TODO: redirect to error page e.g.
+		app.print(err);
+		app.print("Internal Server Error");
+		req.session.error = 'Internal Server Error.';
+		req.session.errorcode = 500;
 		res.redirect('/error/');
 	});
 };
@@ -20,11 +20,12 @@ module.exports.createTreatment = function(req, res, next) { // create is a funct
 module.exports.editTreatment = function(req, res, next) {
 	model.Treatment.update(req.body,{where: {id: req.params.id}})
 	.then(response => {
-		// TODO: redirect to some page
 		res.redirect('/');
 	}, err => {
-		console.log(err);
-		// TODO: redirect to error page e.g.
+		app.print(err);
+		app.print("Internal Server Error");
+		req.session.error = 'Internal Server Error.';
+		req.session.errorcode = 500;
 		res.redirect('/error/');
 	});
 };
@@ -35,8 +36,10 @@ module.exports.deleteTreatment = function(req, res, next) {
 		// TODO: redirect to some page
 		res.redirect('/');
 	}, err => {
-		console.log(err);
-		// TODO: redirect to error page e.g.
+		app.print(err);
+		app.print("Internal Server Error");
+		req.session.error = 'Internal Server Error.';
+		req.session.errorcode = 500;
 		res.redirect('/error/');
 	});
 };
@@ -65,7 +68,10 @@ module.exports.getTreatmentDiagnosisData = function(req, res, next){
 
 		res.json(data);
 	}, err => {
-					app.print(err);
-					res.status(500).send({ error: err.errors });
+		app.print(err);
+		app.print("Internal Server Error");
+		req.session.error = 'Internal Server Error.';
+		req.session.errorcode = 500;
+		res.redirect('/error/');
 	});
 };

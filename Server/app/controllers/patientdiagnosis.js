@@ -7,15 +7,16 @@ module.exports.create = function(req, res, next) {
 	model.Diagnosis.create(req.fields)
 	.then(info => {
 		app.print('Created patient diagnosis');
-		app.print(info.get({plain:true}));
-		// TODO: redirect to some page
 		res.redirect('/patient/' + info.PatientId);
 	}, err => {
 		app.print(err);
-		// TODO: redirect to error page e.g.
-		res.redirect('/');
+		app.print("Internal Server Error");
+		req.session.error = 'Internal Server Error.';
+		req.session.errorcode = 500;
+		res.redirect('/error/');
 	});
 };
+
 module.exports.edit = function(req, res, next) {
 	app.print('Trying to update a patientDiagnosis');
 	app.print(req.body);
@@ -26,8 +27,10 @@ module.exports.edit = function(req, res, next) {
 		res.redirect('/');
 	}, err => {
 		app.print(err);
-		// TODO: redirect to error page e.g.
-		res.redirect('/');
+		app.print("Internal Server Error");
+		req.session.error = 'Internal Server Error.';
+		req.session.errorcode = 500;
+		res.redirect('/error/');
 	});
 };
 
@@ -41,7 +44,9 @@ module.exports.delete = function(req, res, next) {
 		res.redirect('/');
 	}, err => {
 		app.print(err);
-		// TODO: redirect to error page e.g.
-		res.redirect('/');
+		app.print("Internal Server Error");
+		req.session.error = 'Internal Server Error.';
+		req.session.errorcode = 500;
+		res.redirect('/error/');
 	});
 };
