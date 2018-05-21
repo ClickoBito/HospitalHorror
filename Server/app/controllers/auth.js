@@ -74,6 +74,7 @@ module.exports.register = function (req, res, next) {
 					email: req.body.email, image: req.body.image, UserId: user.id
 				}).then(doctor => {
 					app.print('Doctor created');
+					req.session.status = 'Doctor created.';
 					res.redirect('/admin');
 				}, err => {
 					app.print(err);
@@ -90,6 +91,7 @@ module.exports.register = function (req, res, next) {
 						email: req.body.email, UserId: user.id
 					}).then(nurse => {
 						app.print('Nurse created');
+						req.session.status = 'Nurse created.';
 						res.redirect('/admin');
 					}, err => {
 						app.print(err);
@@ -107,6 +109,7 @@ module.exports.register = function (req, res, next) {
 				}).then(secretary => {
 					// let info = secretary.get({plain:true})
 					app.print('Secretary created');
+					req.session.status = 'Secretary created.';
 					res.redirect('/admin');
 				}, err => {
 					app.print(err);
@@ -121,7 +124,7 @@ module.exports.register = function (req, res, next) {
 			app.print('User with this username already found');
 			req.session.error = 'Username taken. Please try something else.';
 			req.session.errorcode = 400;
-			res.redirect('/error/');
+			res.redirect('/admin/');
 		}
 	});
 

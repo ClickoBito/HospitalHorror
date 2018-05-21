@@ -70,19 +70,36 @@ router.get('/admin', function (req, res) {
 		req.session.errorcode = 401;
 		res.redirect('/error/');
 	}
-	else
-		res.render('admin', {speciality: model.Doctor.rawAttributes.speciality.values});
+	else {
+		if(req.session.error != undefined) {
+			let error = req.session.error;
+			res.status(req.session.errorcode);
+			req.session.error = undefined;
+			req.session.errorcode = undefined;
+			res.render('admin', {speciality: model.Doctor.rawAttributes.speciality.values, status: error});
+		}
+		else if (req.session.status) {
+			let status = req.session.status;
+			req.session.status = undefined;
+			res.render('admin', {speciality: model.Doctor.rawAttributes.speciality.values, status: status});
+
+		}
+		else
+			res.render('admin', {speciality: model.Doctor.rawAttributes.speciality.values});
+
+	}
 });
 
 // Error-route
 router.get('/error', function (req, res) {
 	if(req.session.error !== undefined) {
+		let error = req.session.error;
 		res.status(req.session.errorcode);
-		res.render('index', {
-			status: req.session.error
-		});
 		req.session.error = undefined;
 		req.session.errorcode = undefined;
+		res.render('index', {
+			status: error
+		});
 	}
 	else
 		res.redirect('/');
@@ -92,8 +109,10 @@ router.get('/error', function (req, res) {
 // route to handle all other requests
 router.get('*', function(req, res) {
 	if(req.session.status){
+		let status = req.session.status;
+		req.session.status = undefined;
 		res.render('index', {
-			status: req.session.status
+			status: status
 		});
 	}
 	else
