@@ -15,7 +15,7 @@ const PatientDiagnosisCtrl = require('../controllers/patientdiagnosis.js');
 const DoctorCtrl = require('../controllers/doctor.js');
 const NurseCtrl = require('../controllers/nurse.js');
 const SearchCtrl = require('../controllers/search.js');
-//gconst UpdaterCtrl = require('../controllers/updater.js')
+
 
 // RESTful API
 
@@ -44,7 +44,7 @@ router.post('/patientinfo/:id', formidable(), PatientInfoCtrl.edit);
 router.delete('/patientinfo/:id', PatientInfoCtrl.delete);
 router.get('/patientinfo/:id', PatientInfoCtrl.get);
 
-// PatientAllergy
+// PatientAllergy - not yet implemented in frontend
 router.post('/patientallergy', PatientAllergyCtrl.create);
 router.put('/patientallergy/:id', PatientAllergyCtrl.edit);
 router.delete('/patientallergy/:id', PatientAllergyCtrl.delete);
@@ -63,12 +63,7 @@ router.get('/patientdiagnosis', TreatmentCtrl.getTreatmentDiagnosisData);
 // TODO: require auth to search
 router.get('/search', SearchCtrl.search);
 
-// TODO: put function in a controller
-router.get('/home/:id', function(req, res) {
-	res.sendFile('./views/home.html', { root: __dirname + "./../.." });
-});
-
-// Checks if user is admin
+// Admin-route
 router.get('/admin', function (req, res) {
 	if(!AuthCtrl.isAdmin(req)) {
 		req.session.error = 'Only admins can access this page.';
@@ -79,7 +74,7 @@ router.get('/admin', function (req, res) {
 		res.render('admin', {speciality: model.Doctor.rawAttributes.speciality.values});
 });
 
-// Sends user to index page and displays error message
+// Error-route
 router.get('/error', function (req, res) {
 	if(req.session.error !== undefined) {
 		res.status(req.session.errorcode);
@@ -93,12 +88,6 @@ router.get('/error', function (req, res) {
 		res.redirect('/');
 });
 
-// router.get('/doctor', function (req, res) {
-	// 	app.print('Doctor logged in');
-	// 	//res.sendFile('./views/doctor.pug', { root: __dirname + "./../.." });
-
-// });
-
 // frontend routes =========================================================
 // route to handle all other requests
 router.get('*', function(req, res) {
@@ -111,8 +100,6 @@ router.get('*', function(req, res) {
 		res.render('index');
 	req.session.status = undefined;
 });
-
-
 
 
 module.exports = router;

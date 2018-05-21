@@ -5,8 +5,6 @@ const app = require('../../server.js');
 const online = require('./online.js');
 
 module.exports.login = function(req, res, next) {
-	// debug
-	// app.print(req.body);
 	model.User.findOne({
 		where: {
 			username: req.body.username
@@ -20,7 +18,6 @@ module.exports.login = function(req, res, next) {
 						let userinfo = user.get({plain: true});
 						req.session.userid = userinfo.id;
 						online.addUser(userinfo.id);
-						// app.print(userinfo);
 						if (userinfo.userType === 'Admin')
 							res.redirect('/admin/');
 						else if (userinfo.userType === 'Doctor')
@@ -69,20 +66,15 @@ module.exports.register = function (req, res, next) {
 	}).spread((user, created) => {
 		//Check if user was created or if it already exists
 		if (created) {
-			// app.print('User successfully created');
-			// app.print(req.body.username + ' ' + req.body.password);
 			//Check user type and create corresponding model
 			if (req.body.usertype === 'Doctor') {
 				model.Doctor.create({
 					firstname: req.body.firstname, lastname: req.body.lastname,
 					dateofbirth: req.body.dateofbirth, phone: req.body.phone,
-					email: req.body.email, UserId: user.id
+					email: req.body.email, image: req.body.image, UserId: user.id
 				}).then(doctor => {
-					// let info = doctor.get({plain:true})
 					app.print('Doctor created');
-					req.session.destroy();
-					// TODO: redirect to appropriate page
-					res.redirect('/');
+					res.redirect('/admin');
 				}, err => {
 					app.print(err);
 					req.session.error = 'There was an error creating your account. Please try again later.';
@@ -97,11 +89,8 @@ module.exports.register = function (req, res, next) {
 						dateofbirth: req.body.dateofbirth, phone: req.body.phone,
 						email: req.body.email, UserId: user.id
 					}).then(nurse => {
-						// let info = nurse.get({plain:true})
 						app.print('Nurse created');
-						req.session.destroy();
-						// TODO: redirect to appropriate page
-						res.redirect('/');
+						res.redirect('/admin');
 					}, err => {
 						app.print(err);
 						req.session.error = 'There was an error creating your account. Please try again later.';
@@ -118,9 +107,7 @@ module.exports.register = function (req, res, next) {
 				}).then(secretary => {
 					// let info = secretary.get({plain:true})
 					app.print('Secretary created');
-					req.session.destroy();
-					// TODO: redirect to appropriate page
-					res.redirect('/');
+					res.redirect('/admin');
 				}, err => {
 					app.print(err);
 					req.session.error = 'There was an error creating your account. Please try again later.';
@@ -169,6 +156,6 @@ function isSecretary(req) {
 module.exports.isSecretary = isSecretary;
 
 function encryptPassword(password) {
-    return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
+	return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
 }
 module.exports.encryptPassword = encryptPassword;
